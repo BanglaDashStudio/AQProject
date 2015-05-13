@@ -22,9 +22,20 @@
 
 <div class="container" id="page">
 
-	<div id="header">
+	<!-- <div id="header">
 		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
-	</div><!-- header -->
+	</div> -->
+
+    <div id="header">
+        <div id="logo"><?php
+            echo "<a href=\"http://vk.com/ptz_qst\">";
+            echo CHtml::image("images/logo.jpg",NULL,array("height"=>100));
+            echo "</a>";
+            ?>
+        </div>
+    </div><!-- header -->
+
+
 
 	<div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
@@ -37,7 +48,7 @@
 			),
 		)); ?>
 	</div><!-- mainmenu -->
-	<?php if(isset($this->breadcrumbs)):?>
+	<?php if(isset($this->breadcrumbs)):?>  
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
 			'links'=>$this->breadcrumbs,
 		)); ?><!-- breadcrumbs -->
@@ -50,7 +61,11 @@
 	<div id="footer">
 		Copyright &copy; <?php echo date('Y'); ?> by BanglaDashStudio.<br/>
 		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
+		<?php echo Yii::powered();
+            echo "<br />";
+            echo CHtml::link("vk.com/ptz_qst","http://vk.com/ptz_qst");
+        ?>
+
 	</div><!-- footer -->
 
 </div><!-- page -->
