@@ -629,3 +629,11 @@ Stack trace:
 REQUEST_URI=/~lokirew/AQProject/index.php?r=gii/crud/index
 HTTP_REFERER=http://lokirew/~lokirew/AQProject/index.php?r=gii
 ---
+2015/05/23 19:43:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "signIn".' in /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('signIn')
+#1 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=signIn
+---

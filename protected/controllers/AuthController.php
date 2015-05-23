@@ -2,10 +2,57 @@
 
 class AuthController extends Controller
 {
+    public $defaultAction = 'signIn';
+
 	public function actionSignIn()
 	{
-		$this->render('SignIn');
+        $model=new Comand;
+
+        // uncomment the following code to enable ajax-based validation
+        /*
+        if(isset($_POST['ajax']) && $_POST['ajax']==='comand-SignIn-form')
+        {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+        */
+
+        if(isset($_POST['Comand']))
+        {
+            $model->attributes=$_POST['Comand'];
+            if($model->validate())
+            {
+                // form inputs are valid, do something here
+                return;
+            }
+        }
+        $this->render('SignIn',array('model'=>$model));
 	}
+
+    public function actionSignUp()
+    {
+        $model=new Comand;
+
+        // uncomment the following code to enable ajax-based validation
+        /*
+        if(isset($_POST['ajax']) && $_POST['ajax']==='comand-SignUp-form')
+        {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+        */
+
+        if(isset($_POST['Comand']))
+        {
+            $model->attributes=$_POST['Comand'];
+            if($model->validate())
+            {
+                // form inputs are valid, do something here
+                return;
+            }
+        }
+        $this->render('SignUp',array('model'=>$model));
+    }
 
 	// Uncomment the following methods and override them if needed
 	/*
