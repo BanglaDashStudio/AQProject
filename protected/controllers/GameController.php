@@ -4,11 +4,26 @@ class GameController extends Controller
 {
 	public function actionCreate()
 	{
-		$this->render('Create');
+        $model=new Game;
+        if(isset($_POST['Game']))
+        {
+        $model->attributes=$_POST['Game'];
+        if($model->validate())
+        {
+            // form inputs are valid, do something here
+            return;
+        }
+            if($model->save())
+            {
+                $this->refresh();
+            }
+    }
+		$this->render('Create',array('model'=>$model));
 	}
 
 	public function actionPlay()
 	{
+        $model=new Game;
 		$this->render('Play');
 	}
 

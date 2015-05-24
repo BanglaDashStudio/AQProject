@@ -15,43 +15,60 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note"><span class="required">*</span> Обязательные поля.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'name'); ?>
+		<?php echo $form->labelEx($model,'Название'); ?>
 		<?php echo $form->textField($model,'name'); ?>
 		<?php echo $form->error($model,'name'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'date'); ?>
-		<?php echo $form->textField($model,'date'); ?>
-		<?php echo $form->error($model,'date'); ?>
-	</div>
+    <div class="row">
+        <?php echo $form->labelEx($model,'Дата'); ?>
+        <?php
+        $this->widget('zii.widgets.jui.CJuiDatePicker', array
+        (
+            'name'=>'ModelName[date]', // the name of the field
+            'language'=>'ru',
+            'value'=>($model->date ? date('d.m.Y', $model->date) : ''),  // pre-fill the value
+            'options'=>array
+            (
+                'showAnim'=>'fold',
+                'dateFormat'=>'dd.mm.yy',  // optional Date formatting
+                'debug'=>false,
+            ),
+            'htmlOptions'=>array
+            (
+                'style'=>'height:20px;'
+            ),
+        ));
+        ?>
+        <?php echo $form->error($model,'date'); ?>
+    </div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'z1'); ?>
+		<?php echo $form->labelEx($model,'Задание 1'); ?>
 		<?php echo $form->textField($model,'z1'); ?>
 		<?php echo $form->error($model,'z1'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'z2'); ?>
+		<?php echo $form->labelEx($model,'Задание 2'); ?>
 		<?php echo $form->textField($model,'z2'); ?>
 		<?php echo $form->error($model,'z2'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'z3'); ?>
+		<?php echo $form->labelEx($model,'Задание 3'); ?>
 		<?php echo $form->textField($model,'z3'); ?>
 		<?php echo $form->error($model,'z3'); ?>
 	</div>
 
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Submit'); ?>
+		<?php echo CHtml::submitButton('Сохранить'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
