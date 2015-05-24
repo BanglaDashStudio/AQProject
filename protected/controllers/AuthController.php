@@ -25,7 +25,7 @@ class AuthController extends Controller
                 // form inputs are valid, do something here
                 $login = $_POST['ComandSignIn']['username'];
                 $pass = $_POST['ComandSignIn']['password'];
-                SignIn($login, $pass);
+                $this->SignInFunc($login, $pass);
                 $this->render('SignIn',array('model'=>$model));
                 return;
             }
@@ -34,17 +34,18 @@ class AuthController extends Controller
 
 	}
 
-    private function SignIn($login, $pass){
+    private function SignInFunc($login, $pass){
         // Аутентифицируем пользователя по имени и паролю
         $identity=new UserIdentity($login,$pass);
 
-        if($identity->authenticate())
+        if($identity->authenticate()) {
             Yii::app()->user->login($identity);
-        else
+        } else {
             echo $identity->errorMessage;
+        }
 
         // Выходим
-        Yii::app()->user->logout();
+       // Yii::app()->user->logout();
     }
 
     public function actionSignUp()
@@ -65,7 +66,7 @@ class AuthController extends Controller
             $model->attributes=$_POST['Comand'];
             if($model->validate())
             {
-                // form inputs are valid, do something here
+                $model->save();
                 return;
             }
         }
