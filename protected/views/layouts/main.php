@@ -47,6 +47,8 @@
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
 			    array('label'=>'Вход', 'url'=>array('/auth/SignIn')),
                 array('label'=>'Регистрация', 'url'=>array('/auth/SignUp')),
+                array('label'=>'Создать игру', 'url'=>array('/game/Create')),
+                array('label'=>'ИГРАТЬ!!!!', 'url'=>array('/auth/Play')),
             ),
 		)); ?>
 	</div><!-- mainmenu -->
