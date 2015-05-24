@@ -1,61 +1,26 @@
 <?php
 
-/**
- * This is the model class for table "Comand".
- *
- * The followings are the available columns in table 'Comand':
- * @property string $Name
- * @property string $Pass
- */
-class ComandSignIn extends CActiveRecord
+class ComandSignIn extends CFormModel
 {
-	/**
-	 * @return string the associated database table name
-	 */
+    public $username;
+    public $password;
+   // public $rememberMe=false;
 
-	/**
-	 * @return array validation rules for model attributes.
-	 */
-	public function rules()
-	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
-		return array(
-			array('Name, Pass', 'required'),
-		);
-	}
+    //private $_identity;
 
-	/**
-	 * @return array relational rules.
-	 */
-	public function relations()
-	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-		);
-	}
+    public function rules()
+    {
+        return array(
+            array('username, password', 'required'),
+        //    array('rememberMe', 'boolean'),
+        //    array('password', 'authenticate'),
+        );
+    }
 
-	/**
-	 * @return array customized attribute labels (name=>label)
-	 */
-	public function attributeLabels()
-	{
-		return array(
-
-			'Name' => 'Ваш логин',
-			'Pass' => 'Ваш пароль',
-		);
-	}
-
-	/**
-	 * Returns the static model of the specified AR class.
-	 * Please note that you should have this exact method in all your CActiveRecord descendants!
-	 * @param string $className active record class name.
-	 * @return Comand the static model class
-	 */
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
-	}
+  /*  public function authenticate($attribute,$params)
+    {
+        $this->_identity=new UserIdentity($this->username,$this->password);
+        if(!$this->_identity->authenticate())
+            $this->addError('password','Неправильное имя пользователя или пароль.');
+    }*/
 }

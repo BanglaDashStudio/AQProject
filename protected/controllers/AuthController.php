@@ -6,7 +6,7 @@ class AuthController extends Controller
 
 	public function actionSignIn()
 	{
-        $model=new Comand;
+        $model=new ComandSignIn;
 
         // uncomment the following code to enable ajax-based validation
         /*
@@ -17,17 +17,35 @@ class AuthController extends Controller
         }
         */
 
-        if(isset($_POST['Comand']))
+        if(isset($_POST['ComandSignIn']))
         {
-            $model->attributes=$_POST['Comand'];
+            $model->attributes=$_POST['ComandSignIn'];
             if($model->validate())
             {
                 // form inputs are valid, do something here
+                $login = $_POST['ComandSignIn']['username'];
+                $pass = $_POST['ComandSignIn']['password'];
+                SignIn($login, $pass);
+                $this->render('SignIn',array('model'=>$model));
                 return;
             }
         }
         $this->render('SignIn',array('model'=>$model));
+
 	}
+
+    private function SignIn($login, $pass){
+        // Аутентифицируем пользователя по имени и паролю
+        $identity=new UserIdentity($login,$pass);
+
+        if($identity->authenticate())
+            Yii::app()->user->login($identity);
+        else
+            echo $identity->errorMessage;
+
+        // Выходим
+        Yii::app()->user->logout();
+    }
 
     public function actionSignUp()
     {
