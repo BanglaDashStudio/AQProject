@@ -65,7 +65,7 @@
 		<?php echo $form->textField($model,'z3'); ?>
 		<?php echo $form->error($model,'z3'); ?>
 	</div>
-   
+
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Сохранить'); ?>

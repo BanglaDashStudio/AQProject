@@ -98,8 +98,7 @@ class GamecrudController extends Controller
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
-		$this->render('update',array(
-			'model'=>$model,
+		$this->render('update',array('model'=>$model,
 		));
 	}
 
