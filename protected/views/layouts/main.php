@@ -48,7 +48,7 @@
 			    array('label'=>'Вход', 'url'=>array('/auth/SignIn')),
                 array('label'=>'Регистрация', 'url'=>array('/auth/SignUp')),
                 array('label'=>'Создать игру', 'url'=>array('/game/Create')),
-                array('label'=>'ИГРАТЬ!!!!', 'url'=>array('/auth/Play')),
+                array('label'=>'ИГРАТЬ!!!!', 'url'=>array('/auth/Play')),  
             ),
 		)); ?>
 	</div><!-- mainmenu -->
