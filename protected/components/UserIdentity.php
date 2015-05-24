@@ -17,17 +17,26 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate()
 	{
-		$users=array(
+		/*$users=array(
 			// username => password
 			'demo'=>'demo',
 			'admin'=>'admin',
-		);
-		if(!isset($users[$this->username]))
+		);*/
+        if($this->username != 's')
+            $this->errorCode=self::ERROR_USERNAME_INVALID;
+        if($this->password != 's')
+            $this->errorCode=self::ERROR_PASSWORD_INVALID;
+        else
+            $this->errorCode=self::ERROR_NONE;
+        return !$this->errorCode;
+
+		/*if(!isset($users[$this->username]))
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
 		elseif($users[$this->username]!==$this->password)
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
 		else
 			$this->errorCode=self::ERROR_NONE;
 		return !$this->errorCode;
+		*/
 	}
 }
