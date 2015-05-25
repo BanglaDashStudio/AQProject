@@ -21,7 +21,7 @@ class UserIdentity extends CUserIdentity
 
         if($modelIn == NULL)
             $this->errorCode=self::ERROR_USERNAME_INVALID;
-        elseif($this->password != $modelIn->Pass)
+        elseif(!CPasswordHelper::verifyPassword($this->password, $modelIn->Pass))
             $this->errorCode=self::ERROR_PASSWORD_INVALID;
         else
             $this->errorCode=self::ERROR_NONE;

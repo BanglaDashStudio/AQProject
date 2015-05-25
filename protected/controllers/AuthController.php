@@ -64,6 +64,9 @@ class AuthController extends Controller
         if(isset($_POST['Comand']))
         {
             $model->attributes=$_POST['Comand'];
+
+            $model->Pass = CPasswordHelper::hashPassword($model->Pass);
+
             if($model->validate())
             {
                 $model->save();
