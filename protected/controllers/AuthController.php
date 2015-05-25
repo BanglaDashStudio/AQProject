@@ -20,13 +20,16 @@ class AuthController extends Controller
         if(isset($_POST['ComandSignIn']))
         {
             $model->attributes=$_POST['ComandSignIn'];
+            $login = $model->username;
+            $pass = $model->password;
+
             if($model->validate())
             {
                 // form inputs are valid, do something here
                 $login = $_POST['ComandSignIn']['username'];
                 $pass = $_POST['ComandSignIn']['password'];
                 $this->SignInFunc($login, $pass);
-                $this->render('SignIn',array('model'=>$model));
+                $this->redirect(Yii::app()->createUrl('site'));
                 return;
             }
         }
@@ -64,12 +67,15 @@ class AuthController extends Controller
         if(isset($_POST['Comand']))
         {
             $model->attributes=$_POST['Comand'];
-
+            $login = $model->Name;
+            $pass = $model->Pass;
             $model->Pass = CPasswordHelper::hashPassword($model->Pass);
 
             if($model->validate())
             {
                 $model->save();
+                $this->SignInFunc($login, $pass);
+                $this->redirect(Yii::app()->createUrl('site'));
                 return;
             }
         }
