@@ -9,13 +9,13 @@ class AuthController extends Controller
         $model=new ComandSignIn;
 
         // uncomment the following code to enable ajax-based validation
-        /*
+
         if(isset($_POST['ajax']) && $_POST['ajax']==='comand-SignIn-form')
         {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }
-        */
+
 
         if(isset($_POST['ComandSignIn']))
         {
@@ -39,7 +39,7 @@ class AuthController extends Controller
         $identity=new UserIdentity($login,$pass);
 
         if($identity->authenticate()) {
-            Yii::app()->user->login($identity);
+            Yii::app()->user->login($identity, 3600*10);
         } else {
             echo $identity->errorMessage;
         }

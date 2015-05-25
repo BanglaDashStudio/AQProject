@@ -29,6 +29,7 @@ class Comand extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('Name, Pass, Phone', 'required'),
+            array('Name, Phone', 'unique'),
 			array('Description', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
