@@ -47,8 +47,9 @@
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
 			    array('label'=>'Вход', 'url'=>array('/auth/SignIn'),'visible'=>Yii::app()->user->isGuest),
                 array('label'=>'Регистрация', 'url'=>array('/auth/SignUp'),'visible'=>Yii::app()->user->isGuest),
-                array('label'=>'Создать игру', 'url'=>array('/game/Create')),
-                array('label'=>'ИГРАТЬ!!!!', 'url'=>array('/game/Play')),
+
+                array('label'=>'Создать игру', 'url'=>array('/game/Create'), 'visible'=>!Yii::app()->user->isGuest),
+                array('label'=>'ИГРАТЬ!!!!', 'url'=>array('/game/Play'), 'visible'=>!Yii::app()->user->isGuest),
             ),
 		)); ?>
 	</div><!-- mainmenu -->

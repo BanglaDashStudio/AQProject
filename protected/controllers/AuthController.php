@@ -73,10 +73,13 @@ class AuthController extends Controller
 
             if($model->validate())
             {
-                $model->save();
-                $this->SignInFunc($login, $pass);
-                $this->redirect(Yii::app()->createUrl('site'));
-                return;
+                if($model->save()){
+                    $this->SignInFunc($login, $pass);
+                    $this->redirect(Yii::app()->createUrl('site'));
+                    return;
+                }
+            } else {
+
             }
         }
         $this->render('SignUp',array('model'=>$model));
