@@ -9,7 +9,12 @@ return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'AQProject',
     'language'=>'ru',
+	'defaultController'=>'home',
+
 	// preloading 'log' component
+
+
+
 	'preload'=>array('log'),
 
 	// autoloading model and component classes

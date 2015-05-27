@@ -4,27 +4,29 @@ class PRController extends Controller
 {
 	public function actionindex()
 	{
-        $model=new PRPassword;
+        $modelPass=new PRPassword;
 
         // uncomment the following code to enable ajax-based validation
-        /*
-        if(isset($_POST['ajax']) && $_POST['ajax']==='prpassword-PRtest-form')
+
+        if(isset($_POST['ajax']) && $_POST['ajax']==='prpassword-form')
         {
-            echo CActiveForm::validate($model);
+            echo CActiveForm::validate($modelPass);
             Yii::app()->end();
         }
-        */
+
 
         if(isset($_POST['PRPassword']))
         {
-            $model->attributes=$_POST['PRPassword'];
-            if($model->validate())
+            var_dump($_POST['PRPassword']);
+
+            $modelPass->attributes=$_POST['PRPassword'];
+            if($modelPass->validate())
             {
                 // form inputs are valid, do something here
                 return;
             }
         }
-        $this->render('PRtest',array('model'=>$model));
+        $this->render('PRindex',array('Password'=>$modelPass));
 	}
 
 	// Uncomment the following methods and override them if needed

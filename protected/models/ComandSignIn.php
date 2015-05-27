@@ -17,6 +17,14 @@ class ComandSignIn extends CFormModel
         );
     }
 
+    public function attributeLabels()
+    {
+        return array(
+            'username' => 'Введите название команды',
+            'password' => 'Введите пароль',
+        );
+    }
+
     public function authenticate($attribute,$params)
     {
         $this->_identity=new UserIdentity($this->username,$this->password);

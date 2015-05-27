@@ -1312,3 +1312,13 @@ Stack trace:
 REQUEST_URI=/~lokirew/AQProject/index.php?r=PR
 HTTP_REFERER=http://lokirew/~lokirew/AQProject/index.php?r=PR
 ---
+2015/05/27 23:31:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "index".' in /home/lokirew/public_html/AQProject/framework/web/CController.php:483
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/web/CController.php(270): CController->missingAction('')
+#1 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('')
+#2 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#3 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~lokirew/AQProject/
+---

@@ -32,11 +32,21 @@ class PRPassword extends CFormModel
         $modelPR=Comand::model()->findByAttributes(array('Name'=>Yii::app()->user->name));
 
         if($modelPR == NULL)
-            $this->addError('oldpassword','Пусто');
+            $this->addError('oldpassword','Неправильный пароль');
         elseif(!CPasswordHelper::verifyPassword($this->oldpassword, $modelPR->Pass))
             $this->addError('oldpassword','Неправильный пароль.');
 
     }
+
+    public function attributeLabels()
+    {
+        return array(
+            'oldpassword' => 'Введите старый пароль',
+            'newpassword' => 'Введите новый пароль' ,
+            'confpassword' => 'Повторите новый пароль',
+        );
+    }
+
 
    /* public function authenticate($attribute,$params)
     {

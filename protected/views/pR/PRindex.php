@@ -1,14 +1,20 @@
 <?php
 /* @var $this PRController */
+/* @var $Password PRPassword */
 
-$this->breadcrumbs=array(
-	'P R'=>array('/pR'),
-	'PRindex',
-);
+Yii::app()->clientScript->registerScript('search', "
+$('.password-button').click(function(){
+	$('.password-form').toggle();
+	return false;
+});
+");
+
 ?>
-<h1><?php echo $this->id . '/' . $this->action->id; ?></h1>
+<h1><?php echo Yii::app()->user->name; ?></h1>
 
-<p>
-	You may change the content of this page by modifying
-	the file <tt><?php echo __FILE__; ?></tt>.
-</p>
+<?php echo CHtml::link('Изменить пароль','#',array('class'=>'password-button')); ?>
+
+<div class="password-form" style="display:none">
+<?php $this->renderPartial('_prpassword', array('model'=>$Password)); ?>
+</div>
+
