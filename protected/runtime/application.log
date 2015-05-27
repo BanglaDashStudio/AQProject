@@ -1221,3 +1221,94 @@ REQUEST_URI=/~irina/AQProject/index.php?r=game/Create
 in /home/irina/public_html/AQProject/protected/views/game/Create.php (20)
 in /home/irina/public_html/AQProject/protected/controllers/GameController.php (7)
 in /home/irina/public_html/AQProject/index.php (13)
+2015/05/27 01:18:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "index".' in /home/lokirew/public_html/AQProject/framework/web/CController.php:483
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/web/CController.php(270): CController->missingAction('')
+#1 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('')
+#2 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('PR')
+#3 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=PR
+---
+2015/05/27 01:19:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "PRController".' in /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('PRController')
+#1 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=PRController
+---
+2015/05/27 01:19:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "PRtest".' in /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('PRtest')
+#1 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=PRtest
+---
+2015/05/27 01:19:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "index".' in /home/lokirew/public_html/AQProject/framework/web/CController.php:483
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/web/CController.php(270): CController->missingAction('')
+#1 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('')
+#2 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('PR')
+#3 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=PR
+---
+2015/05/27 01:24:30 [error] [exception.CException] exception 'CException' with message 'Контроллер PRController не может найти представление "PRtest".' in /home/lokirew/public_html/AQProject/framework/web/CController.php:878
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/web/CController.php(782): CController->renderPartial('PRtest', Array, true)
+#1 /home/lokirew/public_html/AQProject/protected/controllers/PRController.php(27): CController->render('PRtest', Array)
+#2 /home/lokirew/public_html/AQProject/framework/web/actions/CInlineAction.php(49): PRController->actionindex()
+#3 /home/lokirew/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/lokirew/public_html/AQProject/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /home/lokirew/public_html/AQProject/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('')
+#7 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('PR')
+#8 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#9 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=PR
+---
+2015/05/27 01:27:26 [error] [exception.CDbException] exception 'CDbException' with message 'Таблица "Comand" не содержит столбца "0".' in /home/lokirew/public_html/AQProject/framework/db/schema/CDbCommandBuilder.php:697
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/db/ar/CActiveRecord.php(1523): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#1 /home/lokirew/public_html/AQProject/protected/models/PRPassword.php(32): CActiveRecord->findByAttributes(Array)
+#2 /home/lokirew/public_html/AQProject/framework/validators/CInlineValidator.php(42): PRPassword->passvalidate('oldpassword', Array)
+#3 /home/lokirew/public_html/AQProject/framework/validators/CValidator.php(201): CInlineValidator->validateAttribute(Object(PRPassword), 'oldpassword')
+#4 /home/lokirew/public_html/AQProject/framework/base/CModel.php(159): CValidator->validate(Object(PRPassword), NULL)
+#5 /home/lokirew/public_html/AQProject/protected/controllers/PRController.php(21): CModel->validate()
+#6 /home/lokirew/public_html/AQProject/framework/web/actions/CInlineAction.php(49): PRController->actionindex()
+#7 /home/lokirew/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#8 /home/lokirew/public_html/AQProject/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#9 /home/lokirew/public_html/AQProject/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('')
+#11 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('PR')
+#12 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#13 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=PR
+HTTP_REFERER=http://lokirew/~lokirew/AQProject/index.php?r=PR
+---
+2015/05/27 01:29:00 [error] [exception.CDbException] exception 'CDbException' with message 'Таблица "Comand" не содержит столбца "0".' in /home/lokirew/public_html/AQProject/framework/db/schema/CDbCommandBuilder.php:697
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/db/ar/CActiveRecord.php(1523): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#1 /home/lokirew/public_html/AQProject/protected/models/PRPassword.php(32): CActiveRecord->findByAttributes(Array)
+#2 /home/lokirew/public_html/AQProject/framework/validators/CInlineValidator.php(42): PRPassword->passvalidate('oldpassword', Array)
+#3 /home/lokirew/public_html/AQProject/framework/validators/CValidator.php(201): CInlineValidator->validateAttribute(Object(PRPassword), 'oldpassword')
+#4 /home/lokirew/public_html/AQProject/framework/base/CModel.php(159): CValidator->validate(Object(PRPassword), NULL)
+#5 /home/lokirew/public_html/AQProject/protected/controllers/PRController.php(21): CModel->validate()
+#6 /home/lokirew/public_html/AQProject/framework/web/actions/CInlineAction.php(49): PRController->actionindex()
+#7 /home/lokirew/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#8 /home/lokirew/public_html/AQProject/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#9 /home/lokirew/public_html/AQProject/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('')
+#11 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('PR')
+#12 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#13 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=PR
+HTTP_REFERER=http://lokirew/~lokirew/AQProject/index.php?r=PR
+---
