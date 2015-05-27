@@ -1322,3 +1322,188 @@ Stack trace:
 #5 {main}
 REQUEST_URI=/~lokirew/AQProject/
 ---
+2015/05/28 01:32:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "PRindex".' in /home/lokirew/public_html/AQProject/framework/web/CController.php:483
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/web/CController.php(270): CController->missingAction('PRindex')
+#1 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('PRindex')
+#2 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('pR/PRindex')
+#3 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=pR/PRindex
+HTTP_REFERER=http://lokirew/~lokirew/AQProject/index.php?r=home
+---
+2015/05/28 01:32:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "PRindex".' in /home/lokirew/public_html/AQProject/framework/web/CController.php:483
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/web/CController.php(270): CController->missingAction('PRindex')
+#1 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('PRindex')
+#2 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('pR/PRindex')
+#3 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=pR/PRindex
+HTTP_REFERER=http://lokirew/~lokirew/AQProject/index.php?r=pR/PRindex
+---
+2015/05/28 01:32:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "PRindex".' in /home/lokirew/public_html/AQProject/framework/web/CController.php:483
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/web/CController.php(270): CController->missingAction('PRindex')
+#1 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('PRindex')
+#2 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('pR/PRindex')
+#3 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=pR/PRindex
+HTTP_REFERER=http://lokirew/~lokirew/AQProject/index.php?r=home
+---
+2015/05/28 01:33:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "PRindex".' in /home/lokirew/public_html/AQProject/framework/web/CController.php:483
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/web/CController.php(270): CController->missingAction('PRindex')
+#1 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('PRindex')
+#2 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('pR/PRindex')
+#3 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=pR/PRindex
+HTTP_REFERER=http://lokirew/~lokirew/AQProject/index.php?r=PR
+---
+2015/05/28 01:34:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "PRindex".' in /home/lokirew/public_html/AQProject/framework/web/CController.php:483
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/web/CController.php(270): CController->missingAction('PRindex')
+#1 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('PRindex')
+#2 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('pR/PRindex')
+#3 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=pR/PRindex
+HTTP_REFERER=http://lokirew/~lokirew/AQProject/index.php?r=home/index
+---
+2015/05/28 01:34:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "PRindex".' in /home/lokirew/public_html/AQProject/framework/web/CController.php:483
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/web/CController.php(270): CController->missingAction('PRindex')
+#1 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('PRindex')
+#2 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('pR/PRindex')
+#3 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=pR/PRindex
+HTTP_REFERER=http://lokirew/~lokirew/AQProject/index.php?r=home/index
+---
+2015/05/28 01:34:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "PRindex".' in /home/lokirew/public_html/AQProject/framework/web/CController.php:483
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/web/CController.php(270): CController->missingAction('PRindex')
+#1 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('PRindex')
+#2 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('pR/PRindex')
+#3 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=pR/PRindex
+HTTP_REFERER=http://lokirew/~lokirew/AQProject/index.php?r=pR/PRindex
+---
+2015/05/28 01:34:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "PRindex".' in /home/lokirew/public_html/AQProject/framework/web/CController.php:483
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/web/CController.php(270): CController->missingAction('PRindex')
+#1 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('PRindex')
+#2 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('pR/PRindex')
+#3 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=pR/PRindex
+HTTP_REFERER=http://lokirew/~lokirew/AQProject/index.php?r=home/index
+---
+2015/05/28 01:34:30 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchAll(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'AQuser.game' doesn't exist. Выполнявшийся SQL-запрос: SHOW FULL COLUMNS FROM `game`.
+in /home/lokirew/public_html/AQProject/protected/controllers/GameController.php (7)
+in /home/lokirew/public_html/AQProject/index.php (13)
+2015/05/28 01:34:30 [error] [exception.CDbException] exception 'CDbException' with message 'Таблица "game", упомянутая в записи active record класса "Game", не найдена в базе данных.' in /home/lokirew/public_html/AQProject/framework/db/ar/CActiveRecord.php:2385
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/db/ar/CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Game))
+#1 /home/lokirew/public_html/AQProject/framework/db/ar/CActiveRecord.php(79): CActiveRecord->getMetaData()
+#2 /home/lokirew/public_html/AQProject/protected/controllers/GameController.php(7): CActiveRecord->__construct()
+#3 /home/lokirew/public_html/AQProject/framework/web/actions/CInlineAction.php(49): GameController->actionCreate()
+#4 /home/lokirew/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/lokirew/public_html/AQProject/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /home/lokirew/public_html/AQProject/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('Create')
+#8 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('game/Create')
+#9 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=game/Create
+HTTP_REFERER=http://lokirew/~lokirew/AQProject/index.php?r=home
+---
+2015/05/28 01:34:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "PRindex".' in /home/lokirew/public_html/AQProject/framework/web/CController.php:483
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/web/CController.php(270): CController->missingAction('PRindex')
+#1 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('PRindex')
+#2 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('pR/PRindex')
+#3 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=pR/PRindex
+HTTP_REFERER=http://lokirew/~lokirew/AQProject/index.php?r=home
+---
+2015/05/28 01:35:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "PRindex".' in /home/lokirew/public_html/AQProject/framework/web/CController.php:483
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/web/CController.php(270): CController->missingAction('PRindex')
+#1 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('PRindex')
+#2 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('pR/PRindex')
+#3 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=pR/PRindex
+HTTP_REFERER=http://lokirew/~lokirew/AQProject/index.php?r=pR/PRindex
+---
+2015/05/28 01:36:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "PRindex".' in /home/lokirew/public_html/AQProject/framework/web/CController.php:483
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/web/CController.php(270): CController->missingAction('PRindex')
+#1 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('PRindex')
+#2 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('pR/PRindex')
+#3 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=pR/PRindex
+HTTP_REFERER=http://lokirew/~lokirew/AQProject/index.php?r=pR/PRindex
+---
+2015/05/28 01:36:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "PR".' in /home/lokirew/public_html/AQProject/framework/web/CController.php:483
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/web/CController.php(270): CController->missingAction('PR')
+#1 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('PR')
+#2 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('pR/PR')
+#3 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=pR/PR
+HTTP_REFERER=http://lokirew/~lokirew/AQProject/index.php?r=home/index
+---
+2015/05/28 01:37:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "PR".' in /home/lokirew/public_html/AQProject/framework/web/CController.php:483
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/web/CController.php(270): CController->missingAction('PR')
+#1 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('PR')
+#2 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('pR/PR')
+#3 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=pR/PR
+HTTP_REFERER=http://lokirew/~lokirew/AQProject/index.php?r=pR/PR
+---
+2015/05/28 01:37:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "PRindex".' in /home/lokirew/public_html/AQProject/framework/web/CController.php:483
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/web/CController.php(270): CController->missingAction('PRindex')
+#1 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('PRindex')
+#2 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('pR/PRindex')
+#3 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=pR/PRindex
+HTTP_REFERER=http://lokirew/~lokirew/AQProject/index.php?r=pR/PR
+---
+2015/05/28 01:37:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "PRindex".' in /home/lokirew/public_html/AQProject/framework/web/CController.php:483
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/web/CController.php(270): CController->missingAction('PRindex')
+#1 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('PRindex')
+#2 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('pR/PRindex')
+#3 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=pR/PRindex
+HTTP_REFERER=http://lokirew/~lokirew/AQProject/index.php?r=pR/PRindex
+---

@@ -29,7 +29,7 @@ class AuthController extends Controller
                 $login = $_POST['ComandSignIn']['username'];
                 $pass = $_POST['ComandSignIn']['password'];
                 $this->SignInFunc($login, $pass);
-                $this->redirect(Yii::app()->createUrl('site'));
+                $this->redirect(Yii::app()->createUrl('home'));
                 return;
             }
         }
@@ -75,7 +75,7 @@ class AuthController extends Controller
             {
                 if($model->save()){
                     $this->SignInFunc($login, $pass);
-                    $this->redirect(Yii::app()->createUrl('site'));
+                    $this->redirect(Yii::app()->createUrl('home'));
                     return;
                 }
             } else {
