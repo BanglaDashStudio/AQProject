@@ -34,6 +34,8 @@ class PRController extends Controller
                 //TODO: тут сохраняется вся модель. Надо быть осторожным с этим местом.
                 $userInfo->Pass = CPasswordHelper::hashPassword($modelPass->newpassword);
                 $userInfo->save();
+                $this->render('PRindex',array('Password'=>$modelPass,'Info'=>$modelInfo, 'alertFlag'=>true));
+                return;
             }
         }
 
@@ -45,10 +47,12 @@ class PRController extends Controller
                 $userInfo->Phone = $modelInfo->phone;
                 $userInfo->Description = $modelInfo->inform;
                 $userInfo->save();
+                $this->render('PRindex',array('Password'=>$modelPass,'Info'=>$modelInfo, 'alertFlag'=>true));
+                return;
             }
         }
 
-        $this->render('PRindex',array('Password'=>$modelPass,'Info'=>$modelInfo));
+        $this->render('PRindex',array('Password'=>$modelPass,'Info'=>$modelInfo, 'alertFlag'=>false));
 	}
 
     public function accessRules()

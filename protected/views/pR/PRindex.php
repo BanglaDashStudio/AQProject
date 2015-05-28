@@ -2,6 +2,7 @@
 /* @var $this PRController */
 /* @var $Password PRPassword */
 /* @var $Info PRInfo */
+/* @var $alertFlag*/
 
 Yii::app()->clientScript->registerScript('search', "
 $('.password-button').click(function(){
@@ -22,3 +23,8 @@ echo CHtml::link('Изменить пароль','#',array('class'=>'password-bu
 </div>
 
 <?php $this->renderPartial('_prinfo', array('model'=>$Info)); ?>
+
+
+<?php
+//TODO: костыль детектед
+if($alertFlag) echo '<script> alert("Информация успешно сохранена!"); </script>';?>
