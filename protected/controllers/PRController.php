@@ -5,8 +5,14 @@ class PRController extends Controller
 	public function actionindex()
 	{
         $modelPass=new PRPassword;
+        $modelInfo=new PRInfo;
+        $userInfo = Comand::model()->findByAttributes(array('Name'=>Yii::app()->user->name));
 
-        // uncomment the following code to enable ajax-based validation
+        $modelInfo->phone = $userInfo->Phone;
+        //TODO: раскомментить когда будет добавлен емэйл в таблицу команд
+        //$modelInfo->mail = $userInfo->Mail;
+        $modelInfo->mail = 'пусто@пус.то';
+        $modelInfo->inform = $userInfo->Description;
 
         if(isset($_POST['ajax']) && $_POST['ajax']==='prpassword-form')
         {
@@ -14,35 +20,60 @@ class PRController extends Controller
             Yii::app()->end();
         }
 
+        if(isset($_POST['ajax']) && $_POST['ajax']==='prinfo-form')
+        {
+            echo CActiveForm::validate($modelInfo);
+            Yii::app()->end();
+        }
 
         if(isset($_POST['PRPassword']))
         {
-            var_dump($_POST['PRPassword']);
-
             $modelPass->attributes=$_POST['PRPassword'];
             if($modelPass->validate())
             {
-                // form inputs are valid, do something here
-                return;
+                //TODO: тут сохраняется вся модель. Надо быть осторожным с этим местом.
+                $userInfo->Pass = CPasswordHelper::hashPassword($modelPass->newpassword);
+                $userInfo->save();
             }
         }
-        $this->render('PRindex',array('Password'=>$modelPass));
+
+        if(isset($_POST['PRInfo']))
+        {
+            $modelInfo->attributes=$_POST['PRInfo'];
+            if($modelInfo->validate())
+            {
+                $userInfo->Phone = $modelInfo->phone;
+                $userInfo->Description = $modelInfo->inform;
+                $userInfo->save();
+            }
+        }
+
+        $this->render('PRindex',array('Password'=>$modelPass,'Info'=>$modelInfo));
 	}
 
+    public function accessRules()
+    {
+        return array(
+            array('allow',  // allow all users to perform 'index' and 'view' actions
+                'users'=>array('@'),
+            ),
+
+            array('deny',  // deny all users
+                'users'=>array('*'),
+            ),
+        );
+    }
+
 	// Uncomment the following methods and override them if needed
-	/*
+
 	public function filters()
 	{
 		// return the filter configuration for this controller, e.g.:
 		return array(
-			'inlineFilterName',
-			array(
-				'class'=>'path.to.FilterClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
+            'accessControl',
+        );
 	}
-
+/*
 	public function actions()
 	{
 		// return external action classes, e.g.:
@@ -54,5 +85,5 @@ class PRController extends Controller
 			),
 		);
 	}
-	*/
+*/
 }
