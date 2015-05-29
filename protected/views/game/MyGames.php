@@ -8,7 +8,7 @@
     <h1>Выберите одно из действий плизыч </h1>
 
     <div class="row buttons">
-        <?php echo CHtml::submitButton('Создать игру'); ?>
+        <?php echo CHtml::link('Создать игру','#',array('class'=>'btn')); ?>
     </div>
 
     <div class="row buttons">
