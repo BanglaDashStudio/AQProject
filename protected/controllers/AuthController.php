@@ -86,19 +86,28 @@ class AuthController extends Controller
     }
 
 	// Uncomment the following methods and override them if needed
-	/*
+
+    public function accessRules()
+    {
+        return array(
+            array('deny',  // allow all users to perform 'index' and 'view' actions
+                'users'=>array('@'),
+            ),
+
+            array('allow',  // deny all users
+                'users'=>array('*'),
+            ),
+        );
+    }
+
 	public function filters()
 	{
 		// return the filter configuration for this controller, e.g.:
-		return array(
-			'inlineFilterName',
-			array(
-				'class'=>'path.to.FilterClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
+        return array(
+            'accessControl',
+        );
 	}
-
+/*
 	public function actions()
 	{
 		// return external action classes, e.g.:
