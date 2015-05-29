@@ -5,7 +5,7 @@
 
 <div class="form">
 
-    <h1>Выберите одно из действий: </h1>
+    <h1>Выберите одно из действий плизыч </h1>
 
     <div class="row buttons">
         <?php echo CHtml::submitButton('Создать игру'); ?>

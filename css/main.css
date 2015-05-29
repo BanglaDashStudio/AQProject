@@ -6,7 +6,9 @@ body
 	font: normal 10pt Arial,Helvetica,sans-serif;
 	background: #EFEFEF;
 }
+ body{
 
+ }
 #page
 {
 	margin-top: 5px;
