@@ -58,6 +58,12 @@ class PRController extends Controller
     public function accessRules()
     {
         return array(
+
+            //TODO: когда будут роли, админу надо разрешить личный кабинет
+            array('deny',  // allow all users to perform 'index' and 'view' actions
+                'users'=>array('admin'),
+            ),
+
             array('allow',  // allow all users to perform 'index' and 'view' actions
                 'users'=>array('@'),
             ),
