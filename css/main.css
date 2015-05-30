@@ -2,9 +2,9 @@ body
 {
 	margin: 0;
 	padding: 0;
-	color: #555;
+	color: #551FA3;
 	font: normal 10pt Arial,Helvetica,sans-serif;
-	background: #EFEFEF;
+	background: #202020;
 }
  body{
 
@@ -51,7 +51,7 @@ body
 
 #mainmenu
 {
-	background:white url(bg.gif) repeat-x left top;
+	background:white url(bg2.gif) repeat-x left top;
 }
 
 #mainmenu ul
