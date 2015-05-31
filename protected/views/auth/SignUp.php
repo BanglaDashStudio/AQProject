@@ -31,7 +31,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'passwordconfirm'); ?>
-		<?php echo $form->textField($model,'passwordconfirm'); ?>
+		<?php echo $form->passwordField($model,'passwordconfirm'); ?>
 		<?php echo $form->error($model,'passwordconfirm'); ?>
 	</div>
 
