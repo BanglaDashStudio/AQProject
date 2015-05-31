@@ -2,9 +2,9 @@ body
 {
 	margin: 0;
 	padding: 0;
-	color: #555;
+	color: #551FA3;
 	font: normal 10pt Arial,Helvetica,sans-serif;
-	background: #EFEFEF;
+	background: #202020;
 }
  body{
 
@@ -14,14 +14,14 @@ body
 	margin-top: 5px;
 	margin-bottom: 5px;
 	background: white;
-	border: 1px solid #C9E0ED;
+	border: 1px solid #551FA3;
 }
 
 #header
 {
 	margin: 0;
 	padding: 0;
-	border-top: 3px solid #C9E0ED;
+	border-top: 3px solid #551FA3;
 }
 
 #content
@@ -40,18 +40,19 @@ body
 	margin: 10px 20px;
 	font-size: 0.8em;
 	text-align: center;
-	border-top: 1px solid #C9E0ED;
+	border-top: 1px solid #551FA3;
 }
 
 #logo
 {
 	padding: 10px 20px;
-	font-size: 200%;
+	/*font-size: 200%;*/
+	text-align: center;
 }
 
 #mainmenu
 {
-	background:white url(bg.gif) repeat-x left top;
+	background:white url(bg2.gif) repeat-x left top;
 }
 
 #mainmenu ul
@@ -134,7 +135,7 @@ div.view
 {
 	padding: 10px;
 	margin: 10px 0;
-	border: 1px solid #C9E0ED;
+	border: 1px solid #551FA3;
 }
 
 div.breadcrumbs
@@ -155,6 +156,17 @@ div.search-form
 	background: #eee;
 }
 
+.m-text {
+	float: left;
+	width: 50%;
+
+}
+
+.m-image {
+	float: right;
+	width: 40%;
+	min-height: 360px;
+}
 .portlet
 {
 

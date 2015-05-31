@@ -29,7 +29,7 @@
     <div id="header">
         <div id="logo"><?php
             echo "<a href=".Yii::app()->createUrl("home").">";
-            echo CHtml::image("images/logo.jpg",NULL,array("height"=>100));
+            echo CHtml::image("images/logo.jpg",NULL,array("height"=>225));
             echo "</a>";
             ?>
         </div>
@@ -63,13 +63,14 @@
 	<?php echo $content; ?>
 
 	<div class="clear"></div>
+	
 
 	<div id="footer">
 		Copyright &copy; <?php echo date('Y'); ?> by BanglaDashStudio.<br/>
 		All Rights Reserved.<br/>
-		<?php echo Yii::powered();
-            echo "<br />";
-            echo CHtml::link("vk.com/ptz_qst","http://vk.com/ptz_qst");
+		<?php /*echo Yii::powered();
+            echo "<br />";*/
+            echo CHtml::link("PTZ AUTO QUEST Вконтакте","http://vk.com/ptz_qst");
         ?>
 
 	</div><!-- footer -->
