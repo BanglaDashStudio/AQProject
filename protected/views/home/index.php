@@ -3,7 +3,7 @@
 
 $this->pageTitle="PTZ AUTO QUEST";/*Yii::app()->name;*/
 ?>
-
+<link href="css/main.css" rel="stylesheet" media="screen and (max-width:480px)" />
 <h1>Твои незабываемые приключения!</h1><!--<i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
 
 <p>Congratulations! You have successfully created your Yii application.</p>
@@ -27,5 +27,5 @@ should you have any questions.</p>-->
 </p>
 </div>
 <div class="m-image">
-		<?php echo CHtml::image("images/base.jpg",NULL,array("height"=>500)); ?>
+		<?php echo CHtml::image("images/base.jpg",NULL,array()); ?>
 </div>
