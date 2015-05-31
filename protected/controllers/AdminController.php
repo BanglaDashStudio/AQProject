@@ -4,7 +4,7 @@ class AdminController extends Controller
 {
 	public function actionComandmanage()
 	{
-        $this->redirect(Yii::app()->createUrl('comand'));
+        $this->redirect(Yii::app()->createUrl('team'));
 	}
 
 	public function actionGamemanage()

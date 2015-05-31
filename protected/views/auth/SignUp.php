@@ -1,13 +1,13 @@
 <?php
-/* @var $this ComandController */
-/* @var $model Comand */
+/* @var $this ComandSignUpController */
+/* @var $model ComandSignUp */
 /* @var $form CActiveForm */
 ?>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'comand-SignUp-form',
+    'id'=>'comand-SignUp-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// See class documentation of CActiveForm for details on this,
@@ -18,27 +18,39 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Name'); ?>
-		<?php echo $form->textField($model,'Name'); ?>
-		<?php echo $form->error($model,'Name'); ?>
+		<?php echo $form->labelEx($model,'username'); ?>
+		<?php echo $form->textField($model,'username'); ?>
+		<?php echo $form->error($model,'username'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Pass'); ?>
-		<?php echo $form->textField($model,'Pass'); ?>
-		<?php echo $form->error($model,'Pass'); ?>
+		<?php echo $form->labelEx($model,'password'); ?>
+		<?php echo $form->passwordField($model,'password'); ?>
+		<?php echo $form->error($model,'password'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Phone'); ?>
-		<?php echo $form->textField($model,'Phone'); ?>
-		<?php echo $form->error($model,'Phone'); ?>
+		<?php echo $form->labelEx($model,'passwordconfirm'); ?>
+		<?php echo $form->textField($model,'passwordconfirm'); ?>
+		<?php echo $form->error($model,'passwordconfirm'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Description'); ?>
-		<?php echo $form->textField($model,'Description'); ?>
-		<?php echo $form->error($model,'Description'); ?>
+		<?php echo $form->labelEx($model,'phone'); ?>
+		<?php echo $form->textField($model,'phone'); ?>
+		<?php echo $form->error($model,'phone'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'mail'); ?>
+		<?php echo $form->textField($model,'mail'); ?>
+		<?php echo $form->error($model,'mail'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'description'); ?>
+		<?php echo $form->textField($model,'description'); ?>
+		<?php echo $form->error($model,'description'); ?>
 	</div>
 
 

@@ -5,7 +5,7 @@
 <h1><?php echo "Привет, Админ!" ?></h1>
 
 <div>
-<?php echo "<a href=".Yii::app()->createUrl("comand").">Управление командами</a>";?>
+<?php echo "<a href=".Yii::app()->createUrl("team").">Управление командами</a>";?>
 </div>
 
 <div>

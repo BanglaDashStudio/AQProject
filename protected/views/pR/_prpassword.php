@@ -19,19 +19,19 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'oldpassword'); ?>
-		<?php echo $form->textField($model,'oldpassword'); ?>
+		<?php echo $form->passwordField($model,'oldpassword'); ?>
 		<?php echo $form->error($model,'oldpassword'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'newpassword'); ?>
-		<?php echo $form->textField($model,'newpassword'); ?>
+		<?php echo $form->passwordField($model,'newpassword'); ?>
 		<?php echo $form->error($model,'newpassword'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'confpassword'); ?>
-		<?php echo $form->textField($model,'confpassword'); ?>
+		<?php echo $form->passwordField($model,'confpassword'); ?>
 		<?php echo $form->error($model,'confpassword'); ?>
 	</div>
 
