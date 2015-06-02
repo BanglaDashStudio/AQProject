@@ -32,7 +32,7 @@ class Game extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('IdGame, NameGame', 'required'),
+			array('NameGame', 'required'),
 			array('IdGame, IdType, AcceptGame', 'numerical', 'integerOnly'=>true),
 			array('DescriptionGame, Date, StartGame, FinishGame, Comment', 'safe'),
 			// The following rule is used by search().

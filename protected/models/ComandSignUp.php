@@ -17,8 +17,10 @@ class ComandSignUp extends CFormModel
         //    array('rememberMe', 'boolean'),
             array('username, phone, mail', 'unique'),
             array('username, password, passwordconfirm, phone, mail, description', 'safe'),
-            array('passwordconfirm','equation'),
             array('mail','email'),
+            array('password, passwordconfirm', 'length', 'min' => 6),
+            array('password, passwordconfirm, login', 'length', 'max' => 25),
+            array('passwordconfirm','equation'),
         );
     }
 

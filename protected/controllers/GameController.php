@@ -9,11 +9,22 @@ class GameController extends Controller
         if (isset($_POST['GameCreate'])) {
             $model->attributes = $_POST['GameCreate'];
             if ($model->validate()) {
-                if ($model->save() )
-                $this->redirect(Yii::app()->createUrl('game/MyGames'));
+
+                $game = new Game;
+                $game->NameGame=$model->NameGame;
+                $game->DescriptionGame=$model->DescriptionGame;
+                $game->StartGame=$model->StartGame;
+                $game->FinishGame=$model->FinishGame;
+                $game->Comment=$model->Comment;
+
+                if ($game->save()) {
+                    $this->redirect(Yii::app()->createUrl('game/MyGames'));
+                    return;
+                }else echo'bue';
+            }else{
+                $this->render('Create', array('model' => $model));
                 return;
             }
-            $this->render('Create', array('model' => $model));
         }
         $this->render('Create', array('model' => $model));
 

@@ -15,7 +15,6 @@ $('.password-button').click(function(){
 <h1><?php echo Yii::app()->user->name; ?></h1>
 
 <?php
-//TODO: есть баг со сварачиванием окна смены пароля, он бесит
 echo CHtml::link('Изменить пароль','#',array('class'=>'password-button')); ?>
 
 
