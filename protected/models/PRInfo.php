@@ -22,7 +22,7 @@ class PRInfo extends CFormModel
         return array(
             'phone' => 'Номер телефона',
             'mail' => 'Почта' ,
-            'inform' => 'Информация о команде: ссылки на страницу вк, состав и тд',
+            'inform' => 'Информация о команде',
         );
     }
 

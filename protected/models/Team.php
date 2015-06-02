@@ -31,8 +31,9 @@ class Team extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('NameTeam, PasswordTeam, PhoneTeam', 'required'),
-			array('IdTeam, IdGame', 'numerical', 'integerOnly'=>true),
+			array('NameTeam, PasswordTeam', 'required'),
+			array('IdGame', 'numerical', 'integerOnly'=>true),
+			array('DescriptionTeam, EmailTeam, PageTeam, PhoneTeam', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('IdTeam, NameTeam, DescriptionTeam, EmailTeam, PasswordTeam, PageTeam, PhoneTeam, IdGame', 'safe', 'on'=>'search'),
@@ -42,19 +43,13 @@ class Team extends CActiveRecord
 	/**
 	 * @return array relational rules.
 	 */
-	/*public function relations()
+	public function relations()
 	{
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'games' => array(self::HAS_MANY, 'Game', 'IdTeam'),
-			'gameteams' => array(self::HAS_MANY, 'Gameteam', 'IdTeam'),
-			'grs' => array(self::HAS_MANY, 'Grid', 'IdTeam'),
-			'results' => array(self::HAS_MANY, 'Results', 'IdTeam'),
-			'idGame' => array(self::BELONGS_TO, 'Game', 'IdGame'),
-			'idTeam' => array(self::BELONGS_TO, 'Code', 'IdTeam'),
 		);
-	}*/
+	}
 
 	/**
 	 * @return array customized attribute labels (name=>label)

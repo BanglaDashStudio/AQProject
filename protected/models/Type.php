@@ -1,27 +1,21 @@
 <?php
 
 /**
- * This is the model class for table "game".
+ * This is the model class for table "type".
  *
- * The followings are the available columns in table 'game':
- * @property integer $IdGame
- * @property string $NameGame
- * @property string $DescriptionGame
+ * The followings are the available columns in table 'type':
  * @property integer $IdType
- * @property string $Date
- * @property string $StartGame
- * @property string $FinishGame
- * @property string $Comment
- * @property integer $AcceptGame
+ * @property string $NameType
+ * @property string $FormatType
  */
-class Game extends CActiveRecord
+class Type extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'game';
+		return 'type';
 	}
 
 	/**
@@ -32,12 +26,10 @@ class Game extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('IdGame, NameGame', 'required'),
-			array('IdGame, IdType, AcceptGame', 'numerical', 'integerOnly'=>true),
-			array('DescriptionGame, Date, StartGame, FinishGame, Comment', 'safe'),
+			array('NameType, FormatType', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('IdGame, NameGame, DescriptionGame, IdType, Date, StartGame, FinishGame, Comment, AcceptGame', 'safe', 'on'=>'search'),
+			array('IdType, NameType, FormatType', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,15 +50,9 @@ class Game extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'IdGame' => 'Id Game',
-			'NameGame' => 'Name Game',
-			'DescriptionGame' => 'Description Game',
 			'IdType' => 'Id Type',
-			'Date' => 'Date',
-			'StartGame' => 'Start Game',
-			'FinishGame' => 'Finish Game',
-			'Comment' => 'Comment',
-			'AcceptGame' => 'Accept Game',
+			'NameType' => 'Name Type',
+			'FormatType' => 'Format Type',
 		);
 	}
 
@@ -88,15 +74,9 @@ class Game extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('IdGame',$this->IdGame);
-		$criteria->compare('NameGame',$this->NameGame,true);
-		$criteria->compare('DescriptionGame',$this->DescriptionGame,true);
 		$criteria->compare('IdType',$this->IdType);
-		$criteria->compare('Date',$this->Date,true);
-		$criteria->compare('StartGame',$this->StartGame,true);
-		$criteria->compare('FinishGame',$this->FinishGame,true);
-		$criteria->compare('Comment',$this->Comment,true);
-		$criteria->compare('AcceptGame',$this->AcceptGame);
+		$criteria->compare('NameType',$this->NameType,true);
+		$criteria->compare('FormatType',$this->FormatType,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -107,7 +87,7 @@ class Game extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Game the static model class
+	 * @return Type the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
