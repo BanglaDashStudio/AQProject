@@ -1,6 +1,6 @@
 <?php
 /* @var $this GameController */
-/* @var $model Game */
+/* @var $model GameCreate */
 /* @var $form CActiveForm */
 ?>
 
@@ -18,14 +18,14 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Название'); ?>
-		<?php echo $form->textField($model,'name'); ?>
-		<?php echo $form->error($model,'name'); ?>
+		<?php echo $form->labelEx($model,'Название игры'); ?>
+		<?php echo $form->textField($model,'NameGame'); ?>
+		<?php echo $form->error($model,'NameGame'); ?>
 	</div>
 
-    <div class="row">
-        <?php echo $form->labelEx($model,'Дата'); ?>
-        <?php
+   <//div class="row">
+       <//?php echo $form->labelEx($model,'Дата'); ?>
+        <//?php
         $this->widget('zii.widgets.jui.CJuiDatePicker', array
         (
             'name'=>'ModelName[date]', // the name of the field
@@ -43,26 +43,15 @@
             ),
         ));
         ?>
-        <?php echo $form->error($model,'date'); ?>
-    </div>
+        <//?php echo $form->error($model,'date'); ?>
+    <///div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Задание 1'); ?>
-		<?php echo $form->textField($model,'z1'); ?>
-		<?php echo $form->error($model,'z1'); ?>
+		<?php echo $form->labelEx($model,'Описание'); ?>
+		<?php echo $form->textField($model,'DescriptionGame'); ?>
+		<?php echo $form->error($model,'DescriptionGame'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'Задание 2'); ?>
-		<?php echo $form->textField($model,'z2'); ?>
-		<?php echo $form->error($model,'z2'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'Задание 3'); ?>
-		<?php echo $form->textField($model,'z3'); ?>
-		<?php echo $form->error($model,'z3'); ?>
-	</div>
 
 
 	<div class="row buttons">

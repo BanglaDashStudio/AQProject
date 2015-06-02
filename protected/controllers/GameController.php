@@ -4,7 +4,7 @@ class GameController extends Controller
 {
 	public function actionCreate()
     {
-        $model = new Game;
+        $model = new GameCreate;
 
         if (isset($_POST['Game'])) {
             $model->attributes = $_POST['Game'];
@@ -21,27 +21,27 @@ class GameController extends Controller
 
 	public function actionPlay()
 	{
-        $gameList=Game::model()->findAllByAttributes(array('date'=>'2015-05-23 00:00:00')) ;
+        $gameList=Game::model()->findAllByAttributes(array('AcceptGame'=>'1')) ;
 		$this->render('Play', array('model'=>$gameList));
 	}
 
     public function actionMyGames()
     {
-        $gameList=Game::model()->findAllByAttributes(array('name'=>'345')) ;
+        $gameList=Game::model()->findAllByAttributes(array('AcceptGame'=>'1')) ;
         $this->render('MyGames', array('model'=>$gameList));
     }
 
-    public function actionListGame($id)
+    public function actionListGame($idGame)
     {
-        $game = Game::model()->findById($id);
-        $this->render('MyGames', array('model'=>$game-name));
+        $game = Game::model()->findById($idGame);
+        $this->render('MyGames', array('model'=>$game-NameGame));
     }
 
 
-    public function actionEdit($id)
+    public function actionEdit($idGame)
     {
         $modelGame = new Game;
-        $game = Game::model()->findById($id);
+        $game = Game::model()->findById($idGame);
 
         if($game == null){
             echo 'Ошибка';

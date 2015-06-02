@@ -10,9 +10,9 @@ $this->breadcrumbs=array(
 
 <?php
     foreach($model as $item){
-    echo  'Название игры - ', $item->name."";
+    echo  'Название игры - ', $item->NameGame."";
 
-        echo  '<br> Дата игры  - ', $item->date."";
+        echo  '<br> чуть про игру  - ', $item->DescriptionGame."";
     }
 ?>
 
