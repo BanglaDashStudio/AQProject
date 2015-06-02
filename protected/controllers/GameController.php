@@ -19,8 +19,24 @@ class GameController extends Controller
 	public function actionPlay()
 	{
         $model=new Game;
-		$this->render('Play');
+
+        $gameList=Game::model()->findAllByAttributes(array('date'=>'2015-05-23 00:00:00')) ;
+		$this->render('Play', array('model'=>$gameList));
+
 	}
+
+    public function actionMyGames()
+    {
+        $gameList=Game::model()->findAllByAttributes(array('name'=>'345')) ;
+        $this->render('MyGames', array('model'=>$gameList));
+    }
+
+    public function actionListGame($id)
+    {
+        $game = Game::model()->findById($id);
+        $this->render('MyGames', array('model'=>$game-name));
+    }
+
 
 	// Uncomment the following methods and override them if needed
 	/*
