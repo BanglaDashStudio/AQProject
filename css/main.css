@@ -1,3 +1,6 @@
+/* Подключение шрифта Google */
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:400,600,700&subset=latin,cyrillic");
+
 body
 {
 	margin: 0;
@@ -11,7 +14,7 @@ body
 {
 	margin-top: 5px;
 	margin-bottom: 5px;
-	background: white;
+	background: whitesmoke;
 	border: 1px solid #551FA3;
 	border-radius: 15px;
 }
@@ -58,6 +61,7 @@ body
 .nav ul {
 	margin: 0;
 	padding: 0;
+	text-align: center;
 }
 .nav li {
 	margin: 0 5px 10px 0;
@@ -194,15 +198,27 @@ div.search-form
 
 .m-text {
 	float: left;
-	width: 50%;
+	width: 100%;
+	text-align: justify;
+	font: 16px 'Open Sans', Arial, Sans-serif;
+	line-height: 1.5;
+	word-wrap: break-word;
+	display: inline-block;
 }
 
 .m-image {
-	float: left;
-	width: 80%;
+	float: right;
+	border: 5px solid #ECBB16;
+	/*border-radius: 8px; */
 	margin: 0% 5%;
-	text-align: center;
+	display: inline-block;
+
 }
+
+.wrapper {
+	width: 100%;
+}
+
 .portlet
 {
 
@@ -289,7 +305,7 @@ div.search-form
 	}
 
 	.logo{
-		width: 250px;
+		width: 75%;
 		text-align: center;
 	}
 
@@ -322,6 +338,7 @@ div.search-form
 	.nav {
 		position: relative;
 		min-height: 36px;
+
 	}	
 	.nav ul {
 		width: 180px;
@@ -366,6 +383,7 @@ div.search-form
 	h1 {
         min-width: 320px;
         font-size: 16px;
+       	font:  'Open Sans', Arial, Sans-serif;
     }
 
     .logo {
