@@ -37,7 +37,7 @@ class AuthController extends Controller
 
     private function SignInFunc($login, $pass){
         // Аутентифицируем пользователя по имени и паролю
-        $identity=new UserIdentity($login,$pass);
+        $identity = new UserIdentity($login,$pass);
 
         if($identity->authenticate()) {
             Yii::app()->user->login($identity, 3600*10);
@@ -46,7 +46,7 @@ class AuthController extends Controller
         }
 
         // Выходим
-       // Yii::app()->user->logout();
+        //Yii::app()->user->logout();
     }
 
     public function actionSignUp()
@@ -88,16 +88,26 @@ class AuthController extends Controller
         $this->render('SignUp',array('model'=>$model));
     }
 
+    public function actionLogout()
+    {
+        Yii::app()->user->logout();
+        $this->redirect(Yii::app()->homeUrl);
+    }
+
 	// Uncomment the following methods and override them if needed
 
     public function accessRules()
     {
         return array(
-            array('deny',  // allow all users to perform 'index' and 'view' actions
-                'users'=>array('@'),
-            ),
 
-            array('allow',  // deny all users
+            array('allow',  // allow all users to perform 'index' and 'view' actions
+                'users'=>array('@'),
+                'actions'=>array('logout'),
+            ),
+            array('allow',
+                'users'=>array('?'),
+                ),
+            array('deny',  // deny all users
                 'users'=>array('*'),
             ),
         );
@@ -107,7 +117,7 @@ class AuthController extends Controller
 	{
 		// return the filter configuration for this controller, e.g.:
         return array(
-            'accessControl',
+         //   'accessControl',
         );
 	}
 /*

@@ -18,12 +18,6 @@ class HomeController extends Controller
         }
     }
 
-    public function actionLogout()
-    {
-        Yii::app()->user->logout();
-        $this->redirect(Yii::app()->homeUrl);
-    }
-
 	// Uncomment the following methods and override them if needed
 	/*
 	public function filters()
