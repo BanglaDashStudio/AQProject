@@ -15,6 +15,8 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
+	<p class="note"><span class="required">*</span> Обязательные поля.</p>
+
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
@@ -30,11 +32,11 @@
         (
             'name'=>'ModelName[date]', // the name of the field
             'language'=>'ru',
-            'value'=>($model->date ? date('yy-mm-dd', $model->date) : ''),  // pre-fill the value
+            'value'=>($model->date ? date('d.m.Y', $model->date) : ''),  // pre-fill the value
             'options'=>array
             (
                 'showAnim'=>'fold',
-                'dateFormat'=>'yy-mm-dd',  // optional Date formatting
+                'dateFormat'=>'dd.mm.yy',  // optional Date formatting
                 'debug'=>false,
             ),
             'htmlOptions'=>array

@@ -5,24 +5,24 @@ class GameController extends Controller
 	public function actionCreate()
     {
         $model = new Game;
+
         if (isset($_POST['Game'])) {
             $model->attributes = $_POST['Game'];
             if ($model->validate()) {
-                $model->save();
+                if ($model->save() )
+                $this->redirect(Yii::app()->createUrl('game/MyGames'));
                 return;
-
             }
             $this->render('Create', array('model' => $model));
         }
+        $this->render('Create', array('model' => $model));
+
     }
 
 	public function actionPlay()
 	{
-        $model=new Game;
-
         $gameList=Game::model()->findAllByAttributes(array('date'=>'2015-05-23 00:00:00')) ;
 		$this->render('Play', array('model'=>$gameList));
-
 	}
 
     public function actionMyGames()
@@ -37,6 +37,50 @@ class GameController extends Controller
         $this->render('MyGames', array('model'=>$game-name));
     }
 
+
+    public function actionEdit($id)
+    {
+        $modelGame = new Game;
+        $game = Game::model()->findById($id);
+
+        if($game == null){
+            echo 'Ошибка';
+            return;
+        }
+        $modelGame-> name = $game->name;
+        $modelGame-> date = $game->date;
+        $modelGame-> z1= $game->z1;
+        $modelGame-> z2= $game->z2;
+        $modelGame-> z3= $game->z3;
+
+        if(isset($_POST['ajax']) && $_POST['ajax']==='edit-form')
+        {
+            echo CActiveForm::validate($modelGame);
+            Yii::app()->end();
+        }
+
+        if(isset($_POST['Game']))
+        {
+            var_dump($_POST['Game']);
+            $modelGame-> attributes=$_POST['Game'];
+
+            if($modelGame->validate())
+            {
+                $game->name = $_POST['Game']['name'];
+                $game->date = $_POST['Game']['date'];
+                $game->z1 = $_POST['Game']['z1'];
+                $game->z2 = $_POST['Game']['z2'];
+                $game->z3 = $_POST['Game']['z3'];
+
+                if($game->save()) {
+                    $this->render('Edit', array('Game' => $modelGame));
+                    return;
+                }
+            }
+        }
+
+        $this->render('Edit', array('Game'=>$modelGame));
+    }
 
 	// Uncomment the following methods and override them if needed
 	/*
