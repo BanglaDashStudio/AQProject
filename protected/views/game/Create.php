@@ -23,34 +23,31 @@
 		<?php echo $form->error($model,'NameGame'); ?>
 	</div>
 
-   <//div class="row">
-       <//?php echo $form->labelEx($model,'Дата'); ?>
-        <//?php
-        $this->widget('zii.widgets.jui.CJuiDatePicker', array
-        (
-            'name'=>'ModelName[date]', // the name of the field
-            'language'=>'ru',
-            'value'=>($model->date ? date('yy-mm-dd', $model->date) : ''),  // pre-fill the value
-            'options'=>array
-            (
-                'showAnim'=>'fold',
-                'dateFormat'=>'yy-mm-dd',  // optional Date formatting
-                'debug'=>false,
-            ),
-            'htmlOptions'=>array
-            (
-                'style'=>'height:20px;'
-            ),
-        ));
-        ?>
-        <//?php echo $form->error($model,'date'); ?>
-    <///div>
+
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Описание'); ?>
 		<?php echo $form->textField($model,'DescriptionGame'); ?>
 		<?php echo $form->error($model,'DescriptionGame'); ?>
 	</div>
+
+<div class="row">
+    <?php echo $form->labelEx($model,'Время начала'); ?>
+    <?php echo $form->textField($model,'StartGame'); ?>
+    <?php echo $form->error($model,'StartGame'); ?>
+</div>
+
+<div class="row">
+    <?php echo $form->labelEx($model,'Время завершения'); ?>
+    <?php echo $form->textField($model,'FinishGame'); ?>
+    <?php echo $form->error($model,'FinishGame'); ?>
+</div>
+
+    <div class="row">
+        <?php echo $form->labelEx($model,'Комменарий (если хотите)'); ?>
+        <?php echo $form->textField($model,'Comment'); ?>
+        <?php echo $form->error($model,'Comment'); ?>
+    </div>
 
 
 

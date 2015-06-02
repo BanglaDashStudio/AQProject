@@ -6,8 +6,8 @@ class GameController extends Controller
     {
         $model = new GameCreate;
 
-        if (isset($_POST['Game'])) {
-            $model->attributes = $_POST['Game'];
+        if (isset($_POST['GameCreate'])) {
+            $model->attributes = $_POST['GameCreate'];
             if ($model->validate()) {
                 if ($model->save() )
                 $this->redirect(Yii::app()->createUrl('game/MyGames'));

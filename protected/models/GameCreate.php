@@ -6,7 +6,9 @@ class GameCreate extends CFormModel
     public $DescriptionGame;
     public $StartGame;
     public $FinishGame;
+    public $Comment;
     public $AcceptGame;
+    public $IdType;
    // public $rememberMe=false;
 
     private $_identity;
@@ -19,24 +21,22 @@ class GameCreate extends CFormModel
         return array(
             array('NameGame', 'required'),
             array('IdType', 'numerical', 'integerOnly'=>true),
-            array('DescriptionGame, Date, StartGame, FinishGame, Comment', 'safe'),
+            array('DescriptionGame, StartGame, FinishGame, Comment', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('NameGame, DescriptionGame, IdType, Date, StartGame, FinishGame, Comment, AcceptGame', 'safe', 'on'=>'search'),
+            array('NameGame, DescriptionGame,  StartGame, FinishGame, IdType, Comment, AcceptGame', 'safe', 'on'=>'search'),
         );
     }
 
     public function attributeLabels()
     {
         return array(
-            'NameGame' => 'Name Game',
-            'DescriptionGame' => 'Description Game',
-            'IdType' => 'Id Type',
-            'Date' => 'Date',
-            'StartGame' => 'Start Game',
-            'FinishGame' => 'Finish Game',
-            'Comment' => 'Comment',
-            'AcceptGame' => 'Accept Game',
+            'NameGame' => 'имя игры',
+            'DescriptionGame' => 'информация об игре',
+            'IdType' => 'тип для заданий по умолчанию',
+            'StartGame' => 'Начало',
+            'FinishGame' => 'Завершение',
+            'Comment' => 'комментарий',
         );
     }
 
