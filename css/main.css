@@ -13,13 +13,14 @@ body
 	margin-bottom: 5px;
 	background: white;
 	border: 1px solid #551FA3;
+	border-radius: 15px;
 }
 
 #header
 {
 	margin: 0;
 	padding: 0;
-	border-top: 3px solid #551FA3;
+	/*border-top: 3px solid #551FA3;*/
 }
 
 #content
@@ -48,35 +49,41 @@ body
 	text-align: center;
 }
 
+/* меню */
 .nav {
 	margin: 20px 0;
-	background: #551FA3;
-	color: #F0B81B;
-	border-radius: 10px;
-}
+	border-radius: 8px;
 
+}
 .nav ul {
-	margin: 2;
+	margin: 0;
 	padding: 0;
 }
-
 .nav li {
-	margin: 10px 5px 10px 0;
+	margin: 0 5px 10px 0;
 	padding: 0;
 	list-style: none;
 	display: inline-block;
 	*display:inline; /* ie7 */
 }
-
 .nav a {
-	padding: 3px 12px;
+	padding: 10px 20px 10px;
 	text-decoration: none;
 	color: #FFF;
 	line-height: 100%;
+	background: #5A1AA0;
+	border-radius: 8px;
 }
-
 .nav a:hover {
 	color: #000;
+	background: #ECBB16;
+	border-radius: 8px;
+
+}
+.nav .current a {
+	background: #ECBB16;
+	color: #fff;
+	border-radius: 8px;
 }
 
 /*#mainmenu
@@ -192,9 +199,9 @@ div.search-form
 
 .m-image {
 	float: left;
-	width: 40%;
-	min-height: 360px;
+	width: 80%;
 	margin: 0% 5%;
+	text-align: center;
 }
 .portlet
 {
@@ -311,11 +318,10 @@ div.search-form
 	}
 }
 
-/* разрешение смартфона */
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-   .nav {
+@media screen and (max-width: 768px) {
+	.nav {
 		position: relative;
-		min-height: 40px;
+		min-height: 36px;
 	}	
 	.nav ul {
 		width: 180px;
@@ -357,7 +363,7 @@ div.search-form
 		background: url(images/icon-check.png) no-repeat 10px 7px;
 	}
 
-    h1 {
+	h1 {
         min-width: 320px;
         font-size: 16px;
     }
@@ -370,7 +376,7 @@ div.search-form
 	.m-image {
 		float: center;
 		width: 100;
-		max-height: 320px;
+		
 	/*	margin: 15% 15%;*/
 	}
 
@@ -396,4 +402,5 @@ div.search-form
 	body {
 		max-width: 100%;
 	}
+	
 }
