@@ -1,18 +1,18 @@
 <?php
-/* @var $this ComandController */
+/* @var $this TeamController */
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Comands',
+	'Teams',
 );
 
 $this->menu=array(
-	array('label'=>'Create Comand', 'url'=>array('create')),
-	array('label'=>'Manage Comand', 'url'=>array('admin')),
+	array('label'=>'Create Team', 'url'=>array('create')),
+	array('label'=>'Manage Team', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Команды</h1>
+<h1>Teams</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

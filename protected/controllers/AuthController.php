@@ -20,8 +20,6 @@ class AuthController extends Controller
         if(isset($_POST['ComandSignIn']))
         {
             $model->attributes=$_POST['ComandSignIn'];
-            $login = $model->username;
-            $pass = $model->password;
 
             if($model->validate())
             {
@@ -53,7 +51,7 @@ class AuthController extends Controller
 
     public function actionSignUp()
     {
-        $model=new Comand;
+        $model=new ComandSignUp;
 
         // uncomment the following code to enable ajax-based validation
 
@@ -64,22 +62,27 @@ class AuthController extends Controller
         }
 
 
-        if(isset($_POST['Comand']))
+        if(isset($_POST['ComandSignUp']))
         {
-            $model->attributes=$_POST['Comand'];
-            $login = $model->Name;
-            $pass = $model->Pass;
-            $model->Pass = CPasswordHelper::hashPassword($model->Pass);
+            $model->attributes=$_POST['ComandSignUp'];
 
-            if($model->validate())
+            $modelcomand =new Team;
+            $modelcomand->NameTeam = $model->username;
+            $modelcomand->PasswordTeam = CPasswordHelper::hashPassword($model->password);
+            $modelcomand->EmailTeam = $model->mail;
+            $modelcomand->PageTeam = 'a.com';
+            $modelcomand->PhoneTeam = $model->phone;
+            $modelcomand->DescriptionTeam = $model->description;
+
+            if($modelcomand->validate())
             {
-                if($model->save()){
-                    $this->SignInFunc($login, $pass);
+                if($modelcomand->save()){
+                    $this->SignInFunc($model->username, $model->password);
                     $this->redirect(Yii::app()->createUrl('home'));
                     return;
                 }
-            } else {
-
+            }else{
+                echo 'nnn';
             }
         }
         $this->render('SignUp',array('model'=>$model));

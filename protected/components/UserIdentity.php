@@ -20,11 +20,11 @@ class UserIdentity extends CUserIdentity
         if($this->username == 'admin' && $this->password == 'admin')
             return !self::ERROR_NONE;
 
-        $modelIn=Comand::model()->findByAttributes(array('Name' => $this->username));
+        $modelIn=Team::model()->findByAttributes(array('NameTeam' => $this->username));
 
         if($modelIn == NULL)
             $this->errorCode=self::ERROR_USERNAME_INVALID;
-        elseif(!CPasswordHelper::verifyPassword($this->password, $modelIn->Pass))
+        elseif(!CPasswordHelper::verifyPassword($this->password, $modelIn->PasswordTeam))
             $this->errorCode=self::ERROR_PASSWORD_INVALID;
         else
             $this->errorCode=self::ERROR_NONE;

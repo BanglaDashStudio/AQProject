@@ -16,7 +16,7 @@ class PRPassword extends CFormModel
         //    array('rememberMe', 'boolean'),
         //    array('password', 'authenticate'),
             array('oldpassword','passvalidate'),
-            array('confpassword','equation')
+            array('confpassword','equation'),
         );
     }
 
@@ -29,11 +29,11 @@ class PRPassword extends CFormModel
 
     public function passvalidate($attribute,$params)
     {
-        $modelPR=Comand::model()->findByAttributes(array('Name'=>Yii::app()->user->name));
+        $modelPR=Team::model()->findByAttributes(array('NameTeam'=>Yii::app()->user->name));
 
         if($modelPR == NULL)
             $this->addError('oldpassword','Неправильный пароль');
-        elseif(!CPasswordHelper::verifyPassword($this->oldpassword, $modelPR->Pass))
+        elseif(!CPasswordHelper::verifyPassword($this->oldpassword, $modelPR->PasswordTeam))
             $this->addError('oldpassword','Неправильный пароль.');
 
     }

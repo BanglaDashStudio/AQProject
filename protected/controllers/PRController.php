@@ -4,15 +4,18 @@ class PRController extends Controller
 {
 	public function actionindex()
 	{
-        $modelPass=new PRPassword;
-        $modelInfo=new PRInfo;
-        $userInfo = Comand::model()->findByAttributes(array('Name'=>Yii::app()->user->name));
+        $modelPass = new PRPassword;
+        $modelInfo = new PRInfo;
+        $userInfo = Team::model()->findByAttributes(array('NameTeam'=>Yii::app()->user->name));
 
-        $modelInfo->phone = $userInfo->Phone;
-        //TODO: раскомментить когда будет добавлен емэйл в таблицу команд
-        //$modelInfo->mail = $userInfo->Mail;
-        $modelInfo->mail = 'пусто@пус.то';
-        $modelInfo->inform = $userInfo->Description;
+        if($userInfo == null){
+            echo 'ошибка';
+            return;
+        }
+
+        $modelInfo->phone = $userInfo->PhoneTeam;
+        $modelInfo->mail = $userInfo->EmailTeam;
+        $modelInfo->inform = $userInfo->DescriptionTeam;
 
         if(isset($_POST['ajax']) && $_POST['ajax']==='prpassword-form')
         {
@@ -28,27 +31,33 @@ class PRController extends Controller
 
         if(isset($_POST['PRPassword']))
         {
+            var_dump($_POST['PRPassword']);
             $modelPass->attributes=$_POST['PRPassword'];
             if($modelPass->validate())
             {
-                //TODO: тут сохраняется вся модель. Надо быть осторожным с этим местом.
-                $userInfo->Pass = CPasswordHelper::hashPassword($modelPass->newpassword);
-                $userInfo->save();
-                $this->render('PRindex',array('Password'=>$modelPass,'Info'=>$modelInfo, 'alertFlag'=>true));
-                return;
+                $userInfo->PasswordTeam = CPasswordHelper::hashPassword($modelPass->newpassword);
+
+                if($userInfo->save()) {
+                    $this->render('PRindex', array('Password' => new PRPassword(), 'Info' => $modelInfo, 'alertFlag' => true));
+                    return;
+                }
             }
         }
 
         if(isset($_POST['PRInfo']))
         {
+            var_dump($_POST['PRInfo']);
             $modelInfo->attributes=$_POST['PRInfo'];
             if($modelInfo->validate())
             {
-                $userInfo->Phone = $modelInfo->phone;
-                $userInfo->Description = $modelInfo->inform;
-                $userInfo->save();
-                $this->render('PRindex',array('Password'=>$modelPass,'Info'=>$modelInfo, 'alertFlag'=>true));
-                return;
+                $userInfo->PhoneTeam = $_POST['PRInfo']['phone'];
+                $userInfo->DescriptionTeam = $_POST['PRInfo']['inform'];
+                $userInfo->EmailTeam = $_POST['PRInfo']['mail'];
+
+                if($userInfo->save()) {
+                    $this->render('PRindex', array('Password' => new PRPassword(), 'Info' => $modelInfo, 'alertFlag' => true));
+                    return;
+                }
             }
         }
 
@@ -58,6 +67,12 @@ class PRController extends Controller
     public function accessRules()
     {
         return array(
+
+            //TODO: когда будут роли, админу надо разрешить личный кабинет
+            array('deny',  // allow all users to perform 'index' and 'view' actions
+                'users'=>array('admin'),
+            ),
+
             array('allow',  // allow all users to perform 'index' and 'view' actions
                 'users'=>array('@'),
             ),

@@ -2,26 +2,25 @@ body
 {
 	margin: 0;
 	padding: 0;
-	color: #555;
+	color: #551FA3;
 	font: normal 10pt Arial,Helvetica,sans-serif;
-	background: #EFEFEF;
+	background: #202020;
 }
- body{
 
- }
 #page
 {
 	margin-top: 5px;
 	margin-bottom: 5px;
 	background: white;
-	border: 1px solid #C9E0ED;
+	border: 1px solid #551FA3;
+	border-radius: 15px;
 }
 
 #header
 {
 	margin: 0;
 	padding: 0;
-	border-top: 3px solid #C9E0ED;
+	/*border-top: 3px solid #551FA3;*/
 }
 
 #content
@@ -40,18 +39,56 @@ body
 	margin: 10px 20px;
 	font-size: 0.8em;
 	text-align: center;
-	border-top: 1px solid #C9E0ED;
+	border-top: 1px solid #551FA3;
 }
 
 #logo
 {
 	padding: 10px 20px;
-	font-size: 200%;
+	/*font-size: 200%;*/
+	text-align: center;
 }
 
-#mainmenu
+/* меню */
+.nav {
+	margin: 20px 0;
+	border-radius: 8px;
+
+}
+.nav ul {
+	margin: 0;
+	padding: 0;
+}
+.nav li {
+	margin: 0 5px 10px 0;
+	padding: 0;
+	list-style: none;
+	display: inline-block;
+	*display:inline; /* ie7 */
+}
+.nav a {
+	padding: 10px 20px 10px;
+	text-decoration: none;
+	color: #FFF;
+	line-height: 100%;
+	background: #5A1AA0;
+	border-radius: 8px;
+}
+.nav a:hover {
+	color: #000;
+	background: #ECBB16;
+	border-radius: 8px;
+
+}
+.nav .current a {
+	background: #ECBB16;
+	color: #fff;
+	border-radius: 8px;
+}
+
+/*#mainmenu
 {
-	background:white url(bg.gif) repeat-x left top;
+	background:white url(bg2.gif) repeat-x left top;
 }
 
 #mainmenu ul
@@ -80,7 +117,7 @@ body
 	color: #6399cd;
 	background-color:#EFF4FA;
 	text-decoration:none;
-}
+}*/
 
 div.flash-error, div.flash-notice, div.flash-success
 {
@@ -134,7 +171,7 @@ div.view
 {
 	padding: 10px;
 	margin: 10px 0;
-	border: 1px solid #C9E0ED;
+	border: 1px solid #551FA3;
 }
 
 div.breadcrumbs
@@ -155,6 +192,17 @@ div.search-form
 	background: #eee;
 }
 
+.m-text {
+	float: left;
+	width: 50%;
+}
+
+.m-image {
+	float: left;
+	width: 80%;
+	margin: 0% 5%;
+	text-align: center;
+}
 .portlet
 {
 
@@ -228,4 +276,131 @@ div.search-form
 .operations li a:hover
 {
 	background: #80CFFF;
+}
+
+@media screen and (max-width: 768px) { /* разрешение планшета */
+
+	img {
+		width: 95%;
+		max-width: 750px; 
+        height: auto;
+        margin: 4px; /* небольшие оступы для изображений */
+        text-align: center;
+	}
+
+	.logo{
+		width: 250px;
+		text-align: center;
+	}
+
+	#mainmenu ul
+	{
+		/*padding:6px 20px 5px 20px;*/
+		margin:2px;
+	}
+
+	#footer
+	{
+		margin: 2% 4%;
+		font-size: 0.8em;
+		text-align: center;
+		border-top: 1px solid #551FA3;
+	}
+
+	.container {
+		width: 98%;
+		max-width: 100%;
+		margin:0 auto;
+	}
+
+	body {
+		max-width: 100%;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.nav {
+		position: relative;
+		min-height: 36px;
+	}	
+	.nav ul {
+		width: 180px;
+		padding: 5px 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		border: solid 1px #aaa;
+		background: #FAFAFA url(images/icon-menu.png) no-repeat 10px 11px;
+		border-radius: 5px;
+		box-shadow: 0 1px 2px rgba(0,0,0,.3);
+	}
+	.nav li {
+		display: none; /* скрыть все <li> пункты */
+		margin: 0;
+	}
+	.nav .current {
+		display: block; /* показывать только текущие активные <li> пункты */
+	}
+	.nav a {
+		display: block;
+		padding: 5px 5px 5px 32px;
+		text-align: left;
+	}
+	.nav .current a {
+		background: none;
+		color: #666;
+	}
+
+	/* при наведении на пункты меню */
+	.nav ul:hover {
+		background-image: none;
+	}
+	.nav ul:hover li {
+		display: block;
+		margin: 0 0 5px;
+	}
+	.nav ul:hover .current {
+		background: url(images/icon-check.png) no-repeat 10px 7px;
+	}
+
+	h1 {
+        min-width: 320px;
+        font-size: 16px;
+    }
+
+    .logo {
+        width: 45%;
+        max-width: 150px;
+    }
+
+	.m-image {
+		float: center;
+		width: 100;
+		
+	/*	margin: 15% 15%;*/
+	}
+
+	.m-text {
+	float: left;
+	width: 90%;
+	}
+
+	#footer
+	{
+		margin: 2% 4%;
+		font-size: 0.8em;
+		text-align: center;
+		border-top: 1px solid #551FA3;
+	}
+
+	.container {
+		width: 100%;
+		max-width: 100%;
+		margin:0 auto;
+	}
+
+	body {
+		max-width: 100%;
+	}
+	
 }
