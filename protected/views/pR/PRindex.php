@@ -18,7 +18,14 @@ $('.password-button').click(function(){
 //TODO: есть баг со сварачиванием окна смены пароля, он бесит
 echo CHtml::link('Изменить пароль','#',array('class'=>'password-button')); ?>
 
-<div class="password-form" style="display:none">
+
+<div class="password-form"
+    <?php
+        if(!$Password->hasErrors()) {
+            echo 'style="display:none">';
+            }
+    ?>
+
 <?php $this->renderPartial('_prpassword', array('model'=>$Password)); ?>
 </div>
 
