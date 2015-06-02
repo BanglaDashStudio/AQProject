@@ -4991,3 +4991,20 @@ Stack trace:
 REQUEST_URI=/AQProject/index.php?r=game/MyGames
 HTTP_REFERER=http://localhost/AQProject/index.php?r=home
 ---
+2015/06/03 02:22:59 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'У вас недостаточно прав для выполнения указанного действия.' in /home/lokirew/public_html/AQProject/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /home/lokirew/public_html/AQProject/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), '?? ?????? ?????...')
+#1 /home/lokirew/public_html/AQProject/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /home/lokirew/public_html/AQProject/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /home/lokirew/public_html/AQProject/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /home/lokirew/public_html/AQProject/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /home/lokirew/public_html/AQProject/framework/web/CController.php(291): CFilterChain->run()
+#6 /home/lokirew/public_html/AQProject/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('')
+#8 /home/lokirew/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('pR')
+#9 /home/lokirew/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /home/lokirew/public_html/AQProject/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/~lokirew/AQProject/index.php?r=pR
+HTTP_REFERER=http://lokirew/~lokirew/AQProject/
+---

@@ -9,5 +9,5 @@
 </div>
 
 <div>
-<?php echo "<a href=".Yii::app()->createUrl("gamecrud").">Управление играми</a>";?>
+<?php echo "<a href=".Yii::app()->createUrl("gameedit/").">Управление играми</a>";?>
 </div>
