@@ -67,6 +67,7 @@ class AuthController extends Controller
             $model->attributes=$_POST['ComandSignUp'];
 
             $modelcomand =new Team;
+
             $modelcomand->NameTeam = $model->username;
             $modelcomand->PasswordTeam = CPasswordHelper::hashPassword($model->password);
             $modelcomand->EmailTeam = $model->mail;
@@ -81,8 +82,6 @@ class AuthController extends Controller
                     $this->redirect(Yii::app()->createUrl('home'));
                     return;
                 }
-            }else{
-                echo 'nnn';
             }
         }
         $this->render('SignUp',array('model'=>$model));

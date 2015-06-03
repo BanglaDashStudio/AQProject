@@ -11,6 +11,10 @@
  * @property integer $RatingTeam
  * @property integer $PointgameTeam
  * @property integer $PointTeam
+ * @property integer $IdTeam
+ *
+ * The followings are the available model relations:
+ * @property Team $idTeam
  */
 class Results extends CActiveRecord
 {
@@ -30,11 +34,11 @@ class Results extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('NumberTask, PlaceTeam, RatingTeam, PointgameTeam, PointTeam', 'numerical', 'integerOnly'=>true),
+			array('NumberTask, PlaceTeam, RatingTeam, PointgameTeam, PointTeam, IdTeam', 'numerical', 'integerOnly'=>true),
 			array('TimeTeam', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('IdResult, TimeTeam, NumberTask, PlaceTeam, RatingTeam, PointgameTeam, PointTeam', 'safe', 'on'=>'search'),
+			array('IdResult, TimeTeam, NumberTask, PlaceTeam, RatingTeam, PointgameTeam, PointTeam, IdTeam', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -46,6 +50,7 @@ class Results extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'idTeam' => array(self::BELONGS_TO, 'Team', 'IdTeam'),
 		);
 	}
 
@@ -62,6 +67,7 @@ class Results extends CActiveRecord
 			'RatingTeam' => 'Rating Team',
 			'PointgameTeam' => 'Pointgame Team',
 			'PointTeam' => 'Point Team',
+			'IdTeam' => 'Id Team',
 		);
 	}
 
@@ -90,6 +96,7 @@ class Results extends CActiveRecord
 		$criteria->compare('RatingTeam',$this->RatingTeam);
 		$criteria->compare('PointgameTeam',$this->PointgameTeam);
 		$criteria->compare('PointTeam',$this->PointTeam);
+		$criteria->compare('IdTeam',$this->IdTeam);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

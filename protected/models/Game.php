@@ -8,11 +8,17 @@
  * @property string $NameGame
  * @property string $DescriptionGame
  * @property integer $IdType
- * @property string $Date
  * @property string $StartGame
  * @property string $FinishGame
  * @property string $Comment
  * @property integer $AcceptGame
+ * @property integer $IdTeam
+ *
+ * The followings are the available model relations:
+ * @property Team $idTeam
+ * @property Type $idType
+ * @property Gameteam[] $gameteams
+ * @property Grid[] $grs
  */
 class Game extends CActiveRecord
 {
@@ -33,11 +39,11 @@ class Game extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('NameGame', 'required'),
-			array('IdGame, IdType, AcceptGame', 'numerical', 'integerOnly'=>true),
-			array('DescriptionGame, Date, StartGame, FinishGame, Comment', 'safe'),
+			array('IdType, AcceptGame, IdTeam', 'numerical', 'integerOnly'=>true),
+			array('DescriptionGame, StartGame, FinishGame, Comment', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('IdGame, NameGame, DescriptionGame, IdType, Date, StartGame, FinishGame, Comment, AcceptGame', 'safe', 'on'=>'search'),
+			array('IdGame, NameGame, DescriptionGame, IdType, StartGame, FinishGame, Comment, AcceptGame, IdTeam', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -49,6 +55,10 @@ class Game extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'idTeam' => array(self::BELONGS_TO, 'Team', 'IdTeam'),
+			'idType' => array(self::BELONGS_TO, 'Type', 'IdType'),
+			'gameteams' => array(self::HAS_MANY, 'Gameteam', 'IdGame'),
+			'grs' => array(self::HAS_MANY, 'Grid', 'IdGame'),
 		);
 	}
 
@@ -62,11 +72,11 @@ class Game extends CActiveRecord
 			'NameGame' => 'Name Game',
 			'DescriptionGame' => 'Description Game',
 			'IdType' => 'Id Type',
-			'Date' => 'Date',
 			'StartGame' => 'Start Game',
 			'FinishGame' => 'Finish Game',
 			'Comment' => 'Comment',
 			'AcceptGame' => 'Accept Game',
+			'IdTeam' => 'Id Team',
 		);
 	}
 
@@ -92,11 +102,11 @@ class Game extends CActiveRecord
 		$criteria->compare('NameGame',$this->NameGame,true);
 		$criteria->compare('DescriptionGame',$this->DescriptionGame,true);
 		$criteria->compare('IdType',$this->IdType);
-		$criteria->compare('Date',$this->Date,true);
 		$criteria->compare('StartGame',$this->StartGame,true);
 		$criteria->compare('FinishGame',$this->FinishGame,true);
 		$criteria->compare('Comment',$this->Comment,true);
 		$criteria->compare('AcceptGame',$this->AcceptGame);
+		$criteria->compare('IdTeam',$this->IdTeam);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

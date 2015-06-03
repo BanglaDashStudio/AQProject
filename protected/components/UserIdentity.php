@@ -7,7 +7,9 @@
  */
 class UserIdentity extends CUserIdentity
 {
-	/**
+    protected $_id;
+
+    /**
 	 * Authenticates a user.
 	 * The example implementation makes sure if the username and password
 	 * are both 'demo'.
@@ -26,8 +28,14 @@ class UserIdentity extends CUserIdentity
             $this->errorCode=self::ERROR_USERNAME_INVALID;
         elseif(!CPasswordHelper::verifyPassword($this->password, $modelIn->PasswordTeam))
             $this->errorCode=self::ERROR_PASSWORD_INVALID;
-        else
-            $this->errorCode=self::ERROR_NONE;
+        else {
+            $this->errorCode = self::ERROR_NONE;
+            //$this->_id = $modelIn->IdTeam;
+        }
         return !$this->errorCode;
 	}
+/*
+    public function getId(){
+        return $this->_id;
+    }*/
 }

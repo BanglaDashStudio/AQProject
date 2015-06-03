@@ -11,7 +11,13 @@
  * @property string $PasswordTeam
  * @property string $PageTeam
  * @property string $PhoneTeam
- * @property integer $IdGame
+ * @property integer $RowTeam
+ *
+ * The followings are the available model relations:
+ * @property Game[] $games
+ * @property Gameteam[] $gameteams
+ * @property Grid[] $grs
+ * @property Results[] $results
  */
 class Team extends CActiveRecord
 {
@@ -32,11 +38,11 @@ class Team extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('NameTeam, PasswordTeam', 'required'),
-			array('IdGame', 'numerical', 'integerOnly'=>true),
+			array('RowTeam', 'numerical', 'integerOnly'=>true),
 			array('DescriptionTeam, EmailTeam, PageTeam, PhoneTeam', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('IdTeam, NameTeam, DescriptionTeam, EmailTeam, PasswordTeam, PageTeam, PhoneTeam, IdGame', 'safe', 'on'=>'search'),
+			array('IdTeam, NameTeam, DescriptionTeam, EmailTeam, PasswordTeam, PageTeam, PhoneTeam, RowTeam', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -48,6 +54,10 @@ class Team extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'games' => array(self::HAS_MANY, 'Game', 'IdTeam'),
+			'gameteams' => array(self::HAS_MANY, 'Gameteam', 'IdTeam'),
+			'grs' => array(self::HAS_MANY, 'Grid', 'IdTeam'),
+			'results' => array(self::HAS_MANY, 'Results', 'IdTeam'),
 		);
 	}
 
@@ -64,7 +74,7 @@ class Team extends CActiveRecord
 			'PasswordTeam' => 'Password Team',
 			'PageTeam' => 'Page Team',
 			'PhoneTeam' => 'Phone Team',
-			'IdGame' => 'Id Game',
+			'RowTeam' => 'Row Team',
 		);
 	}
 
@@ -93,7 +103,7 @@ class Team extends CActiveRecord
 		$criteria->compare('PasswordTeam',$this->PasswordTeam,true);
 		$criteria->compare('PageTeam',$this->PageTeam,true);
 		$criteria->compare('PhoneTeam',$this->PhoneTeam,true);
-		$criteria->compare('IdGame',$this->IdGame);
+		$criteria->compare('RowTeam',$this->RowTeam);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

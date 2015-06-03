@@ -1,27 +1,25 @@
 <?php
 
 /**
- * This is the model class for table "task".
+ * This is the model class for table "gameteam".
  *
- * The followings are the available columns in table 'task':
- * @property integer $IdTask
- * @property string $NameTask
- * @property string $DescriptionTask
- * @property integer $IdType
+ * The followings are the available columns in table 'gameteam':
+ * @property integer $IdGameTeam
+ * @property integer $IdGame
+ * @property integer $IdTeam
  *
  * The followings are the available model relations:
- * @property Code[] $codes
- * @property Grid[] $grs
- * @property Hint[] $hints
+ * @property Game $idGame
+ * @property Team $idTeam
  */
-class Task extends CActiveRecord
+class Gameteam extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'task';
+		return 'gameteam';
 	}
 
 	/**
@@ -32,12 +30,10 @@ class Task extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('IdTask', 'required'),
-			array('IdTask, IdType', 'numerical', 'integerOnly'=>true),
-			array('NameTask, DescriptionTask', 'safe'),
+			array('IdGame, IdTeam', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('IdTask, NameTask, DescriptionTask, IdType', 'safe', 'on'=>'search'),
+			array('IdGameTeam, IdGame, IdTeam', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -49,9 +45,8 @@ class Task extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'codes' => array(self::HAS_MANY, 'Code', 'IdTask'),
-			'grs' => array(self::HAS_MANY, 'Grid', 'IdTask'),
-			'hints' => array(self::HAS_MANY, 'Hint', 'IdTask'),
+			'idGame' => array(self::BELONGS_TO, 'Game', 'IdGame'),
+			'idTeam' => array(self::BELONGS_TO, 'Team', 'IdTeam'),
 		);
 	}
 
@@ -61,10 +56,9 @@ class Task extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'IdTask' => 'Id Task',
-			'NameTask' => 'Name Task',
-			'DescriptionTask' => 'Description Task',
-			'IdType' => 'Id Type',
+			'IdGameTeam' => 'Id Game Team',
+			'IdGame' => 'Id Game',
+			'IdTeam' => 'Id Team',
 		);
 	}
 
@@ -86,10 +80,9 @@ class Task extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('IdTask',$this->IdTask);
-		$criteria->compare('NameTask',$this->NameTask,true);
-		$criteria->compare('DescriptionTask',$this->DescriptionTask,true);
-		$criteria->compare('IdType',$this->IdType);
+		$criteria->compare('IdGameTeam',$this->IdGameTeam);
+		$criteria->compare('IdGame',$this->IdGame);
+		$criteria->compare('IdTeam',$this->IdTeam);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -100,7 +93,7 @@ class Task extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Task the static model class
+	 * @return Gameteam the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

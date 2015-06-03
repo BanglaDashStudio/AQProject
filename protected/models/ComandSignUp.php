@@ -14,23 +14,22 @@ class ComandSignUp extends CFormModel
     {
         return array(
             array('username, password, passwordconfirm, phone, mail', 'required'),
-        //    array('rememberMe', 'boolean'),
+            /*array('mail','email','message'=>"email не корректен"),
+            array('phone','numerical','message'=>"телефон не корректен (+7=8)"),*/
             array('username, phone, mail', 'unique'),
             array('username, password, passwordconfirm, phone, mail, description', 'safe'),
-            array('mail','email'),
-            array('password, passwordconfirm', 'length', 'min' => 6),
-            array('password, passwordconfirm, login', 'length', 'max' => 25),
-            array('passwordconfirm','equation'),
+           /* array('password, passwordconfirm','length', 'min' => 6),
+            array('password, passwordconfirm, username', 'length', 'max' => 25),*/
+           // array('passwordconfirm','equation'),
         );
     }
 
     public function equation($attribute,$params)
     {
-        if(!$this->hasErrors()) {
-            if ($this->password != $this->passwordconfirm) {
-                $this->addError('passwordconfirm', 'Пароли не совпадают');
+            if ($this->password !== $this->passwordconfirm) {
+                $this->addError($attribute, 'Пароли не совпадают');
             }
-        }
+
     }
 
     public function attributeLabels()

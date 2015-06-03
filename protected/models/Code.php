@@ -7,6 +7,9 @@
  * @property integer $IdCode
  * @property integer $IdTask
  * @property integer $Cod
+ *
+ * The followings are the available model relations:
+ * @property Task $idTask
  */
 class Code extends CActiveRecord
 {
@@ -26,7 +29,6 @@ class Code extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('IdTask, Cod', 'required'),
 			array('IdTask, Cod', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -42,6 +44,7 @@ class Code extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'idTask' => array(self::BELONGS_TO, 'Task', 'IdTask'),
 		);
 	}
 
