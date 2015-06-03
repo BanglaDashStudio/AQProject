@@ -1,5 +1,6 @@
-<?php /* @var $this Controller */ ?>
+﻿<?php /* @var $this Controller */ ?>
 <!DOCTYPE html>
+<!--Аня пришла!-->
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
