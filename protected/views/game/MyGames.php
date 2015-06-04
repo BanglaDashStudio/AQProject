@@ -19,7 +19,7 @@
         ?>
 
     <div>
-        <?php echo "<a href=".Yii::app()->createUrl("game/Create").">Создать игру</a>";?>
+        <?php echo "<a href=".Yii::app()->createUrl("game/Create").">Создать новую игру</a>";?>
     </div>
 
 

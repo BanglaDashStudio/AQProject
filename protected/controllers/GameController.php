@@ -11,15 +11,17 @@ class GameController extends Controller
             if ($model->validate()) {
 
                 $game = new Game;
+
                 $game->NameGame=$model->NameGame;
                 $game->DescriptionGame=$model->DescriptionGame;
                 $game->StartGame=$model->StartGame;
+                $game->Date=$model->Date;
                 $game->FinishGame=$model->FinishGame;
                 $game->Comment=$model->Comment;
                 $game->IdTeam = Yii::app()->user->id;
 
                 if ($game->save()) {
-                    $this->redirect(Yii::app()->createUrl('game/MyGames'));
+                    $this->redirect(Yii::app()->createUrl('game/Tasks'));
                     return;
                 }else echo'bue';
             }else{
@@ -39,7 +41,7 @@ class GameController extends Controller
 
     public function actionMyGames()
     {
-        $gameList=Game::model()->findAllByAttributes(array('AcceptGame'=>'1')) ;
+        $gameList=Game::model()->findAllByAttributes(array('IdTeam'=>Yii::app()->user->id));
         $this->render('MyGames', array('model'=>$gameList));
     }
 
@@ -50,6 +52,13 @@ class GameController extends Controller
     }
 
 
+public function actionTasks()
+{
+
+    $model = new GameCreate;
+     $this->render('Tasks',array('model'=>$model));
+}
+
     public function actionEdit($idGame)
     {
         $modelGame = new Game;
@@ -59,11 +68,11 @@ class GameController extends Controller
             echo 'Ошибка';
             return;
         }
-        $modelGame-> name = $game->name;
-        $modelGame-> date = $game->date;
-        $modelGame-> z1= $game->z1;
-        $modelGame-> z2= $game->z2;
-        $modelGame-> z3= $game->z3;
+        $modelGame-> name = $game->NameGame;
+        $modelGame-> date = $game->DescriptionGame;
+        $modelGame-> StartGame= $game->StartGame;
+        $modelGame-> FinishGame= $game->FinishGame;
+        $modelGame-> Comment= $game->Comment;
 
         if(isset($_POST['ajax']) && $_POST['ajax']==='edit-form')
         {
@@ -78,11 +87,11 @@ class GameController extends Controller
 
             if($modelGame->validate())
             {
-                $game->name = $_POST['Game']['name'];
-                $game->date = $_POST['Game']['date'];
-                $game->z1 = $_POST['Game']['z1'];
-                $game->z2 = $_POST['Game']['z2'];
-                $game->z3 = $_POST['Game']['z3'];
+                $game->NameGame = $_POST['Game']['NameGame'];
+                $game->DescriptionGame = $_POST['Game']['DescriptionGame'];
+                $game->StartGame = $_POST['Game']['StartGame'];
+                $game->FinishGame = $_POST['Game']['FinishGame'];
+                $game->Comment = $_POST['Game']['Comment'];
 
                 if($game->save()) {
                     $this->render('Edit', array('Game' => $modelGame));

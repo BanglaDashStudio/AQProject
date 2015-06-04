@@ -1,76 +1,80 @@
 <?php
 /* @var $this GameController */
-/* @var $model Game */
+/* @var $model GameCreate */
 /* @var $form CActiveForm */
 ?>
 
 <div class="form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'game-Create-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// See class documentation of CActiveForm for details on this,
-	// you need to use the performAjaxValidation()-method described there.
-	'enableAjaxValidation'=>false,
-)); ?>
+    <?php $form=$this->beginWidget('CActiveForm', array(
+        'id'=>'game-Create-form',
+        // Please note: When you enable ajax validation, make sure the corresponding
+        // controller action is handling ajax validation correctly.
+        // See class documentation of CActiveForm for details on this,
+        // you need to use the performAjaxValidation()-method described there.
+        'enableAjaxValidation'=>false,
+    )); ?>
 
-	<p class="note"><span class="required">*</span> Обязательные поля.</p>
+    <?php echo $form->errorSummary($model); ?>
 
-	<?php echo $form->errorSummary($model); ?>
+    <div class="row">
+        <?php echo $form->labelEx($model,'Название игры'); ?>
+        <?php echo $form->textField($model,'NameGame'); ?>
+        <?php echo $form->error($model,'NameGame'); ?>
+    </div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'Название'); ?>
-		<?php echo $form->textField($model,'name'); ?>
-		<?php echo $form->error($model,'name'); ?>
-	</div>
+    <div class="row">
+        <?php echo $form->labelEx($model,'Описание, допы'); ?>
+        <?php echo $form->textField($model,'DescriptionGame'); ?>
+        <?php echo $form->error($model,'DescriptionGame'); ?>
+    </div>
 
     <div class="row">
         <?php echo $form->labelEx($model,'Дата'); ?>
+
         <?php
-        $this->widget('zii.widgets.jui.CJuiDatePicker', array
-        (
-            'name'=>'ModelName[date]', // the name of the field
+        $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+            'name'=>'Date',
+            'model' => $model,
             'language'=>'ru',
-            'value'=>($model->date ? date('d.m.Y', $model->date) : ''),  // pre-fill the value
+            'value'=>($model->Date ? date('yy-mm-dd', $model->Date) : ''),
             'options'=>array
             (
                 'showAnim'=>'fold',
-                'dateFormat'=>'dd.mm.yy',  // optional Date formatting
+                'dateFormat'=>'yy-mm-dd',
+                //'timeFormat' => 'hh:mm:tt',
                 'debug'=>false,
             ),
-            'htmlOptions'=>array
-            (
-                'style'=>'height:20px;'
-            ),
-        ));
+            'htmlOptions'=>array('style'=>'height:20px;'), ));
         ?>
-        <?php echo $form->error($model,'date'); ?>
+        <?php echo $form->error($model,'Date'); ?>
     </div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'Задание 1'); ?>
-		<?php echo $form->textField($model,'z1'); ?>
-		<?php echo $form->error($model,'z1'); ?>
-	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'Задание 2'); ?>
-		<?php echo $form->textField($model,'z2'); ?>
-		<?php echo $form->error($model,'z2'); ?>
-	</div>
+    <div class="row">
+        <?php echo $form->labelEx($model,'Время начала'); ?>
+        <?php echo $form->textField($model,'StartGame'); ?>
+        <?php echo $form->error($model,'StartGame'); ?>
+    </div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'Задание 3'); ?>
-		<?php echo $form->textField($model,'z3'); ?>
-		<?php echo $form->error($model,'z3'); ?>
-	</div>
+    <div class="row">
+        <?php echo $form->labelEx($model,'Время завершения'); ?>
+        <?php echo $form->textField($model,'FinishGame'); ?>
+        <?php echo $form->error($model,'FinishGame'); ?>
+    </div>
+
+    <div class="row">
+        <?php echo $form->labelEx($model,'Комменарии (если хотите)'); ?>
+        <?php echo $form->textField($model,'Comment'); ?>
+        <?php echo $form->error($model,'Comment'); ?>
+    </div>
 
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Сохранить'); ?>
-	</div>
 
-<?php $this->endWidget(); ?>
+    <div class="row buttons">
+        <?php echo CHtml::submitButton('Сохранить'); ?>
+    </div>
+
+    <?php $this->endWidget(); ?>
 
 </div><!-- form -->

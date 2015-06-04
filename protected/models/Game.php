@@ -39,6 +39,7 @@ class Game extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('NameGame', 'required'),
+            array('Date', 'date', 'format'=>'yy-mm-dd'),
 			array('IdType, AcceptGame, IdTeam', 'numerical', 'integerOnly'=>true),
 			array('DescriptionGame, StartGame, FinishGame, Comment', 'safe'),
 			// The following rule is used by search().

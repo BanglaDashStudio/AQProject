@@ -23,13 +23,33 @@
 		<?php echo $form->error($model,'NameGame'); ?>
 	</div>
 
-
-
 	<div class="row">
-		<?php echo $form->labelEx($model,'Описание'); ?>
+		<?php echo $form->labelEx($model,'Описание, допы'); ?>
 		<?php echo $form->textField($model,'DescriptionGame'); ?>
 		<?php echo $form->error($model,'DescriptionGame'); ?>
 	</div>
+
+    <div class="row">
+        <?php echo $form->labelEx($model,'Дата'); ?>
+
+        <?php
+        $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                'name'=>'Date',
+                'model' => $model,
+                'language'=>'ru',
+                'value'=>($model->Date ? date('yy-mm-dd', $model->Date) : ''),
+                'options'=>array
+                (
+                      'showAnim'=>'fold',
+                      'dateFormat'=>'yy-mm-dd',
+                    //'timeFormat' => 'hh:mm:tt',
+                      'debug'=>false,
+                    ),
+                'htmlOptions'=>array('style'=>'height:20px;'), ));
+        ?>
+        <?php echo $form->error($model,'Date'); ?>
+</div>
+
 
 <div class="row">
     <?php echo $form->labelEx($model,'Время начала'); ?>
@@ -44,12 +64,10 @@
 </div>
 
     <div class="row">
-        <?php echo $form->labelEx($model,'Комменарий (если хотите)'); ?>
+        <?php echo $form->labelEx($model,'Комменарии (если хотите)'); ?>
         <?php echo $form->textField($model,'Comment'); ?>
         <?php echo $form->error($model,'Comment'); ?>
     </div>
-
-
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Сохранить'); ?>
