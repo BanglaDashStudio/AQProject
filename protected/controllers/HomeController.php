@@ -4,6 +4,7 @@ class HomeController extends Controller
 {
 
 	public function actionIndex(){
+        //echo Yii::app()->user->role;
         $this->render('index');
     }
 

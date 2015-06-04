@@ -16,6 +16,7 @@ class GameController extends Controller
                 $game->StartGame=$model->StartGame;
                 $game->FinishGame=$model->FinishGame;
                 $game->Comment=$model->Comment;
+                $game->IdTeam = Yii::app()->user->id;
 
                 if ($game->save()) {
                     $this->redirect(Yii::app()->createUrl('game/MyGames'));

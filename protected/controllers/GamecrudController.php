@@ -37,7 +37,7 @@ class GamecrudController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+                'roles'=>array('admin'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -71,7 +71,7 @@ class GamecrudController extends Controller
 		{
 			$model->attributes=$_POST['Game'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('view','id'=>$model->IdGame));
 		}
 
 		$this->render('create',array(
@@ -95,10 +95,11 @@ class GamecrudController extends Controller
 		{
 			$model->attributes=$_POST['Game'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('view','id'=>$model->IdGame));
 		}
 
-		$this->render('update',array('model'=>$model,
+		$this->render('update',array(
+			'model'=>$model,
 		));
 	}
 

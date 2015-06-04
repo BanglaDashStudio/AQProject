@@ -38,11 +38,18 @@ return array(
 	// application components
 	'components'=>array(
 
+        'authManager' => array(
+            // Будем использовать свой менеджер авторизации
+            'class' => 'PhpAuthManager',
+            // Роль по умолчанию. Все, кто не админы, модераторы и юзеры — гости.
+            'defaultRoles' => array('guest'),
+        ),
+
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
             'loginUrl'=>array('auth/'),
-           // 'class' => 'WebUser',
+            'class' => 'WebUser',
             ),
 
 		// uncomment the following to enable URLs in path-format

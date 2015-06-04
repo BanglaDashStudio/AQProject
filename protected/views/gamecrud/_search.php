@@ -1,5 +1,5 @@
 <?php
-/* @var $this GameeditController */
+/* @var $this GamecrudController */
 /* @var $model Game */
 /* @var $form CActiveForm */
 ?>
@@ -32,11 +32,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'Date'); ?>
-		<?php echo $form->textField($model,'Date'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'StartGame'); ?>
 		<?php echo $form->textField($model,'StartGame'); ?>
 	</div>
@@ -54,6 +49,11 @@
 	<div class="row">
 		<?php echo $form->label($model,'AcceptGame'); ?>
 		<?php echo $form->textField($model,'AcceptGame'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'IdTeam'); ?>
+		<?php echo $form->textField($model,'IdTeam'); ?>
 	</div>
 
 	<div class="row buttons">

@@ -21,7 +21,7 @@ class AdminController extends Controller
         return array(
             array('allow',  // allow all users to perform 'index' and 'view' actions
                 // TODO: тупое решение с правами админа, лучше изменить
-                'users'=>array('admin'),
+                'roles'=>array('admin'),
             ),
 
             array('deny',  // deny all users

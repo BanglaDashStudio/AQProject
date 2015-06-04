@@ -116,7 +116,7 @@ class AuthController extends Controller
 	{
 		// return the filter configuration for this controller, e.g.:
         return array(
-         //   'accessControl',
+            'accessControl',
         );
 	}
 /*

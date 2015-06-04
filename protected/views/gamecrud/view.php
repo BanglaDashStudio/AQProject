@@ -1,5 +1,5 @@
 <?php
-/* @var $this GameeditController */
+/* @var $this GamecrudController */
 /* @var $model Game */
 
 $this->breadcrumbs=array(
@@ -25,10 +25,10 @@ $this->menu=array(
 		'NameGame',
 		'DescriptionGame',
 		'IdType',
-		'Date',
 		'StartGame',
 		'FinishGame',
 		'Comment',
 		'AcceptGame',
+		'IdTeam',
 	),
 )); ?>

@@ -1,5 +1,5 @@
 <?php
-/* @var $this TeamController */
+/* @var $this TeamcrudController */
 /* @var $model Team */
 
 $this->breadcrumbs=array(
@@ -28,6 +28,6 @@ $this->menu=array(
 		'PasswordTeam',
 		'PageTeam',
 		'PhoneTeam',
-		'IdGame',
+		'RowTeam',
 	),
 )); ?>

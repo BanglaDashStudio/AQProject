@@ -1,5 +1,5 @@
 <?php
-/* @var $this TeamController */
+/* @var $this TeamcrudController */
 /* @var $model Team */
 
 $this->breadcrumbs=array(

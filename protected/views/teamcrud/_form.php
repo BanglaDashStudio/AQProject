@@ -1,5 +1,5 @@
 <?php
-/* @var $this TeamController */
+/* @var $this TeamcrudController */
 /* @var $model Team */
 /* @var $form CActiveForm */
 ?>
@@ -18,12 +18,6 @@
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'IdTeam'); ?>
-		<?php echo $form->textField($model,'IdTeam'); ?>
-		<?php echo $form->error($model,'IdTeam'); ?>
-	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'NameTeam'); ?>
@@ -62,9 +56,9 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'IdGame'); ?>
-		<?php echo $form->textField($model,'IdGame'); ?>
-		<?php echo $form->error($model,'IdGame'); ?>
+		<?php echo $form->labelEx($model,'RowTeam'); ?>
+		<?php echo $form->textField($model,'RowTeam'); ?>
+		<?php echo $form->error($model,'RowTeam'); ?>
 	</div>
 
 	<div class="row buttons">

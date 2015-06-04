@@ -1,5 +1,5 @@
 <?php
-/* @var $this TeamController */
+/* @var $this TeamcrudController */
 /* @var $model Team */
 /* @var $form CActiveForm */
 ?>
@@ -47,8 +47,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'IdGame'); ?>
-		<?php echo $form->textField($model,'IdGame'); ?>
+		<?php echo $form->label($model,'RowTeam'); ?>
+		<?php echo $form->textField($model,'RowTeam'); ?>
 	</div>
 
 	<div class="row buttons">

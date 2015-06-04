@@ -1,6 +1,6 @@
 <?php
 
-class TeamController extends Controller
+class TeamcrudController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -37,7 +37,7 @@ class TeamController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+                'roles'=>array('admin'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),

@@ -7,7 +7,7 @@
  */
 class UserIdentity extends CUserIdentity
 {
-    protected $_id;
+    protected $_id = 1;
 
     /**
 	 * Authenticates a user.
@@ -19,23 +19,19 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate()
 	{
-        if($this->username == 'admin' && $this->password == 'admin')
-            return !self::ERROR_NONE;
-
         $modelIn=Team::model()->findByAttributes(array('NameTeam' => $this->username));
-
         if($modelIn == NULL)
             $this->errorCode=self::ERROR_USERNAME_INVALID;
         elseif(!CPasswordHelper::verifyPassword($this->password, $modelIn->PasswordTeam))
             $this->errorCode=self::ERROR_PASSWORD_INVALID;
         else {
             $this->errorCode = self::ERROR_NONE;
-            //$this->_id = $modelIn->IdTeam;
+            $this->_id = $modelIn->IdTeam;
         }
         return !$this->errorCode;
 	}
-/*
+
     public function getId(){
         return $this->_id;
-    }*/
+    }
 }

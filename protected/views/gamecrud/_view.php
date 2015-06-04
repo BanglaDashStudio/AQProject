@@ -1,5 +1,5 @@
 <?php
-/* @var $this GameeditController */
+/* @var $this GamecrudController */
 /* @var $data Game */
 ?>
 
@@ -21,10 +21,6 @@
 	<?php echo CHtml::encode($data->IdType); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Date')); ?>:</b>
-	<?php echo CHtml::encode($data->Date); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('StartGame')); ?>:</b>
 	<?php echo CHtml::encode($data->StartGame); ?>
 	<br />
@@ -33,13 +29,17 @@
 	<?php echo CHtml::encode($data->FinishGame); ?>
 	<br />
 
-	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Comment')); ?>:</b>
 	<?php echo CHtml::encode($data->Comment); ?>
 	<br />
 
+	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('AcceptGame')); ?>:</b>
 	<?php echo CHtml::encode($data->AcceptGame); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('IdTeam')); ?>:</b>
+	<?php echo CHtml::encode($data->IdTeam); ?>
 	<br />
 
 	*/ ?>

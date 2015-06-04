@@ -1,18 +1,18 @@
 <?php
-/* @var $this GameeditController */
+/* @var $this TeamcrudController */
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Games',
+	'Teams',
 );
 
 $this->menu=array(
-	array('label'=>'Create Game', 'url'=>array('create')),
-	array('label'=>'Manage Game', 'url'=>array('admin')),
+	array('label'=>'Create Team', 'url'=>array('create')),
+	array('label'=>'Manage Team', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Games</h1>
+<h1>Teams</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

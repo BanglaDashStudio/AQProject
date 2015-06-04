@@ -1,5 +1,5 @@
 <?php
-/* @var $this TeamController */
+/* @var $this TeamcrudController */
 /* @var $data Team */
 ?>
 
@@ -34,8 +34,8 @@
 	<br />
 
 	<?php /*
-	<b><?php echo CHtml::encode($data->getAttributeLabel('IdGame')); ?>:</b>
-	<?php echo CHtml::encode($data->IdGame); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('RowTeam')); ?>:</b>
+	<?php echo CHtml::encode($data->RowTeam); ?>
 	<br />
 
 	*/ ?>

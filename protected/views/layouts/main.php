@@ -5,6 +5,9 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 	<!-- blueprint CSS framework -->
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection">
@@ -55,7 +58,7 @@
                 array('label'=>'Личный кабинет', 'url'=>array('/pR/'),'visible'=>!Yii::app()->user->isGuest),
                 array('label'=>'Создать игру', 'url'=>array('/game/MyGames'), 'visible'=>!Yii::app()->user->isGuest),
                 array('label'=>'ИГРАТЬ!!!!', 'url'=>array('/game/Play'), 'visible'=>!Yii::app()->user->isGuest),
-                array('label'=>'Кабинет администратора', 'url'=>array('/admin/'), 'visible'=>Yii::app()->user->name=="admin"),
+                array('label'=>'Кабинет администратора', 'url'=>array('/admin/'), 'visible'=>Yii::app()->user->isAdmin()),
                 array('label'=>'Выход ('.Yii::app()->user->name.')', 'url'=>array('/auth/logout'), 'visible'=>!Yii::app()->user->isGuest),
             ),
 		)); ?>

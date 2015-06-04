@@ -6,20 +6,42 @@
  * Time: 22:42
  */
 
-class WebUser extends CWebUser {/*
+class WebUser extends CWebUser {
     private $_model = null;
+
+    public function isAdmin() {
+        if($this->getRole()==='admin')
+            return true;
+        else
+            return false;
+    }
+
+    public function isUser() {
+        if($this->getRole()==='user')
+            return true;
+        elseif($this->getRole()==='admin')
+            return true;
+        else
+            return false;
+    }
 
     function getRole() {
         if($user = $this->getModel()){
-            // в таблице User есть поле role
-            return $user->role;
+            if($user->RowTeam == 1) {
+                return 'admin';
+            } elseif($user->RowTeam == 0) {
+                return 'user';
+            } else {
+                return 'guest';
+            }
         }
     }
 
     private function getModel(){
         if (!$this->isGuest && $this->_model === null){
-            $this->_model = Team::model()->findByPk($this->id, array('select' => 'RoleTeam'));
+            $this->_model = Team::model()->findByPk($this->id, array('select' => 'RowTeam'));
         }
+
         return $this->_model;
-    }*/
+    }
 }
