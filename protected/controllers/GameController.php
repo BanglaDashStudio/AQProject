@@ -103,7 +103,7 @@ class GameController extends Controller
 
             }
         }
-    }    
+    }
 
     // редактирование заданий
     public function actionEditTask($idTask, $idG)
