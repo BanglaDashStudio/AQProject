@@ -12,16 +12,15 @@ class AdminController extends Controller
 		$this->render('gamemanage');
 	}
 
-    public function actionTeamchange()
+    public function actionGamechange()
     {
-        var_dump($_POST);
-
         $gameList=Game::model()->findAll();
         $gameArray = array();
         $gameActualList = Game::model()->findByAttributes(array('AcceptGame'=>1));
 
         foreach ($gameList as $item){
-            array_push($gameArray, $item->NameGame);
+            //array_push($gameArray, $item->NameGame);
+            $gameArray[$item->IdGame] = $item->NameGame;
         }
 
         if(!$gameActualList == NULL) {
@@ -30,12 +29,19 @@ class AdminController extends Controller
             $gameActual = 'На сегодня игр нет';
         }
 
-        /*if(isset()){
+        $this->render('gamechange', array('gameArray'=>$gameArray, 'gameActual'=>$gameActual));
+    }
 
+    public function actionChangeId()
+    {
+        if (isset($_POST['listname'])){
+            $gameActual = Game::model()->findByAttributes(array('AcceptGame'=>1));
+            $gameActual->AcceptGame = 0;
+            if($gameActual->save()){
+                echo 'dsv';
+            }
 
-        }*/
-
-        $this->render('teamchange', array('gameArray'=>$gameArray, 'gameActual'=>$gameActual));
+        }
     }
 
     public function actionIndex()

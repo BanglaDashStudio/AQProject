@@ -1,6 +1,7 @@
 <?php
 /* @var $this AdminController */
 /* @var $this gameArray */
+/* @var $this gameArray */
 $this->breadcrumbs=array(
     'Главная админка'=>array('index'),
     'Управление играми',
@@ -15,22 +16,20 @@ $this->breadcrumbs=array(
 
 <div class="form">
     <form
-            action="<?php echo Yii::app()->createUrl("Admin/Teamchange");?>"
-            method="POST"
-            name="FormGame"
-        >
+            action="<?php echo Yii::app()->createUrl("Admin/ChangeId");?>"
+            method="post"
+            name="FormGame">
 
     <?php
-        echo CHtml::dropDownList('listname', 0,
-        $gameArray);
+        echo CHtml::dropDownList('listname', $gameActual, $gameArray, $htmlOptions=array());
     ?>
+        <div class="row buttons">
+            <input type="submit" value="Сделать игрой недели">
+
+            </input>
+        </div>
+
     </form>
-
-    <div class="row buttons">
-        <input type="submit" value="Сделать игрой недели">
-
-        </input>
-    </div>
 
 </div>
 
