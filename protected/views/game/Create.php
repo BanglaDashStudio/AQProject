@@ -29,12 +29,16 @@
 		<?php echo $form->error($model,'DescriptionGame'); ?>
 	</div>
 
-    <div class="row">
-        <?php echo $form->labelEx($model,'Date'); ?>
-        <?php echo $form->textField($model,'Date'); ?>
-        <?php echo $form->error($model,'Date'); ?>
-    </div>
-
+    <?php echo $form->labelEx($model,'Date'); ?>
+    <?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+        'name' => 'Date',
+        'model' => $model,
+        'attribute' => 'Date',
+        'language' => 'ru',
+        'options' => array(
+            'showAnim' => 'fold',
+        ),
+    ));?>
 
 <div class="row">
     <?php echo $form->labelEx($model,'StartGame'); ?>

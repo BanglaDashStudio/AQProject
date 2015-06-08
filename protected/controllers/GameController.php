@@ -2,6 +2,8 @@
 
 class GameController extends Controller
 {
+
+    // создание игры
 	public function actionCreate()
     {
         $model = new GameCreate;
@@ -54,7 +56,6 @@ class GameController extends Controller
         $this->render('MyGames', array('model'=>$game-NameGame));
     }
 
-
     // добавление заданий
     public function actionTasks($idG)
     {
@@ -100,8 +101,11 @@ class GameController extends Controller
                     }
                 }
 
+            }else {
+                $this->redirect(Yii::app()->createUrl('game/Tasks', array('idG' => $idG)));
+                return;
             }
-        }
+        }$this->redirect(Yii::app()->createUrl('game/Tasks', array('idG' => $idG)));
     }
 
     // редактирование заданий
