@@ -12,7 +12,8 @@ class TaskCreateForm extends CFormModel
     public function rules()
     {
         return array(
-            array('task, tip, code', 'required'),
+            array('task', 'required'),
+            array('taskname, task, tip, code', 'safe', 'on'=>'search'),
         );
     }
 

@@ -40,7 +40,7 @@ class GameCreate extends CFormModel
             'Date' =>'дата',
             'StartGame' => 'Начало',
             'FinishGame' => 'Завершение',
-            'Comment' => 'комментарий',
+            'Comment' => 'комментарий (если хотите)',
         );
     }
  /*

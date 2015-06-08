@@ -28,7 +28,7 @@ class Task extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('IdTask, IdGame', 'required'),
+			array('IdGame, DescriptionTask', 'required'),
 			array('IdTask, IdGame, IdType', 'numerical', 'integerOnly'=>true),
 			array('NameTask, DescriptionTask', 'safe'),
 			// The following rule is used by search().

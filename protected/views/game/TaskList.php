@@ -9,7 +9,7 @@
         foreach ($TaskList as $Task) {
 
             echo "<li>" ;
-            echo $Task->taskname;
+            echo $Task->DescriptionTask;
             echo "<a href=\"" . Yii::app()->createUrl("game/EditTask", array("id" => $Task->IdTask)) . "\">";
             echo CHtml::submitButton('Редактировать');
             echo "</a>";

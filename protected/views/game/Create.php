@@ -14,42 +14,43 @@
 	// you need to use the performAjaxValidation()-method described there.
 	'enableAjaxValidation'=>false,
 )); ?>
+    <p class="note">Поля со <span class="required">*</span> обязательны для заполнения.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Название игры'); ?>
+		<?php echo $form->labelEx($model,'NameGame'); ?>
 		<?php echo $form->textField($model,'NameGame'); ?>
 		<?php echo $form->error($model,'NameGame'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Описание, допы'); ?>
+		<?php echo $form->labelEx($model,'DescriptionGame'); ?>
 		<?php echo $form->textField($model,'DescriptionGame'); ?>
 		<?php echo $form->error($model,'DescriptionGame'); ?>
 	</div>
 
     <div class="row">
-        <?php echo $form->labelEx($model,'Дата'); ?>
+        <?php echo $form->labelEx($model,'Date'); ?>
         <?php echo $form->textField($model,'Date'); ?>
         <?php echo $form->error($model,'Date'); ?>
     </div>
 
 
 <div class="row">
-    <?php echo $form->labelEx($model,'Время начала'); ?>
+    <?php echo $form->labelEx($model,'StartGame'); ?>
     <?php echo $form->textField($model,'StartGame'); ?>
     <?php echo $form->error($model,'StartGame'); ?>
 </div>
 
 <div class="row">
-    <?php echo $form->labelEx($model,'Время завершения'); ?>
+    <?php echo $form->labelEx($model,'FinishGame'); ?>
     <?php echo $form->textField($model,'FinishGame'); ?>
     <?php echo $form->error($model,'FinishGame'); ?>
 </div>
 
     <div class="row">
-        <?php echo $form->labelEx($model,'Комменарии (если хотите)'); ?>
+        <?php echo $form->labelEx($model,'Comment'); ?>
         <?php echo $form->textField($model,'Comment'); ?>
         <?php echo $form->error($model,'Comment'); ?>
     </div>

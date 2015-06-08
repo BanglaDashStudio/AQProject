@@ -1,6 +1,7 @@
 <?php
 /* @var $this GameController */
 /* @var $TaskCreate TaskCreateForm*/
+/* @var $Task TaskCreateForm*/
 ?>
 
 
