@@ -5,14 +5,10 @@
  *
  * The followings are the available columns in table 'task':
  * @property integer $IdTask
+ * @property integer $IdGame
  * @property string $NameTask
  * @property string $DescriptionTask
  * @property integer $IdType
- *
- * The followings are the available model relations:
- * @property Code[] $codes
- * @property Grid[] $grs
- * @property Hint[] $hints
  */
 class Task extends CActiveRecord
 {
@@ -32,12 +28,12 @@ class Task extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('IdTask', 'required'),
-			array('IdTask, IdType', 'numerical', 'integerOnly'=>true),
+			array('IdTask, IdGame', 'required'),
+			array('IdTask, IdGame, IdType', 'numerical', 'integerOnly'=>true),
 			array('NameTask, DescriptionTask', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('IdTask, NameTask, DescriptionTask, IdType', 'safe', 'on'=>'search'),
+			array('IdTask, IdGame, NameTask, DescriptionTask, IdType', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -49,9 +45,6 @@ class Task extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'codes' => array(self::HAS_MANY, 'Code', 'IdTask'),
-			'grs' => array(self::HAS_MANY, 'Grid', 'IdTask'),
-			'hints' => array(self::HAS_MANY, 'Hint', 'IdTask'),
 		);
 	}
 
@@ -62,8 +55,9 @@ class Task extends CActiveRecord
 	{
 		return array(
 			'IdTask' => 'Id Task',
-			'NameTask' => 'Name Task',
-			'DescriptionTask' => 'Description Task',
+			'IdGame' => 'Id Game',
+			'NameTask' => 'Имя или номер задания',
+			'DescriptionTask' => 'Задание',
 			'IdType' => 'Id Type',
 		);
 	}
@@ -87,6 +81,7 @@ class Task extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('IdTask',$this->IdTask);
+		$criteria->compare('IdGame',$this->IdGame);
 		$criteria->compare('NameTask',$this->NameTask,true);
 		$criteria->compare('DescriptionTask',$this->DescriptionTask,true);
 		$criteria->compare('IdType',$this->IdType);

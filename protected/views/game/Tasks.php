@@ -1,20 +1,13 @@
 <?php
 /* @var $this GameController */
-/* @var $form CActiveForm */
+/* @var $TaskCreate TaskCreateForm*/
 ?>
 
-<div class="form">
 
     <h1>Добавляйте задания</h1>
 
-    <div class="row">
-        <?php echo $form->labelEx($model,'Задание'); ?>
-        <?php echo $form->textField($model,'Task'); ?>
-        <?php echo $form->error($model,'Task'); ?>
-    </div>
+    <?php $this->renderPartial('TaskList', array('TaskList'=>$Task, 'idG' => $idG) ); ?>
 
-    <div class="row buttons">
-        <?php echo CHtml::submitButton('Записать'); ?>
-    </div>
+    <?php $this->renderPartial('TaskCreate', array('model'=>$TaskCreate, 'idG' => $idG)); ?>
 
-</div><!-- form -->
+

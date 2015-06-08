@@ -7,6 +7,7 @@ class GameController extends Controller
         $model = new GameCreate;
 
         if (isset($_POST['GameCreate'])) {
+
             $model->attributes = $_POST['GameCreate'];
             if ($model->validate()) {
 
@@ -21,7 +22,7 @@ class GameController extends Controller
                 $game->IdTeam = Yii::app()->user->id;
 
                 if ($game->save()) {
-                    $this->redirect(Yii::app()->createUrl('game/Tasks'));
+                    $this->redirect(Yii::app()->createUrl('game/Tasks', array('idG' =>$game->IdGame)));
                     return;
                 }else echo'bue';
             }else{
@@ -33,18 +34,21 @@ class GameController extends Controller
 
     }
 
+    // текущая игра
 	public function actionPlay()
 	{
         $gameList=Game::model()->findAllByAttributes(array('AcceptGame'=>'1')) ;
 		$this->render('Play', array('model'=>$gameList));
 	}
 
+   //список игр 1 команды
     public function actionMyGames()
     {
         $gameList=Game::model()->findAllByAttributes(array('IdTeam'=>Yii::app()->user->id));
         $this->render('MyGames', array('model'=>$gameList));
     }
 
+    // для ссылок на игры
     public function actionListGame($idGame)
     {
         $game = Game::model()->findById($idGame);
@@ -52,14 +56,55 @@ class GameController extends Controller
     }
 
 
-public function actionTasks()
-{
+    // добавление заданий
+    public function actionTasks($idG)
+    {
+        if (!isset($idG))
+            return;
 
-    $model = new GameCreate;
-     $this->render('Tasks',array('model'=>$model));
-}
+        $model = new TaskCreateForm;
+        $task =  Task::model()->findAllByAttributes(array('IdGame'=>$idG));
+        $this->render('Tasks',array('TaskCreate'=>$model, 'Task' => $task, 'idG'=>$idG));
+    }
 
-    public function actionEdit($idGame)
+   //Добавление одного задания
+    public function actionTaskCreate($idG)
+    {
+
+        if(isset($_POST['TaskCreateForm']))
+        {
+            $model = new TaskCreateForm;
+
+            $model->attributes = $_POST['TaskCreateForm'];
+            if ($model->validate()) {
+
+                $task = new Task;
+
+                $task->NameTask = $model->taskname;
+                $task->DescriptionTask = $model->task;
+                $task->IdGame = $idG;
+
+                if ($task->save()) {
+
+                    $code = new Code;
+
+                    $code->Cod = $model->code;
+                    $code->idTask= $task->IdTask;
+
+                    if ($code->save())
+                        $this->redirect(Yii::app()->createUrl('game/Tasks', array('idG'=>$idG)));
+                }
+            }
+
+        }
+
+    }
+
+    // редактирование заданий
+    public function actionEditTask($idTask, $idG)
+    {}
+  // редактирвоание игры
+    public function actionEditGame($idGame)
     {
         $modelGame = new Game;
         $game = Game::model()->findById($idGame);

@@ -31,24 +31,9 @@
 
     <div class="row">
         <?php echo $form->labelEx($model,'Дата'); ?>
-
-        <?php
-        $this->widget('zii.widgets.jui.CJuiDatePicker', array(
-                'name'=>'Date',
-                'model' => $model,
-                'language'=>'ru',
-                'value'=>($model->Date ? date('yy-mm-dd', $model->Date) : ''),
-                'options'=>array
-                (
-                      'showAnim'=>'fold',
-                      'dateFormat'=>'yy-mm-dd',
-                    //'timeFormat' => 'hh:mm:tt',
-                      'debug'=>false,
-                    ),
-                'htmlOptions'=>array('style'=>'height:20px;'), ));
-        ?>
+        <?php echo $form->textField($model,'Date'); ?>
         <?php echo $form->error($model,'Date'); ?>
-</div>
+    </div>
 
 
 <div class="row">

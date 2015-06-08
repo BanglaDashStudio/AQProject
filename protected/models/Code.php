@@ -56,7 +56,7 @@ class Code extends CActiveRecord
 		return array(
 			'IdCode' => 'Id Code',
 			'IdTask' => 'Id Task',
-			'Cod' => 'Cod',
+			'Cod' => 'Код',
 		);
 	}
 

@@ -19,12 +19,12 @@ class GameCreate extends CFormModel
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('Date', 'date', 'format'=>'yy-mm-dd'),
+
             array('NameGame', 'required'),
-            array('DescriptionGame,  StartGame, FinishGame, Comment', 'safe'),
+            array('DescriptionGame,  StartGame, Date, FinishGame, Comment', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('NameGame, DescriptionGame,  Date, StartGame, FinishGame, Comment, AcceptGame', 'safe', 'on'=>'search'),
+            array('NameGame, Date, DescriptionGame,  Date, StartGame, FinishGame, Comment, AcceptGame', 'safe', 'on'=>'search'),
         );
 
 
@@ -43,7 +43,7 @@ class GameCreate extends CFormModel
             'Comment' => 'комментарий',
         );
     }
-
+ /*
     protected function beforeSave() {
         if(parent::beforeSave()) {
             $this->Date = strtotime($this->Date);
@@ -58,5 +58,5 @@ class GameCreate extends CFormModel
         $this->Date = $date;
         parent::afterFind();
     }
-
+*/
  }
