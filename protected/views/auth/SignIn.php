@@ -4,7 +4,7 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="form">
+<div class="form" >
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'comand-sign-in-SignIn-form',
@@ -19,13 +19,13 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username'); ?>
+		<?php echo $form->textField($model,'username', array('placeholder'=>'Крутое название')); ?>
 		<?php echo $form->error($model,'username'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->passwordField($model,'password'); ?>
+		<?php echo $form->passwordField($model,'password', array('placeholder'=>'Надёжный пароль')); ?>
 		<?php echo $form->error($model,'password'); ?>
 	</div>
 
