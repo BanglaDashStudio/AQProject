@@ -20,7 +20,7 @@ class TaskCreateForm extends CFormModel
     public function attributeLabels()
     {
         return array(
-            'taskname' => 'имя задания',
+            'taskname' => 'Имя задания',
             'task' => 'Задание',
             'tip' => 'Подсказка',
             'code' => 'Код',
