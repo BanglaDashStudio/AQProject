@@ -32,6 +32,12 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->labelEx($model,'Date'); ?>
+		<?php echo $form->textField($model,'Date'); ?>
+		<?php echo $form->error($model,'Date'); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->labelEx($model,'IdType'); ?>
 		<?php echo $form->textField($model,'IdType'); ?>
 		<?php echo $form->error($model,'IdType'); ?>

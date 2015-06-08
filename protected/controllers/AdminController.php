@@ -12,10 +12,37 @@ class AdminController extends Controller
 		$this->render('gamemanage');
 	}
 
-	public function actionIndex()
-	{
-		$this->render('index');
-	}
+    public function actionTeamchange()
+    {
+        var_dump($_POST);
+
+        $gameList=Game::model()->findAll();
+        $gameArray = array();
+        $gameActualList = Game::model()->findByAttributes(array('AcceptGame'=>1));
+
+        foreach ($gameList as $item){
+            array_push($gameArray, $item->NameGame);
+        }
+
+        if(!$gameActualList == NULL) {
+            $gameActual = $gameActualList->NameGame;
+        }else{
+            $gameActual = 'На сегодня игр нет';
+        }
+
+        /*if(isset()){
+
+
+        }*/
+
+        $this->render('teamchange', array('gameArray'=>$gameArray, 'gameActual'=>$gameActual));
+    }
+
+    public function actionIndex()
+    {
+        $this->render('index');
+    }
+
     public function accessRules()
     {
         return array(

@@ -31,7 +31,6 @@ class PRController extends Controller
 
         if(isset($_POST['PRPassword']))
         {
-            var_dump($_POST['PRPassword']);
             $modelPass->attributes=$_POST['PRPassword'];
             if($modelPass->validate())
             {
@@ -46,7 +45,6 @@ class PRController extends Controller
 
         if(isset($_POST['PRInfo']))
         {
-            var_dump($_POST['PRInfo']);
             $modelInfo->attributes=$_POST['PRInfo'];
             if($modelInfo->validate())
             {

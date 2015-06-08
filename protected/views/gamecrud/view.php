@@ -24,6 +24,7 @@ $this->menu=array(
 		'IdGame',
 		'NameGame',
 		'DescriptionGame',
+		'Date',
 		'IdType',
 		'StartGame',
 		'FinishGame',

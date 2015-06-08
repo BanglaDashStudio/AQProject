@@ -51,6 +51,11 @@
 		<?php echo $form->textField($model,'RowTeam'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->label($model,'IdGame'); ?>
+		<?php echo $form->textField($model,'IdGame'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>
 	</div>

@@ -17,6 +17,10 @@
 	<?php echo CHtml::encode($data->DescriptionGame); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Date')); ?>:</b>
+	<?php echo CHtml::encode($data->Date); ?>
+	<br />
+
 	<b><?php echo CHtml::encode($data->getAttributeLabel('IdType')); ?>:</b>
 	<?php echo CHtml::encode($data->IdType); ?>
 	<br />
@@ -29,11 +33,11 @@
 	<?php echo CHtml::encode($data->FinishGame); ?>
 	<br />
 
+	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Comment')); ?>:</b>
 	<?php echo CHtml::encode($data->Comment); ?>
 	<br />
 
-	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('AcceptGame')); ?>:</b>
 	<?php echo CHtml::encode($data->AcceptGame); ?>
 	<br />

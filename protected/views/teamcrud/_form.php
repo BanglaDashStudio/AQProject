@@ -61,6 +61,12 @@
 		<?php echo $form->error($model,'RowTeam'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->labelEx($model,'IdGame'); ?>
+		<?php echo $form->textField($model,'IdGame'); ?>
+		<?php echo $form->error($model,'IdGame'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

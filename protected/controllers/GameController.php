@@ -31,7 +31,6 @@ class GameController extends Controller
             }
         }
         $this->render('Create', array('model' => $model));
-
     }
 
     // текущая игра

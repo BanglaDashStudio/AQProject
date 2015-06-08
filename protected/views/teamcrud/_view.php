@@ -38,6 +38,10 @@
 	<?php echo CHtml::encode($data->RowTeam); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('IdGame')); ?>:</b>
+	<?php echo CHtml::encode($data->IdGame); ?>
+	<br />
+
 	*/ ?>
 
 </div>

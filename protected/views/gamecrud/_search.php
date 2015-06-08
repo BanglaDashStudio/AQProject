@@ -27,6 +27,11 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->label($model,'Date'); ?>
+		<?php echo $form->textField($model,'Date'); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model,'IdType'); ?>
 		<?php echo $form->textField($model,'IdType'); ?>
 	</div>

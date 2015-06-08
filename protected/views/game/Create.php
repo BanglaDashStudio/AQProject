@@ -14,9 +14,8 @@
 	// you need to use the performAjaxValidation()-method described there.
 	'enableAjaxValidation'=>false,
 )); ?>
-    <p class="note">Поля со <span class="required">*</span> обязательны для заполнения.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+    <?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'NameGame'); ?>

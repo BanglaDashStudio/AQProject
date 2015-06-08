@@ -29,5 +29,6 @@ $this->menu=array(
 		'PageTeam',
 		'PhoneTeam',
 		'RowTeam',
+		'IdGame',
 	),
 )); ?>
