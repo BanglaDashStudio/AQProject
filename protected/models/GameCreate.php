@@ -33,14 +33,14 @@ class GameCreate extends CFormModel
     public function attributeLabels()
     {
         return array(
-            'NameGame' => 'имя игры',
+            'NameGame' => 'Имя игры',
             'IdType' => 'тип',
             'IdTeam' => 'команда',
-            'DescriptionGame' => 'информация об игре',
-            'Date' =>'дата',
-            'StartGame' => 'Начало',
-            'FinishGame' => 'Завершение',
-            'Comment' => 'комментарий (если хотите)',
+            'DescriptionGame' => 'Информация об игре, допы',
+            'Date' =>'Дата',
+            'StartGame' => 'Время начала',
+            'FinishGame' => 'Время завершения',
+            'Comment' => 'Комментарий (если хотите)',
         );
     }
  /*
