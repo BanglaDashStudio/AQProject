@@ -5,8 +5,8 @@ $this->breadcrumbs=array(
 	'Game'=>array('/game'),
 	'Play',
 );
-
 ?>
+
 <h1>Скоро след. игра!</h1>
 
 <?php
@@ -20,7 +20,5 @@ $this->breadcrumbs=array(
 <div class="row buttons">
     <?php echo CHtml::submitButton('Подать завявку на игру!'); ?>
 </div>
-
-
 
 </p>
