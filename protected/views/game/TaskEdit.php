@@ -6,6 +6,8 @@
 
 <div class="form">
 
+    <!-- view для редактирования одного задания  -->
+
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'task-create-form-TaskEdit-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
