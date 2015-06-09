@@ -37,6 +37,7 @@
         'language' => 'ru',
         'options' => array(
             'showAnim' => 'fold',
+            'dateFormat'=>'yy-mm-dd',
         ),
     ));?>
 
