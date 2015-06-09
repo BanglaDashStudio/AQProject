@@ -75,6 +75,7 @@ class GameController extends Controller
             $model = new TaskCreateForm;
 
             $model->attributes = $_POST['TaskCreateForm'];
+
             if ($model->validate()) {
 
                 $task = new Task;

@@ -2,7 +2,20 @@
 /* @var $this TaskCreateFormController */
 /* @var $model TaskCreateForm */
 /* @var $form CActiveForm */
+
+Yii::app()->clientScript->registerScript('create_task', "
+$('.task-button').click(function(){
+	$('.task-form').toggle();
+	return false;
+});
+");
+
 ?>
+
+<?php
+echo CHtml::link('Добавить задание','#',array('class'=>'task-button')); ?>
+
+<div class="task-form" style="display: none">
 
 <div class="form">
 
@@ -15,8 +28,6 @@
 	'enableAjaxValidation'=>false,
     'action'=> $this->CreateUrl('/game/TaskCreate', array('idG'=>$idG)),
 )); ?>
-
-	<p class="note">Поля со <span class="required">*</span> обязательны для заполнения.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -48,6 +59,7 @@
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Добавить'); ?>
 	</div>
+</div>
 
 <?php $this->endWidget(); ?>
 
