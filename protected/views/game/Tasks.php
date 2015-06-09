@@ -1,6 +1,7 @@
 <?php
 /* @var $this GameController */
 /* @var $TaskCreate TaskCreateForm*/
+/* @var $GameCreate GameCreate*/
 /* @var $Task TaskCreateForm*/
 $this->breadcrumbs=array(
     'Список созданных игр'=>array('MyGames'),

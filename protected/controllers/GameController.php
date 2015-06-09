@@ -122,9 +122,7 @@ class GameController extends Controller
 
             //$model->attributes = $_POST['TaskCreateForm'];
 
-
-
-            $task = new Task;
+           $task = new Task;
 
             $task->IdGame = $idG;
             $task->NameTask = $_POST['TaskCreateForm']['taskname'];
@@ -160,96 +158,92 @@ class GameController extends Controller
     }
 
     // редактирование заданий
-    public function actionEditTask($idTask, $idG)
+    public function actionTaskEdit($IdTask, $idG)
     {
-        if(isset($_POST['TaskCreateForm']))
+       //найти задание, код и подсказку по id задания
+        $task = Task::model()->findByAttributes(array('IdTask'=>$IdTask));
+        $code = Code::model()->findByAttributes(array('IdTask'=>$IdTask));
+        $hint = Hint::model()->findByAttributes(array('IdTask'=>$IdTask));
+
+        if($task == null){
+            echo 'Ошибка';
+            return;
+        }
+
+        $model = new TaskCreateForm;
+        //записать данные которые есть сейчас
+        $model->taskname=$task->NameTask;
+        $model->task=$task->DescriptionTask;
+        $model->code=$code->Cod;
+        $model->tip=$hint->DescriptionHint;
+
+       // var_dump($_POST);
+        //return;
+
+        //если POST не пустой
+        if(isset($_POST['TaskEditForm']))
         {
-            $model = new TaskCreateForm;
+           // $model->attributes = $_POST['TaskEditForm'];
+                 // если прошла валидация
+            if ($model->validate())
+            {
+                //записать изменения
+                $task->NameTask = $_POST['TaskEditForm']['taskname'];
+                $task->DescriptionTask = $_POST['TaskEditForm']['task'];
+                $hint->DescriptionHint= $_POST['TaskEditForm']['tip'];
+                $code->Cod=$_POST['TaskEditForm']['code'];
 
-            $model->attributes = $_POST['TaskCreateForm'];
-            if ($model->validate()) {
-
-                $task =  Task::model()->findAllByAttributes(array('IdGame'=>$idG, 'IdTask'=>$idTask));
-
-                $task->NameTask = $model->taskname;
-                $task->DescriptionTask = $model->task;
-
-                if ($task->save()) {
-
-                    $code = Code::model()->findAllByAttributes(array('IdTask' => $idTask));
-                    $code->Cod = $model->code;
-
-                    if ($code->save()) {
+                if ($task->save() && $code->save() && $hint->save())
+                {
+                    // если всё сохранилось, открыть список заданий этой игры
                     $this->redirect(Yii::app()->createUrl('game/Tasks', array('idG' => $idG)));
                     return;
                  }
-                }
             }
         }
+        $this->render('TaskEdit',array('model'=>$model,'idG' => $idG));
     }
 
-  // редактирвоание игры
-    public function actionEditGame($idGame)
+    // редактирование информации об игре
+    public function actionGameEdit($idG)
     {
-        $modelGame = new GameCreate;
-        $game = Game::model()->findById($idGame);
+
+        $game = Game::model()->findByAttributes(array('IdGame'=>$idG));
 
         if($game == null){
             echo 'Ошибка';
             return;
         }
-        $modelGame-> name = $game->NameGame;
-        $modelGame-> date = $game->DescriptionGame;
-        $modelGame-> StartGame= $game->StartGame;
-        $modelGame-> FinishGame= $game->FinishGame;
-        $modelGame-> Comment= $game->Comment;
+        $model = new GameCreate;
 
-        if(isset($_POST['Game']))
+        $model->NameGame=$game->NameGame;
+        $model->DescriptionGame=$game->DescriptionGame;
+        $model->StartGame=$game->StartGame;
+        $model->FinishGame=$game->FinishGame;
+        $model->Date=$game->Date;
+        $model->Comment=$game->Comment;
+
+        if(isset($_POST['GameEditForm']))
         {
-             $modelGame-> attributes=$_POST['Game'];
+            $model->attributes = $_POST['GameEditForm'];
 
-            if($modelGame->validate())
+            if ($model->validate())
             {
-                $game->NameGame = $_POST['Game']['NameGame'];
-                $game->DescriptionGame = $_POST['Game']['DescriptionGame'];
-                $game->StartGame = $_POST['Game']['StartGame'];
-                $game->FinishGame = $_POST['Game']['FinishGame'];
-                $game->Comment = $_POST['Game']['Comment'];
+                $game->NameGame = $_POST['GameEditForm']['NameGame'];
+                $game->DescriptionGame = $_POST['GameEditForm']['DescriptionGame'];
+                $game->StartGame= $_POST['GameEditForm']['StartGame'];
+                $game->FinishGame= $_POST['GameEditForm']['FinishGame'];
+                $game->Date=$_POST['GameEditForm']['Date'];
+                $game->Comment= $_POST['GameEditForm']['Comment'];
 
-                if($game->save()) {
-                    $this->render('EditGame', array('Game' => $modelGame));
+                if ($game->save())
+                {
+                    $this->redirect(Yii::app()->createUrl('game/MyGames'));
                     return;
                 }
             }
         }
 
-        $this->render('EditGame', array('Game'=>$modelGame));
+        $this->render('GameEdit',array('model'=>$model,'idG' => $idG));
     }
-
-	// Uncomment the following methods and override them if needed
-	/*
-	public function filters()
-	{
-		// return the filter configuration for this controller, e.g.:
-		return array(
-			'inlineFilterName',
-			array(
-				'class'=>'path.to.FilterClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-
-	public function actions()
-	{
-		// return external action classes, e.g.:
-		return array(
-			'action1'=>'path.to.ActionClass',
-			'action2'=>array(
-				'class'=>'path.to.AnotherActionClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-	*/
 }
