@@ -73,6 +73,14 @@ input[type="submit:active"] {
  
 }
 
+input.btEdit{
+	height: 30px;
+	width: 30px;
+	color: #fff;
+	background: url('images/edit26.png')  no-repeat 15px 4px;
+	margin: 0px 8px;
+}
+
 #page
 {
 	margin-top: 5px;
