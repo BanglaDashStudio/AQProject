@@ -1,26 +1,57 @@
 <?php
 /* @var $this GameController */
 
-$this->breadcrumbs=array(
-	'Game'=>array('/game'),
-	'Play',
-);
-
+Yii::app()->clientScript->registerScript('teamlist', "
+$('.button_team').click(function(){
+	$('.team-form').toggle();
+	return false;
+});
+");
 ?>
 <h1>Скоро след. игра!</h1>
 
+<div>
 <?php
-    foreach($model as $item){
-    echo  'Название игры - ', $item->NameGame."";
-
-        echo  '<br> чуть-чуть про игру  - ', $item->DescriptionGame."";
+    if(isset($model)) {
+        echo 'Название игры - ', $model->NameGame . "";
+        echo '<br> чуть-чуть про игру  - ', $model->DescriptionGame . "";
+    }else{
+        echo 'Игр нет';
     }
 ?>
-
-<div class="row buttons">
-    <?php echo CHtml::submitButton('Подать завявку на игру!'); ?>
 </div>
 
+<br>
+
+<button class="button_team">
+    Команды, подавшие заявку
+</button>
+
+<br>
+
+<div class="team-form">
+
+    <h1> Участники: </h1>
+
+    <?php
+        if(isset($teamList)) {
+            echo "<ul>";
+            foreach ($teamList as $team) {
+                echo "<li>";
+                echo $team->NameTeam;
+                echo "</li>";
+            }
+            echo "</ul>";
+        } else {
+            echo 'заявок нет';
+        }
+    ?>
+
+</div><!-- form -->
+<br>
+
+<button>
+    Подать завявку на игру!
+</button>
 
 
-</p>

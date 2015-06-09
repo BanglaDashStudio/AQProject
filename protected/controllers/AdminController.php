@@ -18,8 +18,9 @@ class AdminController extends Controller
         $gameArray = array();
         $gameActualList = Game::model()->findByAttributes(array('AcceptGame'=>1));
 
+        $gameArray[-1] = '...';
+
         foreach ($gameList as $item){
-            //array_push($gameArray, $item->NameGame);
             $gameArray[$item->IdGame] = $item->NameGame;
         }
 
@@ -37,6 +38,13 @@ class AdminController extends Controller
         if (isset($_POST['listname'])){
             $gameActual = Game::model()->findByAttributes(array('AcceptGame'=>1));
             $gameList = Game::model()->findByPk($_POST['listname']);
+
+            if($_POST['listname'] == -1) {
+                $gameActual->AcceptGame = '0';
+                if ($gameActual->save()) {
+                    $this->redirect(Yii::app()->createUrl('Admin/gamechange'));
+                }
+            }
 
             if($gameActual !== NULL) {
                 $gameActual->AcceptGame = '0';

@@ -38,9 +38,52 @@ class GameController extends Controller
     // текущая игра
 	public function actionPlay()
 	{
-        $gameList=Game::model()->findAllByAttributes(array('AcceptGame'=>'1')) ;
-		$this->render('Play', array('model'=>$gameList));
+        $gameAccept=Game::model()->findByAttributes(array('AcceptGame'=>'1'));
+
+        $criteria = new CDbCriteria();
+
+        if (!isset($gameAccept)) {
+            $this->render('Play', array('model'=>NULL,'teamList'=>NULL));
+        } else {
+
+            $criteria->condition = $this->getGameTeam($gameAccept->IdGame);
+
+            if (isset($criteria->condition)) {
+                $teamList = Team::model()->findAll($criteria);
+            } else {
+                $teamList = null;
+            }
+            $this->render('Play', array('model' => $gameAccept, 'teamList' => $teamList));
+        }
+
+
+        return;
 	}
+
+    private function getGameTeam ($id) {
+        $teams = Gameteam::model()->findAllByAttributes(array('IdGame'=>$id));
+        $condition = '';
+        $first = true;
+
+        if(isset($teams)){
+            foreach ($teams as $team) {
+                if ($first) {
+                    $condition = "IdTeam=".$team->IdTeam;
+                    $first = false;
+                } else {
+                    $condition = " or IdTeam=".$team->IdTeam;
+                }
+            }
+        }else{
+            return null;
+        }
+
+        if($condition === '') {
+            return null;
+        }
+
+        return $condition;
+    }
 
    //список игр 1 команды
     public function actionMyGames()
