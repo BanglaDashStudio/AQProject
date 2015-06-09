@@ -2,6 +2,10 @@
 /* @var $this GameController */
 /* @var $model GameCreate */
 /* @var $form CActiveForm */
+$this->breadcrumbs=array(
+    'Список созданных игр'=>array('MyGames'),
+    'Редактор игры',
+);
 ?>
 
 <div class="form">

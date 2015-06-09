@@ -2,6 +2,7 @@
 /* @var $this TaskCreateFormController */
 /* @var $model TaskCreateForm */
 /* @var $form CActiveForm */
+
 Yii::app()->clientScript->registerScript('create_task', "
 $('.task-button').click(function(){
 $('.task-form').toggle();
@@ -9,6 +10,8 @@ return false;
 });
 ");
 ?>
+
+
 <?php
 echo CHtml::link('Добавить задание','#',array('class'=>'task-button')); ?>
 <div class="task-form" style="display: none">
