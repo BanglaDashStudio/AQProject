@@ -5,6 +5,7 @@ $this->breadcrumbs=array(
 	'Game'=>array('/game'),
 	'Play',
 );
+
 ?>
 <h1>Скоро след. игра!</h1>
 
@@ -12,7 +13,7 @@ $this->breadcrumbs=array(
     foreach($model as $item){
     echo  'Название игры - ', $item->NameGame."";
 
-        echo  '<br> чуть про игру  - ', $item->DescriptionGame."";
+        echo  '<br> чуть-чуть про игру  - ', $item->DescriptionGame."";
     }
 ?>
 
