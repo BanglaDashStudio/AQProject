@@ -28,8 +28,8 @@ $this->menu=array(
 		'IdType',
 		'StartGame',
 		'FinishGame',
-		'Comment',
 		'AcceptGame',
+		'Comment',
 		'IdTeam',
 	),
 )); ?>

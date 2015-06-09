@@ -56,15 +56,15 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Comment'); ?>
-		<?php echo $form->textArea($model,'Comment',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'Comment'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'AcceptGame'); ?>
 		<?php echo $form->textField($model,'AcceptGame'); ?>
 		<?php echo $form->error($model,'AcceptGame'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'Comment'); ?>
+		<?php echo $form->textArea($model,'Comment',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'Comment'); ?>
 	</div>
 
 	<div class="row">

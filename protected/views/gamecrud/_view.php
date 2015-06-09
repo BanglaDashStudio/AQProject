@@ -34,12 +34,12 @@
 	<br />
 
 	<?php /*
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Comment')); ?>:</b>
-	<?php echo CHtml::encode($data->Comment); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('AcceptGame')); ?>:</b>
 	<?php echo CHtml::encode($data->AcceptGame); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Comment')); ?>:</b>
+	<?php echo CHtml::encode($data->Comment); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('IdTeam')); ?>:</b>

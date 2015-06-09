@@ -47,13 +47,13 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'Comment'); ?>
-		<?php echo $form->textArea($model,'Comment',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->label($model,'AcceptGame'); ?>
+		<?php echo $form->textField($model,'AcceptGame'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'AcceptGame'); ?>
-		<?php echo $form->textField($model,'AcceptGame'); ?>
+		<?php echo $form->label($model,'Comment'); ?>
+		<?php echo $form->textArea($model,'Comment',array('rows'=>6, 'cols'=>50)); ?>
 	</div>
 
 	<div class="row">

@@ -36,11 +36,24 @@ class AdminController extends Controller
     {
         if (isset($_POST['listname'])){
             $gameActual = Game::model()->findByAttributes(array('AcceptGame'=>1));
-            $gameActual->AcceptGame = 0;
-            if($gameActual->save()){
-                echo 'dsv';
-            }
+            $gameList = Game::model()->findByPk($_POST['listname']);
 
+            if($gameActual !== NULL) {
+                $gameActual->AcceptGame = '0';
+
+                if ($gameActual->save()) {
+
+                    $gameList->AcceptGame = '1';
+                    if ($gameList->save()) {
+                        $this->redirect(Yii::app()->createUrl('Admin/gamechange'));
+                    }
+                }
+            } else{
+                $gameList->AcceptGame = '1';
+                if ($gameList->save()) {
+                    $this->redirect(Yii::app()->createUrl('Admin/gamechange'));
+                }
+            }
         }
     }
 
