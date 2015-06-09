@@ -71,42 +71,49 @@ class GameController extends Controller
     public function actionTaskCreate($idG)
     {
 
+        //var_dump($_POST);
+        //return;
+
         if (isset($_POST['TaskCreateForm'])) {
             $model = new TaskCreateForm;
 
-            $model->attributes = $_POST['TaskCreateForm'];
+            //$model->attributes = $_POST['TaskCreateForm'];
 
-            if ($model->validate()) {
 
-                $task = new Task;
 
-                $task->IdGame = $idG;
-                $task->NameTask = $model->taskname;
-                $task->DescriptionTask = $model->task;
+            $task = new Task;
 
-                if ($task->save()) {
+            $task->IdGame = $idG;
+            $task->NameTask = $_POST['TaskCreateForm']['taskname'];
+            $task->DescriptionTask = $_POST['TaskCreateForm']['task'];
 
-                    $code = new Code;
-                    $hint = new Hint;
+            //$task->DescriptionTask = $model->task;
 
-                    $code->Cod = $model->code;
-                    $code->IdTask = $task->IdTask;
+            if ($task->save()) {
+                $code = new Code;
+                $hint = new Hint;
 
-                    $hint->DescriptionHint = $model->tip;
-                    $hint->IdTask = $task->IdTask;
+                $code->Cod = $_POST['TaskCreateForm']['code'];
+                $code->IdTask = $task->IdTask;
 
-                    if ($code->save() && $hint->save()) {
+                $hint->DescriptionHint = $_POST['TaskCreateForm']['tip'];
+                $hint->IdTask = $task->IdTask;
 
-                        $this->redirect(Yii::app()->createUrl('game/Tasks', array('idG' => $idG)));
-                        return;
-                    }
+                if ($code->save() && $hint->save()) {
+                    $this->redirect(Yii::app()->createUrl('game/Tasks', array('idG' => $idG)));
+                    return;
+                } else {
+                    var_dump($code->getErrors());
+                    var_dump($hint->getErrors());
+                    return;
                 }
-
-            }else {
-                $this->redirect(Yii::app()->createUrl('game/Tasks', array('idG' => $idG)));
+            } else {
+                var_dump($task->getErrors());
                 return;
             }
-        }$this->redirect(Yii::app()->createUrl('game/Tasks', array('idG' => $idG)));
+        }
+
+        $this->redirect(Yii::app()->createUrl('game/Tasks', array('idG' => $idG)));
     }
 
     // редактирование заданий
