@@ -2,8 +2,6 @@
 /* @var $this GameController */
 /* @var $TaskList */
 ?>
-    <!-- view для  списка заданий одной игры -->
-
 
     <?php
     if (isset($TaskList)) {
