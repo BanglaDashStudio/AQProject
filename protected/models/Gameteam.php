@@ -7,10 +7,6 @@
  * @property integer $IdGameTeam
  * @property integer $IdGame
  * @property integer $IdTeam
- *
- * The followings are the available model relations:
- * @property Game $idGame
- * @property Team $idTeam
  */
 class Gameteam extends CActiveRecord
 {
@@ -30,6 +26,8 @@ class Gameteam extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('IdGame, IdTeam', 'required'),
+            array('IdTeam', 'unique'),
 			array('IdGame, IdTeam', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -45,8 +43,6 @@ class Gameteam extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idGame' => array(self::BELONGS_TO, 'Game', 'IdGame'),
-			'idTeam' => array(self::BELONGS_TO, 'Team', 'IdTeam'),
 		);
 	}
 

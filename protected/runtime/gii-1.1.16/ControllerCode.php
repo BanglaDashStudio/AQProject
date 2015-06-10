@@ -2,5 +2,5 @@
 return array (
   'template' => 'default',
   'baseClass' => 'Controller',
-  'actions' => 'index, comandmanage, gamemanage',
+  'actions' => 'Direction, StreetView',
 );

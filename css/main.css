@@ -6,23 +6,23 @@ body
 	margin: 0;
 	padding: 0;
 	color: #551FA3;
-	font: normal 10pt Arial,Helvetica,sans-serif;
 	background: #202020;
-	font: 'Open Sans', Arial, Sans-serif;
+	font: normal 10pt 'Open Sans', Arial, Sans-serif;
 }
 
+/* Формы по центру и красивые */
 #ComandSignIn_username, #ComandSignIn_password, #ComandSignUp_username, #ComandSignUp_password, #ComandSignUp_passwordconfirm,
-#ComandSignUp_phone, #ComandSignUp_mail, #ComandSignUp_description {
+#ComandSignUp_phone, #ComandSignUp_mail, #ComandSignUp_description, input#PRInfo_phone, input#PRInfo_mail {
 	height: 23.3px;
 	padding:5px 8px;
 	border-radius: 8px;
 }
 
-#comand-sign-in-SignIn-form {
-	text-align: center;
+textarea#PRInfo_inform {
+	border-radius: 8px;
 }
 
-#comand-SignUp-form {
+#comand-SignUp-form, #comand-sign-in-SignIn-form {
 	text-align: center;
 }
 
@@ -77,8 +77,31 @@ input.btEdit{
 	height: 30px;
 	width: 30px;
 	color: #fff;
-	background: url('images/edit26.png')  no-repeat 15px 4px;
+	background: url('images/edit26.png')  no-repeat 23px 3px;
 	margin: 0px 8px;
+}
+
+.task-button a {
+	color: rgba(0,0,0,0.2);
+	font-weight: 700;
+	text-shadow: none;
+}
+
+.task-button a::before {
+	color: #fff;
+	content: attr(data-hover);
+	position: absolute;
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+	-moz-transition: -moz-transform 0.3s, opacity 0.3s;
+	transition: transform 0.3s, opacity 0.3s;
+}
+
+.task-button a:hover::before,
+.task-button a:focus::before {
+	-webkit-transform: scale(0.9);
+	-moz-transform: scale(0.9);
+	transform: scale(0.9);
+	opacity: 0;
 }
 
 #page
@@ -408,6 +431,16 @@ div.search-form
 }
 
 @media screen and (max-width: 768px) {
+	/*img.logo {
+		visibility: hidden;
+	}*/
+
+	/* Скрытие логотипа */
+	div#header {
+	position:absolute; /* позиционируем блок абсолютно на странице */
+	top:-9999px; /* при помощи отрицательного значения убираем блок высоко вверх */
+	}
+
 	.nav {
 		position: relative;
 		min-height: 36px;

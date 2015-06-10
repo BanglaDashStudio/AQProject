@@ -36,9 +36,10 @@ class GameController extends Controller
     }
 
     // текущая игра
-    public function actionPlay()
-    {
+	public function actionPlay()
+	{
         $gameAccept=Game::model()->findByAttributes(array('AcceptGame'=>'1'));
+
         $criteria = new CDbCriteria();
 
         if (!isset($gameAccept)) {
@@ -78,6 +79,7 @@ class GameController extends Controller
         if($condition === "") {
             return null;
         }
+
         return $condition;
     }
 
@@ -175,6 +177,7 @@ class GameController extends Controller
         $task = Task::model()->findByAttributes(array('IdTask'=>$IdTask));
         $code = Code::model()->findByAttributes(array('IdTask'=>$IdTask));
         $hint = Hint::model()->findByAttributes(array('IdTask'=>$IdTask));
+        
 
         if($task == null){
             echo 'Ошибка';
@@ -218,6 +221,7 @@ class GameController extends Controller
     // редактирование информации об игре
     public function actionGameEdit($idG)
     {
+
         $game = Game::model()->findByAttributes(array('IdGame'=>$idG));
 
         if($game == null){
