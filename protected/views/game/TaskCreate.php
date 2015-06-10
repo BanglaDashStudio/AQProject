@@ -11,7 +11,6 @@ return false;
 ");
 ?>
 
-
 <?php
 echo CHtml::link('Добавить задание','#',array('class'=>'task-button')); ?>
 <div class="task-form" style="display: none">

@@ -9,6 +9,8 @@ $this->breadcrumbs=array(
 );
 ?>
 
+    <?php echo "<a href=".Yii::app()->createUrl("game/GameEdit", array ('idG' => $idG)).">редактить игру</a>";?>
+
     <!-- view для заданий одной игры, список заданий и кнопка на добавление нового задания  -->
 
     <h1>Добавляйте задания</h1>

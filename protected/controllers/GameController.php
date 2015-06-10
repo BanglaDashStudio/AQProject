@@ -36,56 +36,68 @@ class GameController extends Controller
     }
 
     // текущая игра
-	public function actionPlay()
-	{
+    public function actionPlay()
+    {
         $gameAccept=Game::model()->findByAttributes(array('AcceptGame'=>'1'));
-
         $criteria = new CDbCriteria();
 
         if (!isset($gameAccept)) {
-            $this->render('Play', array('model'=>NULL,'teamList'=>NULL));
+            $this->render('Play', array('model'=>NULL,'teamList'=>NULL, 'taskList'=>NULL));
         } else {
-
             $criteria->condition = $this->getGameTeam($gameAccept->IdGame);
 
             if (isset($criteria->condition)) {
                 $teamList = Team::model()->findAll($criteria);
-            } else {
+            }else {
                 $teamList = null;
             }
-            $this->render('Play', array('model' => $gameAccept, 'teamList' => $teamList));
+
+            $id= $gameAccept->IdGame;
+              $taskList = Task::model()->findAllByAttributes(array('IdGame'=>$id));
+
+            $this->render('Play', array('model' => $gameAccept, 'teamList' => $teamList, 'taskList' => $taskList));
         }
-
-
-        return;
-	}
+    }
 
     private function getGameTeam ($id) {
         $teams = Gameteam::model()->findAllByAttributes(array('IdGame'=>$id));
-        $condition = '';
-        $first = true;
-
+        $condition = "";
         if(isset($teams)){
+            $first = true;
             foreach ($teams as $team) {
                 if ($first) {
                     $condition = "IdTeam=".$team->IdTeam;
                     $first = false;
                 } else {
-                    $condition = " or IdTeam=".$team->IdTeam;
+                    $condition .= " or IdTeam=".$team->IdTeam;
                 }
             }
         }else{
             return null;
         }
-
-        if($condition === '') {
+        if($condition === "") {
             return null;
         }
-
         return $condition;
     }
 
-   //список игр 1 команды
+    public function actionNewOrder($IdGame, $IdTeam)
+    {
+        $newOrder = new Gameteam;
+        $newOrder->IdTeam = $IdTeam;
+        $newOrder->IdGame = $IdGame;
+        if ($newOrder->save()) {
+            $this->redirect(Yii::app()->createUrl('game/Play'));
+        }
+    }
+
+    public function actionDeleteOrder($IdGame, $IdTeam)
+    {
+        Gameteam::model()->deleteAllByAttributes(array('IdGame'=>$IdGame,'IdTeam'=>$IdTeam));
+        $this->redirect(Yii::app()->createUrl('game/Play'));
+    }
+
+    //список игр 1 команды
     public function actionMyGames()
     {
         $gameList=Game::model()->findAllByAttributes(array('IdTeam'=>Yii::app()->user->id));
@@ -113,7 +125,6 @@ class GameController extends Controller
    //Добавление одного задания
     public function actionTaskCreate($idG)
     {
-
         //var_dump($_POST);
         //return;
 
@@ -181,17 +192,17 @@ class GameController extends Controller
         //return;
 
         //если POST не пустой
-        if(isset($_POST['TaskEditForm']))
+        if(isset($_POST['TaskCreateForm']))
         {
            // $model->attributes = $_POST['TaskEditForm'];
                  // если прошла валидация
             if ($model->validate())
             {
                 //записать изменения
-                $task->NameTask = $_POST['TaskEditForm']['taskname'];
-                $task->DescriptionTask = $_POST['TaskEditForm']['task'];
-                $hint->DescriptionHint= $_POST['TaskEditForm']['tip'];
-                $code->Cod=$_POST['TaskEditForm']['code'];
+                $task->NameTask = $_POST['TaskCreateForm']['taskname'];
+                $task->DescriptionTask = $_POST['TaskCreateForm']['task'];
+                $hint->DescriptionHint= $_POST['TaskCreateForm']['tip'];
+                $code->Cod=$_POST['TaskCreateForm']['code'];
 
                 if ($task->save() && $code->save() && $hint->save())
                 {
@@ -207,7 +218,6 @@ class GameController extends Controller
     // редактирование информации об игре
     public function actionGameEdit($idG)
     {
-
         $game = Game::model()->findByAttributes(array('IdGame'=>$idG));
 
         if($game == null){
@@ -223,18 +233,18 @@ class GameController extends Controller
         $model->Date=$game->Date;
         $model->Comment=$game->Comment;
 
-        if(isset($_POST['GameEditForm']))
+        if(isset($_POST['GameCreate']))
         {
-            $model->attributes = $_POST['GameEditForm'];
+            $model->attributes = $_POST['GameCreate'];
 
             if ($model->validate())
             {
-                $game->NameGame = $_POST['GameEditForm']['NameGame'];
-                $game->DescriptionGame = $_POST['GameEditForm']['DescriptionGame'];
-                $game->StartGame= $_POST['GameEditForm']['StartGame'];
-                $game->FinishGame= $_POST['GameEditForm']['FinishGame'];
-                $game->Date=$_POST['GameEditForm']['Date'];
-                $game->Comment= $_POST['GameEditForm']['Comment'];
+                $game->NameGame = $_POST['GameCreate']['NameGame'];
+                $game->DescriptionGame = $_POST['GameCreate']['DescriptionGame'];
+                $game->StartGame= $_POST['GameCreate']['StartGame'];
+                $game->FinishGame= $_POST['GameCreate']['FinishGame'];
+                $game->Date=$_POST['GameCreate']['Date'];
+                $game->Comment= $_POST['GameCreate']['Comment'];
 
                 if ($game->save())
                 {
