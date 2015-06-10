@@ -6,9 +6,8 @@ body
 	margin: 0;
 	padding: 0;
 	color: #551FA3;
-	font: normal 10pt Arial,Helvetica,sans-serif;
 	background: #202020;
-	font: 'Open Sans', Arial, Sans-serif;
+	font: normal 10pt 'Open Sans', Arial, Sans-serif;
 }
 
 #ComandSignIn_username, #ComandSignIn_password, #ComandSignUp_username, #ComandSignUp_password, #ComandSignUp_passwordconfirm,
@@ -79,6 +78,29 @@ input.btEdit{
 	color: #fff;
 	background: url('images/edit26.png')  no-repeat 15px 4px;
 	margin: 0px 8px;
+}
+
+.task-button a {
+	color: rgba(0,0,0,0.2);
+	font-weight: 700;
+	text-shadow: none;
+}
+
+.task-button a::before {
+	color: #fff;
+	content: attr(data-hover);
+	position: absolute;
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+	-moz-transition: -moz-transform 0.3s, opacity 0.3s;
+	transition: transform 0.3s, opacity 0.3s;
+}
+
+.task-button a:hover::before,
+.task-button a:focus::before {
+	-webkit-transform: scale(0.9);
+	-moz-transform: scale(0.9);
+	transform: scale(0.9);
+	opacity: 0;
 }
 
 #page
