@@ -143,20 +143,6 @@ Yii::app()->clientScript->registerScript('button-on', '
 <button class="grid_button">
     Сетка
 </button>
-<div class="button_z">
-    <?php
-        if(check($teamList)===false){
-            printButton1();
-        } else {
-            printButton2();
-        }
-
-<br>
-        function printButton2(){
-            echo '<button class="button_2" name="off">';
-            echo 'Снять заявку';
-            echo '</button>';
-        }
 
 <div class="grid-form">
     <?php
@@ -185,23 +171,3 @@ Yii::app()->clientScript->registerScript('button-on', '
      echo 'заданий нет';
  }
     ?>
-    </div>
-        function printButton1() {
-            echo '<button class="button_1" name="on">';
-            echo 'Подать заявку';
-            echo '</button>';
-        }
-
-
-        function check($teamList){
-            if(isset($teamList)){
-                foreach($teamList as $team){
-                    if(Yii::app()->user->id == $team->IdTeam){
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-    ?>
-</div>
