@@ -1,5 +1,6 @@
 <?php
 /* @var $this GameController */
+/* @var $teamList Team*/
 
 Yii::app()->clientScript->registerScript('teamlist', "
 $('.button_team').click(function(){
@@ -7,6 +8,31 @@ $('.button_team').click(function(){
 	return false;
 });
 ");
+
+Yii::app()->clientScript->registerScript('button-on', '
+
+        $(".button_1").click(
+        function(){
+            if (confirm("Вы уверены?")) {
+                window.location.href = "'.$this->createUrl("game/newOrder", array("IdGame"=>$model->IdGame, "IdTeam"=>Yii::app()->user->id)).'";
+            }
+            return false;
+	    }
+	    );
+
+	    $(".button_2").click(
+	    function(){
+
+            if (confirm("Вы уверены?")) {
+                window.location.href = "'.$this->createUrl("game/deleteOrder", array("IdGame"=>$model->IdGame, "IdTeam"=>Yii::app()->user->id)).'";
+            }
+            return false;
+
+	    }
+	    );'
+);
+
+
 ?>
 <h1>Скоро след. игра!</h1>
 
@@ -29,7 +55,7 @@ $('.button_team').click(function(){
 
 <br>
 
-<div class="team-form">
+<div class="team-form" style="display: none">
 
     <h1> Участники: </h1>
 
@@ -50,8 +76,36 @@ $('.button_team').click(function(){
 </div><!-- form -->
 <br>
 
-<button>
-    Подать завявку на игру!
-</button>
+<div class="button_z">
+    <?php
+        if(check($teamList)===false){
+            printButton1();
+        } else {
+            printButton2();
+        }
+
+        function printButton2(){
+            echo '<button class="button_2" name="off">';
+            echo 'Снять заявку';
+            echo '</button>';
+        }
+
+        function printButton1() {
+            echo '<button class="button_1" name="on">';
+            echo 'Подать заявку';
+            echo '</button>';
+        }
 
 
+        function check($teamList){
+            if(isset($teamList)){
+                foreach($teamList as $team){
+                    if(Yii::app()->user->id == $team->IdTeam){
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+    ?>
+</div>

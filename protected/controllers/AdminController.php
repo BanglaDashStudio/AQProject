@@ -39,6 +39,10 @@ class AdminController extends Controller
             $gameActual = Game::model()->findByAttributes(array('AcceptGame'=>1));
             $gameList = Game::model()->findByPk($_POST['listname']);
 
+            if($_POST['listname'] !== $gameActual->NameGame){
+                Gameteam::model()->deleteAll();
+            }
+
             if($_POST['listname'] == -1) {
                 $gameActual->AcceptGame = '0';
                 if ($gameActual->save()) {

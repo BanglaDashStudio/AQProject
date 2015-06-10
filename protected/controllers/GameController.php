@@ -55,34 +55,50 @@ class GameController extends Controller
             }
             $this->render('Play', array('model' => $gameAccept, 'teamList' => $teamList));
         }
-
-
-        return;
 	}
 
     private function getGameTeam ($id) {
         $teams = Gameteam::model()->findAllByAttributes(array('IdGame'=>$id));
-        $condition = '';
-        $first = true;
-
+        $condition = "";
         if(isset($teams)){
+            $first = true;
             foreach ($teams as $team) {
                 if ($first) {
                     $condition = "IdTeam=".$team->IdTeam;
                     $first = false;
                 } else {
-                    $condition = " or IdTeam=".$team->IdTeam;
+                    $condition .= " or IdTeam=".$team->IdTeam;
                 }
             }
         }else{
             return null;
         }
 
-        if($condition === '') {
+        if($condition === "") {
             return null;
         }
 
         return $condition;
+    }
+
+    public function actionNewOrder($IdGame, $IdTeam)
+    {
+        $newOrder = new Gameteam;
+        $newOrder->IdTeam = $IdTeam;
+        $newOrder->IdGame = $IdGame;
+
+        if ($newOrder->save()) {
+            $this->redirect(Yii::app()->createUrl('game/Play'));
+        }else {
+
+        }
+
+    }
+
+    public function actionDeleteOrder($IdGame, $IdTeam)
+    {
+        Gameteam::model()->deleteAllByAttributes(array('IdGame'=>$IdGame,'IdTeam'=>$IdTeam));
+        $this->redirect(Yii::app()->createUrl('game/Play'));
     }
 
    //список игр 1 команды
