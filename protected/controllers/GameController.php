@@ -180,13 +180,13 @@ class GameController extends Controller
         $task = Task::model()->findByAttributes(array('IdTask'=>$IdTask));
         $code = Code::model()->findByAttributes(array('IdTask'=>$IdTask));
         $hint = Hint::model()->findByAttributes(array('IdTask'=>$IdTask));
+        $model = new TaskCreateForm;
 
         if($task == null){
             echo 'Ошибка';
             return;
         }
 
-        $model = new TaskCreateForm;
         //записать данные которые есть сейчас
         $model->taskname=$task->NameTask;
         $model->task=$task->DescriptionTask;
@@ -195,19 +195,17 @@ class GameController extends Controller
 
        // var_dump($_POST);
         //return;
-
-        //если POST не пустой
-        if(isset($_POST['TaskEditForm']))
+        if(isset($_POST['TaskCreateForm']))
         {
            // $model->attributes = $_POST['TaskEditForm'];
                  // если прошла валидация
             if ($model->validate())
             {
                 //записать изменения
-                $task->NameTask = $_POST['TaskEditForm']['taskname'];
-                $task->DescriptionTask = $_POST['TaskEditForm']['task'];
-                $hint->DescriptionHint= $_POST['TaskEditForm']['tip'];
-                $code->Cod=$_POST['TaskEditForm']['code'];
+                $task->NameTask = $_POST['TaskCreateForm']['taskname'];
+                $task->DescriptionTask = $_POST['TaskCreateForm']['task'];
+                $hint->DescriptionHint= $_POST['TaskCreateForm']['tip'];
+                $code->Cod=$_POST['TaskCreateForm']['code'];
 
                 if ($task->save() && $code->save() && $hint->save())
                 {
@@ -220,10 +218,10 @@ class GameController extends Controller
         $this->render('TaskEdit',array('model'=>$model,'idG' => $idG));
     }
 
+
     // редактирование информации об игре
     public function actionGameEdit($idG)
     {
-
         $game = Game::model()->findByAttributes(array('IdGame'=>$idG));
 
         if($game == null){
