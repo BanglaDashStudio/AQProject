@@ -7,7 +7,8 @@ class GameController extends Controller
 	public function actionCreate()
     {
         $model = new GameCreate;
-
+        $model->StartGame='22:00:00';
+        $model->FinishGame='04:00:00';
         if (isset($_POST['GameCreate'])) {
 
             $model->attributes = $_POST['GameCreate'];
@@ -43,7 +44,7 @@ class GameController extends Controller
         $criteria = new CDbCriteria();
 
         if (!isset($gameAccept)) {
-            $this->render('Play', array('model'=>NULL,'teamList'=>NULL, 'taskList'=>NULL));
+            $this->render('Play', array('model'=>NULL,'teamList'=>NULL, 'taskList'=>NULL, 'gridOrder'=>NULL));
         } else {
             $criteria->condition = $this->getGameTeam($gameAccept->IdGame);
 
@@ -51,12 +52,30 @@ class GameController extends Controller
                 $teamList = Team::model()->findAll($criteria);
             }else {
                 $teamList = null;
+
             }
 
-            $id= $gameAccept->IdGame;
-              $taskList = Task::model()->findAllByAttributes(array('IdGame'=>$id));
+            // id игры
+            $id = $gameAccept->IdGame;
 
-            $this->render('Play', array('model' => $gameAccept, 'teamList' => $teamList, 'taskList' => $taskList));
+            // поиск заданий для игры
+            $criteria_task = new CDbCriteria();
+            $criteria_task->alias = 'Task';
+            $criteria_task -> condition = 'IdGame='.$id;
+            $criteria_task->params = array(':IdGame'=>$id);
+
+            $taskList = Task::model()->findAll($criteria_task);
+
+            // сетка
+            $criteria_grid = new CDbCriteria();
+            $criteria_grid->alias = 'Grid';
+            $criteria_grid -> condition = 'IdGame='.$id;
+            $criteria_grid->params = array(':IdGame'=>$id);
+            $criteria_grid->order= 'IdTask ASC';
+
+            $gridOrder = Grid::model()->findAll($criteria_grid);
+
+            $this->render('Play', array('model' => $gameAccept, 'teamList' => $teamList, 'taskList' => $taskList, 'gridOrder' => $gridOrder));
         }
     }
 

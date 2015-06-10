@@ -1,6 +1,9 @@
 <?php
 /* @var $this GameController */
-/* @var $teamList Team*/
+/* @var $teamList Team */
+/* @var $taskList Task */
+/* @var $gridOrder Grid
+ */
 
 Yii::app()->clientScript->registerScript('teamlist', "
 $('.button_team').click(function(){
@@ -11,7 +14,7 @@ $('.button_team').click(function(){
 
 Yii::app()->clientScript->registerScript('grig', "
 $('.grid_button').click(function(){
-	$('.grid-form').toggle();
+	$('.gridform').toggle();
 	return false;
 });
 ");
@@ -105,9 +108,6 @@ Yii::app()->clientScript->registerScript('button-on', '
 
 </div><!-- form -->
 <br>
-
-
-<br>
 <div class="button_z">
     <?php
     if(check($teamList)===false){
@@ -144,30 +144,44 @@ Yii::app()->clientScript->registerScript('button-on', '
     Сетка
 </button>
 
-<div class="grid-form">
+<div class="gridform" style="display: none">
     <?php
 
- if(isset($TaskList) && isset($teamList)) {
-     echo "<table>";
+ if(isset($taskList) && isset($teamList) && isset($gridOrder)) {
+     echo "<table border='1'>";
+
      echo "<tr>";
-     foreach ($TaskList as $task) {
-
+     echo"<th>";
+     echo '~~~';
+     echo "</th>";
+     foreach ($taskList as $task) {
          echo"<th>";
-         echo 'задание  ', $task->DescriptionTask;
+         echo $task->DescriptionTask;
          echo "</th>";
-
         }
      echo "</tr>";
 
         foreach ($teamList as $team) {
             echo "<tr>";
-            echo"<td>";
+            echo "<td>";
             echo $team->NameTeam;
             echo "</td>";
+
+            foreach ($gridOrder as $grid) {
+                if ($grid->IdTeam == $team->IdTeam) {
+                    $i=$grid->Order;
+                    echo "<td>";
+                    echo  '<input name="order" type="text" size="4" value = '. $i.'>';
+                    echo "</td>";
+                }
+
+            }
             echo "</tr>";
         }
+     echo "</table>";
     }
  else {
      echo 'заданий нет';
  }
-    ?>
+    echo CHtml::submitButton('Сохранить изменения'); ?>
+</div>
