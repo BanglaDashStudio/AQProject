@@ -38,7 +38,7 @@
     <div id="header">
         <div id="logo"><?php
             echo "<a href=".Yii::app()->createUrl("home").">";
-            echo CHtml::image("images/logo.png",NULL,array("height"=>225, "class"=>"logo"));
+            echo CHtml::image("images/logo.png",NULL,array("height"=>225, "class"=>"logo", "title"=>"PTZAutoQuest", "alt"=>"PTZAutoQuest"));
             echo "</a>";
             ?>
         </div>
@@ -49,7 +49,7 @@
 	<nav class="nav">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
-				array('label'=>'Главная', 'url'=>array('/home/')),
+				array('label'=>'Главная', 'url'=>array('/home/'), 'id'=>'current'),
 				/*array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),*/
