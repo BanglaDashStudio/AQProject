@@ -81,6 +81,36 @@ input.btEdit{
 	margin: 0px 8px;
 }
 
+button.button_team {
+	height: 30px;
+	width: 215px;
+	color: #000;
+	text-align: left;
+	padding: 0 5px 0 37px;
+	background: url('images/run4.png')  no-repeat 8px 3px;
+	border-radius: 8px;
+}
+
+button.button_2 {
+	height: 30px;
+	width: 215px;
+	color: #000;
+	text-align: left;
+	padding: 0 5px 0 37px;
+	background: url('images/man27.png')  no-repeat 8px 3px;
+	border-radius: 8px;
+}
+
+button.grid_button {
+	height: 30px;
+	width: 215px;
+	color: #000;
+	text-align: left;
+	padding: 0 5px 0 37px;
+	background: url('images/goverment.png')  no-repeat 8px 3px;
+	border-radius: 8px;
+}
+
 .task-button a {
 	color: rgba(0,0,0,0.2);
 	font-weight: 700;
