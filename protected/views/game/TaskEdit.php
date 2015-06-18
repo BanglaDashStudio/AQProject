@@ -31,13 +31,21 @@
         <?php echo $form->textField($model,'task', array('size'=>60,'maxlength'=>128)); ?>
         <?php echo $form->error($model,'task'); ?>
     </div>
-
+    <div class="row">
+        <?php echo $form->labelEx($model,'type'); ?>
+        <?php echo $form->textField($model,'type'); ?>
+        <?php echo $form->error($model,'type'); ?>
+    </div>
     <div class="row">
         <?php echo $form->labelEx($model,'tip'); ?>
         <?php echo $form->textField($model,'tip', array('size'=>60,'maxlength'=>128)); ?>
         <?php echo $form->error($model,'tip'); ?>
     </div>
-
+    <div class="row">
+        <?php echo $form->labelEx($model,'address'); ?>
+        <?php echo $form->textField($model,'address'); ?>
+        <?php echo $form->error($model,'address'); ?>
+    </div>
     <div class="row">
         <?php echo $form->labelEx($model,'code'); ?>
         <?php echo $form->textField($model,'code'); ?>

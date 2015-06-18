@@ -7,7 +7,8 @@ class GameController extends Controller
 	public function actionCreate()
     {
         $model = new GameCreate;
-        $model->StartGame='22:00:00';
+        $model->start='22:00:00';
+        $model->type='15-15-15';
         if (isset($_POST['GameCreate'])) {
 
             $model->attributes = $_POST['GameCreate'];
@@ -15,12 +16,12 @@ class GameController extends Controller
 
                 $game = new Game;
 
-                $game->name=$model->NameGame;
-                $game->description=$model->DescriptionGame;
-                $game->start=$model->StartGame;
-                $game->date=$model->Date;
-                $game->type=$model->Type;
-                $game->comment=$model->Comment;
+                $game->name=$model->name;
+                $game->description=$model->description;
+                $game->start=$model->start;
+                $game->date=$model->date;
+                $game->type=$model->type;
+                $game->comment=$model->comment;
                 $game->teamId = Yii::app()->user->id;
 
                 if ($game->save()) {
@@ -51,7 +52,6 @@ class GameController extends Controller
                 $teamList = Team::model()->findAll($criteria);
             }else {
                 $teamList = null;
-
             }
 
             // id игры
@@ -60,7 +60,7 @@ class GameController extends Controller
             // поиск заданий для игры
             $criteria_task = new CDbCriteria();
             $criteria_task->alias = 'Task';
-            $criteria_task -> condition = 'gameId='.$id;
+            $criteria_task->condition = 'gameId='.$id;
             $criteria_task->params = array(':gameId'=>$id);
 
             $taskList = Task::model()->findAll($criteria_task);
@@ -85,10 +85,10 @@ class GameController extends Controller
             $first = true;
             foreach ($teams as $team) {
                 if ($first) {
-                    $condition = "teamId=".$team->id;
+                    $condition = "id=".$team->id;
                     $first = false;
                 } else {
-                    $condition .= " or teamId=".$team->id;
+                    $condition .= " or id=".$team->id;
                 }
             }
         }else{
@@ -148,13 +148,17 @@ class GameController extends Controller
         if (isset($_POST['TaskCreateForm'])) {
             $model = new TaskCreateForm;
 
+            $game= Game::model()->findByAttributes(array('id'=>$idG));
+            $model->type = $game->type;
             //$model->attributes = $_POST['TaskCreateForm'];
 
-           $task = new Task;
+            $task = new Task;
 
-            $task->id = $idG;
+            $task->gameId = $idG;
             $task->name = $_POST['TaskCreateForm']['taskname'];
             $task->description = $_POST['TaskCreateForm']['task'];
+            $task->address = $_POST['TaskCreateForm']['address'];
+            $task->type = $_POST['TaskCreateForm']['type'];
 
             //$task->DescriptionTask = $model->task;
 
@@ -205,6 +209,8 @@ class GameController extends Controller
         $model->task=$task->description;
         $model->code=$code->code;
         $model->tip=$hint->description;
+        $model->type=$task->type;
+        $model->address=$task->address;
 
         //если POST не пустой
         if(isset($_POST['TaskCreateForm']))
@@ -218,6 +224,8 @@ class GameController extends Controller
                 $task->description = $_POST['TaskCreateForm']['task'];
                 $hint->description= $_POST['TaskCreateForm']['tip'];
                 $code->code=$_POST['TaskCreateForm']['code'];
+                $task->type=$_POST['TaskCreateForm']['type'];
+                $task->address = $_POST['TaskCreateForm']['address'];
 
                 if ($task->save() && $code->save() && $hint->save())
                 {
@@ -233,7 +241,6 @@ class GameController extends Controller
     // редактирование информации об игре
     public function actionGameEdit($idG)
     {
-
         $game = Game::model()->findByAttributes(array('id'=>$idG));
 
         if($game == null){
@@ -242,12 +249,12 @@ class GameController extends Controller
         }
         $model = new GameCreate;
 
-        $model->NameGame=$game->name;
-        $model->DescriptionGame=$game->description;
-        $model->StartGame=$game->start;
-        $model->Type=$game->type;
-        $model->Date=$game->date;
-        $model->Comment=$game->comment;
+        $model->name=$game->name;
+        $model->description=$game->description;
+        $model->start=$game->start;
+        $model->type=$game->type;
+        $model->date=$game->date;
+        $model->comment=$game->comment;
 
         if(isset($_POST['GameCreate']))
         {
@@ -255,12 +262,12 @@ class GameController extends Controller
 
             if ($model->validate())
             {
-                $game->name = $_POST['GameCreate']['NameGame'];
-                $game->description = $_POST['GameCreate']['DescriptionGame'];
-                $game->start= $_POST['GameCreate']['StartGame'];
-                $game->type= $_POST['GameCreate']['Type'];
-                $game->date=$_POST['GameCreate']['Date'];
-                $game->comment= $_POST['GameCreate']['Comment'];
+                $game->name = $_POST['GameCreate']['name'];
+                $game->description = $_POST['GameCreate']['description'];
+                $game->start= $_POST['GameCreate']['start'];
+                $game->type= $_POST['GameCreate']['type'];
+                $game->date=$_POST['GameCreate']['date'];
+                $game->comment= $_POST['GameCreate']['comment'];
 
                 if ($game->save())
                 {

@@ -2,14 +2,14 @@
 
 class GameCreate extends CFormModel
 {
-    public $NameGame;
-    public $DescriptionGame;
-    public $Date;
-    public $StartGame;
-    public $Type;
-    public $Comment;
-    public $AcceptGame;
-    public $IdTeam;
+    public $name;
+    public $description;
+    public $date;
+    public $start;
+    public $type;
+    public $comment;
+    public $accepted;
+    public $teamId;
    // public $rememberMe=false;
 
     private $_identity;
@@ -20,11 +20,11 @@ class GameCreate extends CFormModel
         // will receive user inputs.
         return array(
 
-            array('NameGame', 'required'),
-            array('DescriptionGame,  StartGame, Date, Comment, Type', 'safe'),
+            array('name', 'required'),
+            array('description,  start, date, comment, type', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('NameGame, Date, DescriptionGame,  Date, StartGame, Type, Comment, AcceptGame', 'safe', 'on'=>'search'),
+            array('name, date, description, start, type, comment, accepted', 'safe', 'on'=>'search'),
         );
 
 
@@ -33,14 +33,13 @@ class GameCreate extends CFormModel
     public function attributeLabels()
     {
         return array(
-            'NameGame' => 'Имя игры',
-            'IdType' => 'тип',
-            'IdTeam' => 'команда',
-            'DescriptionGame' => 'Информация об игре, допы',
-            'Date' =>'Дата',
-            'StartGame' => 'Время начала',
-            'Type' => 'Формат игры',
-            'Comment' => 'Комментарий (если хотите)',
+            'name' => 'Имя игры',
+            'teamId' => 'команда',
+            'description' => 'Информация об игре, допы',
+            'date' =>'Дата',
+            'start' => 'Время начала',
+            'type' => 'Формат игры',
+            'comment' => 'Комментарий (если хотите)',
         );
     }
  /*

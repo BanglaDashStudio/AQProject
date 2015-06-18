@@ -20,28 +20,28 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'NameGame'); ?>
-		<?php echo $form->textField($model,'NameGame'); ?>
-		<?php echo $form->error($model,'NameGame'); ?>
+		<?php echo $form->labelEx($model,'name'); ?>
+		<?php echo $form->textField($model,'name'); ?>
+		<?php echo $form->error($model,'name'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'DescriptionGame'); ?>
-		<?php echo $form->textField($model,'DescriptionGame'); ?>
-		<?php echo $form->error($model,'DescriptionGame'); ?>
+		<?php echo $form->labelEx($model,'description'); ?>
+		<?php echo $form->textField($model,'description'); ?>
+		<?php echo $form->error($model,'description'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'StartGame'); ?>
-		<?php echo $form->textField($model,'StartGame'); ?>
-		<?php echo $form->error($model,'StartGame'); ?>
+		<?php echo $form->labelEx($model,'start'); ?>
+		<?php echo $form->textField($model,'start'); ?>
+		<?php echo $form->error($model,'start'); ?>
 	</div>
 
-    <?php echo $form->labelEx($model,'Date'); ?>
+    <?php echo $form->labelEx($model,'date'); ?>
     <?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
-        'name' => 'Date',
+        'name' => 'date',
         'model' => $model,
-        'attribute' => 'Date',
+        'attribute' => 'date',
         'language' => 'ru',
         'options' => array(
             'showAnim' => 'fold',
@@ -50,15 +50,15 @@
     ));?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Type'); ?>
-		<?php echo $form->textField($model,'Type'); ?>
-		<?php echo $form->error($model,'Type'); ?>
+		<?php echo $form->labelEx($model,'type'); ?>
+		<?php echo $form->textField($model,'type'); ?>
+		<?php echo $form->error($model,'type'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Comment'); ?>
-		<?php echo $form->textField($model,'Comment'); ?>
-		<?php echo $form->error($model,'Comment'); ?>
+		<?php echo $form->labelEx($model,'comment'); ?>
+		<?php echo $form->textField($model,'comment'); ?>
+		<?php echo $form->error($model,'comment'); ?>
 	</div>
 
 

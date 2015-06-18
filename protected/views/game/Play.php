@@ -44,7 +44,7 @@ Yii::app()->clientScript->registerScript('button-on', '
         $(".button_1").click(
         function(){
             if (confirm("Вы уверены?")) {
-                window.location.href = "'.$this->createUrl("game/newOrder", array("IdGame"=>$model->id, "IdTeam"=>Yii::app()->user->id)).'";
+                window.location.href = "'.$this->createUrl("game/newOrder", array("gameId"=>$model->id, "teamId"=>Yii::app()->user->id)).'";
             }
             return false;
 	    }
@@ -54,7 +54,7 @@ Yii::app()->clientScript->registerScript('button-on', '
 	    function(){
 
             if (confirm("Вы уверены?")) {
-                window.location.href = "'.$this->createUrl("game/deleteOrder", array("IdGame"=>$model->id, "IdTeam"=>Yii::app()->user->id)).'";
+                window.location.href = "'.$this->createUrl("game/deleteOrder", array("gameId"=>$model->id, "teamId"=>Yii::app()->user->id)).'";
             }
             return false;
 
@@ -64,14 +64,14 @@ Yii::app()->clientScript->registerScript('button-on', '
 
 
 ?>
-<h1>Скоро след. игра!</h1>
+<h1>Скоро следующая игра!</h1>
 
 <div>
 <?php
     if(isset($model)) {
         echo 'Название игры - ', $model->name . "";
         echo '<br> чуть-чуть про игру  - ', $model->description . "";
-        $team = Team::model()->findByAttributes(array('IdTeam'=>$model->id));
+        $team = Team::model()->findByAttributes(array('id'=>$model->id));
         echo '<br> Написано командой   - ', $team->name . "";
         echo '<br> Дата игры - ', $model->date . "";
     }else{
@@ -156,7 +156,7 @@ Yii::app()->clientScript->registerScript('button-on', '
      echo "</th>";
      foreach ($taskList as $task) {
          echo"<th>";
-         echo $task->DescriptionTask;
+         echo $task->description;
          echo "</th>";
         }
      echo "</tr>";
@@ -168,8 +168,8 @@ Yii::app()->clientScript->registerScript('button-on', '
             echo "</td>";
 
             foreach ($gridOrder as $grid) {
-                if ($grid->IdTeam == $team->id) {
-                    $i=$grid->Order;
+                if ($grid->teamId == $team->id) {
+                    $i=$grid->order;
                     echo "<td>";
                     echo  '<input name="order" type="text" size="4" value = '. $i.'>';
                     echo "</td>";
