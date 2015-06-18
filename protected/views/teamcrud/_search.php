@@ -12,48 +12,38 @@
 )); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'IdTeam'); ?>
-		<?php echo $form->textField($model,'IdTeam'); ?>
+		<?php echo $form->label($model,'id'); ?>
+		<?php echo $form->textField($model,'id'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'NameTeam'); ?>
-		<?php echo $form->textArea($model,'NameTeam',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->label($model,'name'); ?>
+		<?php echo $form->textArea($model,'name',array('rows'=>6, 'cols'=>50)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'DescriptionTeam'); ?>
-		<?php echo $form->textArea($model,'DescriptionTeam',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->label($model,'description'); ?>
+		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'EmailTeam'); ?>
-		<?php echo $form->textArea($model,'EmailTeam',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->label($model,'email'); ?>
+		<?php echo $form->textArea($model,'email',array('rows'=>6, 'cols'=>50)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'PasswordTeam'); ?>
-		<?php echo $form->textArea($model,'PasswordTeam',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->label($model,'page'); ?>
+		<?php echo $form->textArea($model,'page',array('rows'=>6, 'cols'=>50)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'PageTeam'); ?>
-		<?php echo $form->textArea($model,'PageTeam',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->label($model,'phone'); ?>
+		<?php echo $form->textArea($model,'phone',array('rows'=>6, 'cols'=>50)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'PhoneTeam'); ?>
-		<?php echo $form->textArea($model,'PhoneTeam',array('rows'=>6, 'cols'=>50)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'RowTeam'); ?>
-		<?php echo $form->textField($model,'RowTeam'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'IdGame'); ?>
-		<?php echo $form->textField($model,'IdGame'); ?>
+		<?php echo $form->label($model,'role'); ?>
+		<?php echo $form->textField($model,'role'); ?>
 	</div>
 
 	<div class="row buttons">

@@ -4,13 +4,9 @@
  * This is the model class for table "hint".
  *
  * The followings are the available columns in table 'hint':
- * @property integer $IdHint
- * @property integer $IdTask
- * @property string $DescriptionHint
- * @property integer $Number
- *
- * The followings are the available model relations:
- * @property Task $idTask
+ * @property integer $id
+ * @property integer $taskId
+ * @property string $description
  */
 class Hint extends CActiveRecord
 {
@@ -30,11 +26,12 @@ class Hint extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('IdTask, Number', 'numerical', 'integerOnly'=>true),
-			array('DescriptionHint', 'safe'),
+			array('taskId', 'required'),
+			array('taskId', 'numerical', 'integerOnly'=>true),
+			array('description', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('IdHint, IdTask, DescriptionHint, Number', 'safe', 'on'=>'search'),
+			array('id, taskId, description', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -46,7 +43,6 @@ class Hint extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idTask' => array(self::BELONGS_TO, 'Task', 'IdTask'),
 		);
 	}
 
@@ -56,10 +52,9 @@ class Hint extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'IdHint' => 'Id Hint',
-			'IdTask' => 'Id Task',
-			'DescriptionHint' => 'Description Hint',
-			'Number' => 'Number',
+			'id' => 'ID',
+			'taskId' => 'Task',
+			'description' => 'Description',
 		);
 	}
 
@@ -81,10 +76,9 @@ class Hint extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('IdHint',$this->IdHint);
-		$criteria->compare('IdTask',$this->IdTask);
-		$criteria->compare('DescriptionHint',$this->DescriptionHint,true);
-		$criteria->compare('Number',$this->Number);
+		$criteria->compare('id',$this->id);
+		$criteria->compare('taskId',$this->taskId);
+		$criteria->compare('description',$this->description,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

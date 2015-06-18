@@ -27,9 +27,9 @@ class WebUser extends CWebUser {
 
     function getRole() {
         if($user = $this->getModel()){
-            if($user->RowTeam == 1) {
+            if($user->role == 1) {
                 return 'admin';
-            } elseif($user->RowTeam == 0) {
+            } elseif($user->role == 0) {
                 return 'user';
             } else {
                 return 'guest';
@@ -39,7 +39,7 @@ class WebUser extends CWebUser {
 
     private function getModel(){
         if (!$this->isGuest && $this->_model === null){
-            $this->_model = Team::model()->findByPk($this->id, array('select' => 'RowTeam'));
+            $this->_model = Team::model()->findByPk($this->id, array('select' => 'role'));
         }
 
         return $this->_model;

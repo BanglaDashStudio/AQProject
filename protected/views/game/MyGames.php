@@ -10,8 +10,8 @@
     <?php
     echo "<ul>";
     foreach($model as $game) {
-        echo "<li>" . "<a href=\"" . Yii::app()->createUrl("game/Tasks", array("idG" => $game->IdGame))."\">";
-            echo $game->NameGame;
+        echo "<li>" . "<a href=\"" . Yii::app()->createUrl("game/Tasks", array("idG" => $game->id))."\">";
+            echo $game->name;
             echo "</a>";
         echo "</li>";
     }

@@ -4,16 +4,15 @@
  * This is the model class for table "game".
  *
  * The followings are the available columns in table 'game':
- * @property integer $IdGame
- * @property string $NameGame
- * @property string $DescriptionGame
- * @property string $Date
- * @property integer $IdType
- * @property string $StartGame
- * @property string $FinishGame
- * @property integer $AcceptGame
- * @property string $Comment
- * @property integer $IdTeam
+ * @property integer $id
+ * @property string $name
+ * @property string $description
+ * @property string $date
+ * @property string $start
+ * @property integer $accepted
+ * @property string $comment
+ * @property string $type
+ * @property integer $teamId
  */
 class Game extends CActiveRecord
 {
@@ -33,12 +32,12 @@ class Game extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('NameGame', 'required'),
-			array('IdType, AcceptGame, IdTeam', 'numerical', 'integerOnly'=>true),
-			array('DescriptionGame, Date, StartGame, FinishGame, Comment', 'safe'),
+			array('name', 'required'),
+			array('accepted, teamId', 'numerical', 'integerOnly'=>true),
+			array('description, date, start, comment, type', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('IdGame, NameGame, DescriptionGame, Date, IdType, StartGame, FinishGame, AcceptGame, Comment, IdTeam', 'safe', 'on'=>'search'),
+			array('id, name, description, date, start, accepted, comment, type, teamId', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,16 +58,15 @@ class Game extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'IdGame' => 'Id Game',
-			'NameGame' => 'Name Game',
-			'DescriptionGame' => 'Description Game',
-			'Date' => 'Date',
-			'IdType' => 'Id Type',
-			'StartGame' => 'Start Game',
-			'FinishGame' => 'Finish Game',
-			'AcceptGame' => 'Accept Game',
-			'Comment' => 'Comment',
-			'IdTeam' => 'Id Team',
+			'id' => 'ID',
+			'name' => 'Name',
+			'description' => 'Description',
+			'date' => 'Date',
+			'start' => 'Start',
+			'accepted' => 'Accepted',
+			'comment' => 'Comment',
+			'type' => 'Type',
+			'teamId' => 'Team',
 		);
 	}
 
@@ -90,16 +88,15 @@ class Game extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('IdGame',$this->IdGame);
-		$criteria->compare('NameGame',$this->NameGame,true);
-		$criteria->compare('DescriptionGame',$this->DescriptionGame,true);
-		$criteria->compare('Date',$this->Date,true);
-		$criteria->compare('IdType',$this->IdType);
-		$criteria->compare('StartGame',$this->StartGame,true);
-		$criteria->compare('FinishGame',$this->FinishGame,true);
-		$criteria->compare('AcceptGame',$this->AcceptGame);
-		$criteria->compare('Comment',$this->Comment,true);
-		$criteria->compare('IdTeam',$this->IdTeam);
+		$criteria->compare('id',$this->id);
+		$criteria->compare('name',$this->name,true);
+		$criteria->compare('description',$this->description,true);
+		$criteria->compare('date',$this->date,true);
+		$criteria->compare('start',$this->start,true);
+		$criteria->compare('accepted',$this->accepted);
+		$criteria->compare('comment',$this->comment,true);
+		$criteria->compare('type',$this->type,true);
+		$criteria->compare('teamId',$this->teamId);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

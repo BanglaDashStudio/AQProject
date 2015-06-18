@@ -4,17 +4,11 @@
  * This is the model class for table "results".
  *
  * The followings are the available columns in table 'results':
- * @property integer $IdResult
- * @property string $TimeTeam
- * @property integer $NumberTask
- * @property integer $PlaceTeam
- * @property integer $RatingTeam
- * @property integer $PointgameTeam
- * @property integer $PointTeam
- * @property integer $IdTeam
- *
- * The followings are the available model relations:
- * @property Team $idTeam
+ * @property integer $id
+ * @property string $time
+ * @property integer $score
+ * @property integer $teamId
+ * @property integer $gameId
  */
 class Results extends CActiveRecord
 {
@@ -34,11 +28,12 @@ class Results extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('NumberTask, PlaceTeam, RatingTeam, PointgameTeam, PointTeam, IdTeam', 'numerical', 'integerOnly'=>true),
-			array('TimeTeam', 'safe'),
+			array('teamId, gameId', 'required'),
+			array('score, teamId, gameId', 'numerical', 'integerOnly'=>true),
+			array('time', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('IdResult, TimeTeam, NumberTask, PlaceTeam, RatingTeam, PointgameTeam, PointTeam, IdTeam', 'safe', 'on'=>'search'),
+			array('id, time, score, teamId, gameId', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -50,7 +45,6 @@ class Results extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idTeam' => array(self::BELONGS_TO, 'Team', 'IdTeam'),
 		);
 	}
 
@@ -60,14 +54,11 @@ class Results extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'IdResult' => 'Id Result',
-			'TimeTeam' => 'Time Team',
-			'NumberTask' => 'Number Task',
-			'PlaceTeam' => 'Place Team',
-			'RatingTeam' => 'Rating Team',
-			'PointgameTeam' => 'Pointgame Team',
-			'PointTeam' => 'Point Team',
-			'IdTeam' => 'Id Team',
+			'id' => 'ID',
+			'time' => 'Time',
+			'score' => 'Score',
+			'teamId' => 'Team',
+			'gameId' => 'Game',
 		);
 	}
 
@@ -89,14 +80,11 @@ class Results extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('IdResult',$this->IdResult);
-		$criteria->compare('TimeTeam',$this->TimeTeam,true);
-		$criteria->compare('NumberTask',$this->NumberTask);
-		$criteria->compare('PlaceTeam',$this->PlaceTeam);
-		$criteria->compare('RatingTeam',$this->RatingTeam);
-		$criteria->compare('PointgameTeam',$this->PointgameTeam);
-		$criteria->compare('PointTeam',$this->PointTeam);
-		$criteria->compare('IdTeam',$this->IdTeam);
+		$criteria->compare('id',$this->id);
+		$criteria->compare('time',$this->time,true);
+		$criteria->compare('score',$this->score);
+		$criteria->compare('teamId',$this->teamId);
+		$criteria->compare('gameId',$this->gameId);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

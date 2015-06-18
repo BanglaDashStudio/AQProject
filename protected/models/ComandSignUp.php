@@ -7,6 +7,7 @@ class ComandSignUp extends CFormModel
     public $passwordconfirm;
     public $phone;
     public $mail;
+    public $page;
     public $description;
    // public $rememberMe=false;
 
@@ -17,7 +18,7 @@ class ComandSignUp extends CFormModel
             /*array('mail','email','message'=>"email не корректен"),
             array('phone','numerical','message'=>"телефон не корректен (+7=8)"),*/
             array('username, phone, mail', 'unique'),
-            array('username, password, passwordconfirm, phone, mail, description', 'safe'),
+            array('username, password, passwordconfirm, phone, mail, description, page', 'safe'),
            /* array('password, passwordconfirm','length', 'min' => 6),
             array('password, passwordconfirm, username', 'length', 'max' => 25),*/
            // array('passwordconfirm','equation'),
@@ -40,6 +41,7 @@ class ComandSignUp extends CFormModel
             'passwordconfirm' => 'Повторите пароль',
             'phone' => 'Телефон',
             'mail' => '@mail',
+            'page' => 'vk.com',
             'description' => 'Дополнительная информация',
         );
     }

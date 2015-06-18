@@ -16,14 +16,14 @@ class AdminController extends Controller
     {
         $gameList=Game::model()->findAll();
         $gameArray = array();
-        $gameActualList = Game::model()->findByAttributes(array('AcceptGame'=>1));
+        $gameActualList = Game::model()->findByAttributes(array('accepted'=>1));
         $gameArray[-1] = '...';
         foreach ($gameList as $item){
-            $gameArray[$item->IdGame] = $item->NameGame;
+            $gameArray[$item->id] = $item->name;
         }
 
         if(!$gameActualList == NULL) {
-            $gameActual = $gameActualList->NameGame;
+            $gameActual = $gameActualList->name;
         }else{
             $gameActual = 'На сегодня игр нет';
         }
@@ -34,28 +34,28 @@ class AdminController extends Controller
     public function actionChangeId()
     {
         if (isset($_POST['listname'])){
-            $gameActual = Game::model()->findByAttributes(array('AcceptGame'=>1));
+            $gameActual = Game::model()->findByAttributes(array('accepted'=>1));
             $gameList = Game::model()->findByPk($_POST['listname']);
 
             if($_POST['listname'] == -1) {
-                $gameActual->AcceptGame = '0';
+                $gameActual->accepted = '0';
                 if ($gameActual->save()) {
                     $this->redirect(Yii::app()->createUrl('Admin/gamechange'));
                 }
             }
 
             if($gameActual !== NULL) {
-                $gameActual->AcceptGame = '0';
+                $gameActual->accepted = '0';
 
                 if ($gameActual->save()) {
 
-                    $gameList->AcceptGame = '1';
+                    $gameList->accepted = '1';
                     if ($gameList->save()) {
                         $this->redirect(Yii::app()->createUrl('Admin/gamechange'));
                     }
                 }
             } else{
-                $gameList->AcceptGame = '1';
+                $gameList->accepted = '1';
                 if ($gameList->save()) {
                     $this->redirect(Yii::app()->createUrl('Admin/gamechange'));
                 }

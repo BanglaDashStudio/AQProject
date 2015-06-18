@@ -4,12 +4,9 @@
  * This is the model class for table "code".
  *
  * The followings are the available columns in table 'code':
- * @property integer $IdCode
- * @property integer $IdTask
- * @property integer $Cod
- *
- * The followings are the available model relations:
- * @property Task $idTask
+ * @property integer $id
+ * @property integer $taskId
+ * @property integer $code
  */
 class Code extends CActiveRecord
 {
@@ -29,10 +26,10 @@ class Code extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('IdTask, Cod', 'numerical', 'integerOnly'=>true),
+			array('taskId, code', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('IdCode, IdTask, Cod', 'safe', 'on'=>'search'),
+			array('id, taskId, code', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -44,7 +41,6 @@ class Code extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idTask' => array(self::BELONGS_TO, 'Task', 'IdTask'),
 		);
 	}
 
@@ -54,9 +50,9 @@ class Code extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'IdCode' => 'Id Code',
-			'IdTask' => 'Id Task',
-			'Cod' => 'Код',
+			'id' => 'ID',
+			'taskId' => 'Task',
+			'code' => 'Code',
 		);
 	}
 
@@ -78,9 +74,9 @@ class Code extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('IdCode',$this->IdCode);
-		$criteria->compare('IdTask',$this->IdTask);
-		$criteria->compare('Cod',$this->Cod);
+		$criteria->compare('id',$this->id);
+		$criteria->compare('taskId',$this->taskId);
+		$criteria->compare('code',$this->code);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -20,57 +20,51 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'NameGame'); ?>
-		<?php echo $form->textArea($model,'NameGame',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'NameGame'); ?>
+		<?php echo $form->labelEx($model,'name'); ?>
+		<?php echo $form->textArea($model,'name',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'name'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'DescriptionGame'); ?>
-		<?php echo $form->textArea($model,'DescriptionGame',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'DescriptionGame'); ?>
+		<?php echo $form->labelEx($model,'description'); ?>
+		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'description'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Date'); ?>
-		<?php echo $form->textField($model,'Date'); ?>
-		<?php echo $form->error($model,'Date'); ?>
+		<?php echo $form->labelEx($model,'date'); ?>
+		<?php echo $form->textField($model,'date'); ?>
+		<?php echo $form->error($model,'date'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'IdType'); ?>
-		<?php echo $form->textField($model,'IdType'); ?>
-		<?php echo $form->error($model,'IdType'); ?>
+		<?php echo $form->labelEx($model,'start'); ?>
+		<?php echo $form->textField($model,'start'); ?>
+		<?php echo $form->error($model,'start'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'StartGame'); ?>
-		<?php echo $form->textField($model,'StartGame'); ?>
-		<?php echo $form->error($model,'StartGame'); ?>
+		<?php echo $form->labelEx($model,'accepted'); ?>
+		<?php echo $form->textField($model,'accepted'); ?>
+		<?php echo $form->error($model,'accepted'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'FinishGame'); ?>
-		<?php echo $form->textField($model,'FinishGame'); ?>
-		<?php echo $form->error($model,'FinishGame'); ?>
+		<?php echo $form->labelEx($model,'comment'); ?>
+		<?php echo $form->textArea($model,'comment',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'comment'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'AcceptGame'); ?>
-		<?php echo $form->textField($model,'AcceptGame'); ?>
-		<?php echo $form->error($model,'AcceptGame'); ?>
+		<?php echo $form->labelEx($model,'type'); ?>
+		<?php echo $form->textArea($model,'type',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'type'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Comment'); ?>
-		<?php echo $form->textArea($model,'Comment',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'Comment'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'IdTeam'); ?>
-		<?php echo $form->textField($model,'IdTeam'); ?>
-		<?php echo $form->error($model,'IdTeam'); ?>
+		<?php echo $form->labelEx($model,'teamId'); ?>
+		<?php echo $form->textField($model,'teamId'); ?>
+		<?php echo $form->error($model,'teamId'); ?>
 	</div>
 
 	<div class="row buttons">

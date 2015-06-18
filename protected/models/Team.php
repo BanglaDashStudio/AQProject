@@ -4,20 +4,14 @@
  * This is the model class for table "team".
  *
  * The followings are the available columns in table 'team':
- * @property integer $IdTeam
- * @property string $NameTeam
- * @property string $DescriptionTeam
- * @property string $EmailTeam
- * @property string $PasswordTeam
- * @property string $PageTeam
- * @property string $PhoneTeam
- * @property integer $RowTeam
- *
- * The followings are the available model relations:
- * @property Game[] $games
- * @property Gameteam[] $gameteams
- * @property Grid[] $grs
- * @property Results[] $results
+ * @property integer $id
+ * @property string $name
+ * @property string $description
+ * @property string $email
+ * @property string $password
+ * @property string $page
+ * @property string $phone
+ * @property integer $role
  */
 class Team extends CActiveRecord
 {
@@ -37,12 +31,12 @@ class Team extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('NameTeam, PasswordTeam', 'required'),
-			array('RowTeam', 'numerical', 'integerOnly'=>true),
-			array('DescriptionTeam, EmailTeam, PageTeam, PhoneTeam', 'safe'),
+			array('name, password, phone', 'required'),
+			//array('id, role', 'numerical', 'integerOnly'=>true),
+			array('description, email, page', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('IdTeam, NameTeam, DescriptionTeam, EmailTeam, PasswordTeam, PageTeam, PhoneTeam, RowTeam', 'safe', 'on'=>'search'),
+			array('id, name, description, email, password, page, phone, role', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,10 +48,6 @@ class Team extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'games' => array(self::HAS_MANY, 'Game', 'IdTeam'),
-			'gameteams' => array(self::HAS_MANY, 'Gameteam', 'IdTeam'),
-			'grs' => array(self::HAS_MANY, 'Grid', 'IdTeam'),
-			'results' => array(self::HAS_MANY, 'Results', 'IdTeam'),
 		);
 	}
 
@@ -67,14 +57,14 @@ class Team extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'IdTeam' => 'Id Team',
-			'NameTeam' => 'Name Team',
-			'DescriptionTeam' => 'Description Team',
-			'EmailTeam' => 'Email Team',
-			'PasswordTeam' => 'Password Team',
-			'PageTeam' => 'Page Team',
-			'PhoneTeam' => 'Phone Team',
-			'RowTeam' => 'Row Team',
+			'id' => 'ID',
+			'name' => 'Name',
+			'description' => 'Description',
+			'email' => 'Email',
+			'password' => 'Password',
+			'page' => 'Page',
+			'phone' => 'Phone',
+			'role' => 'Role',
 		);
 	}
 
@@ -96,14 +86,14 @@ class Team extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('IdTeam',$this->IdTeam);
-		$criteria->compare('NameTeam',$this->NameTeam,true);
-		$criteria->compare('DescriptionTeam',$this->DescriptionTeam,true);
-		$criteria->compare('EmailTeam',$this->EmailTeam,true);
-		$criteria->compare('PasswordTeam',$this->PasswordTeam,true);
-		$criteria->compare('PageTeam',$this->PageTeam,true);
-		$criteria->compare('PhoneTeam',$this->PhoneTeam,true);
-		$criteria->compare('RowTeam',$this->RowTeam);
+		$criteria->compare('id',$this->id);
+		$criteria->compare('name',$this->name,true);
+		$criteria->compare('description',$this->description,true);
+		$criteria->compare('email',$this->email,true);
+		$criteria->compare('password',$this->password,true);
+		$criteria->compare('page',$this->page,true);
+		$criteria->compare('phone',$this->phone,true);
+		$criteria->compare('role',$this->role);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

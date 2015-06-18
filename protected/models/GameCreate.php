@@ -6,7 +6,7 @@ class GameCreate extends CFormModel
     public $DescriptionGame;
     public $Date;
     public $StartGame;
-    public $FinishGame;
+    public $Type;
     public $Comment;
     public $AcceptGame;
     public $IdTeam;
@@ -21,10 +21,10 @@ class GameCreate extends CFormModel
         return array(
 
             array('NameGame', 'required'),
-            array('DescriptionGame,  StartGame, Date, FinishGame, Comment', 'safe'),
+            array('DescriptionGame,  StartGame, Date, Comment, Type', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('NameGame, Date, DescriptionGame,  Date, StartGame, FinishGame, Comment, AcceptGame', 'safe', 'on'=>'search'),
+            array('NameGame, Date, DescriptionGame,  Date, StartGame, Type, Comment, AcceptGame', 'safe', 'on'=>'search'),
         );
 
 
@@ -39,7 +39,7 @@ class GameCreate extends CFormModel
             'DescriptionGame' => 'Информация об игре, допы',
             'Date' =>'Дата',
             'StartGame' => 'Время начала',
-            'FinishGame' => 'Время завершения',
+            'Type' => 'Формат игры',
             'Comment' => 'Комментарий (если хотите)',
         );
     }

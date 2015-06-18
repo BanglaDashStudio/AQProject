@@ -47,6 +47,12 @@
 		<?php echo $form->error($model,'mail'); ?>
 	</div>
 
+    <div class="row">
+        <?php echo $form->labelEx($model,'page'); ?>
+        <?php echo $form->textField($model,'page'); ?>
+        <?php echo $form->error($model,'page'); ?>
+    </div>
+
 	<div class="row">
 		<?php echo $form->labelEx($model,'description'); ?>
 		<?php echo $form->textField($model,'description'); ?>

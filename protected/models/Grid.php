@@ -4,16 +4,11 @@
  * This is the model class for table "grid".
  *
  * The followings are the available columns in table 'grid':
- * @property integer $IdGrid
- * @property integer $IdTeam
- * @property integer $IdTask
- * @property integer $Order
- * @property integer $IdGame
- *
- * The followings are the available model relations:
- * @property Game $idGame
- * @property Team $idTeam
- * @property Task $idTask
+ * @property integer $id
+ * @property integer $teamId
+ * @property integer $taskId
+ * @property integer $order
+ * @property integer $gameId
  */
 class Grid extends CActiveRecord
 {
@@ -33,10 +28,11 @@ class Grid extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('IdTeam, IdTask, Order, IdGame', 'numerical', 'integerOnly'=>true),
+			array('gameId', 'required'),
+			array('teamId, taskId, order, gameId', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('IdGrid, IdTeam, IdTask, Order, IdGame', 'safe', 'on'=>'search'),
+			array('id, teamId, taskId, order, gameId', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -48,9 +44,6 @@ class Grid extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idGame' => array(self::BELONGS_TO, 'Game', 'IdGame'),
-			'idTeam' => array(self::BELONGS_TO, 'Team', 'IdTeam'),
-			'idTask' => array(self::BELONGS_TO, 'Task', 'IdTask'),
 		);
 	}
 
@@ -60,11 +53,11 @@ class Grid extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'IdGrid' => 'Id Grid',
-			'IdTeam' => 'Id Team',
-			'IdTask' => 'Id Task',
-			'Order' => 'Order',
-			'IdGame' => 'Id Game',
+			'id' => 'ID',
+			'teamId' => 'Team',
+			'taskId' => 'Task',
+			'order' => 'Order',
+			'gameId' => 'Game',
 		);
 	}
 
@@ -86,11 +79,11 @@ class Grid extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('IdGrid',$this->IdGrid);
-		$criteria->compare('IdTeam',$this->IdTeam);
-		$criteria->compare('IdTask',$this->IdTask);
-		$criteria->compare('Order',$this->Order);
-		$criteria->compare('IdGame',$this->IdGame);
+		$criteria->compare('id',$this->id);
+		$criteria->compare('teamId',$this->teamId);
+		$criteria->compare('taskId',$this->taskId);
+		$criteria->compare('order',$this->order);
+		$criteria->compare('gameId',$this->gameId);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -71,7 +71,7 @@ class GamecrudController extends Controller
 		{
 			$model->attributes=$_POST['Game'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->IdGame));
+				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('create',array(
@@ -95,7 +95,7 @@ class GamecrudController extends Controller
 		{
 			$model->attributes=$_POST['Game'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->IdGame));
+				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('update',array(

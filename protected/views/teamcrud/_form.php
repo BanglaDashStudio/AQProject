@@ -20,51 +20,51 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'NameTeam'); ?>
-		<?php echo $form->textArea($model,'NameTeam',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'NameTeam'); ?>
+		<?php echo $form->labelEx($model,'id'); ?>
+		<?php echo $form->textField($model,'id'); ?>
+		<?php echo $form->error($model,'id'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'DescriptionTeam'); ?>
-		<?php echo $form->textArea($model,'DescriptionTeam',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'DescriptionTeam'); ?>
+		<?php echo $form->labelEx($model,'name'); ?>
+		<?php echo $form->textArea($model,'name',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'name'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'EmailTeam'); ?>
-		<?php echo $form->textArea($model,'EmailTeam',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'EmailTeam'); ?>
+		<?php echo $form->labelEx($model,'description'); ?>
+		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'description'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'PasswordTeam'); ?>
-		<?php echo $form->textArea($model,'PasswordTeam',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'PasswordTeam'); ?>
+		<?php echo $form->labelEx($model,'email'); ?>
+		<?php echo $form->textArea($model,'email',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'email'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'PageTeam'); ?>
-		<?php echo $form->textArea($model,'PageTeam',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'PageTeam'); ?>
+		<?php echo $form->labelEx($model,'password'); ?>
+		<?php echo $form->textArea($model,'password',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'password'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'PhoneTeam'); ?>
-		<?php echo $form->textArea($model,'PhoneTeam',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'PhoneTeam'); ?>
+		<?php echo $form->labelEx($model,'page'); ?>
+		<?php echo $form->textArea($model,'page',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'page'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'RowTeam'); ?>
-		<?php echo $form->textField($model,'RowTeam'); ?>
-		<?php echo $form->error($model,'RowTeam'); ?>
+		<?php echo $form->labelEx($model,'phone'); ?>
+		<?php echo $form->textArea($model,'phone',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'phone'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'IdGame'); ?>
-		<?php echo $form->textField($model,'IdGame'); ?>
-		<?php echo $form->error($model,'IdGame'); ?>
+		<?php echo $form->labelEx($model,'role'); ?>
+		<?php echo $form->textField($model,'role'); ?>
+		<?php echo $form->error($model,'role'); ?>
 	</div>
 
 	<div class="row buttons">

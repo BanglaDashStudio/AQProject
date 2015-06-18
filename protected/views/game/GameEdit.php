@@ -1,17 +1,13 @@
 <?php
-/* @var $this GameController */
+/* @var $this GameCreateController */
 /* @var $model GameCreate */
 /* @var $form CActiveForm */
-$this->breadcrumbs=array(
-    'Список созданных игр'=>array('MyGames'),
-    'Редактор игры',
-);
 ?>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'game-Create-form',
+	'id'=>'game-create-GameEdit-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// See class documentation of CActiveForm for details on this,
@@ -19,7 +15,9 @@ $this->breadcrumbs=array(
 	'enableAjaxValidation'=>false,
 )); ?>
 
-    <?php echo $form->errorSummary($model); ?>
+	<p class="note">Поля со <span class="required">*</span> обязательны для заполнения.</p>
+
+	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'NameGame'); ?>
@@ -31,6 +29,12 @@ $this->breadcrumbs=array(
 		<?php echo $form->labelEx($model,'DescriptionGame'); ?>
 		<?php echo $form->textField($model,'DescriptionGame'); ?>
 		<?php echo $form->error($model,'DescriptionGame'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'StartGame'); ?>
+		<?php echo $form->textField($model,'StartGame'); ?>
+		<?php echo $form->error($model,'StartGame'); ?>
 	</div>
 
     <?php echo $form->labelEx($model,'Date'); ?>
@@ -45,23 +49,18 @@ $this->breadcrumbs=array(
         ),
     ));?>
 
-<div class="row">
-    <?php echo $form->labelEx($model,'StartGame'); ?>
-    <?php echo $form->textField($model,'StartGame'); ?>
-    <?php echo $form->error($model,'StartGame'); ?>
-</div>
+	<div class="row">
+		<?php echo $form->labelEx($model,'Type'); ?>
+		<?php echo $form->textField($model,'Type'); ?>
+		<?php echo $form->error($model,'Type'); ?>
+	</div>
 
-<div class="row">
-    <?php echo $form->labelEx($model,'Type'); ?>
-    <?php echo $form->textField($model,'Type'); ?>
-    <?php echo $form->error($model,'Type'); ?>
-</div>
+	<div class="row">
+		<?php echo $form->labelEx($model,'Comment'); ?>
+		<?php echo $form->textField($model,'Comment'); ?>
+		<?php echo $form->error($model,'Comment'); ?>
+	</div>
 
-    <div class="row">
-        <?php echo $form->labelEx($model,'Comment'); ?>
-        <?php echo $form->textField($model,'Comment'); ?>
-        <?php echo $form->error($model,'Comment'); ?>
-    </div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Сохранить'); ?>

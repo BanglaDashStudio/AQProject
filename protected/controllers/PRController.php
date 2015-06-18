@@ -6,16 +6,17 @@ class PRController extends Controller
 	{
         $modelPass = new PRPassword;
         $modelInfo = new PRInfo;
-        $userInfo = Team::model()->findByAttributes(array('NameTeam'=>Yii::app()->user->name));
+        $userInfo = Team::model()->findByAttributes(array('name'=>Yii::app()->user->name));
 
         if($userInfo == null){
             echo 'ошибка';
             return;
         }
 
-        $modelInfo->phone = $userInfo->PhoneTeam;
-        $modelInfo->mail = $userInfo->EmailTeam;
-        $modelInfo->inform = $userInfo->DescriptionTeam;
+        $modelInfo->phone = $userInfo->phone;
+        $modelInfo->mail = $userInfo->email;
+        $modelInfo->page = $userInfo->page;
+        $modelInfo->inform = $userInfo->description;
 
         if(isset($_POST['ajax']) && $_POST['ajax']==='prpassword-form')
         {
@@ -34,7 +35,7 @@ class PRController extends Controller
             $modelPass->attributes=$_POST['PRPassword'];
             if($modelPass->validate())
             {
-                $userInfo->PasswordTeam = CPasswordHelper::hashPassword($modelPass->newpassword);
+                $userInfo->password = CPasswordHelper::hashPassword($modelPass->newpassword);
 
                 if($userInfo->save()) {
                     $this->render('PRindex', array('Password' => new PRPassword(), 'Info' => $modelInfo, 'alertFlag' => true));
@@ -48,9 +49,10 @@ class PRController extends Controller
             $modelInfo->attributes=$_POST['PRInfo'];
             if($modelInfo->validate())
             {
-                $userInfo->PhoneTeam = $_POST['PRInfo']['phone'];
-                $userInfo->DescriptionTeam = $_POST['PRInfo']['inform'];
-                $userInfo->EmailTeam = $_POST['PRInfo']['mail'];
+                $userInfo->phone = $_POST['PRInfo']['phone'];
+                $userInfo->description = $_POST['PRInfo']['inform'];
+                $userInfo->page = $_POST['PRInfo']['page'];
+                $userInfo->email = $_POST['PRInfo']['mail'];
 
                 if($userInfo->save()) {
                     $this->render('PRindex', array('Password' => new PRPassword(), 'Info' => $modelInfo, 'alertFlag' => true));

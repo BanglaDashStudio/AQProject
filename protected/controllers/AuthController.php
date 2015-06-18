@@ -66,18 +66,18 @@ class AuthController extends Controller
         {
             $model->attributes=$_POST['ComandSignUp'];
 
-            $modelcomand =new Team;
+            $modelteam =new Team;
 
-            $modelcomand->NameTeam = $model->username;
-            $modelcomand->PasswordTeam = CPasswordHelper::hashPassword($model->password);
-            $modelcomand->EmailTeam = $model->mail;
-            $modelcomand->PageTeam = 'a.com';
-            $modelcomand->PhoneTeam = $model->phone;
-            $modelcomand->DescriptionTeam = $model->description;
+            $modelteam->name = $model->username;
+            $modelteam->password = CPasswordHelper::hashPassword($model->password);
+            $modelteam->email = $model->mail;
+            $modelteam->page = $model->page;
+            $modelteam->phone = $model->phone;
+            $modelteam->description = $model->description;
 
-            if($modelcomand->validate())
-            {
-                if($modelcomand->save()){
+            if($modelteam->validate())
+            {echo 'na';
+                if($modelteam->save()){
                     $this->SignInFunc($model->username, $model->password);
                     $this->redirect(Yii::app()->createUrl('home'));
                     return;

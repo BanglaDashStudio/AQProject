@@ -5,41 +5,37 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('IdTeam')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->IdTeam), array('view', 'id'=>$data->IdTeam)); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
+	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('NameTeam')); ?>:</b>
-	<?php echo CHtml::encode($data->NameTeam); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('name')); ?>:</b>
+	<?php echo CHtml::encode($data->name); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('DescriptionTeam')); ?>:</b>
-	<?php echo CHtml::encode($data->DescriptionTeam); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('description')); ?>:</b>
+	<?php echo CHtml::encode($data->description); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('EmailTeam')); ?>:</b>
-	<?php echo CHtml::encode($data->EmailTeam); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('email')); ?>:</b>
+	<?php echo CHtml::encode($data->email); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('PasswordTeam')); ?>:</b>
-	<?php echo CHtml::encode($data->PasswordTeam); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('password')); ?>:</b>
+	<?php echo CHtml::encode($data->password); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('PageTeam')); ?>:</b>
-	<?php echo CHtml::encode($data->PageTeam); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('page')); ?>:</b>
+	<?php echo CHtml::encode($data->page); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('PhoneTeam')); ?>:</b>
-	<?php echo CHtml::encode($data->PhoneTeam); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('phone')); ?>:</b>
+	<?php echo CHtml::encode($data->phone); ?>
 	<br />
 
 	<?php /*
-	<b><?php echo CHtml::encode($data->getAttributeLabel('RowTeam')); ?>:</b>
-	<?php echo CHtml::encode($data->RowTeam); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('IdGame')); ?>:</b>
-	<?php echo CHtml::encode($data->IdGame); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('role')); ?>:</b>
+	<?php echo CHtml::encode($data->role); ?>
 	<br />
 
 	*/ ?>

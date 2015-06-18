@@ -71,7 +71,7 @@ class TeamcrudController extends Controller
 		{
 			$model->attributes=$_POST['Team'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->IdTeam));
+				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('create',array(
@@ -95,7 +95,7 @@ class TeamcrudController extends Controller
 		{
 			$model->attributes=$_POST['Team'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->IdTeam));
+				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('update',array(

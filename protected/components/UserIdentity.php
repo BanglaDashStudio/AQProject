@@ -19,14 +19,14 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate()
 	{
-        $modelIn=Team::model()->findByAttributes(array('NameTeam' => $this->username));
+        $modelIn=Team::model()->findByAttributes(array('name' => $this->username));
         if($modelIn == NULL)
             $this->errorCode=self::ERROR_USERNAME_INVALID;
-        elseif(!CPasswordHelper::verifyPassword($this->password, $modelIn->PasswordTeam))
+        elseif(!CPasswordHelper::verifyPassword($this->password, $modelIn->password))
             $this->errorCode=self::ERROR_PASSWORD_INVALID;
         else {
             $this->errorCode = self::ERROR_NONE;
-            $this->_id = $modelIn->IdTeam;
+            $this->_id = $modelIn->id;
         }
         return !$this->errorCode;
 	}

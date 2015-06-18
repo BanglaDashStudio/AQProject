@@ -29,11 +29,11 @@ class PRPassword extends CFormModel
 
     public function passvalidate($attribute,$params)
     {
-        $modelPR=Team::model()->findByAttributes(array('NameTeam'=>Yii::app()->user->name));
+        $modelPR=Team::model()->findByAttributes(array('name'=>Yii::app()->user->name));
 
         if($modelPR == NULL)
             $this->addError('oldpassword','Неправильный пароль');
-        elseif(!CPasswordHelper::verifyPassword($this->oldpassword, $modelPR->PasswordTeam))
+        elseif(!CPasswordHelper::verifyPassword($this->oldpassword, $modelPR->password))
             $this->addError('oldpassword','Неправильный пароль.');
 
     }

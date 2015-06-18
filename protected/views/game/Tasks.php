@@ -10,8 +10,8 @@ $this->breadcrumbs=array(
 ?>
 <!-- view для заданий одной игры, список заданий и кнопка на добавление нового задания  -->
 <?php
-    $game=Game::model()->findByAttributes(array('IdGame'=>$idG));
-    echo '<h2>'.$game->NameGame. '</h2>';
+    $game=Game::model()->findByAttributes(array('id'=>$idG));
+    echo '<h2>'.$game->name. '</h2>';
     echo "<a href=".Yii::app()->createUrl("game/GameEdit", array ('idG' => $idG)).">Редактировать игру</a>";?>
 
     <h1>Добавляйте задания</h1>

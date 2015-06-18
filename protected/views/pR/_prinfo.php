@@ -30,12 +30,17 @@
 		<?php echo $form->error($model,'mail'); ?>
 	</div>
 
+    <div class="row">
+        <?php echo $form->labelEx($model,'page'); ?>
+        <?php echo $form->textArea($model,'page'); ?>
+        <?php echo $form->error($model,'page'); ?>
+    </div>
+
 	<div class="row">
 		<?php echo $form->labelEx($model,'inform'); ?>
 		<?php echo $form->textArea($model,'inform'); ?>
 		<?php echo $form->error($model,'inform'); ?>
 	</div>
-
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Сохранить'); ?>

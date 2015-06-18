@@ -4,9 +4,9 @@
  * This is the model class for table "gameteam".
  *
  * The followings are the available columns in table 'gameteam':
- * @property integer $IdGameTeam
- * @property integer $IdGame
- * @property integer $IdTeam
+ * @property integer $id
+ * @property integer $gameId
+ * @property integer $teamId
  */
 class Gameteam extends CActiveRecord
 {
@@ -26,12 +26,11 @@ class Gameteam extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('IdGame, IdTeam', 'required'),
-            array('IdTeam', 'unique'),
-			array('IdGame, IdTeam', 'numerical', 'integerOnly'=>true),
+			array('gameId, teamId', 'required'),
+			array('gameId, teamId', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('IdGameTeam, IdGame, IdTeam', 'safe', 'on'=>'search'),
+			array('id, gameId, teamId', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -52,9 +51,9 @@ class Gameteam extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'IdGameTeam' => 'Id Game Team',
-			'IdGame' => 'Id Game',
-			'IdTeam' => 'Id Team',
+			'id' => 'ID',
+			'gameId' => 'Game',
+			'teamId' => 'Team',
 		);
 	}
 
@@ -76,9 +75,9 @@ class Gameteam extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('IdGameTeam',$this->IdGameTeam);
-		$criteria->compare('IdGame',$this->IdGame);
-		$criteria->compare('IdTeam',$this->IdTeam);
+		$criteria->compare('id',$this->id);
+		$criteria->compare('gameId',$this->gameId);
+		$criteria->compare('teamId',$this->teamId);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
