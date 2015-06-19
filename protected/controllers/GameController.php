@@ -79,21 +79,22 @@ class GameController extends Controller
     }
 
     private function getGameTeam ($id) {
-        $teams = Gameteam::model()->findAllByAttributes(array('gameId'=>$id));
+        $gameForTeams = Gameteam::model()->findAllByAttributes(array('gameId'=>$id));
         $condition = "";
-        if(isset($teams)){
+        if(isset($gameForTeams)){
             $first = true;
-            foreach ($teams as $team) {
+            foreach ($gameForTeams as $gameForTeamItem) {
                 if ($first) {
-                    $condition = "id=".$team->id;
+                    $condition = "id=".$gameForTeamItem->teamId;
                     $first = false;
                 } else {
-                    $condition .= " or id=".$team->id;
+                    $condition .= " or id=".$gameForTeamItem->teamId;
                 }
             }
         }else{
             return null;
         }
+
         if($condition === "") {
             return null;
         }
@@ -103,17 +104,26 @@ class GameController extends Controller
 
     public function actionNewOrder($gameId, $teamId)
     {
-        $newOrder = new Gameteam;
+        $newOrder = Gameteam::model()->findByAttributes(array('teamId'=>$teamId,'gameId'=>$gameId));
+
+        if($newOrder != null) {
+            Gameteam::model()->deleteAllByAttributes(array('teamId'=>$teamId,'gameId'=>$gameId));
+        }
+
+        $newOrder = new Gameteam();
         $newOrder->teamId = $teamId;
         $newOrder->gameId = $gameId;
+
         if ($newOrder->save()) {
             $this->redirect(Yii::app()->createUrl('game/Play'));
+        } else {
+            echo 'что-то не так';
         }
     }
 
-    public function actionDeleteOrder($IdGame, $IdTeam)
+    public function actionDeleteOrder($gameId, $teamId)
     {
-        Gameteam::model()->deleteAllByAttributes(array('gameId'=>$IdGame,'teamId'=>$IdTeam));
+        Gameteam::model()->deleteAllByAttributes(array('gameId'=>$gameId,'teamId'=>$teamId));
         $this->redirect(Yii::app()->createUrl('game/Play'));
     }
 
@@ -192,6 +202,7 @@ class GameController extends Controller
     // редактирование заданий
     public function actionTaskEdit($IdTask, $idG)
     {
+
        //найти задание, код и подсказку по id задания
         $task = Task::model()->findByAttributes(array('id'=>$IdTask));
         $code = Code::model()->findByAttributes(array('taskId'=>$IdTask));

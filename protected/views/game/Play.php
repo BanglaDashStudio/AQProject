@@ -119,6 +119,7 @@ Yii::app()->clientScript->registerScript('button-on', '
     } else {
         printButton2();
     }
+
     function printButton2(){
         echo '<button class="button_2" name="off">';
         echo 'Снять заявку';
@@ -132,7 +133,7 @@ Yii::app()->clientScript->registerScript('button-on', '
     function check($teamList){
         if(isset($teamList)){
             foreach($teamList as $team){
-                if(Yii::app()->user->id == $team->id){
+                if(Yii::app()->user->id === $team->id){
                     return true;
                 }
             }
