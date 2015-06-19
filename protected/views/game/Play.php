@@ -23,7 +23,7 @@ Yii::app()->clientScript->registerScript('button-on', '
 $(".button_1").click(
 function(){
 if (confirm("Вы уверены?")) {
-window.location.href = "'.$this->createUrl("game/newOrder", array("IdGame"=>$model->id, "IdTeam"=>Yii::app()->user->id)).'";
+window.location.href = "'.$this->createUrl("game/newOrder", array("IdGame"=>$gameAccept->id, "IdTeam"=>Yii::app()->user->id)).'";
 }
 return false;
 }
@@ -31,7 +31,7 @@ return false;
 $(".button_2").click(
 function(){
 if (confirm("Вы уверены?")) {
-window.location.href = "'.$this->createUrl("game/deleteOrder", array("IdGame"=>$model->id, "IdTeam"=>Yii::app()->user->id)).'";
+window.location.href = "'.$this->createUrl("game/deleteOrder", array("IdGame"=>$gameAccept->id, "IdTeam"=>Yii::app()->user->id)).'";
 }
 return false;
 }
@@ -44,7 +44,7 @@ Yii::app()->clientScript->registerScript('button-on', '
         $(".button_1").click(
         function(){
             if (confirm("Вы уверены?")) {
-                window.location.href = "'.$this->createUrl("game/newOrder", array("gameId"=>$model->id, "teamId"=>Yii::app()->user->id)).'";
+                window.location.href = "'.$this->createUrl("game/newOrder", array("gameId"=>$gameAccept->id, "teamId"=>Yii::app()->user->id)).'";
             }
             return false;
 	    }
@@ -54,7 +54,7 @@ Yii::app()->clientScript->registerScript('button-on', '
 	    function(){
 
             if (confirm("Вы уверены?")) {
-                window.location.href = "'.$this->createUrl("game/deleteOrder", array("gameId"=>$model->id, "teamId"=>Yii::app()->user->id)).'";
+                window.location.href = "'.$this->createUrl("game/deleteOrder", array("gameId"=>$gameAccept->id, "teamId"=>Yii::app()->user->id)).'";
             }
             return false;
 
@@ -68,12 +68,16 @@ Yii::app()->clientScript->registerScript('button-on', '
 
 <div>
 <?php
-    if(isset($model)) {
-        echo 'Название игры - ', $model->name . "";
-        echo '<br> чуть-чуть про игру  - ', $model->description . "";
-        $team = Team::model()->findByAttributes(array('id'=>$model->id));
-        echo '<br> Написано командой   - ', $team->name . "";
-        echo '<br> Дата игры - ', $model->date . "";
+    if(isset($gameAccept)) {
+        echo 'Название игры - ', $gameAccept->name . "";
+        echo '<br> чуть-чуть про игру  - ', $gameAccept->description . "";
+        $team = Team::model()->findByAttributes(array('id'=>$gameAccept->teamId));
+        if(isset($team)) {
+            echo '<br> Написано командой   - ', $team->name . "";
+            echo '<br> Дата игры - ', $gameAccept->date . "";
+        }else{
+            echo 'Нет команды';
+        }
     }else{
         echo 'Игр нет';
     }

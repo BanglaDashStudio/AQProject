@@ -68,13 +68,13 @@ class GameController extends Controller
             // сетка
             $criteria_grid = new CDbCriteria();
             $criteria_grid->alias = 'Grid';
-            $criteria_grid -> condition = 'gameId='.$id;
+            $criteria_grid->condition = 'gameId='.$id;
             $criteria_grid->params = array(':gameId'=>$id);
             $criteria_grid->order= 'taskId ASC';
 
             $gridOrder = Grid::model()->findAll($criteria_grid);
 
-            $this->render('Play', array('model' => $gameAccept, 'teamList' => $teamList, 'taskList' => $taskList, 'gridOrder' => $gridOrder));
+            $this->render('Play', array('gameAccept' => $gameAccept, 'teamList' => $teamList, 'taskList' => $taskList, 'gridOrder' => $gridOrder));
         }
     }
 
@@ -101,11 +101,11 @@ class GameController extends Controller
         return $condition;
     }
 
-    public function actionNewOrder($IdGame, $IdTeam)
+    public function actionNewOrder($gameId, $teamId)
     {
         $newOrder = new Gameteam;
-        $newOrder->teamId = $IdTeam;
-        $newOrder->gameId = $IdGame;
+        $newOrder->teamId = $teamId;
+        $newOrder->gameId = $gameId;
         if ($newOrder->save()) {
             $this->redirect(Yii::app()->createUrl('game/Play'));
         }
