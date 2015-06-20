@@ -16,10 +16,17 @@ class WebUser extends CWebUser {
             return false;
     }
 
+    public function isOrg() {
+        if($this->getRole()==='org')
+            return true;
+        else
+            return false;
+    }
+
     public function isUser() {
         if($this->getRole()==='user')
             return true;
-        elseif($this->getRole()==='admin')
+        elseif($this->getRole()==='admin' || $this->getRole()==='org')
             return true;
         else
             return false;
@@ -31,6 +38,8 @@ class WebUser extends CWebUser {
                 return 'admin';
             } elseif($user->role == 0) {
                 return 'user';
+            } elseif($user->role == 2) {
+                return 'org';
             } else {
                 return 'guest';
             }

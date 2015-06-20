@@ -33,33 +33,69 @@ class AdminController extends Controller
 
     public function actionChangeId()
     {
-        if (isset($_POST['listname'])){
+        if(isset($_POST['listname'])){
             $gameActual = Game::model()->findByAttributes(array('accepted'=>1));
             $gameList = Game::model()->findByPk($_POST['listname']);
 
-            if($_POST['listname'] == -1) {
-                $gameActual->accepted = '0';
-                if ($gameActual->save()) {
-                    $this->redirect(Yii::app()->createUrl('Admin/gamechange'));
-                }
-            }
+            if ($gameActual !== NULL) {
 
-            if($gameActual !== NULL) {
                 $gameActual->accepted = '0';
 
                 if ($gameActual->save()) {
+                    $this->unsetOrgRole($gameActual);
 
-                    $gameList->accepted = '1';
-                    if ($gameList->save()) {
-                        $this->redirect(Yii::app()->createUrl('Admin/gamechange'));
+                    if ($_POST['listname'] != -1) {
+                        $gameList->accepted = '1';
+
+                        if ($gameList->save()) {
+                            $this->setOrgRole($gameList);
+                            $this->redirect(Yii::app()->createUrl('Admin/gamechange'));
+                        }
                     }
                 }
-            } else{
+            } else {
+
                 $gameList->accepted = '1';
                 if ($gameList->save()) {
+                    $this->setOrgRole($gameList);
                     $this->redirect(Yii::app()->createUrl('Admin/gamechange'));
                 }
             }
+        }
+
+    }
+
+    private function setOrgRole($game) {
+        if(isset($game->teamId)) {
+            $team = Team::model()->findByPk($game->teamId);
+            if ($team->role == 0){//user
+                $team->role = 2;//org
+            }
+
+            if(!$team->save()) {
+                echo 'не проставилась роль орг';
+            }
+        }
+    }
+
+    private function unsetOrgRole($game) {
+        if(isset($game->teamId)){
+            $team = Team::model()->findByPk($game->teamId);
+            if($team->role == 2) {//org
+                $team->role = 0;//user
+            }
+
+            if(!$team->save()) {
+                echo 'не вернулась роль юзер';
+            }
+        }
+
+
+        //unset all
+        $teams = Team::model()->findAllByAttributes(array('role'=>2));
+
+        foreach($teams as $teamItem) {
+            $teamItem->role = 0;
         }
     }
 

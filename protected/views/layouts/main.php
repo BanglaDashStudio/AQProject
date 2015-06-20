@@ -29,6 +29,11 @@
 
 <div class="container" id="page">
 
+
+    <?php
+        echo Yii::app()->user->getRole();
+    ?>
+
 	<!-- <div id="header">
 		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
 	</div> -->

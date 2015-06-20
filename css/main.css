@@ -12,7 +12,7 @@ body
 
 /* Формы по центру и красивые */
 #ComandSignIn_username, #ComandSignIn_password, #ComandSignUp_username, #ComandSignUp_password, #ComandSignUp_passwordconfirm,
-#ComandSignUp_phone, #ComandSignUp_mail, #ComandSignUp_description, input#PRInfo_phone, input#PRInfo_mail {
+#ComandSignUp_phone, #ComandSignUp_page ,#ComandSignUp_mail, #ComandSignUp_description, input#PRInfo_phone, input#PRInfo_mail {
 	height: 23.3px;
 	padding:5px 8px;
 	border-radius: 8px;

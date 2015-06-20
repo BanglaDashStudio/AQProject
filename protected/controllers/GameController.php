@@ -2,6 +2,46 @@
 
 class GameController extends Controller
 {
+    public function actiontest(){
+
+        $gameAccept=Game::model()->findByAttributes(array('accepted'=>'1'));
+
+        $criteria = new CDbCriteria();
+
+        if (!isset($gameAccept)) {
+            $this->render('PrePlayAdmin', array('gameAccept'=>NULL,'teamList'=>NULL, 'taskList'=>NULL, 'gridOrder'=>NULL));
+        } else {
+            $criteria->condition = $this->getGameTeam($gameAccept->id);
+
+            if (isset($criteria->condition)) {
+                $teamList = Team::model()->findAll($criteria);
+            }else {
+                $teamList = null;
+            }
+
+            // id игры
+            $id = $gameAccept->id;
+
+            // поиск заданий для игры
+            $criteria_task = new CDbCriteria();
+            $criteria_task->alias = 'Task';
+            $criteria_task->condition = 'gameId='.$id;
+            $criteria_task->params = array(':gameId'=>$id);
+
+            $taskList = Task::model()->findAll($criteria_task);
+
+            // сетка
+            $criteria_grid = new CDbCriteria();
+            $criteria_grid->alias = 'Grid';
+            $criteria_grid->condition = 'gameId='.$id;
+            $criteria_grid->params = array(':gameId'=>$id);
+            $criteria_grid->order= 'taskId ASC';
+
+            $gridOrder = Grid::model()->findAll($criteria_grid);
+
+            $this->render('PrePlayAdmin', array('gameAccept' => $gameAccept, 'teamList' => $teamList, 'taskList' => $taskList, 'gridOrder' => $gridOrder));
+        }
+    }
 
     // создание игры
 	public function actionCreate()
@@ -39,42 +79,78 @@ class GameController extends Controller
     // текущая игра
 	public function actionPlay()
 	{
-        $gameAccept=Game::model()->findByAttributes(array('accepted'=>'1'));
+        if (false){//игра
 
-        $criteria = new CDbCriteria();
 
-        if (!isset($gameAccept)) {
-            $this->render('Play', array('model'=>NULL,'teamList'=>NULL, 'taskList'=>NULL, 'gridOrder'=>NULL));
-        } else {
-            $criteria->condition = $this->getGameTeam($gameAccept->id);
+        }elseif(true){//до игры
+            $this->prePlay();
 
-            if (isset($criteria->condition)) {
-                $teamList = Team::model()->findAll($criteria);
-            }else {
-                $teamList = null;
+        }else{//после игры
+
+        }
+    }
+
+    private function prePlay(){
+        if (Yii::app()->user->isAdmin()||Yii::app()->user->isOrg()){
+
+            $gameAccept=Game::model()->findByAttributes(array('accepted'=>'1'));
+
+            $criteria = new CDbCriteria();
+
+            if (!isset($gameAccept)) {
+                $this->render('PrePlayAdmin', array('gameAccept'=>NULL,'teamList'=>NULL, 'taskList'=>NULL, 'gridOrder'=>NULL));
+            } else {
+                $criteria->condition = $this->getGameTeam($gameAccept->id);
+
+                if (isset($criteria->condition)) {
+                    $teamList = Team::model()->findAll($criteria);
+                }else {
+                    $teamList = null;
+                }
+
+                // id игры
+                $id = $gameAccept->id;
+
+                // поиск заданий для игры
+                $criteria_task = new CDbCriteria();
+                $criteria_task->alias = 'Task';
+                $criteria_task->condition = 'gameId='.$id;
+                $criteria_task->params = array(':gameId'=>$id);
+
+                $taskList = Task::model()->findAll($criteria_task);
+
+                // сетка
+                $criteria_grid = new CDbCriteria();
+                $criteria_grid->alias = 'Grid';
+                $criteria_grid->condition = 'gameId='.$id;
+                $criteria_grid->params = array(':gameId'=>$id);
+                $criteria_grid->order= 'taskId ASC';
+
+                $gridOrder = Grid::model()->findAll($criteria_grid);
+
+                $this->render('PrePlayAdmin', array('gameAccept' => $gameAccept, 'teamList' => $teamList, 'taskList' => $taskList, 'gridOrder' => $gridOrder));
             }
 
-            // id игры
-            $id = $gameAccept->id;
+        }else{
 
-            // поиск заданий для игры
-            $criteria_task = new CDbCriteria();
-            $criteria_task->alias = 'Task';
-            $criteria_task->condition = 'gameId='.$id;
-            $criteria_task->params = array(':gameId'=>$id);
+            $gameAccept=Game::model()->findByAttributes(array('accepted'=>'1'));
 
-            $taskList = Task::model()->findAll($criteria_task);
+            $criteria = new CDbCriteria();
 
-            // сетка
-            $criteria_grid = new CDbCriteria();
-            $criteria_grid->alias = 'Grid';
-            $criteria_grid->condition = 'gameId='.$id;
-            $criteria_grid->params = array(':gameId'=>$id);
-            $criteria_grid->order= 'taskId ASC';
+            if (!isset($gameAccept)) {
+                $this->render('PrePlayUser', array('gameAccept'=>NULL,'teamList'=>NULL, 'taskList'=>NULL, 'gridOrder'=>NULL));
+            } else {
+                $criteria->condition = $this->getGameTeam($gameAccept->id);
 
-            $gridOrder = Grid::model()->findAll($criteria_grid);
+                if (isset($criteria->condition)) {
+                    $teamList = Team::model()->findAll($criteria);
+                }else {
+                    $teamList = null;
+                }
 
-            $this->render('Play', array('gameAccept' => $gameAccept, 'teamList' => $teamList, 'taskList' => $taskList, 'gridOrder' => $gridOrder));
+                $this->render('PrePlayUser', array('gameAccept' => $gameAccept, 'teamList' => $teamList));
+            }
+
         }
     }
 
