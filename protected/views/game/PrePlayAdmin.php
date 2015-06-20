@@ -23,6 +23,12 @@
 <hr />
 
 <div>
+    <?php $this->renderPartial('_gameorderbuttonadmin'); ?>
+</div>
+
+<hr />
+
+<div>
     <?php $this->renderPartial('_gamegrid', array(
                                             'teamList'=>$teamList,
                                             'taskList'=>$taskList,

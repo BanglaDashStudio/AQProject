@@ -16,6 +16,12 @@
 <hr />
 
 <div>
-    <?php $this->renderPartial('_gameorder', array('teamList'=>$teamList, 'gameAccept'=>$gameAccept)); ?>
+    <?php $this->renderPartial('_gameorder', array('teamList'=>$teamList)); ?>
+</div>
+
+<hr />
+
+<div>
+    <?php $this->renderPartial('_gameorderbuttonuser', array('teamList'=>$teamList, 'gameAccept'=>$gameAccept)); ?>
 </div>
 
