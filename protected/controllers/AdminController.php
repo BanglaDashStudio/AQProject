@@ -52,6 +52,7 @@ class AdminController extends Controller
                             $this->redirect(Yii::app()->createUrl('Admin/gamechange'));
                         }
                     }
+                    $this->redirect(Yii::app()->createUrl('Admin/gamechange'));
                 }
             } else {
 

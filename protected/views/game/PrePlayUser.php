@@ -13,15 +13,19 @@
     <?php $this->renderPartial('_gameinfo', array('gameAccept'=>$gameAccept)); ?>
 </div>
 
-<hr />
+<br>
 
 <div>
-    <?php $this->renderPartial('_gameorder', array('teamList'=>$teamList)); ?>
+    <?php if(isset($gameAccept)){
+        $this->renderPartial('_gameorder', array('teamList'=>$teamList));
+    } ?>
 </div>
 
-<hr />
+<br>
 
 <div>
-    <?php $this->renderPartial('_gameorderbuttonuser', array('teamList'=>$teamList, 'gameAccept'=>$gameAccept)); ?>
+    <?php if(isset($gameAccept)){
+        $this->renderPartial('_gameorderbuttonuser', array('teamList'=>$teamList, 'gameAccept'=>$gameAccept));
+    } ?>
 </div>
 
