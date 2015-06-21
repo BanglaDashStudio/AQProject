@@ -12,6 +12,7 @@
  * @property integer $accepted
  * @property string $comment
  * @property string $type
+ * @property integer $orderLock
  * @property integer $teamId
  */
 class Game extends CActiveRecord
@@ -33,11 +34,11 @@ class Game extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('name', 'required'),
-			array('accepted, teamId', 'numerical', 'integerOnly'=>true),
+			array('accepted, orderLock, teamId', 'numerical', 'integerOnly'=>true),
 			array('description, date, start, comment, type', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, description, date, start, accepted, comment, type, teamId', 'safe', 'on'=>'search'),
+			array('id, name, description, date, start, accepted, comment, type, orderLock, teamId', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,6 +67,7 @@ class Game extends CActiveRecord
 			'accepted' => 'Accepted',
 			'comment' => 'Comment',
 			'type' => 'Type',
+			'orderLock' => 'Order Lock',
 			'teamId' => 'Team',
 		);
 	}
@@ -96,6 +98,7 @@ class Game extends CActiveRecord
 		$criteria->compare('accepted',$this->accepted);
 		$criteria->compare('comment',$this->comment,true);
 		$criteria->compare('type',$this->type,true);
+		$criteria->compare('orderLock',$this->orderLock);
 		$criteria->compare('teamId',$this->teamId);
 
 		return new CActiveDataProvider($this, array(

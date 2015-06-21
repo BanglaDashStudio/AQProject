@@ -10,9 +10,18 @@
     <?php
     echo "<ul>";
     foreach($model as $game) {
-        echo "<li>" . "<a href=\"" . Yii::app()->createUrl("game/Tasks", array("idG" => $game->id))."\">";
-            echo $game->name;
-            echo "</a>";
+        echo "<li>";
+
+        echo '<button onclick="go(\'';
+        echo Yii::app()->createUrl("game/Tasks", array("gameId" => $game->id));
+        echo '\')" class="btEdit" title="Редактировать">E</button>';
+
+        echo '<button onclick="go(\'';
+        echo Yii::app()->createUrl("game/deleteGame", array("gameId" => $game->id));
+        echo '\')" class="btEdit" title="Удалить">D</button>';
+
+        echo $game->name;
+
         echo "</li>";
     }
     echo "</ul>";

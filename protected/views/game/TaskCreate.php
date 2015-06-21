@@ -22,7 +22,7 @@ echo CHtml::link('Добавить задание','#',array('class'=>'task-butt
 // See class documentation of CActiveForm for details on this,
 // you need to use the performAjaxValidation()-method described there.
             'enableAjaxValidation'=>false,
-            'action'=> $this->CreateUrl('/game/TaskCreate', array('idG'=>$idG)),
+            'action'=> $this->CreateUrl('/game/TaskCreate', array('gameId'=>$gameId)),
         )); ?>
         <?php echo $form->errorSummary($model); ?>
         <div class="row">

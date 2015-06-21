@@ -27,6 +27,12 @@
 
 <body>
 
+<script>
+    function go(link){
+        window.location.href = link;
+    }
+</script>
+
 <div class="container" id="page">
 
 	<!-- <div id="header">
@@ -45,21 +51,30 @@
 
 
 	<nav class="nav">
-		<?php $this->widget('zii.widgets.CMenu',array(
-			'items'=>array(
+		<?php
+            if(Yii::app()->user->isAdmin()){
+                $this->widget('zii.widgets.CMenu',array(
+                'items'=>array(
+                    array('label'=>'Главная', 'url'=>array('/home/'), 'id'=>'current'),
+                    array('label'=>'Игра', 'url'=>array('/game/Play')),
+                    array('label'=>'Управление командами', 'url'=>array('teamcrud/index')),
+                    array('label'=>'Управление играми', 'url'=>array('admin/gamechange')),
+                    array('label'=>'Личный кабинет', 'url'=>array('/pR/')),
+                    array('label'=>'Выход ('.Yii::app()->user->name.')', 'url'=>array('/auth/logout')),
+                ),
+            ));
+        }else{
+            $this->widget('zii.widgets.CMenu',array(
+                'items'=>array(
 				array('label'=>'Главная', 'url'=>array('/home/'), 'id'=>'current'),
-				/*array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'Contact', 'url'=>array('/site/contact')),
-				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),*/
 			    array('label'=>'Вход', 'url'=>array('/auth/SignIn'),'visible'=>Yii::app()->user->isGuest),
                 array('label'=>'Регистрация', 'url'=>array('/auth/SignUp'),'visible'=>Yii::app()->user->isGuest),
-                array('label'=>'Личный кабинет', 'url'=>array('/pR/'),'visible'=>!Yii::app()->user->isGuest),
+                array('label'=>'Игра', 'url'=>array('/game/Play'), 'visible'=>!Yii::app()->user->isGuest),
                 array('label'=>'Создать игру', 'url'=>array('/game/MyGames'), 'visible'=>!Yii::app()->user->isGuest),
-                array('label'=>'ИГРАТЬ!!!!', 'url'=>array('/game/Play'), 'visible'=>!Yii::app()->user->isGuest),
-                array('label'=>'Кабинет администратора', 'url'=>array('/admin/'), 'visible'=>Yii::app()->user->isAdmin()),
+                array('label'=>'Личный кабинет', 'url'=>array('/pR/'),'visible'=>!Yii::app()->user->isGuest),
                 array('label'=>'Выход ('.Yii::app()->user->name.')', 'url'=>array('/auth/logout'), 'visible'=>!Yii::app()->user->isGuest),
             ),
-		)); ?>
+		)); }?>
 	</nav><!-- mainmenu -->
 	<?php if(isset($this->breadcrumbs)):?>  
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(

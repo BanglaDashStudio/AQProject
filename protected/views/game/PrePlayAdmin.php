@@ -28,7 +28,7 @@
 
 <div>
     <?php if(isset($gameAccept)){
-        $this->renderPartial('_gameorderbuttonadmin');
+        $this->renderPartial('_gameorderbuttonadmin', array('gameAccept'=>$gameAccept));
     } ?>
 </div>
 

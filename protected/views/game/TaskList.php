@@ -8,10 +8,13 @@
         echo "<ul>";
         foreach ($TaskList as $Task) {
             echo "<li>" ;
-            echo CHtml::submitButton('', array('class' => 'btEdit', 'title'=> 'Редактировать'));
+            echo '<button onclick="go(\'';
+            echo Yii::app()->createUrl("game/taskEdit", array("taskId" => $Task->id, "gameId" => $Task->gameId));
+            echo '\')" class="btEdit" title="Редактировать">E</button>';
+            echo '<button onclick="go(\'';
+            echo Yii::app()->createUrl("game/deleteTask", array("taskId" => $Task->id, "gameId" => $Task->gameId));
+            echo '\')" class="btEdit" title="Удалить">D</button>';
             echo $Task->description;
-            echo "<a href=\"" . Yii::app()->createUrl("game/TaskEdit", array("IdTask" => $Task->id, "idG" => $Task->gameId)) . "\">";
-            echo "</a>";
             echo "</li>";
         }
         echo "</ul>";

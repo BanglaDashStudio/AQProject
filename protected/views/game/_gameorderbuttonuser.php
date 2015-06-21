@@ -25,10 +25,14 @@ return false;
 
 <div class="button_z">
     <?php
-    if(check($teamList)===false){
-        printButton1();
+    if($gameAccept->orderLock==1){
+        if(check($teamList)===false){
+            printButton1();
+        } else {
+            printButton2();
+        }
     } else {
-        printButton2();
+        echo '<h4>Подача заявок завершена</h4>';
     }
 
     function printButton2(){

@@ -7,15 +7,30 @@ $this->breadcrumbs=array(
     'Список созданных игр'=>array('MyGames'),
     'Редактор игры',
 );
+
+Yii::app()->clientScript->registerScript('search', "
+$('.gameedit-button').click(function(){
+	$('.gameedit-form').toggle();
+	return false;
+});
+");
 ?>
 <!-- view для заданий одной игры, список заданий и кнопка на добавление нового задания  -->
 <?php
-    $game=Game::model()->findByAttributes(array('id'=>$idG));
-    echo '<h2>'.$game->name. '</h2>';
-    echo "<a href=".Yii::app()->createUrl("game/GameEdit", array ('idG' => $idG)).">Редактировать игру</a>";?>
 
-    <h1>Добавляйте задания</h1>
+echo CHtml::link('Информация об игре','#',array('class'=>'gameedit-button')); ?>
 
-    <?php $this->renderPartial('TaskList', array('TaskList'=>$Task, 'idG' => $idG) ); ?>
 
-    <?php $this->renderPartial('TaskCreate', array('model'=>$TaskCreate, 'idG' => $idG)); ?>
+<div class="gameedit-form"
+<?php
+if(!$gameEditModel->hasErrors()) {
+    echo 'style="display:none">';
+}
+?>
+
+<?php $this->renderPartial('GameEdit', array('model'=>$gameEditModel)); ?>
+</div>
+
+<?php $this->renderPartial('TaskList', array('TaskList'=>$Task, 'gameId' => $gameId) ); ?>
+
+<?php $this->renderPartial('TaskCreate', array('model'=>$TaskCreate, 'gameId' => $gameId)); ?>
