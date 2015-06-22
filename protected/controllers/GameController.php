@@ -247,7 +247,6 @@ class GameController extends Controller
     {
         if (isset($_POST['TaskCreateForm'])) {
             $model = new TaskCreateForm;
-
             $game= Game::model()->findByAttributes(array('id'=>$gameId));
             $model->type = $game->type;
             //$model->attributes = $_POST['TaskCreateForm'];

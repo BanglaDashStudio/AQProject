@@ -3,6 +3,7 @@
 /* @var $TaskCreate TaskCreateForm*/
 /* @var $GameCreate GameCreate*/
 /* @var $Task TaskCreateForm*/
+
 $this->breadcrumbs=array(
     'Список созданных игр'=>array('MyGames'),
     'Редактор игры',
@@ -28,9 +29,9 @@ if(!$gameEditModel->hasErrors()) {
 }
 ?>
 
-<?php $this->renderPartial('GameEdit', array('model'=>$gameEditModel)); ?>
+<?php $this->renderPartial('_gameedit', array('model'=>$gameEditModel)); ?>
 </div>
 
-<?php $this->renderPartial('TaskList', array('TaskList'=>$Task, 'gameId' => $gameId) ); ?>
+<?php $this->renderPartial('_tasklist', array('TaskList'=>$Task, 'gameId' => $gameId) ); ?>
 
-<?php $this->renderPartial('TaskCreate', array('model'=>$TaskCreate, 'gameId' => $gameId)); ?>
+<?php $this->renderPartial('_taskcreate', array('model'=>$TaskCreate, 'gameId' => $gameId)); ?>

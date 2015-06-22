@@ -3,8 +3,6 @@
 /* @var $gameAccept Game */
 /* @var $teamList Team
  */
-
-
 ?>
 
 <hr />
