@@ -121,7 +121,7 @@ class GameController extends Controller
         // сетка
         $criteria_grid = new CDbCriteria();
         $criteria_grid->alias = 'Grid';
-        $criteria_grid->condition = 'gameId='.$gameId;
+        $criteria_grid->condition = 'gameId='.$gameId.'AND ';
         $criteria_grid->params = array(':gameId'=>$gameId);
         $criteria_grid->order= 'taskId ASC';
 
