@@ -22,11 +22,20 @@ return array(
         'bizRule' => null,
         'data' => null
     ),
+    'creator' => array(
+        'type' => CAuthItem::TYPE_ROLE,
+        'description' => 'creator',
+        'children' => array(
+            'user',
+        ),
+        'bizRule' => null,
+        'data' => null
+    ),
     'org' => array(
         'type' => CAuthItem::TYPE_ROLE,
         'description' => 'org',
         'children' => array(
-            'user',
+            'creator',
         ),
         'bizRule' => null,
         'data' => null
