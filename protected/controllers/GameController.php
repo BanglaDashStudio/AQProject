@@ -82,7 +82,7 @@ class GameController extends Controller
 
        $game = Game::model()->findByAttributes(array('accepted'=>'1'));
 
-
+        /*
         //TODO: ЛУЧШЕ ДЕЛАТЬ timestamp
         $a=" 00:00:00";
         $b=date("Y-m-d");
@@ -94,6 +94,9 @@ class GameController extends Controller
         $c1 =$da.$day.$a;// ЗАВТРА
 
             if ( ($game->date == $c || $game->date == $c1) && $game->start <= date("H:i:s")) {
+        */
+
+        if((strtotime($game->date)+strtotime($game->start)) >= time()){
                 if ($game->finish == 1) {
                     $this->finishPlay(); // после игры
                 }else {
