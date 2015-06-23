@@ -106,48 +106,41 @@ class GameController extends Controller
 
     public function nowPlay($gameId)
     {
-        //echo "fsafsfs";
+        $user=Gameteam::model()->findByAttributes(array('teamId'=>Yii::app()->user->id, 'gameId'=>$gameId));
 
-        $tasksForTeam = Grid::model()->findAllByAttributes(array('gameId'=>$gameId, 'teamId'=>Yii::app()->user->id));
-
-        /*
-        $criteria_task = new CDbCriteria();
-        $criteria_task->alias = 'Task';
-        $criteria_task->condition = 'gameId='.$gameId;
-        $criteria_task->params = array(':gameId'=>$gameId);
-
-        $taskList = Task::model()->findAll($criteria_task);
-*/
-        // сетка
+         // сетка
         $criteria_grid = new CDbCriteria();
         $criteria_grid->alias = 'Grid';
-        $criteria_grid->condition = 'gameId='.$gameId.'AND ';
-        $criteria_grid->params = array(':gameId'=>$gameId);
-        $criteria_grid->order= 'taskId ASC';
+        $criteria_grid->condition = 'gameId='.$gameId.' AND teamId='.Yii::app()->user->id;
+        $criteria_grid->params = array(':gameId'=>$gameId, ':teamId'=>Yii::app()->user->id);
+        $criteria_grid->order= 'orderTask ASC';
 
         $gridOrder = Grid::model()->findAll($criteria_grid);//порядок
-        var_dump($gridOrder);
-        return;
-
-        foreach ($gridOrder as $grid) {
-
-            $taskId = Grid::model()->findByAttributes(array('order'=>$grid->order,'teamId'=>Yii::app()->user->id, 'gameId'=>$gameId) );
-            echo $taskId;
-            return;
-            $task=Task::model()->findByAttributes(array('id'=>$taskId->taskId));
+        
+        $a=array();
+        $ddd=0;
+        foreach($gridOrder as $grid)
+        {
+            $a[$ddd] = $grid;
+            $ddd++;
         }
 
-    /*
-        foreach ($taskList as $task) {
-            $criteria_hint = new CDbCriteria();
-            $criteria_hint->alias = 'Hint';
-            $criteria_hint->condition = 'taskId=' . $task->id;
-            $criteria_hint->params = array(':taskId' => $task->id);
 
-        $hint = Hint::model()->findAll($criteria_hint);
-    }*/
+       // foreach ($gridOrder as $grid) {
+
+            $i = $a[0]->orderTask;// порядковый номер задания
+
+            $taskId = Grid::model()->findByAttributes(array('orderTask'=>$i));// id задания
+            $task=Task::model()->findByAttributes(array('id'=>$taskId->taskId)); //задание
+
+            $hint = Hint::model()->findByAttributes(array('taskId'=>$taskId->taskId)); //подсказка
+
+            $code = Code::model()->findByAttributes(array('taskId'=>$taskId->taskId)); //код
 
 
+
+                $this->render('NowPlayUser', array('task' => $task, 'hint'=>$hint, 'code'=>$code));
+        //}
     }
 
     public function finishPlay()

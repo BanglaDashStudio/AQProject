@@ -29,10 +29,10 @@ class Grid extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('gameId', 'required'),
-			array('teamId, taskId, order, gameId', 'numerical', 'integerOnly'=>true),
+			array('teamId, taskId, orderTask, gameId', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, teamId, taskId, order, gameId', 'safe', 'on'=>'search'),
+			array('id, teamId, taskId, orderTask, gameId', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,7 +56,7 @@ class Grid extends CActiveRecord
 			'id' => 'ID',
 			'teamId' => 'Team',
 			'taskId' => 'Task',
-			'order' => 'Order',
+			'orderTask' => 'Order',
 			'gameId' => 'Game',
 		);
 	}
@@ -82,7 +82,7 @@ class Grid extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('teamId',$this->teamId);
 		$criteria->compare('taskId',$this->taskId);
-		$criteria->compare('order',$this->order);
+		$criteria->compare('orderTask',$this->orderTask);
 		$criteria->compare('gameId',$this->gameId);
 
 		return new CActiveDataProvider($this, array(
