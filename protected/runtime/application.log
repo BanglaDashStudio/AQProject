@@ -1199,3 +1199,249 @@ Stack trace:
 #10 {main}
 REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/upload
 ---
+2015/06/23 20:19:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "uploadimage".' in /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php:483
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(270): CController->missingAction('uploadimage')
+#1 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('uploadimage')
+#2 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('test/uploadimag...')
+#3 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/theantonysurikoff/public_html/AQProject/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/uploadimage
+HTTP_REFERER=http://theantonysurikoff/~theantonysurikoff/AQProject/index.php?r=test/
+---
+2015/06/23 20:25:08 [error] [php] Undefined index: userfile (/home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php:11)
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(286): TestController->runAction()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): TestController->runActionWithFilters()
+#2 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): TestController->run()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /home/theantonysurikoff/public_html/AQProject/index.php(13): CWebApplication->run()
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/uploadimage
+in /home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php (11)
+in /home/theantonysurikoff/public_html/AQProject/index.php (13)
+2015/06/23 20:25:28 [error] [php] Undefined index: userfile (/home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php:11)
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(286): TestController->runAction()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): TestController->runActionWithFilters()
+#2 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): TestController->run()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /home/theantonysurikoff/public_html/AQProject/index.php(13): CWebApplication->run()
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/uploadimage
+in /home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php (11)
+in /home/theantonysurikoff/public_html/AQProject/index.php (13)
+2015/06/23 20:25:32 [error] [php] Undefined index: userfile (/home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php:11)
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(286): TestController->runAction()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): TestController->runActionWithFilters()
+#2 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): TestController->run()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /home/theantonysurikoff/public_html/AQProject/index.php(13): CWebApplication->run()
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/uploadimage
+in /home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php (11)
+in /home/theantonysurikoff/public_html/AQProject/index.php (13)
+2015/06/23 20:25:49 [error] [php] Undefined index: uploadImage (/home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php:11)
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(286): TestController->runAction()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): TestController->runActionWithFilters()
+#2 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): TestController->run()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /home/theantonysurikoff/public_html/AQProject/index.php(13): CWebApplication->run()
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/uploadimage
+in /home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php (11)
+in /home/theantonysurikoff/public_html/AQProject/index.php (13)
+2015/06/23 20:26:35 [error] [php] Undefined index: uploadImage (/home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php:11)
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(286): TestController->runAction()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): TestController->runActionWithFilters()
+#2 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): TestController->run()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /home/theantonysurikoff/public_html/AQProject/index.php(13): CWebApplication->run()
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/uploadimage
+in /home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php (11)
+in /home/theantonysurikoff/public_html/AQProject/index.php (13)
+2015/06/23 20:26:44 [error] [php] move_uploaded_file(/~theantonysurikoff/AQProject/data/images/figure17.PNG): failed to open stream: No such file or directory (/home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php:13)
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(286): TestController->runAction()
+#2 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): TestController->runActionWithFilters()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): TestController->run()
+#4 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /home/theantonysurikoff/public_html/AQProject/index.php(13): CWebApplication->run()
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/uploadimage
+in /home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php (13)
+in /home/theantonysurikoff/public_html/AQProject/index.php (13)
+2015/06/23 20:27:25 [error] [php] move_uploaded_file(/~theantonysurikoff/AQProject/data/images/figure17.PNG): failed to open stream: No such file or directory (/home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php:13)
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(286): TestController->runAction()
+#2 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): TestController->runActionWithFilters()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): TestController->run()
+#4 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /home/theantonysurikoff/public_html/AQProject/index.php(13): CWebApplication->run()
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/uploadimage
+in /home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php (13)
+in /home/theantonysurikoff/public_html/AQProject/index.php (13)
+2015/06/23 20:27:37 [error] [php] move_uploaded_file(/~theantonysurikoff/AQProject/data/images/figure17.PNG): failed to open stream: No such file or directory (/home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php:13)
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(286): TestController->runAction()
+#2 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): TestController->runActionWithFilters()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): TestController->run()
+#4 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /home/theantonysurikoff/public_html/AQProject/index.php(13): CWebApplication->run()
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/uploadimage
+in /home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php (13)
+in /home/theantonysurikoff/public_html/AQProject/index.php (13)
+2015/06/23 20:30:10 [error] [php] move_uploaded_file(/~theantonysurikoff/AQProject/data/images/figure17.PNG): failed to open stream: No such file or directory (/home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php:13)
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(286): TestController->runAction()
+#2 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): TestController->runActionWithFilters()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): TestController->run()
+#4 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /home/theantonysurikoff/public_html/AQProject/index.php(13): CWebApplication->run()
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/uploadimage
+in /home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php (13)
+in /home/theantonysurikoff/public_html/AQProject/index.php (13)
+2015/06/23 20:30:13 [error] [php] move_uploaded_file(/~theantonysurikoff/AQProject/data/images/figure17.PNG): failed to open stream: No such file or directory (/home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php:13)
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(286): TestController->runAction()
+#2 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): TestController->runActionWithFilters()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): TestController->run()
+#4 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /home/theantonysurikoff/public_html/AQProject/index.php(13): CWebApplication->run()
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/uploadimage
+in /home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php (13)
+in /home/theantonysurikoff/public_html/AQProject/index.php (13)
+2015/06/23 20:30:17 [error] [php] move_uploaded_file(/~theantonysurikoff/AQProject/data/images/figure17.PNG): failed to open stream: No such file or directory (/home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php:13)
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(286): TestController->runAction()
+#2 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): TestController->runActionWithFilters()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): TestController->run()
+#4 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /home/theantonysurikoff/public_html/AQProject/index.php(13): CWebApplication->run()
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/uploadimage
+in /home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php (13)
+in /home/theantonysurikoff/public_html/AQProject/index.php (13)
+2015/06/23 20:30:27 [error] [php] move_uploaded_file(/~theantonysurikoff/AQProject/data/images/figure17.PNG): failed to open stream: No such file or directory (/home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php:13)
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(286): TestController->runAction()
+#2 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): TestController->runActionWithFilters()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): TestController->run()
+#4 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /home/theantonysurikoff/public_html/AQProject/index.php(13): CWebApplication->run()
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/uploadimage
+in /home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php (13)
+in /home/theantonysurikoff/public_html/AQProject/index.php (13)
+2015/06/23 20:33:20 [error] [php] move_uploaded_file(/~theantonysurikoff/AQProject/protected/data/images/figure16.PNG): failed to open stream: No such file or directory (/home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php:13)
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(286): TestController->runAction()
+#2 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): TestController->runActionWithFilters()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): TestController->run()
+#4 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /home/theantonysurikoff/public_html/AQProject/index.php(13): CWebApplication->run()
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/uploadimage
+in /home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php (13)
+in /home/theantonysurikoff/public_html/AQProject/index.php (13)
+2015/06/23 20:39:48 [error] [php] move_uploaded_file(/~theantonysurikoff/AQProject/protected/data/images/figure16.PNG): failed to open stream: No such file or directory (/home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php:15)
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(286): TestController->runAction()
+#2 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): TestController->runActionWithFilters()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): TestController->run()
+#4 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /home/theantonysurikoff/public_html/AQProject/index.php(13): CWebApplication->run()
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/uploadimage
+in /home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php (15)
+in /home/theantonysurikoff/public_html/AQProject/index.php (13)
+2015/06/23 20:43:44 [error] [php] move_uploaded_file(/~theantonysurikoff/AQProject/protected/data/images/figure16.PNG): failed to open stream: No such file or directory (/home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php:15)
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(286): TestController->runAction()
+#2 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): TestController->runActionWithFilters()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): TestController->run()
+#4 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /home/theantonysurikoff/public_html/AQProject/index.php(13): CWebApplication->run()
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/uploadimage
+in /home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php (15)
+in /home/theantonysurikoff/public_html/AQProject/index.php (13)
+2015/06/23 20:44:10 [error] [php] move_uploaded_file(/~theantonysurikoff/AQProject/protected/data/images/figure16.PNG): failed to open stream: No such file or directory (/home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php:15)
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(286): TestController->runAction()
+#2 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): TestController->runActionWithFilters()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): TestController->run()
+#4 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /home/theantonysurikoff/public_html/AQProject/index.php(13): CWebApplication->run()
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/uploadimage
+in /home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php (15)
+in /home/theantonysurikoff/public_html/AQProject/index.php (13)
+2015/06/23 20:44:59 [error] [php] move_uploaded_file(/~theantonysurikoff/AQProject/protected/data/images/figure16.PNG): failed to open stream: No such file or directory (/home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php:15)
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(286): TestController->runAction()
+#2 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): TestController->runActionWithFilters()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): TestController->run()
+#4 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /home/theantonysurikoff/public_html/AQProject/index.php(13): CWebApplication->run()
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/uploadimage
+in /home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php (15)
+in /home/theantonysurikoff/public_html/AQProject/index.php (13)
+2015/06/23 20:45:15 [error] [php] move_uploaded_file(/~theantonysurikoff/AQProject/protected/data/images/): failed to open stream: No such file or directory (/home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php:15)
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(286): TestController->runAction()
+#2 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): TestController->runActionWithFilters()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): TestController->run()
+#4 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /home/theantonysurikoff/public_html/AQProject/index.php(13): CWebApplication->run()
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/uploadimage
+in /home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php (15)
+in /home/theantonysurikoff/public_html/AQProject/index.php (13)
+2015/06/23 20:46:50 [error] [php] move_uploaded_file(/protected/data/images/figure16.PNG): failed to open stream: No such file or directory (/home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php:15)
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(286): TestController->runAction()
+#2 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): TestController->runActionWithFilters()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): TestController->run()
+#4 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /home/theantonysurikoff/public_html/AQProject/index.php(13): CWebApplication->run()
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/uploadimage
+in /home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php (15)
+in /home/theantonysurikoff/public_html/AQProject/index.php (13)
+2015/06/23 20:47:05 [error] [php] move_uploaded_file(/data/images/figure16.PNG): failed to open stream: No such file or directory (/home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php:15)
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(286): TestController->runAction()
+#2 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): TestController->runActionWithFilters()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): TestController->run()
+#4 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /home/theantonysurikoff/public_html/AQProject/index.php(13): CWebApplication->run()
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/uploadimage
+in /home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php (15)
+in /home/theantonysurikoff/public_html/AQProject/index.php (13)
