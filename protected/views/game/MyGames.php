@@ -18,7 +18,7 @@
 
         echo '<button onclick="go(\'';
         echo Yii::app()->createUrl("game/deleteGame", array("gameId" => $game->id));
-        echo '\')" class="btEdit" title="Удалить">D</button>';
+        echo '\')" class="btDelete" title="Удалить">D</button>';
 
         echo $game->name;
 

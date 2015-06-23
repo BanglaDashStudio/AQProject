@@ -1024,3 +1024,178 @@ Stack trace:
 REQUEST_URI=/AQProject/index.php?r=game/GameEdit&idG=76
 HTTP_REFERER=http://localhost/AQProject/index.php?r=game/Tasks&idG=76
 ---
+2015/06/23 19:01:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'aquser'@'localhost' (using password: YES)' in /home/theantonysurikoff/public_html/AQProject/framework/db/CDbConnection.php:399
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/db/CDbConnection.php(347): CDbConnection->open()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/db/CDbConnection.php(325): CDbConnection->setActive(true)
+#2 /home/theantonysurikoff/public_html/AQProject/framework/base/CModule.php(394): CDbConnection->init()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(458): CModule->getComponent('db')
+#4 /home/theantonysurikoff/public_html/AQProject/framework/db/ar/CActiveRecord.php(637): CApplication->getDb()
+#5 /home/theantonysurikoff/public_html/AQProject/framework/db/ar/CActiveRecord.php(1433): CActiveRecord->getDbConnection()
+#6 /home/theantonysurikoff/public_html/AQProject/framework/db/ar/CActiveRecord.php(1522): CActiveRecord->getTableAlias(true)
+#7 /home/theantonysurikoff/public_html/AQProject/protected/components/UserIdentity.php(22): CActiveRecord->findByAttributes(Array)
+#8 /home/theantonysurikoff/public_html/AQProject/protected/models/ComandSignIn.php(31): UserIdentity->authenticate()
+#9 /home/theantonysurikoff/public_html/AQProject/framework/validators/CInlineValidator.php(42): ComandSignIn->authenticate('password', Array)
+#10 /home/theantonysurikoff/public_html/AQProject/framework/validators/CValidator.php(201): CInlineValidator->validateAttribute(Object(ComandSignIn), 'password')
+#11 /home/theantonysurikoff/public_html/AQProject/framework/base/CModel.php(159): CValidator->validate(Object(ComandSignIn), NULL)
+#12 /home/theantonysurikoff/public_html/AQProject/protected/controllers/AuthController.php(24): CModel->validate()
+#13 /home/theantonysurikoff/public_html/AQProject/framework/web/actions/CInlineAction.php(49): AuthController->actionSignIn()
+#14 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#15 /home/theantonysurikoff/public_html/AQProject/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#16 /home/theantonysurikoff/public_html/AQProject/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#17 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#18 /home/theantonysurikoff/public_html/AQProject/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#19 /home/theantonysurikoff/public_html/AQProject/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#20 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(291): CFilterChain->run()
+#21 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('SignIn')
+#23 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('auth/SignIn')
+#24 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#25 /home/theantonysurikoff/public_html/AQProject/index.php(13): CApplication->run()
+#26 {main}
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=auth/SignIn
+HTTP_REFERER=http://theantonysurikoff/~theantonysurikoff/AQProject/index.php?r=auth/SignIn
+---
+2015/06/23 19:01:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'aquser'@'localhost' (using password: YES)' in /home/theantonysurikoff/public_html/AQProject/framework/db/CDbConnection.php:399
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/db/CDbConnection.php(347): CDbConnection->open()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/db/CDbConnection.php(325): CDbConnection->setActive(true)
+#2 /home/theantonysurikoff/public_html/AQProject/framework/base/CModule.php(394): CDbConnection->init()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(458): CModule->getComponent('db')
+#4 /home/theantonysurikoff/public_html/AQProject/framework/db/ar/CActiveRecord.php(637): CApplication->getDb()
+#5 /home/theantonysurikoff/public_html/AQProject/framework/db/ar/CActiveRecord.php(1433): CActiveRecord->getDbConnection()
+#6 /home/theantonysurikoff/public_html/AQProject/framework/db/ar/CActiveRecord.php(1522): CActiveRecord->getTableAlias(true)
+#7 /home/theantonysurikoff/public_html/AQProject/protected/components/UserIdentity.php(22): CActiveRecord->findByAttributes(Array)
+#8 /home/theantonysurikoff/public_html/AQProject/protected/models/ComandSignIn.php(31): UserIdentity->authenticate()
+#9 /home/theantonysurikoff/public_html/AQProject/framework/validators/CInlineValidator.php(42): ComandSignIn->authenticate('password', Array)
+#10 /home/theantonysurikoff/public_html/AQProject/framework/validators/CValidator.php(201): CInlineValidator->validateAttribute(Object(ComandSignIn), 'password')
+#11 /home/theantonysurikoff/public_html/AQProject/framework/base/CModel.php(159): CValidator->validate(Object(ComandSignIn), NULL)
+#12 /home/theantonysurikoff/public_html/AQProject/protected/controllers/AuthController.php(24): CModel->validate()
+#13 /home/theantonysurikoff/public_html/AQProject/framework/web/actions/CInlineAction.php(49): AuthController->actionSignIn()
+#14 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#15 /home/theantonysurikoff/public_html/AQProject/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#16 /home/theantonysurikoff/public_html/AQProject/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#17 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#18 /home/theantonysurikoff/public_html/AQProject/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#19 /home/theantonysurikoff/public_html/AQProject/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#20 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(291): CFilterChain->run()
+#21 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('SignIn')
+#23 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('auth/SignIn')
+#24 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#25 /home/theantonysurikoff/public_html/AQProject/index.php(13): CApplication->run()
+#26 {main}
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=auth/SignIn
+HTTP_REFERER=http://theantonysurikoff/~theantonysurikoff/AQProject/index.php?r=auth/SignIn
+---
+2015/06/23 19:01:06 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'aquser'@'localhost' (using password: YES)' in /home/theantonysurikoff/public_html/AQProject/framework/db/CDbConnection.php:399
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/db/CDbConnection.php(347): CDbConnection->open()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/db/CDbConnection.php(325): CDbConnection->setActive(true)
+#2 /home/theantonysurikoff/public_html/AQProject/framework/base/CModule.php(394): CDbConnection->init()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(458): CModule->getComponent('db')
+#4 /home/theantonysurikoff/public_html/AQProject/framework/db/ar/CActiveRecord.php(637): CApplication->getDb()
+#5 /home/theantonysurikoff/public_html/AQProject/framework/db/ar/CActiveRecord.php(1433): CActiveRecord->getDbConnection()
+#6 /home/theantonysurikoff/public_html/AQProject/framework/db/ar/CActiveRecord.php(1522): CActiveRecord->getTableAlias(true)
+#7 /home/theantonysurikoff/public_html/AQProject/protected/components/UserIdentity.php(22): CActiveRecord->findByAttributes(Array)
+#8 /home/theantonysurikoff/public_html/AQProject/protected/models/ComandSignIn.php(31): UserIdentity->authenticate()
+#9 /home/theantonysurikoff/public_html/AQProject/framework/validators/CInlineValidator.php(42): ComandSignIn->authenticate('password', Array)
+#10 /home/theantonysurikoff/public_html/AQProject/framework/validators/CValidator.php(201): CInlineValidator->validateAttribute(Object(ComandSignIn), 'password')
+#11 /home/theantonysurikoff/public_html/AQProject/framework/base/CModel.php(159): CValidator->validate(Object(ComandSignIn), NULL)
+#12 /home/theantonysurikoff/public_html/AQProject/protected/controllers/AuthController.php(24): CModel->validate()
+#13 /home/theantonysurikoff/public_html/AQProject/framework/web/actions/CInlineAction.php(49): AuthController->actionSignIn()
+#14 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#15 /home/theantonysurikoff/public_html/AQProject/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#16 /home/theantonysurikoff/public_html/AQProject/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#17 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#18 /home/theantonysurikoff/public_html/AQProject/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#19 /home/theantonysurikoff/public_html/AQProject/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#20 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(291): CFilterChain->run()
+#21 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('SignIn')
+#23 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('auth/SignIn')
+#24 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#25 /home/theantonysurikoff/public_html/AQProject/index.php(13): CApplication->run()
+#26 {main}
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=auth/SignIn
+HTTP_REFERER=http://theantonysurikoff/~theantonysurikoff/AQProject/index.php?r=auth/SignIn
+---
+2015/06/23 19:01:07 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'aquser'@'localhost' (using password: YES)' in /home/theantonysurikoff/public_html/AQProject/framework/db/CDbConnection.php:399
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/db/CDbConnection.php(347): CDbConnection->open()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/db/CDbConnection.php(325): CDbConnection->setActive(true)
+#2 /home/theantonysurikoff/public_html/AQProject/framework/base/CModule.php(394): CDbConnection->init()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(458): CModule->getComponent('db')
+#4 /home/theantonysurikoff/public_html/AQProject/framework/db/ar/CActiveRecord.php(637): CApplication->getDb()
+#5 /home/theantonysurikoff/public_html/AQProject/framework/db/ar/CActiveRecord.php(1433): CActiveRecord->getDbConnection()
+#6 /home/theantonysurikoff/public_html/AQProject/framework/db/ar/CActiveRecord.php(1522): CActiveRecord->getTableAlias(true)
+#7 /home/theantonysurikoff/public_html/AQProject/protected/components/UserIdentity.php(22): CActiveRecord->findByAttributes(Array)
+#8 /home/theantonysurikoff/public_html/AQProject/protected/models/ComandSignIn.php(31): UserIdentity->authenticate()
+#9 /home/theantonysurikoff/public_html/AQProject/framework/validators/CInlineValidator.php(42): ComandSignIn->authenticate('password', Array)
+#10 /home/theantonysurikoff/public_html/AQProject/framework/validators/CValidator.php(201): CInlineValidator->validateAttribute(Object(ComandSignIn), 'password')
+#11 /home/theantonysurikoff/public_html/AQProject/framework/base/CModel.php(159): CValidator->validate(Object(ComandSignIn), NULL)
+#12 /home/theantonysurikoff/public_html/AQProject/protected/controllers/AuthController.php(24): CModel->validate()
+#13 /home/theantonysurikoff/public_html/AQProject/framework/web/actions/CInlineAction.php(49): AuthController->actionSignIn()
+#14 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#15 /home/theantonysurikoff/public_html/AQProject/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#16 /home/theantonysurikoff/public_html/AQProject/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#17 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#18 /home/theantonysurikoff/public_html/AQProject/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#19 /home/theantonysurikoff/public_html/AQProject/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#20 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(291): CFilterChain->run()
+#21 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('SignIn')
+#23 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('auth/SignIn')
+#24 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#25 /home/theantonysurikoff/public_html/AQProject/index.php(13): CApplication->run()
+#26 {main}
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=auth/SignIn
+HTTP_REFERER=http://theantonysurikoff/~theantonysurikoff/AQProject/index.php?r=auth/SignIn
+---
+2015/06/23 19:03:46 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[42000] [1049] Unknown database 'AQUser'' in /home/theantonysurikoff/public_html/AQProject/framework/db/CDbConnection.php:399
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/db/CDbConnection.php(347): CDbConnection->open()
+#1 /home/theantonysurikoff/public_html/AQProject/framework/db/CDbConnection.php(325): CDbConnection->setActive(true)
+#2 /home/theantonysurikoff/public_html/AQProject/framework/base/CModule.php(394): CDbConnection->init()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(458): CModule->getComponent('db')
+#4 /home/theantonysurikoff/public_html/AQProject/framework/db/ar/CActiveRecord.php(637): CApplication->getDb()
+#5 /home/theantonysurikoff/public_html/AQProject/framework/db/ar/CActiveRecord.php(1433): CActiveRecord->getDbConnection()
+#6 /home/theantonysurikoff/public_html/AQProject/framework/db/ar/CActiveRecord.php(1522): CActiveRecord->getTableAlias(true)
+#7 /home/theantonysurikoff/public_html/AQProject/protected/components/UserIdentity.php(22): CActiveRecord->findByAttributes(Array)
+#8 /home/theantonysurikoff/public_html/AQProject/protected/models/ComandSignIn.php(31): UserIdentity->authenticate()
+#9 /home/theantonysurikoff/public_html/AQProject/framework/validators/CInlineValidator.php(42): ComandSignIn->authenticate('password', Array)
+#10 /home/theantonysurikoff/public_html/AQProject/framework/validators/CValidator.php(201): CInlineValidator->validateAttribute(Object(ComandSignIn), 'password')
+#11 /home/theantonysurikoff/public_html/AQProject/framework/base/CModel.php(159): CValidator->validate(Object(ComandSignIn), NULL)
+#12 /home/theantonysurikoff/public_html/AQProject/protected/controllers/AuthController.php(24): CModel->validate()
+#13 /home/theantonysurikoff/public_html/AQProject/framework/web/actions/CInlineAction.php(49): AuthController->actionSignIn()
+#14 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#15 /home/theantonysurikoff/public_html/AQProject/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#16 /home/theantonysurikoff/public_html/AQProject/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#17 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#18 /home/theantonysurikoff/public_html/AQProject/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#19 /home/theantonysurikoff/public_html/AQProject/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#20 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(291): CFilterChain->run()
+#21 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('SignIn')
+#23 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('auth/SignIn')
+#24 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#25 /home/theantonysurikoff/public_html/AQProject/index.php(13): CApplication->run()
+#26 {main}
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=auth/SignIn
+HTTP_REFERER=http://theantonysurikoff/~theantonysurikoff/AQProject/index.php?r=auth/SignIn
+---
+2015/06/23 19:09:35 [error] [exception.CException] exception 'CException' with message 'Контроллер TestController не может найти представление "index".' in /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php:878
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#1 /home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php(7): CController->render('index')
+#2 /home/theantonysurikoff/public_html/AQProject/framework/web/actions/CInlineAction.php(49): TestController->actionUpload()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('upload')
+#7 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('test/upload')
+#8 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#9 /home/theantonysurikoff/public_html/AQProject/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/upload
+---
