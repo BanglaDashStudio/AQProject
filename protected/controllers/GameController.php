@@ -82,7 +82,9 @@ class GameController extends Controller
 
        $game = Game::model()->findByAttributes(array('accepted'=>'1'));
 
-        /*
+        //получение времени
+        $formatTime=$game->type;
+
         //TODO: ЛУЧШЕ ДЕЛАТЬ timestamp
         $a=" 00:00:00";
         $b=date("Y-m-d");
@@ -94,22 +96,22 @@ class GameController extends Controller
         $c1 =$da.$day.$a;// ЗАВТРА
 
             if ( ($game->date == $c || $game->date == $c1) && $game->start <= date("H:i:s")) {
-        */
-
-        if((strtotime($game->date)+strtotime($game->start)) >= time()){
                 if ($game->finish == 1) {
                     $this->finishPlay(); // после игры
                 }else {
-                    $this->nowPlay($game->id);// в игре
+                    $this->nowPlay($game->id, $formatTime);// в игре
                 }
             }else{//до игры
                 $this->prePlay();
             }
     }
 
-    public function nowPlay($gameId)
+    public function nowPlay($gameId, $formatTime)
     {
         $user=Gameteam::model()->findByAttributes(array('teamId'=>Yii::app()->user->id, 'gameId'=>$gameId));
+
+        //время
+        list($hintTime, $addressTime, $fullTime) = explode('-', $formatTime);
 
          // сетка
         $criteria_grid = new CDbCriteria();
@@ -119,7 +121,7 @@ class GameController extends Controller
         $criteria_grid->order= 'orderTask ASC';
 
         $gridOrder = Grid::model()->findAll($criteria_grid);//порядок
-        
+
         $a=array();
         $ddd=0;
         foreach($gridOrder as $grid)
@@ -127,7 +129,6 @@ class GameController extends Controller
             $a[$ddd] = $grid;
             $ddd++;
         }
-
 
        // foreach ($gridOrder as $grid) {
 
@@ -139,7 +140,6 @@ class GameController extends Controller
             $hint = Hint::model()->findByAttributes(array('taskId'=>$taskId->taskId)); //подсказка
 
             $code = Code::model()->findByAttributes(array('taskId'=>$taskId->taskId)); //код
-
 
 
                 $this->render('NowPlayUser', array('task' => $task, 'hint'=>$hint, 'code'=>$code));
@@ -190,7 +190,19 @@ class GameController extends Controller
 
                 $gridOrder = Grid::model()->findAll($criteria_grid);
 
+                //$grid=Grid::model()->findByAttributes(array('gameId'=>$id, 'teamId'=>Yii::app()->user->id);
+                 //сохранение!!!!!!!!!!
+
+               /* $gridOrder->save();
+
+                foreach($gridOrder as $grid)
+                {
+                    $grid->orderTask = $_POST['Grid']['order'];
+                }
+*/
+
                 $this->render('PrePlayAdmin', array('gameAccept' => $gameAccept, 'teamList' => $teamList, 'taskList' => $taskList, 'gridOrder' => $gridOrder));
+
             }
 
         }else{
@@ -212,7 +224,6 @@ class GameController extends Controller
 
                 $this->render('PrePlayUser', array('gameAccept' => $gameAccept, 'teamList' => $teamList));
             }
-
         }
     }
 
