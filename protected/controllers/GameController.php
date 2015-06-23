@@ -79,15 +79,34 @@ class GameController extends Controller
     // текущая игра
 	public function actionPlay()
 	{
-        if (false){//игра
 
+       $game = Game::model()->findByAttributes(array('accepted'=>'1'));
 
-        }elseif(true){//до игры
+        //TODO: ЛУЧШЕ ДЕЛАТЬ timestamp
+        $a=" 00:00:00";
+        $b=date("Y-m-d");
+        //след. день
+        $day= date("d")+1;
+        $da= date("Y-m-");
+
+        $c = $b.$a; //СЕГОДНЯ
+        $c1 =$da.$day.$a;// ЗАВТРА
+
+            if ( ($game->date == $c || $game->date == $c1) && $game->start <= date("H:i:s")) {
+                $this->nowPlay();
+                }
+        elseif(true){//до игры
             $this->prePlay();
 
         }else{//после игры
 
         }
+    }
+
+    public function nowPlay()
+    {
+        echo "fsafsfs";
+
     }
 
     private function prePlay(){
