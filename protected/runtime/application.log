@@ -1184,3 +1184,18 @@ Stack trace:
 REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=auth/SignIn
 HTTP_REFERER=http://theantonysurikoff/~theantonysurikoff/AQProject/index.php?r=auth/SignIn
 ---
+2015/06/23 19:09:35 [error] [exception.CException] exception 'CException' with message 'Контроллер TestController не может найти представление "index".' in /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php:878
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#1 /home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php(7): CController->render('index')
+#2 /home/theantonysurikoff/public_html/AQProject/framework/web/actions/CInlineAction.php(49): TestController->actionUpload()
+#3 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /home/theantonysurikoff/public_html/AQProject/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(282): CController->run('upload')
+#7 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('test/upload')
+#8 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#9 /home/theantonysurikoff/public_html/AQProject/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/upload
+---
