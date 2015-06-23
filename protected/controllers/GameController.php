@@ -116,13 +116,12 @@ class GameController extends Controller
         $criteria_grid->order= 'orderTask ASC';
 
         $gridOrder = Grid::model()->findAll($criteria_grid);//порядок
-        //var_dump($gridOrder);
-       // return;
+        
         $a=array();
         $ddd=0;
         foreach($gridOrder as $grid)
         {
-        $a[$ddd] = $grid;
+            $a[$ddd] = $grid;
             $ddd++;
         }
 
