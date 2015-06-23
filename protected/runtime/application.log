@@ -1445,3 +1445,11 @@ Stack trace:
 REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=test/uploadimage
 in /home/theantonysurikoff/public_html/AQProject/protected/controllers/TestController.php (15)
 in /home/theantonysurikoff/public_html/AQProject/index.php (13)
+2015/06/23 21:08:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "video".' in /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/theantonysurikoff/public_html/AQProject/framework/web/CWebApplication.php(141): CWebApplication->runController('video')
+#1 /home/theantonysurikoff/public_html/AQProject/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/theantonysurikoff/public_html/AQProject/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/~theantonysurikoff/AQProject/index.php?r=video
+---
