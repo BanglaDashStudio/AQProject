@@ -9,6 +9,13 @@ $('.task-form').toggle();
 return false;
 });
 ");
+
+Yii::app()->clientScript->registerScript('create_code', "
+$('.code-button').click(function(){
+$('.code-form').toggle();
+return false;
+});
+");
 ?>
 
 <?php
@@ -56,6 +63,19 @@ echo CHtml::link('Добавить задание','#',array('class'=>'task-butt
             <?php echo $form->labelEx($model,'code'); ?>
             <?php echo $form->textField($model,'code'); ?>
             <?php echo $form->error($model,'code'); ?>
+            <?php
+            echo CHtml::link('Добавить код','#',array('class'=>'code-button')); ?>
+        </div>
+
+
+        <div class="code-form" style="display: none">
+            <div class="row">
+                <?php echo $form->labelEx($model,'code'); ?>
+                <?php echo $form->textField($model,'code'); ?>
+                <?php echo $form->error($model,'code'); ?>
+                <?php
+                echo CHtml::link('Добавить код','#',array('class'=>'code-button')); ?>
+            </div>
         </div>
         <div class="row buttons">
             <?php echo CHtml::submitButton('Добавить'); ?>
