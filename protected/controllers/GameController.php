@@ -82,6 +82,7 @@ class GameController extends Controller
 
        $game = Game::model()->findByAttributes(array('accepted'=>'1'));
 
+
         //TODO: ЛУЧШЕ ДЕЛАТЬ timestamp
         $a=" 00:00:00";
         $b=date("Y-m-d");
@@ -93,19 +94,65 @@ class GameController extends Controller
         $c1 =$da.$day.$a;// ЗАВТРА
 
             if ( ($game->date == $c || $game->date == $c1) && $game->start <= date("H:i:s")) {
-                $this->nowPlay();
+                if ($game->finish == 1) {
+                    $this->finishPlay(); // после игры
+                }else {
+                    $this->nowPlay($game->id);// в игре
                 }
-        elseif(true){//до игры
-            $this->prePlay();
-
-        }else{//после игры
-
-        }
+            }else{//до игры
+                $this->prePlay();
+            }
     }
 
-    public function nowPlay()
+    public function nowPlay($gameId)
     {
-        echo "fsafsfs";
+        //echo "fsafsfs";
+
+        $tasksForTeam = Grid::model()->findAllByAttributes(array('gameId'=>$gameId, 'teamId'=>Yii::app()->user->id));
+
+        /*
+        $criteria_task = new CDbCriteria();
+        $criteria_task->alias = 'Task';
+        $criteria_task->condition = 'gameId='.$gameId;
+        $criteria_task->params = array(':gameId'=>$gameId);
+
+        $taskList = Task::model()->findAll($criteria_task);
+*/
+        // сетка
+        $criteria_grid = new CDbCriteria();
+        $criteria_grid->alias = 'Grid';
+        $criteria_grid->condition = 'gameId='.$gameId;
+        $criteria_grid->params = array(':gameId'=>$gameId);
+        $criteria_grid->order= 'taskId ASC';
+
+        $gridOrder = Grid::model()->findAll($criteria_grid);//порядок
+        var_dump($gridOrder);
+        return;
+
+        foreach ($gridOrder as $grid) {
+
+            $taskId = Grid::model()->findByAttributes(array('order'=>$grid->order,'teamId'=>Yii::app()->user->id, 'gameId'=>$gameId) );
+            echo $taskId;
+            return;
+            $task=Task::model()->findByAttributes(array('id'=>$taskId->taskId));
+        }
+
+    /*
+        foreach ($taskList as $task) {
+            $criteria_hint = new CDbCriteria();
+            $criteria_hint->alias = 'Hint';
+            $criteria_hint->condition = 'taskId=' . $task->id;
+            $criteria_hint->params = array(':taskId' => $task->id);
+
+        $hint = Hint::model()->findAll($criteria_hint);
+    }*/
+
+
+    }
+
+    public function finishPlay()
+    {
+        echo "finish";
 
     }
 
