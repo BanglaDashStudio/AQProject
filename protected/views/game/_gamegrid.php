@@ -4,7 +4,7 @@
 /* @var $gridOrder Grid
  */
 
-Yii::app()->clientScript->registerScript('grig', "
+Yii::app()->clientScript->registerScript('grid', "
 $('.grid_button').click(function(){
 	$('.gridform').toggle();
 	return false;
@@ -42,7 +42,7 @@ $('.grid_button').click(function(){
 
             foreach ($gridOrder as $grid) {
                 if ($grid->teamId == $team->id) {
-                    $i=$grid->order;
+                    $i=$grid->orderTask;
                     echo "<td>";
                     echo  '<input name="order" type="text" size="4" value = '. $i.'>';
                     echo "</td>";

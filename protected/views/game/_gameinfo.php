@@ -19,7 +19,7 @@
         $team = Team::model()->findByAttributes(array('id'=>$gameAccept->teamId));
         if(isset($team)) {
             echo '<br> Написано командой   - ', $team->name . "";
-            echo '<br> Дата игры - ', $gameAccept->date . "";
+            echo '<br> Дата игры - ', date('Y-m-d, H:i',$gameAccept->date) . "";
         }else{
             echo 'Нет команды';
         }

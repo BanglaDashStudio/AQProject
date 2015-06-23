@@ -49,6 +49,7 @@ class GameController extends Controller
         $model = new GameCreate;
         $model->start='22:00:00';
         $model->type='15-15-15';
+
         if (isset($_POST['GameCreate'])) {
 
             $model->attributes = $_POST['GameCreate'];
@@ -58,8 +59,7 @@ class GameController extends Controller
 
                 $game->name=$model->name;
                 $game->description=$model->description;
-                $game->start=$model->start;
-                $game->date=$model->date;
+                $game->date=strtotime($model->date)+$this->getTime($model->start);
                 $game->type=$model->type;
                 $game->comment=$model->comment;
                 $game->teamId = Yii::app()->user->id;
@@ -81,7 +81,7 @@ class GameController extends Controller
 	{
 
        $game = Game::model()->findByAttributes(array('accepted'=>'1'));
-
+        if($game == null) return;
         /*
         //TODO: ЛУЧШЕ ДЕЛАТЬ timestamp
         $a=" 00:00:00";
@@ -96,15 +96,26 @@ class GameController extends Controller
             if ( ($game->date == $c || $game->date == $c1) && $game->start <= date("H:i:s")) {
         */
 
-        if((strtotime($game->date)+strtotime($game->start)) >= time()){
+        $now = time();
+
+        if((int)$game->date < (int)$now){
                 if ($game->finish == 1) {
                     $this->finishPlay(); // после игры
                 }else {
                     $this->nowPlay($game->id);// в игре
                 }
-            }else{//до игры
-                $this->prePlay();
-            }
+        }else{//до игры
+            $this->prePlay();
+        }
+    }
+
+    private function getTime($time){
+        $str_time = $time;
+        $hours=0;
+        $minutes=0;
+        $seconds=0;
+        sscanf($str_time, "%d:%d:%d", $hours, $minutes, $seconds);
+        return isset($seconds) ? $hours * 3600 + $minutes * 60 + $seconds : $hours * 60 + $minutes;
     }
 
     public function nowPlay($gameId)
@@ -115,7 +126,7 @@ class GameController extends Controller
         $criteria_grid = new CDbCriteria();
         $criteria_grid->alias = 'Grid';
         $criteria_grid->condition = 'gameId='.$gameId.' AND teamId='.Yii::app()->user->id;
-        $criteria_grid->params = array(':gameId'=>$gameId, ':teamId'=>Yii::app()->user->id);
+        //$criteria_grid->params = array(':gameId'=>$gameId, ':teamId'=>Yii::app()->user->id);
         $criteria_grid->order= 'orderTask ASC';
 
         $gridOrder = Grid::model()->findAll($criteria_grid);//порядок
@@ -153,14 +164,16 @@ class GameController extends Controller
     }
 
     private function prePlay(){
-        if (Yii::app()->user->isAdmin()||Yii::app()->user->isOrg()){
+        if (Yii::app()->user->isAdmin() || Yii::app()->user->isOrg()){
 
-            $gameAccept=Game::model()->findByAttributes(array('accepted'=>'1'));
+            $gameAccept = Game::model()->findByAttributes(array('accepted'=>'1'));
 
             $criteria = new CDbCriteria();
 
             if (!isset($gameAccept)) {
+
                 $this->render('PrePlayAdmin', array('gameAccept'=>NULL,'teamList'=>NULL, 'taskList'=>NULL, 'gridOrder'=>NULL));
+
             } else {
                 $criteria->condition = $this->getGameTeam($gameAccept->id);
 
@@ -442,9 +455,9 @@ class GameController extends Controller
 
         $gameCreateModel->name=$game->name;
         $gameCreateModel->description=$game->description;
-        $gameCreateModel->start=$game->start;
+        $gameCreateModel->start=date('H:i:s',$game->date);
         $gameCreateModel->type=$game->type;
-        $gameCreateModel->date=$game->date;
+        $gameCreateModel->date = date('Y-m-d',$game->date);
         $gameCreateModel->comment=$game->comment;
 
         return $gameCreateModel;
@@ -455,9 +468,9 @@ class GameController extends Controller
         $game = Game::model()->findByAttributes(array('id'=>$gameId));
         $game->name = $post['name'];
         $game->description = $post['description'];
-        $game->start = $post['start'];
+         //$post['start'];
         $game->type = $post['type'];
-        $game->date = $post['date'];
+        $game->date = strtotime($post['date'])+$this->getTime($post['start']);
         $game->comment = $post['comment'];
 
         if ($game->validate())
