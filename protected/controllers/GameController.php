@@ -325,6 +325,8 @@ class GameController extends Controller
             foreach ($tasks as $task) {
                 $mediaArray[$task->id] = Media::model()->findByPk($task->mediaId);
             }
+        } else {
+            $mediaArray = null;
         }
         $this->render('Tasks',array('TaskCreate'=>$model, 'Task'=>$tasks,'media'=>$mediaArray,'gameEditModel'=>$gameEditModel, 'gameId'=>$gameId));
     }
