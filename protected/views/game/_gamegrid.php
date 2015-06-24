@@ -44,12 +44,19 @@ $('.grid_button').click(function(){
                 if ($grid->teamId == $team->id) {
                     $i=$grid->orderTask;
                     echo "<td>";
-                    echo  '<input name="order" type="text" size="4" value = '. $i.'>';
+                    echo  '<input name="order" type="text" size="3" value = '. $i.'>';
                     echo "</td>";
                 }
-
             }
             echo "</tr>";
+
+            if (!isset($gridOrder))
+            {
+                echo "<td>";
+                echo  '<input name="order" type="text" size="4" value = '.' '.'>';
+                echo "</td>";
+
+            }
         }
         echo "</table>";
     }
