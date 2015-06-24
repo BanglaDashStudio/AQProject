@@ -7,6 +7,7 @@
  * @property integer $id
  * @property integer $gameId
  * @property integer $teamId
+ * @property integer $counter
  */
 class Gameteam extends CActiveRecord
 {
@@ -27,10 +28,10 @@ class Gameteam extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('gameId, teamId', 'required'),
-			array('gameId, teamId', 'numerical', 'integerOnly'=>true),
+			array('gameId, teamId, counter', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, gameId, teamId', 'safe', 'on'=>'search'),
+			array('id, gameId, teamId, counter', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,6 +55,7 @@ class Gameteam extends CActiveRecord
 			'id' => 'ID',
 			'gameId' => 'Game',
 			'teamId' => 'Team',
+			'counter' => 'Counter',
 		);
 	}
 
@@ -78,6 +80,7 @@ class Gameteam extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('gameId',$this->gameId);
 		$criteria->compare('teamId',$this->teamId);
+		$criteria->compare('counter',$this->counter);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

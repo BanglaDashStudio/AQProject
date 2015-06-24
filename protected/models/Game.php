@@ -7,13 +7,14 @@
  * @property integer $id
  * @property string $name
  * @property string $description
- * @property string $date
- * @property string $start
+ * @property integer $date
+ * @property integer $start
  * @property integer $accepted
  * @property string $comment
  * @property string $type
- * @property integer $orderLock
  * @property integer $teamId
+ * @property integer $orderLock
+ * @property integer $finish
  */
 class Game extends CActiveRecord
 {
@@ -34,11 +35,11 @@ class Game extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('name', 'required'),
-			array('accepted, orderLock, teamId', 'numerical', 'integerOnly'=>true),
-			array('description, date, start, comment, type', 'safe'),
+			array('date, start, accepted, teamId, orderLock, finish', 'numerical', 'integerOnly'=>true),
+			array('description, comment, type', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, description, date, start, accepted, comment, type, orderLock, teamId', 'safe', 'on'=>'search'),
+			array('id, name, description, date, start, accepted, comment, type, teamId, orderLock, finish', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,8 +68,9 @@ class Game extends CActiveRecord
 			'accepted' => 'Accepted',
 			'comment' => 'Comment',
 			'type' => 'Type',
-			'orderLock' => 'Order Lock',
 			'teamId' => 'Team',
+			'orderLock' => 'Order Lock',
+			'finish' => 'Finish',
 		);
 	}
 
@@ -93,13 +95,14 @@ class Game extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('description',$this->description,true);
-		$criteria->compare('date',$this->date,true);
-		$criteria->compare('start',$this->start,true);
+		$criteria->compare('date',$this->date);
+		$criteria->compare('start',$this->start);
 		$criteria->compare('accepted',$this->accepted);
 		$criteria->compare('comment',$this->comment,true);
 		$criteria->compare('type',$this->type,true);
-		$criteria->compare('orderLock',$this->orderLock);
 		$criteria->compare('teamId',$this->teamId);
+		$criteria->compare('orderLock',$this->orderLock);
+		$criteria->compare('finish',$this->finish);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

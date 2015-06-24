@@ -7,7 +7,7 @@
  * @property integer $id
  * @property integer $gameId
  * @property string $name
- * @property string $description
+ * @property integer $mediaId
  * @property string $address
  * @property string $type
  */
@@ -30,11 +30,11 @@ class Task extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('gameId, name', 'required'),
-			array('gameId', 'numerical', 'integerOnly'=>true),
-			array('description, address, type', 'safe'),
+			array('gameId, mediaId', 'numerical', 'integerOnly'=>true),
+			array('address, type', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, gameId, name, description, address, type', 'safe', 'on'=>'search'),
+			array('id, gameId, name, mediaId, address, type', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,7 +58,7 @@ class Task extends CActiveRecord
 			'id' => 'ID',
 			'gameId' => 'Game',
 			'name' => 'Name',
-			'description' => 'Description',
+			'mediaId' => 'Media',
 			'address' => 'Address',
 			'type' => 'Type',
 		);
@@ -85,7 +85,7 @@ class Task extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('gameId',$this->gameId);
 		$criteria->compare('name',$this->name,true);
-		$criteria->compare('description',$this->description,true);
+		$criteria->compare('mediaId',$this->mediaId);
 		$criteria->compare('address',$this->address,true);
 		$criteria->compare('type',$this->type,true);
 

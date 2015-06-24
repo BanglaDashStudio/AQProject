@@ -81,9 +81,11 @@ class GameController extends Controller
 	{
 
        $game = Game::model()->findByAttributes(array('accepted'=>'1'));
-        if($game == null) return;
+        if($game == null) {
+            echo "game don't accepted";
+            return;
+        }
         /*
-        //TODO: ЛУЧШЕ ДЕЛАТЬ timestamp
         $a=" 00:00:00";
         $b=date("Y-m-d");
         //след. день
@@ -120,41 +122,44 @@ class GameController extends Controller
 
     public function nowPlay($gameId)
     {
-        $user=Gameteam::model()->findByAttributes(array('teamId'=>Yii::app()->user->id, 'gameId'=>$gameId));
+        if (Yii::app()->user->isAdmin() || Yii::app()->user->isOrg()) {
+            echo 'view for admin';
+            return;
+        }else{
+            $user = Gameteam::model()->findByAttributes(array('teamId' => Yii::app()->user->id, 'gameId' => $gameId));
 
-         // сетка
-        $criteria_grid = new CDbCriteria();
-        $criteria_grid->alias = 'Grid';
-        $criteria_grid->condition = 'gameId='.$gameId.' AND teamId='.Yii::app()->user->id;
-        //$criteria_grid->params = array(':gameId'=>$gameId, ':teamId'=>Yii::app()->user->id);
-        $criteria_grid->order= 'orderTask ASC';
+            // сетка
+            $criteria_grid = new CDbCriteria();
+            $criteria_grid->alias = 'Grid';
+            $criteria_grid->condition = 'gameId=' . $gameId . ' AND teamId=' . Yii::app()->user->id;
+            //$criteria_grid->params = array(':gameId'=>$gameId, ':teamId'=>Yii::app()->user->id);
+            $criteria_grid->order = 'orderTask ASC';
 
-        $gridOrder = Grid::model()->findAll($criteria_grid);//порядок
-        
-        $a=array();
-        $ddd=0;
-        foreach($gridOrder as $grid)
-        {
-            $a[$ddd] = $grid;
-            $ddd++;
-        }
+            $gridOrder = Grid::model()->findAll($criteria_grid);//порядок
+
+            $a = array();
+            $ddd = 0;
+            foreach ($gridOrder as $grid) {
+                $a[$ddd] = $grid;
+                $ddd++;
+            }
 
 
-       // foreach ($gridOrder as $grid) {
+            // foreach ($gridOrder as $grid) {
 
             $i = $a[0]->orderTask;// порядковый номер задания
 
-            $taskId = Grid::model()->findByAttributes(array('orderTask'=>$i));// id задания
-            $task=Task::model()->findByAttributes(array('id'=>$taskId->taskId)); //задание
+            $taskId = Grid::model()->findByAttributes(array('orderTask' => $i));// id задания
+            $task = Task::model()->findByAttributes(array('id' => $taskId->taskId)); //задание
 
-            $hint = Hint::model()->findByAttributes(array('taskId'=>$taskId->taskId)); //подсказка
+            $hint = Hint::model()->findByAttributes(array('taskId' => $taskId->taskId)); //подсказка
 
-            $code = Code::model()->findByAttributes(array('taskId'=>$taskId->taskId)); //код
+            $code = Code::model()->findByAttributes(array('taskId' => $taskId->taskId)); //код
 
 
-
-                $this->render('NowPlayUser', array('task' => $task, 'hint'=>$hint, 'code'=>$code));
-        //}
+            $this->render('NowPlayUser', array('task' => $task, 'hint' => $hint, 'code' => $code));
+            //}
+        }
     }
 
     public function finishPlay()
@@ -327,24 +332,39 @@ class GameController extends Controller
             //$model->attributes = $_POST['TaskCreateForm'];
 
             $task = new Task;
+            $media = new Media;
 
             $task->gameId = $gameId;
             $task->name = $_POST['TaskCreateForm']['taskname'];
-            $task->description = $_POST['TaskCreateForm']['task'];
+            $media->description = $_POST['TaskCreateForm']['task'];
             $task->address = $_POST['TaskCreateForm']['address'];
             $task->type = $_POST['TaskCreateForm']['type'];
 
             //$task->DescriptionTask = $model->task;
+            if(!$media->save()){
+                echo "media not save";
+                return;
+            }else{
+                $task->mediaId = $media->id;
+            }
 
             if ($task->save()) {
                 $code = new Code;
                 $hint = new Hint;
+                $mediahint = new Media;
 
                 $code->code = $_POST['TaskCreateForm']['code'];
                 $code->taskId = $task->id;
 
-                $hint->description = $_POST['TaskCreateForm']['tip'];
+                $mediahint->description = $_POST['TaskCreateForm']['tip'];
                 $hint->taskId = $task->id;
+
+                if(!$mediahint->save()){
+                    echo "media not save";
+                    return;
+                }else{
+                    $hint->mediaId = $mediahint->id;
+                }
 
                 if ($code->save() && $hint->save()) {
                     $this->redirect(Yii::app()->createUrl('game/Tasks', array('gameId' => $gameId)));
@@ -365,10 +385,16 @@ class GameController extends Controller
 
     public function actionDeleteTask($taskId, $gameId)
     {
+        $hints = Hint::model()->findAllByAttributes(array('taskId'=>$taskId));
+        foreach($hints as $hint){
+            Media::model()->deleteByPk($hint->mediaId);
+        }
         Hint::model()->deleteAllByAttributes(array('taskId'=>$taskId));
         Code::model()->deleteAllByAttributes(array('taskId'=>$taskId));
         Grid::model()->deleteAllByAttributes(array('taskId'=>$taskId));
 
+        $task = Task::model()->findByPk($taskId);
+        Media::model()->deleteByPk($task->mediaId);
         Task::model()->deleteByPk($taskId);
 
         $this->redirect($this->createUrl('game/Tasks',array('gameId'=>$gameId)));

@@ -6,7 +6,7 @@
  * The followings are the available columns in table 'hint':
  * @property integer $id
  * @property integer $taskId
- * @property string $description
+ * @property integer $mediaId
  */
 class Hint extends CActiveRecord
 {
@@ -26,12 +26,11 @@ class Hint extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('taskId', 'required'),
-			array('taskId', 'numerical', 'integerOnly'=>true),
-			array('description', 'safe'),
+			array('taskId, mediaId', 'required'),
+			array('taskId, mediaId', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, taskId, description', 'safe', 'on'=>'search'),
+			array('id, taskId, mediaId', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,7 +53,7 @@ class Hint extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'taskId' => 'Task',
-			'description' => 'Description',
+			'mediaId' => 'Media',
 		);
 	}
 
@@ -78,7 +77,7 @@ class Hint extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('taskId',$this->taskId);
-		$criteria->compare('description',$this->description,true);
+		$criteria->compare('mediaId',$this->mediaId);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
