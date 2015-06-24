@@ -14,7 +14,8 @@
             echo '<button onclick="go(\'';
             echo Yii::app()->createUrl("game/deleteTask", array("taskId" => $Task->id, "gameId" => $Task->gameId));
             echo '\')" class="btEdit" title="Удалить">D</button>';
-            echo $media[$Task->id]->description;
+            echo $Task->name;
+            //echo $media[$Task->id]->description;
             echo "</li>";
         }
         echo "</ul>";

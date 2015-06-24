@@ -2,6 +2,11 @@
 /* @var $this TaskCreateFormController */
 /* @var $model TaskCreateForm */
 /* @var $form CActiveForm */
+
+$this->breadcrumbs=array(
+    'Список созданных игр'=>array('MyGames'),
+    'Редактировать задание',
+);
 ?>
 
 <div class="form">
