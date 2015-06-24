@@ -85,6 +85,9 @@ class GameController extends Controller
             echo "game don't accepted";
             return;
         }
+
+        //получение времени
+        $formatTime=$game->type;
         /*
         $a=" 00:00:00";
         $b=date("Y-m-d");
@@ -104,7 +107,7 @@ class GameController extends Controller
                 if ($game->finish == 1) {
                     $this->finishPlay(); // после игры
                 }else {
-                    $this->nowPlay($game->id);// в игре
+                    $this->nowPlay($game->id, $formatTime);// в игре
                 }
         }else{//до игры
             $this->prePlay();
@@ -120,8 +123,11 @@ class GameController extends Controller
         return isset($seconds) ? $hours * 3600 + $minutes * 60 + $seconds : $hours * 60 + $minutes;
     }
 
-    public function nowPlay($gameId)
+    public function nowPlay($gameId, $formatTime)
     {
+        //время
+        list($hintTime, $addressTime, $fullTime) = explode('-', $formatTime);
+
         if (Yii::app()->user->isAdmin() || Yii::app()->user->isOrg()) {
             echo 'view for admin';
             return;
