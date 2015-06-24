@@ -29,7 +29,7 @@ $('.grid_button').click(function(){
         echo "</th>";
         foreach ($taskList as $task) {
             echo"<th>";
-            echo $task->description;
+            echo $media[$task->id]->description;
             echo "</th>";
         }
         echo "</tr>";

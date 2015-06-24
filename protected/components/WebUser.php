@@ -45,7 +45,7 @@ class WebUser extends CWebUser {
                 return 'admin';
             } elseif($user->role == 0) {
                 return 'user';
-            } elseif($user->role == 2) {
+            } elseif($user->role == 2 || $user->role == 5) {
                 return 'org';
             }  elseif($user->role == 3) {
                 return 'creator';
