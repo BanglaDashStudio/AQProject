@@ -280,8 +280,8 @@ class GameController extends Controller
         $game = Game::model()->findByPk($gameId);
         if(isset($game)) if($game->orderLock == 0) return;
 
-        Gameteam::model()->deleteAllByAttributes(array('gameId'=>$gameId,'teamId'=>$teamId));
         Grid::model()->deleteAllByAttributes(array('gameId'=>$gameId,'teamId'=>$teamId));
+        Gameteam::model()->deleteAllByAttributes(array('gameId'=>$gameId,'teamId'=>$teamId));
 
         $this->redirect(Yii::app()->createUrl('game/Play'));
     }
@@ -378,12 +378,12 @@ class GameController extends Controller
     {
         $tasks = Task::model()->findAllByAttributes(array('gameId'=>$gameId));
 
+        Gameteam::model()->deleteAllByAttributes(array('gameId'=>$gameId));
 
         foreach($tasks as $task) {
             Hint::model()->deleteAllByAttributes(array('taskId' => $task->id));
             Code::model()->deleteAllByAttributes(array('taskId' => $task->id));
             Grid::model()->deleteAllByAttributes(array('taskId' => $task->id));
-
             Task::model()->deleteByPk($task->id);
         }
 
