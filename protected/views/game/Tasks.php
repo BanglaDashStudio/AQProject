@@ -32,6 +32,6 @@ if(!$gameEditModel->hasErrors()) {
 <?php $this->renderPartial('_gameedit', array('model'=>$gameEditModel)); ?>
 </div>
 
-<?php $this->renderPartial('_tasklist', array('TaskList'=>$Task, 'gameId' => $gameId) ); ?>
+<?php $this->renderPartial('_tasklist', array('TaskList'=>$Task, 'media'=>$media, 'gameId' => $gameId) ); ?>
 
 <?php $this->renderPartial('_taskcreate', array('model'=>$TaskCreate, 'gameId' => $gameId)); ?>

@@ -322,10 +322,19 @@ class GameController extends Controller
         }
 
         $model = new TaskCreateForm;
-        $task =  Task::model()->findAllByAttributes(array('gameId'=>$gameId));
+        $tasks =  Task::model()->findAllByAttributes(array('gameId'=>$gameId));
         $gameEditModel = $this->getGameModeltoEditForm($gameId);
 
-        $this->render('Tasks',array('TaskCreate'=>$model, 'Task'=>$task,'gameEditModel'=>$gameEditModel, 'gameId'=>$gameId));
+        if(isset($tasks) && count($tasks) != 0) {
+            $mediaArray = array();
+
+            foreach ($tasks as $task) {
+                $mediaArray[$task->id] = Media::model()->findByPk($task->mediaId);
+            }
+        } else {
+            $mediaArray = null;
+        }
+        $this->render('Tasks',array('TaskCreate'=>$model, 'Task'=>$tasks,'media'=>$mediaArray,'gameEditModel'=>$gameEditModel, 'gameId'=>$gameId));
     }
 
    //Добавление одного задания
@@ -436,9 +445,11 @@ class GameController extends Controller
     {
 
        //найти задание, код и подсказку по id задания
-        $task = Task::model()->findByAttributes(array('id'=>$taskId));
+        $task = Task::model()->findByPk($taskId);
+        $media_task = Media::model()->findByPk($task->mediaId);
         $code = Code::model()->findByAttributes(array('taskId'=>$taskId));
         $hint = Hint::model()->findByAttributes(array('taskId'=>$taskId));
+        $media_hint = Media::model()->findByPk($hint->mediaId);
         
 
         if($task == null){
@@ -449,9 +460,9 @@ class GameController extends Controller
         $model = new TaskCreateForm;
         //записать данные которые есть сейчас
         $model->taskname=$task->name;
-        $model->task=$task->description;
+        $model->task=$media_task->description;
         $model->code=$code->code;
-        $model->tip=$hint->description;
+        $model->tip=$media_hint->description;
         $model->type=$task->type;
         $model->address=$task->address;
 
@@ -464,13 +475,13 @@ class GameController extends Controller
             {
                 //записать изменения
                 $task->name = $_POST['TaskCreateForm']['taskname'];
-                $task->description = $_POST['TaskCreateForm']['task'];
-                $hint->description= $_POST['TaskCreateForm']['tip'];
+                $media_task->description = $_POST['TaskCreateForm']['task'];
+                $media_hint->description= $_POST['TaskCreateForm']['tip'];
                 $code->code=$_POST['TaskCreateForm']['code'];
                 $task->type=$_POST['TaskCreateForm']['type'];
                 $task->address = $_POST['TaskCreateForm']['address'];
 
-                if ($task->save() && $code->save() && $hint->save())
+                if ($task->save() && $code->save() && $hint->save() && $media_task->save() && $media_hint->save())
                 {
                     // если всё сохранилось, открыть список заданий этой игры
                     $this->redirect(Yii::app()->createUrl('game/Tasks', array('gameId' => $gameId)));
