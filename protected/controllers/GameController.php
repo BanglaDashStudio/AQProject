@@ -212,6 +212,16 @@ class GameController extends Controller
 
                 $taskList = Task::model()->findAll($criteria_task);
 
+                if(isset($taskList) && count($taskList) != 0) {
+                    $mediaArray = array();
+
+                    foreach ($taskList as $task) {
+                        $mediaArray[$task->id] = Media::model()->findByPk($task->mediaId);
+                    }
+                } else {
+                    $mediaArray = null;
+                }
+
                 // сетка
                 $criteria_grid = new CDbCriteria();
                 $criteria_grid->alias = 'Grid';
@@ -221,7 +231,20 @@ class GameController extends Controller
 
                 $gridOrder = Grid::model()->findAll($criteria_grid);
 
-                $this->render('PrePlayAdmin', array('gameAccept' => $gameAccept, 'teamList' => $teamList, 'taskList' => $taskList, 'gridOrder' => $gridOrder));
+
+                if(isset($_POST['GridForm'])) {
+                    foreach($gridOrder as $gridItem){
+                        if(isset($_POST['GridForm'][$gridItem->teamId . " : " . $gridItem->taskId])){
+                            $gridItem->orderTask = $_POST['GridForm'][$gridItem->teamId . " : " . $gridItem->taskId];
+                            if(!$gridItem->save()){
+                                //ошибка
+                                echo 'sdfs';
+                            }
+                        }
+                    }
+                }
+
+                $this->render('PrePlayAdmin', array('gameAccept' => $gameAccept, 'teamList' => $teamList, 'taskList' => $taskList,'media'=>$mediaArray, 'gridOrder' => $gridOrder));
             }
 
         }else{

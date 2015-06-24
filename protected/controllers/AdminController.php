@@ -69,8 +69,8 @@ class AdminController extends Controller
     private function setOrgRole($game) {
         if(isset($game->teamId)) {
             $team = Team::model()->findByPk($game->teamId);
-            if ($team->role == 0){//user
-                $team->role = 2;//org
+            if ($team->role == 0 || $team->role == 3){//user or creator
+                $team->role += 2;//org
             }
 
             if(!$team->save()) {
@@ -82,8 +82,8 @@ class AdminController extends Controller
     private function unsetOrgRole($game) {
         if(isset($game->teamId)){
             $team = Team::model()->findByPk($game->teamId);
-            if($team->role == 2) {//org
-                $team->role = 0;//user
+            if($team->role == 2 || $team->role == 5) {//org
+                $team->role -= 2;//user or creator
             }
 
             if(!$team->save()) {
@@ -92,11 +92,18 @@ class AdminController extends Controller
         }
 
 
-        //unset all
+        //unset all users
         $teams = Team::model()->findAllByAttributes(array('role'=>2));
 
         foreach($teams as $teamItem) {
             $teamItem->role = 0;
+        }
+
+        //unset all creators
+        $teams = Team::model()->findAllByAttributes(array('role'=>5));
+
+        foreach($teams as $teamItem) {
+            $teamItem->role = 3;
         }
     }
 

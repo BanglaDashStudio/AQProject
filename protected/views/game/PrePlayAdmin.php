@@ -39,6 +39,7 @@
         $this->renderPartial('_gamegrid', array(
             'teamList'=>$teamList,
             'taskList'=>$taskList,
+            'media'=>$media,
             'gridOrder'=>$gridOrder
         ));
     }

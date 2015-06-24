@@ -18,6 +18,7 @@ $('.grid_button').click(function(){
 </button>
 
 <div class="gridform" style="display: none">
+    <form id="formforgrigform" action="<?php echo $this->createUrl('game/play'); ?>" method="post">
     <?php
 
     if(isset($taskList) && isset($teamList) && isset($gridOrder)) {
@@ -29,7 +30,7 @@ $('.grid_button').click(function(){
         echo "</th>";
         foreach ($taskList as $task) {
             echo"<th>";
-            echo $task->description;
+            echo $task->name;
             echo "</th>";
         }
         echo "</tr>";
@@ -44,7 +45,9 @@ $('.grid_button').click(function(){
                 if ($grid->teamId == $team->id) {
                     $i=$grid->orderTask;
                     echo "<td>";
-                    echo  '<input name="order" type="text" size="3" value = '. $i.'>';
+                    echo  '<input ';
+                    echo 'name="GridForm['. $team->id . ' : ' . $grid->taskId .']"';
+                    echo 'type="text" size="3" value = '. $i.'>';
                     echo "</td>";
                 }
             }
@@ -53,7 +56,9 @@ $('.grid_button').click(function(){
             if (!isset($gridOrder))
             {
                 echo "<td>";
-                echo  '<input name="order" type="text" size="4" value = '.' '.'>';
+                echo  '<input';
+                echo 'name="GridForm['. $team->id . ' : ' . $grid->taskId .']"';
+                echo 'type="text" size="4" value = '.' '.'>';
                 echo "</td>";
 
             }
@@ -64,4 +69,5 @@ $('.grid_button').click(function(){
         echo 'заданий нет';
     }
     echo CHtml::submitButton('Сохранить изменения'); ?>
+    </form>
 </div>
