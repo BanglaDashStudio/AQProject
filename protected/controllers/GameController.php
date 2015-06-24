@@ -225,6 +225,19 @@ class GameController extends Controller
 
                 $gridOrder = Grid::model()->findAll($criteria_grid);
 
+
+                if(isset($_POST['GridForm'])) {
+                    foreach($gridOrder as $gridItem){
+                        if(isset($_POST['GridForm'][$gridItem->teamId . " : " . $gridItem->taskId])){
+                            $gridItem->orderTask = $_POST['GridForm'][$gridItem->teamId . " : " . $gridItem->taskId];
+                            if(!$gridItem->save()){
+                                //ошибка
+                                echo 'sdfs';
+                            }
+                        }
+                    }
+                }
+
                 $this->render('PrePlayAdmin', array('gameAccept' => $gameAccept, 'teamList' => $teamList, 'taskList' => $taskList,'media'=>$mediaArray, 'gridOrder' => $gridOrder));
             }
 
