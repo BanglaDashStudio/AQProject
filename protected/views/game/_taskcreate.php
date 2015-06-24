@@ -28,9 +28,11 @@ echo CHtml::link('Добавить задание','#',array('class'=>'task-butt
 // controller action is handling ajax validation correctly.
 // See class documentation of CActiveForm for details on this,
 // you need to use the performAjaxValidation()-method described there.
-            'enableAjaxValidation'=>false,
+            'enableAjaxValidation'=>true,
             'action'=> $this->CreateUrl('/game/TaskCreate', array('gameId'=>$gameId)),
         )); ?>
+        <p class="note">Поля со <span class="required">*</span> обязательны для заполнения.</p>
+
         <?php echo $form->errorSummary($model); ?>
         <div class="row">
             <?php echo $form->labelEx($model,'taskname'); ?>

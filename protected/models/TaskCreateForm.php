@@ -8,10 +8,12 @@ class TaskCreateForm extends CFormModel
     public $address;
     public $type;
     private $_identity;
+
     public function rules()
     {
         return array(
-            array('task', 'required'),
+            array('task, taskname', 'required'),
+            array('code','numerical', 'integerOnly'=>true),
             array('taskname, task, tip, code, address, type', 'safe', 'on'=>'search'),
         );
     }
@@ -23,7 +25,7 @@ class TaskCreateForm extends CFormModel
             'tip' => 'Подсказка',
             'code' => 'Код',
             'address' => 'Адрес',
-            'type'=>'Тип ',
+            'type'=>'Тип(не указывать для стандартных заданий ) ',
         );
     }
 }
