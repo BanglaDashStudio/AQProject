@@ -407,9 +407,16 @@ class GameController extends Controller
         Gameteam::model()->deleteAllByAttributes(array('gameId'=>$gameId));
 
         foreach($tasks as $task) {
+            $hints = Hint::model()->findAllByAttributes(array('taskId'=>$task->id));
+            foreach($hints as $hint){
+                Media::model()->deleteByPk($hint->mediaId);
+            }
             Hint::model()->deleteAllByAttributes(array('taskId' => $task->id));
             Code::model()->deleteAllByAttributes(array('taskId' => $task->id));
             Grid::model()->deleteAllByAttributes(array('taskId' => $task->id));
+
+            $task_1 = Task::model()->findByPk($task->id);
+            Media::model()->deleteByPk($task_1->mediaId);
             Task::model()->deleteByPk($task->id);
         }
 
