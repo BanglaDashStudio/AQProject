@@ -383,8 +383,6 @@ class GameController extends Controller
    //Добавление одного задания
     public function actionTaskCreate($gameId)
     {
-
-
             $model = new TaskCreateForm;
         if (isset($_POST['TaskCreateForm'])) {
             $model->attributes = $_POST['TaskCreateForm'];
