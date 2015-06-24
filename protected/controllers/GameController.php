@@ -144,26 +144,32 @@ class GameController extends Controller
             $gridOrder = Grid::model()->findAll($criteria_grid);//порядок
 
             $a = array();
-            $ddd = 0;
+            $index = 0;
+
+            $gameteam = Gameteam::model()->findByAttributes(array('gameId'=>$gameId, 'teamId'=>Yii::app()->user->id));
+
+            //присваиваю номера заданиям
             foreach ($gridOrder as $grid) {
-                $a[$ddd] = $grid;
-                $ddd++;
+                $a[$index] = $grid;
+                $index++;
             }
 
 
             // foreach ($gridOrder as $grid) {
 
-            $i = $a[0]->orderTask;// порядковый номер задания
+            $i = $a[$gameteam->counter]->orderTask;// порядковый номер задания
 
             $taskId = Grid::model()->findByAttributes(array('orderTask' => $i));// id задания
             $task = Task::model()->findByAttributes(array('id' => $taskId->taskId)); //задание
+            $media_task = Media::model()->findByPk($task->mediaId);
 
-            $hint = Hint::model()->findByAttributes(array('taskId' => $taskId->taskId)); //подсказка
+            $hint = Hint::model()->findByAttributes(array('taskId' => $taskId->taskId)); //подсказки
+            $media_hint = Media::model()->findByPk($hint->mediaId);
 
             $code = Code::model()->findByAttributes(array('taskId' => $taskId->taskId)); //код
 
 
-            $this->render('NowPlayUser', array('task' => $task, 'hint' => $hint, 'code' => $code));
+            $this->render('NowPlayUser', array('task'=>$task,'media_task'=>$media_task, 'media_hint'=>$media_hint, 'hint' => $hint, 'code' => $code));
             //}
         }
     }
