@@ -171,6 +171,7 @@ class GameController extends Controller
     public function finishPlay()
     {
         echo "finish";
+        return;
 
     }
 
