@@ -50,6 +50,12 @@ class GameController extends Controller
         $model->start='22:00:00';
         $model->type='15-15-15';
 
+        if(isset($_POST['ajax']) && $_POST['ajax']==='game-Create-form')
+        {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+
         if (isset($_POST['GameCreate'])) {
 
             $model->attributes = $_POST['GameCreate'];
@@ -323,8 +329,15 @@ class GameController extends Controller
         }
 
         $model = new TaskCreateForm;
+
         $tasks =  Task::model()->findAllByAttributes(array('gameId'=>$gameId));
         $gameEditModel = $this->getGameModeltoEditForm($gameId);
+        //$gameEditModel->attributes=$_POST['GameCreate'];
+        if(isset($_POST['ajax']) && $_POST['ajax']==='game-create-GameEdit-form')
+        {
+            echo CActiveForm::validate($gameEditModel);
+            Yii::app()->end();
+        }
 
         if(isset($tasks) && count($tasks) != 0) {
             $mediaArray = array();
@@ -341,58 +354,68 @@ class GameController extends Controller
    //Добавление одного задания
     public function actionTaskCreate($gameId)
     {
-        if (isset($_POST['TaskCreateForm'])) {
+
+
             $model = new TaskCreateForm;
+        if (isset($_POST['TaskCreateForm'])) {
+            $model->attributes = $_POST['TaskCreateForm'];
             $game= Game::model()->findByAttributes(array('id'=>$gameId));
             $model->type = $game->type;
-            //$model->attributes = $_POST['TaskCreateForm'];
-
             $task = new Task;
             $media = new Media;
 
-            $task->gameId = $gameId;
-            $task->name = $_POST['TaskCreateForm']['taskname'];
-            $media->description = $_POST['TaskCreateForm']['task'];
-            $task->address = $_POST['TaskCreateForm']['address'];
-            $task->type = $_POST['TaskCreateForm']['type'];
-
-            //$task->DescriptionTask = $model->task;
-            if(!$media->save()){
-                echo "media not save";
-                return;
-            }else{
-                $task->mediaId = $media->id;
+            if(isset($_POST['ajax']) && $_POST['ajax']==='task-create-form-TaskCreate-form')
+            {
+                echo CActiveForm::validate($model);
+                Yii::app()->end();
             }
 
-            if ($task->save()) {
-                $code = new Code;
-                $hint = new Hint;
-                $mediahint = new Media;
+            if ($model->validate()) {
 
-                $code->code = $_POST['TaskCreateForm']['code'];
-                $code->taskId = $task->id;
+                $task->gameId = $gameId;
+                $task->name = $_POST['TaskCreateForm']['taskname'];
+                $media->description = $_POST['TaskCreateForm']['task'];
+                $task->address = $_POST['TaskCreateForm']['address'];
+                $task->type = $_POST['TaskCreateForm']['type'];
 
-                $mediahint->description = $_POST['TaskCreateForm']['tip'];
-                $hint->taskId = $task->id;
-
-                if(!$mediahint->save()){
+                //$task->DescriptionTask = $model->task;
+                if(!$media->save()){
                     echo "media not save";
                     return;
                 }else{
-                    $hint->mediaId = $mediahint->id;
+                    $task->mediaId = $media->id;
                 }
 
-                if ($code->save() && $hint->save()) {
-                    $this->redirect(Yii::app()->createUrl('game/Tasks', array('gameId' => $gameId)));
-                    return;
+                if ($task->save()) {
+                    $code = new Code;
+                    $hint = new Hint;
+                    $mediahint = new Media;
+
+                    $code->code = $_POST['TaskCreateForm']['code'];
+                    $code->taskId = $task->id;
+
+                    $mediahint->description = $_POST['TaskCreateForm']['tip'];
+                    $hint->taskId = $task->id;
+
+                    if(!$mediahint->save()){
+                        echo "media not save";
+                        return;
+                    }else{
+                        $hint->mediaId = $mediahint->id;
+                    }
+
+                    if ($code->save() && $hint->save()) {
+                        $this->redirect(Yii::app()->createUrl('game/Tasks', array('gameId' => $gameId)));
+                        return;
+                    } else {
+                        var_dump($code->getErrors());
+                        var_dump($hint->getErrors());
+                        return;
+                    }
                 } else {
-                    var_dump($code->getErrors());
-                    var_dump($hint->getErrors());
+                    var_dump($task->getErrors());
                     return;
                 }
-            } else {
-                var_dump($task->getErrors());
-                return;
             }
         }
 
@@ -444,14 +467,12 @@ class GameController extends Controller
     // редактирование заданий
     public function actionTaskEdit($taskId, $gameId)
     {
-
        //найти задание, код и подсказку по id задания
         $task = Task::model()->findByPk($taskId);
         $media_task = Media::model()->findByPk($task->mediaId);
         $code = Code::model()->findByAttributes(array('taskId'=>$taskId));
         $hint = Hint::model()->findByAttributes(array('taskId'=>$taskId));
         $media_hint = Media::model()->findByPk($hint->mediaId);
-        
 
         if($task == null){
             echo 'Ошибка';
@@ -470,7 +491,13 @@ class GameController extends Controller
         //если POST не пустой
         if(isset($_POST['TaskCreateForm']))
         {
-           // $model->attributes = $_POST['TaskEditForm'];
+            $model->attributes = $_POST['TaskCreateForm'];
+
+            if(isset($_POST['ajax']) && $_POST['ajax']==='task-create-form-TaskEdit-form')
+            {
+                echo CActiveForm::validate($model);
+                Yii::app()->end();
+            }
                  // если прошла валидация
             if ($model->validate())
             {
@@ -523,6 +550,7 @@ class GameController extends Controller
         $game->type = $post['type'];
         $game->date = strtotime($post['date'])+$this->getTime($post['start']);
         $game->comment = $post['comment'];
+
 
         if ($game->validate())
         {

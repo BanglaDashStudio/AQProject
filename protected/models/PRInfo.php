@@ -7,11 +7,13 @@ class PRInfo extends CFormModel
     public $page;
     public $inform;
 
-    // TODO: реализовать валидацию телефона и мыла
+
     public function rules()
     {
         return array(
             array('phone, mail', 'required'),
+            array('mail', 'email', 'message' => 'Введите почту корректно. '),
+            array('phone', 'numerical', 'integerOnly' => true, 'message' => 'Введите номер телефона корректно. '),
             //    array('rememberMe', 'boolean'),
             //    array('password', 'authenticate'),
         );

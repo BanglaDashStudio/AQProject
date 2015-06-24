@@ -35,7 +35,7 @@ class Game extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('name', 'required'),
-			array('date, start, accepted, teamId, orderLock, finish', 'numerical', 'integerOnly'=>true),
+            array('date, start, accepted, teamId, orderLock, finish', 'numerical', 'integerOnly'=>true),
 			array('description, comment, type', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

@@ -8,7 +8,6 @@ class GameCreate extends CFormModel
     public $start;
     public $type;
     public $comment;
-    public $accepted;
     public $teamId;
    // public $rememberMe=false;
 
@@ -21,10 +20,11 @@ class GameCreate extends CFormModel
         return array(
 
             array('name', 'required'),
+            array('name', 'unique','className'=>'Game', 'attributeName'=>'name','message'=>'Игра с таким именем уже существует.'),
             array('description,  start, date, comment, type', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('name, date, description, start, type, comment, accepted', 'safe', 'on'=>'search'),
+            array('name, date, description, start, type, comment', 'safe', 'on'=>'search'),
         );
 
 
@@ -37,7 +37,7 @@ class GameCreate extends CFormModel
             'teamId' => 'команда',
             'description' => 'Информация об игре, допы',
             'date' =>'Дата',
-            'start' => 'Время начала',
+            'startGame' => 'Время начала',
             'type' => 'Формат игры',
             'comment' => 'Комментарий (если хотите)',
         );

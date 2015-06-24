@@ -19,12 +19,13 @@ $this->breadcrumbs=array(
 	// controller action is handling ajax validation correctly.
 	// See class documentation of CActiveForm for details on this,
 	// you need to use the performAjaxValidation()-method described there.
-	'enableAjaxValidation'=>false,
+	'enableAjaxValidation'=>true,
 )); ?>
 
 	<p class="note">Поля со <span class="required">*</span> обязательны к заполнению.</p>
 
 	<?php echo $form->errorSummary($model); ?>
+
     <div class="row">
         <?php echo $form->labelEx($model,'taskname'); ?>
         <?php echo $form->textField($model,'taskname'); ?>
