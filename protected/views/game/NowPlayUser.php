@@ -12,9 +12,9 @@
     echo 'Подсказка  - ', $media_hint->description . "". '<br>';
 
     echo  '<input name="codeUser" type="text" size="3" value = '. ' '.'>'. '<br>';
-    //if ( $_POST['codeUser']== $code->code)
 
-    echo CHtml::submitButton('дальше');
+
+    echo CHtml::submitButton('ок');
 
 ?>
 

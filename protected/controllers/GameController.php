@@ -86,7 +86,9 @@ class GameController extends Controller
 	public function actionPlay()
 	{
 
-       $game = Game::model()->findByAttributes(array('accepted'=>'1'));
+        $game = Game::model()->findByAttributes(array('accepted'=>'1'));
+        $gameteam = Gameteam::model()->findByAttributes(array('gameId'=>$game->id,'teamId'=>Yii::app()->user->id));
+
         if($game == null) {
             echo "game don't accepted";
             return;
@@ -110,11 +112,12 @@ class GameController extends Controller
         $now = time();
 
         if((int)$game->date < (int)$now){
-                if ($game->finish == 1) {
-                    $this->finishPlay(); // после игры
-                }else {
-                    $this->nowPlay($game->id, $formatTime);// в игре
-                }
+            //финиш либо общий, либо для конкретной команды
+            if ($game->finish == 1 || $gameteam->finish == 1) {
+                $this->finishPlay(); // после игры
+            }else {
+                $this->nowPlay($game->id, $formatTime);// в игре
+            }
         }else{//до игры
             $this->prePlay();
         }
@@ -138,7 +141,7 @@ class GameController extends Controller
             echo 'view for admin';
             return;
         }else{
-            $user = Gameteam::model()->findByAttributes(array('teamId' => Yii::app()->user->id, 'gameId' => $gameId));
+            $gameteam = Gameteam::model()->findByAttributes(array('teamId' => Yii::app()->user->id, 'gameId' => $gameId));
 
             // сетка
             $criteria_grid = new CDbCriteria();
@@ -152,31 +155,90 @@ class GameController extends Controller
             $a = array();
             $index = 0;
 
-            $gameteam = Gameteam::model()->findByAttributes(array('gameId'=>$gameId, 'teamId'=>Yii::app()->user->id));
-
             //присваиваю номера заданиям
             foreach ($gridOrder as $grid) {
                 $a[$index] = $grid;
                 $index++;
             }
 
-
-            // foreach ($gridOrder as $grid) {
-
             $i = $a[$gameteam->counter]->orderTask;// порядковый номер задания
 
             $taskId = Grid::model()->findByAttributes(array('orderTask' => $i));// id задания
+
             $task = Task::model()->findByAttributes(array('id' => $taskId->taskId)); //задание
             $media_task = Media::model()->findByPk($task->mediaId);
 
             $hint = Hint::model()->findByAttributes(array('taskId' => $taskId->taskId)); //подсказки
             $media_hint = Media::model()->findByPk($hint->mediaId);
 
-            $code = Code::model()->findByAttributes(array('taskId' => $taskId->taskId)); //код
+            $codes = null;
 
+            //если что-то есть в окне для кода
+            if(isset($_POST['codeUser'])){
+                $code = Code::model()->findByAttributes(array('taskId' => $taskId->taskId, 'code'=>$_POST['codeUser'])); //код
+                unset($_POST['codeUser']);
 
-            $this->render('NowPlayUser', array('task'=>$task,'media_task'=>$media_task, 'media_hint'=>$media_hint, 'hint' => $hint, 'code' => $code));
-            //}
+                //если это есть в таблице code
+                if($code != null){
+
+                    //смотрим, есть ли такое в codeteam, чтобы дважды не засчитать один код
+                    $codeteam = Codeteam::model()->findByAttributes(array("codeId"=>$code->id));
+
+                    //если что-то есть в код тим
+                    if ($codeteam == null) {
+
+                        $codeteam = new Codeteam();
+                        $codeteam->teamId = Yii::app()->user->id;
+                        $codeteam->codeId = $code->id;
+
+                        if($codeteam->save()){
+
+                            $codeteamforcount = Codeteam::model()->findAllByAttributes(array('teamId'=>$codeteam->teamId));
+
+                            if($codeteamforcount != null) {
+                                $count_codeteam = count($codeteamforcount);
+                            }else{
+                                $count_codeteam = 0;
+                            }
+
+                            $codes = Code::model()->findAllByAttributes(array('taskId'=>$taskId->taskId));
+                            if($codes != null) {
+                                $count_codes = count($codes);
+                            } else {
+                                $count_codes = 0;
+                            }
+
+                            //если все коды нашлись
+                            if($count_codeteam == $count_codes){
+                                //увеличиваем счетчик, все коды найдены
+                                $gameteam->counter += 1;
+                                Codeteam::model()->deleteAllByAttributes(array('teamId'=>$codeteam->teamId));
+                                $gameteam->save();
+
+                                $tasks = Task::model()->findAllByAttributes(array('gameId'=>$gameId));
+                                if( $tasks != null ) {
+                                    $count_tasks = count($tasks);
+                                } else {
+                                    $count_tasks = 0;
+                                }
+
+                                //если счетчик совпал с количеством заданий
+                                if ($gameteam->counter == $count_tasks){
+                                    //ставим финиш конкретной команде
+                                    $gameteam->finish = 1;
+                                    $gameteam->save();
+                                    $this->redirect($this->createUrl('game/play'));
+                                } else {
+                                    $this->redirect($this->createUrl('game/play'));
+                                }
+                            }
+                        }
+                    }else{
+                        //TODO:: такой код есть
+                    }
+                }
+            }
+            $this->render('NowPlayUser', array('task'=>$task,'media_task'=>$media_task, 'media_hint'=>$media_hint, 'hint' => $hint));
         }
     }
 

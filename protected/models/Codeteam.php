@@ -1,23 +1,21 @@
 <?php
 
 /**
- * This is the model class for table "gameteam".
+ * This is the model class for table "codeteam".
  *
- * The followings are the available columns in table 'gameteam':
+ * The followings are the available columns in table 'codeteam':
  * @property integer $id
- * @property integer $gameId
  * @property integer $teamId
- * @property integer $counter
- * @property integer $finish
+ * @property integer $codeId
  */
-class Gameteam extends CActiveRecord
+class Codeteam extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'gameteam';
+		return 'codeteam';
 	}
 
 	/**
@@ -28,11 +26,11 @@ class Gameteam extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('gameId, teamId', 'required'),
-			array('gameId, teamId, counter, finish', 'numerical', 'integerOnly'=>true),
+			array('teamId, codeId', 'required'),
+			array('teamId, codeId', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, gameId, teamId, counter, finish', 'safe', 'on'=>'search'),
+			array('id, teamId, codeId', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,10 +52,8 @@ class Gameteam extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'gameId' => 'Game',
 			'teamId' => 'Team',
-			'counter' => 'Counter',
-			'finish' => 'Finish',
+			'codeId' => 'Code',
 		);
 	}
 
@@ -80,10 +76,8 @@ class Gameteam extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('gameId',$this->gameId);
 		$criteria->compare('teamId',$this->teamId);
-		$criteria->compare('counter',$this->counter);
-		$criteria->compare('finish',$this->finish);
+		$criteria->compare('codeId',$this->codeId);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -94,7 +88,7 @@ class Gameteam extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Gameteam the static model class
+	 * @return Codeteam the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
