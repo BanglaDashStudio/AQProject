@@ -262,7 +262,8 @@ class GameController extends Controller
         if (Yii::app()->user->isAdmin() || Yii::app()->user->isOrg()) {
             $this->render('FinishPlayAdmin');
         }else{
-            $this->render('FinishPlayUser');
+            $gameteam = Gameteam::model()->findByAttributes(array("teamId"=>Yii::app()->user->id));
+            $this->render('FinishPlayUser', array('gameteam'=>$gameteam));
         }
     }
 
@@ -358,6 +359,19 @@ class GameController extends Controller
     //остановка игры
     public function actionStopGame(){
         $game = Game::model()->findByAttributes(array('accepted'=>'1'));
+
+        //если вдруг последнее задание считается слитым и входит в сделанные - то раскоментить
+        /*
+        $gameteams = Gameteam::model()->findAllByAttributes(array("gameId"=>$game->id));
+
+
+        foreach($gameteams as $gameteam){
+            if($gameteam->finish != 1){
+                $gameteam->counter += 1;
+                $gameteam->save();
+            }
+        }
+        */
         $game->finish = 1;
         if($game->save()) {
             $this->redirect(Yii::app()->createUrl('game/Play'));
