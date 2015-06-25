@@ -13,6 +13,13 @@
 
     echo  '<input name="codeUser" type="text" size="3" value = '. ' '.'>'. '<br>';
 
+    echo 'Кодов на локации  - ', $count_codes . "". '<br>';
+    echo 'Найдено кодов  - ', $count_codeteam . "". '<br>';
+
+   /* foreach ($codeteamforcount as $codeteamforcountone) {
+        echo 'Найденые коды  - ', $codeteamforcountone . "" . '<br>';
+    }
+*/
 
     echo CHtml::submitButton('ок');
 

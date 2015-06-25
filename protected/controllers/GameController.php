@@ -188,6 +188,13 @@ class GameController extends Controller
 
             $codes = null;
 
+            $codes = Code::model()->findAllByAttributes(array('taskId'=>$taskId->taskId));
+            if($codes != null) {
+                $count_codes = count($codes);
+            } else {
+                $count_codes = 0;
+            }
+
             //если что-то есть в окне для кода
             if(isset($_POST['codeUser'])){
                 $code = Code::model()->findByAttributes(array('taskId' => $taskId->taskId, 'code'=>$_POST['codeUser'])); //код
@@ -214,13 +221,6 @@ class GameController extends Controller
                                 $count_codeteam = count($codeteamforcount);
                             }else{
                                 $count_codeteam = 0;
-                            }
-
-                            $codes = Code::model()->findAllByAttributes(array('taskId'=>$taskId->taskId));
-                            if($codes != null) {
-                                $count_codes = count($codes);
-                            } else {
-                                $count_codes = 0;
                             }
 
                             //если все коды нашлись
@@ -252,8 +252,10 @@ class GameController extends Controller
                         //TODO:: такой код есть
                     }
                 }
+            }else{
+                $count_codeteam = 0;
             }
-            $this->render('NowPlayUser', array('task'=>$task,'media_task'=>$media_task, 'media_hint'=>$media_hint, 'hint' => $hint));
+            $this->render('NowPlayUser', array('task'=>$task,'media_task'=>$media_task, 'media_hint'=>$media_hint, 'hint' => $hint, 'count_codeteam'=>$count_codeteam, 'count_codes'=>$count_codes));
         }
     }
 
