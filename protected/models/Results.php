@@ -5,6 +5,7 @@
  *
  * The followings are the available columns in table 'results':
  * @property integer $id
+ * @property integer $taskcount
  * @property string $time
  * @property integer $score
  * @property integer $teamId
@@ -29,11 +30,11 @@ class Results extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('teamId, gameId', 'required'),
-			array('score, teamId, gameId', 'numerical', 'integerOnly'=>true),
+			array('taskcount, score, teamId, gameId', 'numerical', 'integerOnly'=>true),
 			array('time', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, time, score, teamId, gameId', 'safe', 'on'=>'search'),
+			array('id, taskcount, time, score, teamId, gameId', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,6 +56,7 @@ class Results extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'taskcount' => 'Taskcount',
 			'time' => 'Time',
 			'score' => 'Score',
 			'teamId' => 'Team',
@@ -81,6 +83,7 @@ class Results extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		$criteria->compare('taskcount',$this->taskcount);
 		$criteria->compare('time',$this->time,true);
 		$criteria->compare('score',$this->score);
 		$criteria->compare('teamId',$this->teamId);

@@ -84,18 +84,17 @@ class GameController extends Controller
 
     // текущая игра
 	public function actionPlay()
-	{
+    {
 
-        $game = Game::model()->findByAttributes(array('accepted'=>'1'));
-        $gameteam = Gameteam::model()->findByAttributes(array('gameId'=>$game->id,'teamId'=>Yii::app()->user->id));
+        $game = Game::model()->findByAttributes(array('accepted' => '1'));
 
-        if($game == null) {
+        if ($game == null) {
             echo "game don't accepted";
             return;
         }
 
         //получение времени
-        $formatTime=$game->type;
+        $formatTime = $game->type;
         /*
         $a=" 00:00:00";
         $b=date("Y-m-d");
@@ -111,16 +110,32 @@ class GameController extends Controller
 
         $now = time();
 
-        if((int)$game->date < (int)$now){
-            //финиш либо общий, либо для конкретной команды
-            if ($game->finish == 1 || $gameteam->finish == 1) {
-                $this->finishPlay(); // после игры
-            }else {
-                $this->nowPlay($game->id, $formatTime);// в игре
+        if (Yii::app()->user->isAdmin() || Yii::app()->user->isOrg()) {
+
+            if ((int)$game->date < (int)$now) {
+                if ($game->finish == 1) {
+                    $this->finishPlay(); // после игры
+                } else {
+                    $this->nowPlay($game->id, $formatTime);// в игре
+                }
+            }else{//до игры
+                $this->prePlay();
             }
-        }else{//до игры
-            $this->prePlay();
+        } else {
+            $gameteam = Gameteam::model()->findByAttributes(array('gameId' => $game->id, 'teamId' => Yii::app()->user->id));
+
+            if ((int)$game->date < (int)$now) {
+                //финиш либо общий, либо для конкретной команды
+                if ($game->finish == 1 || $gameteam->finish == 1) {
+                    $this->finishPlay(); // после игры
+                } else {
+                    $this->nowPlay($game->id, $formatTime);// в игре
+                }
+            }else{//до игры
+                $this->prePlay();
+            }
         }
+
     }
 
     private function getTime($time){
@@ -138,8 +153,8 @@ class GameController extends Controller
         list($hintTime, $addressTime, $fullTime) = explode('-', $formatTime);
 
         if (Yii::app()->user->isAdmin() || Yii::app()->user->isOrg()) {
-            echo 'view for admin';
-            return;
+            $this->render('NowPlayAdmin');
+
         }else{
             $gameteam = Gameteam::model()->findByAttributes(array('teamId' => Yii::app()->user->id, 'gameId' => $gameId));
 
@@ -244,9 +259,11 @@ class GameController extends Controller
 
     public function finishPlay()
     {
-        echo "finish";
-        return;
-
+        if (Yii::app()->user->isAdmin() || Yii::app()->user->isOrg()) {
+            $this->render('FinishPlayAdmin');
+        }else{
+            $this->render('FinishPlayUser');
+        }
     }
 
     private function prePlay(){
@@ -335,6 +352,15 @@ class GameController extends Controller
                 $this->render('PrePlayUser', array('gameAccept' => $gameAccept, 'teamList' => $teamList));
             }
 
+        }
+    }
+
+    //остановка игры
+    public function actionStopGame(){
+        $game = Game::model()->findByAttributes(array('accepted'=>'1'));
+        $game->finish = 1;
+        if($game->save()) {
+            $this->redirect(Yii::app()->createUrl('game/Play'));
         }
     }
 
