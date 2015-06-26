@@ -21,6 +21,18 @@ return false;
 </div>
 
 
+<div>
+    <?php
+        $this->renderPartial('_nowplayadmingrid', array(
+            'count_task'=>$count_task,
+            'teams'=>$teams,
+            'gameId'=>$gameId,
+        ));
+
+    ?>
+</div>
+
+
 
 
 <div class="stopform" >

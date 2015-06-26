@@ -15,12 +15,16 @@
 
     echo 'Кодов на локации  - ', $count_codes . "". '<br>';
     echo 'Найдено кодов  - ', $count_codeteam . "". '<br>';
+/*
+    echo 'Найденые коды  - ';
 
-   /* foreach ($codeteamforcount as $codeteamforcountone) {
-        echo 'Найденые коды  - ', $codeteamforcountone . "" . '<br>';
-    }
+    $codes = Code::model()->findAllByAttributes(array("codeId"=>$codeteamforcount->codeId));
+    echo $codes;
+
+    foreach ($codes as $code) {
+        echo $code->code . "" . '<br>';
+    };
 */
-
     echo CHtml::submitButton('ок');
 
 ?>
