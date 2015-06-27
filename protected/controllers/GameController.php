@@ -153,7 +153,21 @@ class GameController extends Controller
         list($hintTime, $addressTime, $fullTime) = explode('-', $formatTime);
 
         if (Yii::app()->user->isAdmin() || Yii::app()->user->isOrg()) {
-            $this->render('NowPlayAdmin');
+            $tasksforcount = Task::model()->findAllByAttributes(array("gameId"=>$gameId));
+            $count_task = count($tasksforcount);
+
+            $gameteams = Gameteam::model()->findAllByAttributes(array("gameId"=>$gameId));
+
+            //запихиваем все задания в массив, чтобы работать с ними во вьюшке в выводе сетки
+            $i=0;
+            $teams = array();
+
+            foreach($gameteams as $gameteam){
+                $teams[$i] = Team::model()->findByPk($gameteam->teamId);;
+                $i++;
+            }
+
+            $this->render('NowPlayAdmin', array("count_task"=>$count_task, "teams"=>$teams, 'gameId'=>$gameId));
 
         }else{
             $gameteam = Gameteam::model()->findByAttributes(array('teamId' => Yii::app()->user->id, 'gameId' => $gameId));
@@ -259,6 +273,8 @@ class GameController extends Controller
                                     //ставим финиш конкретной команде
                                     $gameteam->finish = 1;
                                     $gameteam->save();
+
+                                    $this->checkFinishCondition($gameId);
                                     $this->redirect($this->createUrl('game/play'));
                                 } else {
                                     $this->redirect($this->createUrl('game/play'));
@@ -266,14 +282,51 @@ class GameController extends Controller
                             }
                         }
                     }else{
-                        //TODO:: такой код есть
+                        //TODO: такой код есть
+                        $codeteamforcount = Codeteam::model()->findAllByAttributes(array('teamId'=>$codeteam->teamId));
+
+                        if($codeteamforcount != null) {
+                            $count_codeteam = count($codeteamforcount);
+                        }else{
+                            $count_codeteam = 0;
+                        }
+
+                    }
+                } else {
+                    $codeteamforcount = Codeteam::model()->findAllByAttributes(array('teamId'=>Yii::app()->user->id));
+
+                    if($codeteamforcount != null) {
+                        $count_codeteam = count($codeteamforcount);
+                    }else{
+                        $count_codeteam = 0;
                     }
                 }
             }else{
-                $count_codeteam = 0;
+                $codeteamforcount = Codeteam::model()->findAllByAttributes(array('teamId'=>Yii::app()->user->id));
+
+                if($codeteamforcount != null) {
+                    $count_codeteam = count($codeteamforcount);
+                }else{
+                    $count_codeteam = 0;
+                }
             }
-            $this->render('NowPlayUser', array('task'=>$task,'media_task'=>$media_task, 'media_hint'=>$media_hint, 'hint' => $hint, 'count_codeteam'=>$count_codeteam, 'count_codes'=>$count_codes, 'hintT'=>$hintT, 'address'=>$address));
+            $this->render('NowPlayUser', array('task'=>$task,'media_task'=>$media_task, 'media_hint'=>$media_hint, 'hint' => $hint, 'count_codeteam'=>$count_codeteam, 'count_codes'=>$count_codes, 'codeteamforcount'=>$codeteamforcount, 'address'=>$address), 'hard'=>$hard);
         }
+    }
+
+    //функция, завершающая игру, если все команды закончили
+    private function checkFinishCondition($gameId){
+        $gameteams = Gameteam::model()->findAllByAttributes(array('gameId'=>$gameId));
+        foreach($gameteams as $gameteam){
+            if($gameteam->finish != '1'){
+                return;
+            }
+        }
+
+        $game = Game::model()->findByPk($gameId);
+        $game->finish = 1;
+        $game->save();
+
     }
 
     public function finishPlay()
