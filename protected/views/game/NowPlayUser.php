@@ -10,16 +10,22 @@
     <form id="formforplayform" action="<?php echo $this->createUrl('game/play'); ?>" method="post">
 
 <?php
-    echo 'Задание  - ', $media_task->description . "". '<br>';
+    if(isset($media_task)) {
+        echo 'Задание  - ', $media_task->description . "" . '<br>';
+    }else{
+        echo 'error';
+    }
 
-    for ($i = 0; $i<$count_hint; $i++) {
-        if (isset($hint[$i])) {
-            echo 'Подсказка  - ', $media_hint[$i]->description . "" . '<br>';
+    foreach ($view_hint as $item){
+        if (isset($item)) {
+            echo 'Подсказка  - ', $item->description . '<br>';
+        }else{
+            echo 'error';
         }
     }
 
-    if(isset($address)) {
-        echo 'Адрес  - ', $address . "" . '<br>';
+    if(isset($view_address)) {
+        echo 'Адрес  - ', $view_address .'<br>';
     }
 
 
