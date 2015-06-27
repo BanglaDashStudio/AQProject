@@ -4,16 +4,21 @@ class TestController extends Controller
 {
 
     public function actionUploadImage() {
-        //var_dump($_POST);
-        //var_dump($_FILES);
 
         $uploaddir = 'data/images/';
         $uploadfile = $uploaddir . $_FILES['uploadImage']['name'];
 
-        //var_dump($_FILES['uploadImage']['tmp_name']);
-
         if (move_uploaded_file(($_FILES['uploadImage']['tmp_name']), $uploadfile)) {
             $link = $uploadfile;
+
+            $media = new Media();
+            $media->image = $link;
+
+            if(!$media->save()){
+                echo 'Ошибка добавления ссылки в бд';
+            } else {
+                echo 'все хорошо';
+            }
 
         } else {
             echo "Ошибка загрузки аудио!\n";
@@ -22,29 +27,58 @@ class TestController extends Controller
     }
 
     public function actionUploadAudio() {
-        var_dump($_POST);
-        var_dump($_FILES);
+        $uploaddir = 'data/audio/';
+        $uploadfile = $uploaddir . $_FILES['uploadImage']['name'];
 
+        if (move_uploaded_file(($_FILES['uploadImage']['tmp_name']), $uploadfile)) {
+            $link = $uploadfile;
+
+            $media = new Media();
+            $media->audio = $link;
+
+            if(!$media->save()){
+                echo 'Ошибка добавления ссылки в бд';
+            } else {
+                echo 'все хорошо';
+            }
+
+        } else {
+            echo "Ошибка загрузки аудио!\n";
+        }
     }
 
     public function actionIndex() {
         $this->render('upload');
     }
 
-    public function actionNow() {
-        $time = Game::model()->findByPk(11);
+    //1
+    public function actionCreateTask($gameId){
+        $this->render('createTask',array('gameId'=>$gameId,'taskCreateForm'=>new TaskCreateForm));
+    }
 
-        $str_time = $time->start;
-        $hours=0;
-        $minutes=0;
-        $seconds=0;
-        sscanf($str_time, "%d:%d:%d", $hours, $minutes, $seconds);
-        $time_seconds = isset($seconds) ? $hours * 3600 + $minutes * 60 + $seconds : $hours * 60 + $minutes;
+    //2
+    public function actionSaveTask($gameId){
+        if(isset($_POST['TaskCreateForm'])) {
 
-        $game = Game::model()->findByAttributes(array('accepted'=>'1'));
+            $task = new Task();
+            $task->gameId = $gameId;
+            $task->name = $_POST['TaskCreateForm']['task'];
+            if($task->validate()){
+                $task->save();
+                $this->render('task',array('taskId'=>$task->id,'task'=>$task));
+                return;
+            }
 
-        echo time();
-        echo '<br />';
-        echo $game->date;
+        } else {
+            $this->redirect($this->createUrl('test/createTask',array('gameId'=>$gameId)));
+        }
+    }
+
+
+    public function addCodes(){
+    }
+
+    public function actionVideo() {
+        $this->render('video');
     }
 }
