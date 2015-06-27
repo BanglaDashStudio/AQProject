@@ -186,7 +186,23 @@ class GameController extends Controller
             $hint = Hint::model()->findByAttributes(array('taskId' => $taskId->taskId)); //подсказки
             $media_hint = Media::model()->findByPk($hint->mediaId);
 
+            $address = $task->address;// адрес задания
+
             $codes = null;
+
+            $hard=0;
+
+            $start = (int) time();// время начала выполнения
+           // $hintT = $hintTime*1000*60 + $start;//время для подсказки
+            $hintT = 10 + $start;
+
+            //echo (int)time();
+           // echo $hintT;
+            //return;
+
+            //$adrT = $hintT + $addressTime*1000*60;//время для слива адреса
+            $adrT = $hintT + 1000*6;
+            $finT = $adrT+$fullTime*1000*60;// время для слива задания
 
             $codes = Code::model()->findAllByAttributes(array('taskId'=>$taskId->taskId));
             if($codes != null) {
@@ -223,8 +239,9 @@ class GameController extends Controller
                                 $count_codeteam = 0;
                             }
 
-                            //если все коды нашлись
-                            if($count_codeteam == $count_codes){
+
+                            //если все коды нашлись или время вышло
+                            if($count_codeteam == $count_codes || $finT == (int)time()){
                                 //увеличиваем счетчик, все коды найдены
                                 $gameteam->counter += 1;
                                 Codeteam::model()->deleteAllByAttributes(array('teamId'=>$codeteam->teamId));
@@ -255,7 +272,7 @@ class GameController extends Controller
             }else{
                 $count_codeteam = 0;
             }
-            $this->render('NowPlayUser', array('task'=>$task,'media_task'=>$media_task, 'media_hint'=>$media_hint, 'hint' => $hint, 'count_codeteam'=>$count_codeteam, 'count_codes'=>$count_codes));
+            $this->render('NowPlayUser', array('task'=>$task,'media_task'=>$media_task, 'media_hint'=>$media_hint, 'hint' => $hint, 'count_codeteam'=>$count_codeteam, 'count_codes'=>$count_codes, 'hintT'=>$hintT, 'address'=>$address));
         }
     }
 
@@ -419,6 +436,18 @@ class GameController extends Controller
         $newOrder->teamId = $teamId;
         $newOrder->gameId = $gameId;
 
+        //для каждого задания в игре заполняем поле в таблице Grid  NULL (т.е. пока порядка нет)
+        $tasks = Task::model()->findAllByAttributes(array('gameId'=>$gameId));
+
+        foreach ($tasks as $task) {
+
+            $newGrid = new Grid();
+            $newGrid->teamId=$teamId;
+            $newGrid->gameId=$gameId;
+            $newGrid->taskId=$task->id;
+            $newGrid->save();
+        }
+
         if ($newOrder->save()) {
             $this->redirect(Yii::app()->createUrl('game/Play'));
         } else {
@@ -533,6 +562,19 @@ class GameController extends Controller
                         return;
                     }else{
                         $hint->mediaId = $mediahint->id;
+                    }
+
+                    //все команды, которые уже подали заявку
+                    $teams = Gameteam::model()->findAllByAttributes(array('gameId'=>$gameId));
+                    //добавляем задание в их сетку
+                    foreach($teams as $team)
+                    {
+                            $newGrid = new Grid();
+                            $newGrid->teamId=$team->teamId;
+                            $newGrid->gameId=$gameId;
+                            $newGrid->taskId=$task->id;
+                            $newGrid->save();
+
                     }
 
                     if ($code->save() && $hint->save()) {
