@@ -310,7 +310,7 @@ class GameController extends Controller
                     $count_codeteam = 0;
                 }
             }
-            $this->render('NowPlayUser', array('task'=>$task,'media_task'=>$media_task, 'media_hint'=>$media_hint, 'hint' => $hint, 'count_codeteam'=>$count_codeteam, 'count_codes'=>$count_codes, 'codeteamforcount'=>$codeteamforcount, 'address'=>$address), 'hard'=>$hard);
+            $this->render('NowPlayUser', array('task'=>$task,'media_task'=>$media_task, 'media_hint'=>$media_hint, 'hint' => $hint, 'count_codeteam'=>$count_codeteam, 'count_codes'=>$count_codes, 'codeteamforcount'=>$codeteamforcount, 'address'=>$address, 'hard'=>$hard));
         }
     }
 

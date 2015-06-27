@@ -41,7 +41,7 @@ $('.address_button').click(function(){
             </div>
 </div>
 
- <?php
+        <?php
 
     echo  '<input name="codeUser" type="text" size="3" value = '. ' '.'>'. '<br>';
 
