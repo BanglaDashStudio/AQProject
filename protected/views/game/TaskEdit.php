@@ -52,11 +52,6 @@ $this->breadcrumbs=array(
         <?php echo $form->textField($model,'address'); ?>
         <?php echo $form->error($model,'address'); ?>
     </div>
-    <div class="row">
-        <?php echo $form->labelEx($model,'code'); ?>
-        <?php echo $form->textField($model,'code'); ?>
-        <?php echo $form->error($model,'code'); ?>
-    </div>
 
     <div class="row buttons">
         <?php echo CHtml::submitButton('Сохранить'); ?>

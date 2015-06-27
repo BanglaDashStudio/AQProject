@@ -604,7 +604,8 @@ class GameController extends Controller
                     $hint = new Hint;
                     $mediahint = new Media;
 
-                    $code->code = $_POST['TaskCreateForm']['code'];
+                    //TODO: заглушка по коду
+                    $code->code = 11;
                     $code->taskId = $task->id;
 
                     $mediahint->description = $_POST['TaskCreateForm']['tip'];
@@ -709,7 +710,8 @@ class GameController extends Controller
         //записать данные которые есть сейчас
         $model->taskname=$task->name;
         $model->task=$media_task->description;
-        $model->code=$code->code;
+        //TODO: заглушка по коду
+        //$model->code=$code->code;
         $model->tip=$media_hint->description;
         $model->type=$task->type;
         $model->address=$task->address;
@@ -731,7 +733,8 @@ class GameController extends Controller
                 $task->name = $_POST['TaskCreateForm']['taskname'];
                 $media_task->description = $_POST['TaskCreateForm']['task'];
                 $media_hint->description= $_POST['TaskCreateForm']['tip'];
-                $code->code=$_POST['TaskCreateForm']['code'];
+                //TODO: заглушка по коду
+                $code->code=11;
                 $task->type=$_POST['TaskCreateForm']['type'];
                 $task->address = $_POST['TaskCreateForm']['address'];
 
