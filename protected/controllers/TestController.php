@@ -165,29 +165,101 @@ class TestController extends Controller
         }
     }
 
-    public function actionCreateTaskForm()
+    public function actionCreateTaskTest($gameId)
     {
-        $model = new TaskCreate;
+        $taskForm = new TaskCreate;
 
-        // uncomment the following code to enable ajax-based validation
-        /*
+        $taskForm->type = '15-15-15';
+
         if(isset($_POST['ajax']) && $_POST['ajax']==='task-create-createTaskForm-form')
         {
-            echo CActiveForm::validate($model);
+            echo CActiveForm::validate($taskForm);
             Yii::app()->end();
         }
-        */
 
         if(isset($_POST['TaskCreate']))
         {
-            $model->attributes=$_POST['TaskCreate'];
-            if($model->validate())
+            $taskForm->name = $_POST['TaskCreate']['name'];
+            $taskForm->address = $_POST['TaskCreate']['address'];
+            $taskForm->type = $_POST['TaskCreate']['type'];
+            $taskForm->description = $_POST['TaskCreate']['description'];
+            $taskForm->code = $_POST['TaskCreate']['code'];
+
+            if($taskForm->validate())
             {
-                // form inputs are valid, do something here
+                if(null == Task::model()->findAllByAttributes(array('name'=>$taskForm->name,
+                        'address'=>$taskForm->address)) ){
+                    $task = new Task();
+                } else {
+                    $task = Task::model()->findByAttributes(array('name'=>$taskForm->name,
+                        'address'=>$taskForm->address));
+                }
+
+                $task->name = $taskForm->name;
+                $task->address = $taskForm->address;
+                $task->type = $taskForm->type;
+                $task->gameId = $gameId;
+
+
+                if(!isset($task->mediaId)){
+                    $media = new Media();
+                } else {
+                    $media = Media::model()->findByPk($task->mediaId);
+                }
+
+                $media->description = $taskForm->description;
+
+                if($media->save()) {
+                    $task->mediaId = $media->id;
+                } else {
+                    return;
+                }
+
+                if(!$task->save()) {
+                    Media::model()->deleteByPk($media->id);
+                    return;
+                }
+
+                Code::model()->deleteAllByAttributes(array('taskId'=>$task->id));
+
+                $code = new Code();
+
+                $code->taskId = $task->id;
+                $code->code = $taskForm->code;
+
+                if(!$code->save()){
+                    Media::model()->deleteByPk($media->id);
+                    Task::model()->deleteByPk($task->id);
+                    return;
+                }
+
+                if(isset($_POST['TaskCreate']['codes'])){
+                    foreach($_POST['TaskCreate']['codes'] as $item){
+                        if($item != ''){
+                            $code = new Code();
+                            $code->taskId = $task->id;
+                            $code->code = $item;
+
+                            if(null == Code::model()->findByAttributes(array('taskId'=>$code->taskId,
+                                                                        'code'=>$code->code)))
+                            {
+                                if($code->validate()){
+                                    $code->save();
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if(isset($_POST['TaskCreate']['codes'])) {
+                    $this->render('updateTaskForm', array('gameId' => $gameId, 'createTaskForm' => $taskForm, 'codes' => $_POST['TaskCreate']['codes']));
+                } else {
+                    $this->render('updateTaskForm', array('gameId' => $gameId, 'createTaskForm' => $taskForm));
+                }
                 return;
             }
         }
-        $this->render('createTaskForm',array('model'=>$model));
+        $this->render('createTaskForm',array('gameId'=>$gameId, 'createTaskForm'=>$taskForm));
     }
 
 
