@@ -6,45 +6,67 @@
  * Time: 8:03
  */
 
-/* @var taskId */
 /* @var task Task */
+/* @var gameId */
+/* @var codes Array $i=>Code */
+/* @var hints Array $i=>Hint */
+/* @var media_task */
 
 ?>
+<div class="form">
+<form action="<?php echo $this->createUrl('saveTask',array('gameId'=>$gameId))?>" method="post">
 
-<hr />
-Задание
-<hr />
-<p>что-то для ввода задания</p>
-<button>Загрузить файлы</button> <br />
+<label>Задание</label>
 <hr />
 
+<?php
+    if(isset($task)) {
+        echo '<input type="hidden" name="task[id]" ';
+        echo 'value="' . $task->id . '"';
+        echo ' style="display:none;" />';
+    }
+?>
 
-Подсказки
+<label>Название:</label>
+<input type="text" name="task[name]" placeholder="Insert task name" />
+<br />
+<label>Адрес:</label>
+<input type="text" name="task[address]" placeholder="Insert task name" />
+<br />
+<label>Описание:</label>
+<textarea name="task[description]" placeholder="Insert task description" ></textarea>
+
 <hr />
-<div id="hintList">
-    <div>
-        <input name="hint[0]" type="textarea" />
-        <button>Загрузить файлы</button> <br />
+
+<label>Подсказки</label>
+<hr />
+<input type="hidden" name="hint_amount" style="display:none;" />
+
+    <div id="hintList">
+
     </div>
+    <input type="button" id="addHint" value="Добавить еще поле для подсказки" />
+
+
+<hr />
+
+<label>Коды</label>
+<hr />
+<input type="hidden" name="code_amount" style="display:none;" value="1" />
+
+<div id="codeList">
+        <div>
+            <input type="text" name="task[code][0]" placeholder="Insert Code" />
+        </div>
 </div>
-<button id="addHint">Добавить еще поле для подсказки</button>
-<hr />
 
-<hr />
-Коды
-<hr />
-<input type="hidden" id="counter_box" style="display:none;" />
-
-<ul id="codeList">
-        <li>
-            <input type="text" name="code[0]" placeholder="Insert Code" />
-        </li>
-</ul>
-
-    <button id="addCode">Добавить код</button><br />
+    <input type="button" id="addCode" value="Добавить код" /><br />
 <hr />
 
 
+    <input type="submit" value="Сохранить"/>
+</form>
+</div>
         <?php
         //там снизу jquery. страшное-страшное jquery.
         //там добавляются элементы в список кодов
@@ -59,8 +81,8 @@
     var counter = 1;
     var amount = 1;
 
-    var hint_counter = 1;
-    var hint_amount = 1;
+    var hint_counter = 0;
+    var hint_amount = 0;
 
     function addHint(){
         if(hint_amount >= 5){
@@ -69,21 +91,28 @@
         }
 
         var list = $('#hintList');
-        var del = $('<button>Удалить</button>');
-        var input = $('<input type="textarea" name="hint['+counter+']" placeholder="Insert Hint" />');
+        var del = $('<input type="button" value="Удалить" />');
+        var input = $('<textarea name="task[hint]['+hint_counter+']" placeholder="Insert Hint" /><br />');
+        var up_button = $('<input type="button" value="Загрузить файлы" />')
         var item = $("<div></div>");
-        var count = $('#counter_box_hint');
+        var count = $('[name = hint_amount]');
 
         hint_counter++;
         hint_amount++;
 
-        count.text(counter);
+        count.val(hint_counter);
 
-        del.on('click',deleteCode);
+        del.on('click',deleteHint);
 
         item.append(input);
+        item.append(up_button);
         item.append(del);
         list.append(item);
+    }
+
+    function deleteHint(){
+        $(this).parent().remove();
+        hint_amount--;
     }
 
     function addCode(){
@@ -93,15 +122,15 @@
         }
 
         var list = $('#codeList');
-        var del = $('<button>Удалить</button>');
-        var input = $('<input type="text" name="code['+counter+']" placeholder="Insert Code" />');
-        var item = $("<li></li>");
-        var count = $('#counter_box');
+        var del = $('<input type="button" value="Удалить" />');
+        var input = $('<input type="text" name="task[code]['+counter+']" placeholder="Insert Code" />');
+        var item = $("<div></div>");
+        var count = $('[name = code_amount]');
 
         counter++;
         amount++;
 
-        count.text(counter);
+        count.val(counter);
 
         del.on('click',deleteCode);
 
