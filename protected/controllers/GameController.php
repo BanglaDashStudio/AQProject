@@ -44,7 +44,7 @@ class GameController extends Controller
     }
 
     // создание игры
-	public function actionCreate()
+    public function actionCreate()
     {
         $model = new GameCreate;
         $model->start='22:00:00';
@@ -83,7 +83,7 @@ class GameController extends Controller
     }
 
     // текущая игра
-	public function actionPlay()
+    public function actionPlay()
     {
 
         $game = Game::model()->findByAttributes(array('accepted' => '1'));
@@ -217,18 +217,18 @@ class GameController extends Controller
             $adrT = $hintT[($count_hint-1)] + $addressTime * 60; //время слива адреса
             $finT = $adrT + $fullTime * 60;// время для слива задания
 
-/*
-            echo date('H:i:s', $start);
-            echo '<br/>';
-            for ($i = 1; $i<=$count_hint; $i++) {
-                echo date('H:i:s', $hintT[$i-1]);
-                echo '<br/>';
-            }
-            echo date('H:i:s', $adrT);
-            echo '<br/>';
-            echo date('H:i:s', $finT);
-            return;
-*/
+            /*
+                        echo date('H:i:s', $start);
+                        echo '<br/>';
+                        for ($i = 1; $i<=$count_hint; $i++) {
+                            echo date('H:i:s', $hintT[$i-1]);
+                            echo '<br/>';
+                        }
+                        echo date('H:i:s', $adrT);
+                        echo '<br/>';
+                        echo date('H:i:s', $finT);
+                        return;
+            */
             $codes = null;
             $codes = Code::model()->findAllByAttributes(array('taskId'=>$taskCommon->taskId));
             if($codes != null) {
@@ -367,10 +367,10 @@ class GameController extends Controller
                     $count_codeteam = 0;
                 }
             }
-
-            /*foreach ($codeteamforcount as $item) {
-
-            }*/
+            foreach ($codeteamforcount as $item) {
+                echo $item->id;
+            }
+            return;
 
             $this->render('NowPlayUser', array('media_task'=>$media_task,
                 'view_address'=>$view_address,
@@ -654,10 +654,10 @@ class GameController extends Controller
         $this->render('Tasks',array('TaskCreate'=>$model, 'Task'=>$tasks,'media'=>$mediaArray,'gameEditModel'=>$gameEditModel, 'gameId'=>$gameId));
     }
 
-   //Добавление одного задания
+    //Добавление одного задания
     public function actionTaskCreate($gameId)
     {
-            $model = new TaskCreateForm;
+        $model = new TaskCreateForm;
         if (isset($_POST['TaskCreateForm'])) {
             $model->attributes = $_POST['TaskCreateForm'];
             $game= Game::model()->findByAttributes(array('id'=>$gameId));
@@ -711,11 +711,11 @@ class GameController extends Controller
                     //добавляем задание в их сетку
                     foreach($teams as $team)
                     {
-                            $newGrid = new Grid();
-                            $newGrid->teamId=$team->teamId;
-                            $newGrid->gameId=$gameId;
-                            $newGrid->taskId=$task->id;
-                            $newGrid->save();
+                        $newGrid = new Grid();
+                        $newGrid->teamId=$team->teamId;
+                        $newGrid->gameId=$gameId;
+                        $newGrid->taskId=$task->id;
+                        $newGrid->save();
 
                     }
 
@@ -782,7 +782,7 @@ class GameController extends Controller
     // редактирование заданий
     public function actionTaskEdit($taskId, $gameId)
     {
-       //найти задание, код и подсказку по id задания
+        //найти задание, код и подсказку по id задания
         $task = Task::model()->findByPk($taskId);
         $media_task = Media::model()->findByPk($task->mediaId);
         $code = Code::model()->findByAttributes(array('taskId'=>$taskId));
@@ -814,7 +814,7 @@ class GameController extends Controller
                 echo CActiveForm::validate($model);
                 Yii::app()->end();
             }
-                 // если прошла валидация
+            // если прошла валидация
             if ($model->validate())
             {
                 //записать изменения
@@ -831,7 +831,7 @@ class GameController extends Controller
                     // если всё сохранилось, открыть список заданий этой игры
                     $this->redirect(Yii::app()->createUrl('game/Tasks', array('gameId' => $gameId)));
                     return;
-                 }
+                }
             }
         }
         $this->render('TaskEdit',array('model'=>$model,'gameId' => $gameId));
@@ -863,7 +863,7 @@ class GameController extends Controller
         $game = Game::model()->findByAttributes(array('id'=>$gameId));
         $game->name = $post['name'];
         $game->description = $post['description'];
-         //$post['start'];
+        //$post['start'];
         $game->type = $post['type'];
         $game->date = strtotime($post['date'])+$this->getTime($post['start']);
         $game->comment = $post['comment'];
