@@ -19,8 +19,6 @@
     foreach ($view_hint as $item){
         if (isset($item)) {
             echo 'Подсказка  - ', $item->description . '<br>';
-        }else{
-            echo 'error';
         }
     }
 
@@ -33,16 +31,16 @@
 
     echo 'Кодов на локации  - ', $count_codes . "". '<br>';
     echo 'Найдено кодов  - ', $count_codeteam . "". '<br>';
-/*
+
     echo 'Найденые коды  - ';
 
-    $codes = Code::model()->findAllByAttributes(array("codeId"=>$codeteamforcount->codeId));
-    echo $codes;
+    foreach ($codeteamforcount as $item) {
+        $code = Code::model()->findByAttributes(array("id"=>$item->codeId));
+        echo '('.$code->code. ') ';
+    }
 
-    foreach ($codes as $code) {
-        echo $code->code . "" . '<br>';
-    };
-*/
+    echo '<br>';
+
     echo CHtml::submitButton('ок');
 
 ?>

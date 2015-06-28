@@ -45,7 +45,7 @@
             //если команда выполнила задание - выводим время, если нет - выводим прочерк
             echo "<td>";
             if ($grid->timeTask != null) {
-                echo $grid->timeTask;
+                echo date('H:i',$grid->timeTask);
             }else {
                 echo '-';
             }

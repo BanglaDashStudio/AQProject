@@ -217,9 +217,7 @@ class GameController extends Controller
             $adrT = $hintT[($count_hint-1)] + $addressTime * 60; //время слива адреса
             $finT = $adrT + $fullTime * 60;// время для слива задания
 
-
-
-
+/*
             echo date('H:i:s', $start);
             echo '<br/>';
             for ($i = 1; $i<=$count_hint; $i++) {
@@ -230,7 +228,7 @@ class GameController extends Controller
             echo '<br/>';
             echo date('H:i:s', $finT);
             return;
-
+*/
             $codes = null;
             $codes = Code::model()->findAllByAttributes(array('taskId'=>$taskCommon->taskId));
             if($codes != null) {
@@ -241,19 +239,43 @@ class GameController extends Controller
 
             //отображение в вью
             $view_hint = array();
+            for ($i = 0; $i<$count_hint; $i++){
+                $view_hint[$i] = null;
+            }
             $view_address = null;
+
+            //считаем количество заданий
+            $tasks = Task::model()->findAllByAttributes(array('gameId'=>$gameId));
+            if( $tasks != null ) {
+                $count_tasks = count($tasks);
+            } else {
+                $count_tasks = 0;
+            }
 
             //устанавливаем состояние игры
             $state = $this->getState($hintT, $adrT, $finT, $count_hint);
 
+            //-2 - время истекло, -1 - слив адреса, числа - номер сливаемой подсказки
             if($state == -2){
                 $gameteam->counter += 1;
                 Codeteam::model()->deleteAllByAttributes(array('teamId'=>Yii::app()->user->id));
                 $gameteam->save();
+
+                //если счетчик совпал с количеством заданий
+                if ($gameteam->counter == $count_tasks){
+                    //ставим финиш конкретной команде
+                    $gameteam->finish = 1;
+                    $gameteam->save();
+
+                    $this->checkFinishCondition($gameId);
+                    $this->redirect($this->createUrl('game/play'));
+                } else {
+                    $this->redirect($this->createUrl('game/play'));
+                }
             } else{
                 if($state == -1){
                     for ($i = 0; $i < $count_hint; $i++) {
-                        $view_hint[$i] = $hint[$i];
+                        $view_hint[$i] = $media_hint[$i];
                     }
                     $view_address = $task->address;
                 }else{
@@ -303,13 +325,6 @@ class GameController extends Controller
                                 Codeteam::model()->deleteAllByAttributes(array('teamId'=>$codeteam->teamId));
                                 $gameteam->save();
 
-                                $tasks = Task::model()->findAllByAttributes(array('gameId'=>$gameId));
-                                if( $tasks != null ) {
-                                    $count_tasks = count($tasks);
-                                } else {
-                                    $count_tasks = 0;
-                                }
-
                                 //если счетчик совпал с количеством заданий
                                 if ($gameteam->counter == $count_tasks){
                                     //ставим финиш конкретной команде
@@ -353,8 +368,6 @@ class GameController extends Controller
                 }
             }
 
-
-
             $this->render('NowPlayUser', array('media_task'=>$media_task,
                 'view_address'=>$view_address,
                 'view_hint'=>$view_hint,
@@ -365,14 +378,8 @@ class GameController extends Controller
         }
     }
 
-    //функция работающая с форматом
+    //функция работающая с форматом - определяем состояние задания
     public function getState($hintT, $adrT, $finT, $count_hint){
-/*
-        echo date('H:i:s', (int)time());
-        echo '<br/>';
-        echo date('H:i:s', $finT);
-
-        Yii::app()->end();*/
 
         if ($finT <= (int)time()){
             return -2;
@@ -380,14 +387,15 @@ class GameController extends Controller
             if ($adrT <= (int)time()) {
                 return -1;
             }else{
-                for ($i=1; $i<=$count_hint; $i++){
+                for ($i=$count_hint; $i > 0; $i--){
 
-                    if($hintT[$i-1]>= (int)time()){
-                        return $i;
+                    if($hintT[$i-1] <= (int)time()){
+                        return $i-1;
                     }
                 }
             }
         }
+        return -3;
     }
 
     //функция, завершающая игру, если все команды закончили
