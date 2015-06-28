@@ -8,18 +8,22 @@ class TestController extends Controller
         $uploaddir = 'data/images/';
         $uploadfile = $uploaddir . $_FILES['uploadImage']['name'];
 
-        if (move_uploaded_file(($_FILES['uploadImage']['tmp_name']), $uploadfile)) {
-            $link = $uploadfile;
+        if(is_uploaded_file($_FILES["uploadImage"]["tmp_name"])) {
+            if (move_uploaded_file(($_FILES['uploadImage']['tmp_name']), $uploadfile)) {
+                $link = $uploadfile;
 
-            $media = new Media();
-            $media->image = $link;
+                $media = new Media();
+                $media->image = $link;
 
-            if(!$media->save()){
-                echo 'Ошибка добавления ссылки в бд';
-            } else {
-                echo 'все хорошо';
+                if(!$media->save()){
+                    echo 'Ошибка добавления ссылки в бд';
+                } else {
+                    echo 'все хорошо';
+                }
+
+            }else {
+                echo "Ошибка перемещения аудио!\n";
             }
-
         } else {
             echo "Ошибка загрузки аудио!\n";
         }
@@ -28,9 +32,9 @@ class TestController extends Controller
 
     public function actionUploadAudio() {
         $uploaddir = 'data/audio/';
-        $uploadfile = $uploaddir . $_FILES['uploadImage']['name'];
+        $uploadfile = $uploaddir . $_FILES['uploadAudio']['name'];
 
-        if (move_uploaded_file(($_FILES['uploadImage']['tmp_name']), $uploadfile)) {
+        if (move_uploaded_file(($_FILES['uploadAudio']['tmp_name']), $uploadfile)) {
             $link = $uploadfile;
 
             $media = new Media();
@@ -264,6 +268,10 @@ class TestController extends Controller
 
 
     public function addCodes(){
+    }
+
+    public function actionMedia(){
+        $this->render('_media',array('media'=>Media::model()->findByPk(17)));
     }
 
     public function actionVideo() {
