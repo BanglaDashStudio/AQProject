@@ -3,7 +3,6 @@
 /* @var $this gameArray */
 /* @var $this gameArray */
 $this->breadcrumbs=array(
-    'Главная админка'=>array('index'),
     'Управление играми',
 );
 ?>

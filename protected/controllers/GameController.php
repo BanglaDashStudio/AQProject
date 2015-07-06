@@ -89,7 +89,7 @@ class GameController extends Controller
         $game = Game::model()->findByAttributes(array('accepted' => '1'));
 
         if ($game == null) {
-            echo "game don't accepted";
+            $this->render('NoPlay');
             return;
         }
 
