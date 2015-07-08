@@ -21,6 +21,25 @@
     <script src="http://css3-mediaqueries-js.googlecode.com/files/css3-mediaqueries.js"></script>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <!--[endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var touch = $('#touch-menu');
+            var menu = $('.nav');
+
+            $(touch).on('click', function(e) {
+                e.preventDefault();
+                menu.slideToggle();
+            });
+            $(window).resize(function(){
+                var wid = $(window).width();
+                if(wid > 760 && menu.is(':hidden')) {
+                    menu.removeAttr('style');
+                }
+            });
+        });
+    </script>
+    
 
 	<title><?php
         echo CHtml::encode($this->pageTitle);
@@ -53,7 +72,9 @@
 
 
 
-	<nav class="nav">
+	<div class="container">
+    <a href="#" id="touch-menu">Меню</a>
+    <nav class="nav clearfix">
 		<?php
             if(Yii::app()->user->isAdmin()){
                 $this->widget('zii.widgets.CMenu',array(
@@ -76,9 +97,10 @@
                 array('label'=>'Создать игру', 'url'=>array('/game/MyGames'), 'visible'=>!Yii::app()->user->isGuest),
                 array('label'=>'Личный кабинет', 'url'=>array('/pR/'),'visible'=>!Yii::app()->user->isGuest),
                 array('label'=>'Выход ('.Yii::app()->user->name.')', 'url'=>array('/auth/logout'), 'visible'=>!Yii::app()->user->isGuest),
-            ),
+            ), 
 		)); }?>
-	</nav><!-- mainmenu -->
+    </nav>
+	</div><!-- mainmenu -->
 	<?php if(isset($this->breadcrumbs)):?>  
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
 			'links'=>$this->breadcrumbs,
