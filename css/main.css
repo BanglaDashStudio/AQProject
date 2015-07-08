@@ -10,6 +10,19 @@ body
 	font: normal 10pt 'Open Sans', Arial, Sans-serif;
 }
 
+/* Старое меню
+
+.nav a {
+  padding: 10px 20px 10px;
+  text-decoration: none;
+  color: #FFF;
+  line-height: 100%;
+  background: #5A1AA0;
+  border-radius: 8px;
+}
+
+*/
+
 /* Формы по центру и красивые */
 #ComandSignIn_username, #ComandSignIn_password, #ComandSignUp_username, #ComandSignUp_password, #ComandSignUp_passwordconfirm,
 #ComandSignUp_phone, #ComandSignUp_page ,#ComandSignUp_mail, #ComandSignUp_description, input#PRInfo_phone, input#PRInfo_mail {
@@ -178,7 +191,58 @@ button.grid_button {
 
 *:focus {outline: none;}
 
-/* меню */
+
+/* Будущее идеальное меню*/
+
+/* Старое меню
+
+.nav a {
+  padding: 10px 20px 10px;
+  text-decoration: none;
+  color: #FFF;
+  line-height: 100%;
+  background: #5A1AA0;
+  border-radius: 8px;
+}
+
+*/
+.nav {
+	margin: 20px 0;
+	text-align: center;
+}
+.nav ul {
+	margin: 0;
+	padding: 0;
+}
+.nav li {
+	margin: 0 5px 10px 0;
+	padding: 0;
+	list-style: none;
+	display: inline-block;
+	*display:inline; /* ie7 */
+}
+.nav a {
+	padding: 10px 20px 10px;
+    text-decoration: none;
+    color: #FFF;
+    line-height: 100%;
+    background: #5A1AA0;
+    border-radius: 8px;
+}
+.nav a:hover {
+	color: #000;
+	background: #ECBB16;
+
+}
+.nav .current a {
+	background: #999;
+	color: #fff;
+	border-radius: 3px;
+}
+
+
+
+/* меню 
 .nav {
 	margin: 20px 0;
 	border-radius: 8px;
@@ -194,7 +258,7 @@ button.grid_button {
 	padding: 0;
 	list-style: none;
 	display: inline-block;
-	*display:inline; /* ie7 */
+	*display:inline; 
 }
 .nav a {
 	padding: 10px 20px 10px;
@@ -214,7 +278,7 @@ button.grid_button {
 	background: #ECBB16;
 	color: #fff;
 	border-radius: 8px;
-}
+}*/
 
 /*#mainmenu
 {
