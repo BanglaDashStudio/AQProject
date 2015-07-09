@@ -183,11 +183,9 @@ class GameController extends Controller
             //получаем нужное задание
             $taskCommon = Grid::model()->findByAttributes(array('teamId'=>Yii::app()->user->id, 'orderTask'=>$i_task));// id задания
 
+
             $task = Task::model()->findByPk($taskCommon->taskId); //задание
             $media_task = Media::model()->findByPk($task->mediaId);
-
-            /*var_dump($media_task->description);
-            return;*/
 
             $count_hint = count(Hint::model()->findAllByAttributes(array('taskId' => $taskCommon->taskId))); //подсказки
 
@@ -200,9 +198,16 @@ class GameController extends Controller
                 $media_hint[$i] = Media::model()->findByPk($hint[$i]->mediaId);
             }
 
+            $game = Game::model()->findByPk($gameId);
+
             //получаем время начала выполнения
-            if($taskCommon->timeTask == null){
-                $taskCommon->timeTask = (int) time();// время начала выполнения
+            if ($i_task!=1){
+                if($taskCommon->timeTask == null){
+                    $taskCommon->timeTask = (int) time();// время начала выполнения
+                    $taskCommon->save();
+                }
+            }else{
+                $taskCommon->timeTask=$game->date;
                 $taskCommon->save();
             }
             $start = $taskCommon->timeTask;
@@ -708,6 +713,7 @@ class GameController extends Controller
 
                     //все команды, которые уже подали заявку
                     $teams = Gameteam::model()->findAllByAttributes(array('gameId'=>$gameId));
+                    $count_task = count(Task::model()->findAllByAttributes(array('gameId'=>$gameId)));
                     //добавляем задание в их сетку
                     foreach($teams as $team)
                     {
@@ -715,6 +721,7 @@ class GameController extends Controller
                             $newGrid->teamId=$team->teamId;
                             $newGrid->gameId=$gameId;
                             $newGrid->taskId=$task->id;
+                            $newGrid->orderTask=$count_task;
                             $newGrid->save();
 
                     }
