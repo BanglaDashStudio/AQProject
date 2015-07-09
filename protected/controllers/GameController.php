@@ -558,6 +558,7 @@ class GameController extends Controller
         return $condition;
     }
 
+    //новая заявка
     public function actionNewOrder($gameId, $teamId)
     {
         $game = Game::model()->findByPk($gameId);
@@ -575,6 +576,7 @@ class GameController extends Controller
 
         //для каждого задания в игре заполняем поле в таблице Grid  NULL (т.е. пока порядка нет)
         $tasks = Task::model()->findAllByAttributes(array('gameId'=>$gameId));
+        $counter = 1;
 
         foreach ($tasks as $task) {
 
@@ -582,7 +584,9 @@ class GameController extends Controller
             $newGrid->teamId=$teamId;
             $newGrid->gameId=$gameId;
             $newGrid->taskId=$task->id;
+            $newGrid->orderTask=$counter;
             $newGrid->save();
+            $counter++;
         }
 
         if ($newOrder->save()) {
