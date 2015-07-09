@@ -10,6 +10,19 @@ body
 	font: normal 10pt 'Open Sans', Arial, Sans-serif;
 }
 
+/* Старое меню
+
+.nav a {
+  padding: 10px 20px 10px;
+  text-decoration: none;
+  color: #FFF;
+  line-height: 100%;
+  background: #5A1AA0;
+  border-radius: 8px;
+}
+
+*/
+
 /* Формы по центру и красивые */
 #ComandSignIn_username, #ComandSignIn_password, #ComandSignUp_username, #ComandSignUp_password, #ComandSignUp_passwordconfirm,
 #ComandSignUp_phone, #ComandSignUp_page ,#ComandSignUp_mail, #ComandSignUp_description, input#PRInfo_phone, input#PRInfo_mail {
@@ -178,76 +191,31 @@ button.grid_button {
 
 *:focus {outline: none;}
 
-/* меню */
-.nav {
-	margin: 20px 0;
-	border-radius: 8px;
 
-}
-.nav ul {
-	margin: 0;
-	padding: 0;
-	text-align: center;
+/* Будущее идеальное меню*/
+.nav, #touch-menu {
+	margin: 20px 0 0 0;
+	background: #5A1AA0;
 }
 .nav li {
-	margin: 0 5px 10px 0;
-	padding: 0;
-	list-style: none;
-	display: inline-block;
-	*display:inline; /* ie7 */
+	float: left;
+	margin: 0 5px;
+	list-style-type: none;
 }
-.nav a {
+.nav li a, #touch-menu {
+	display: block;
 	padding: 10px 20px 10px;
-	text-decoration: none;
-	color: #FFF;
-	line-height: 100%;
-	background: #5A1AA0;
-	border-radius: 8px;
+    text-decoration: none;
+    color: #FFF;
+    font-size: 14px;
+    line-height: 100%;
+    text-align: center;
 }
-.nav a:hover {
+.nav li a:hover, #touch-menu:hover {
 	color: #000;
 	background: #ECBB16;
-	border-radius: 8px;
-
 }
-.nav .current a {
-	background: #ECBB16;
-	color: #fff;
-	border-radius: 8px;
-}
-
-/*#mainmenu
-{
-	background:white url(bg2.gif) repeat-x left top;
-}
-
-#mainmenu ul
-{
-	padding:6px 20px 5px 20px;
-	margin:0px;
-}
-
-#mainmenu ul li
-{
-	display: inline;
-}
-
-#mainmenu ul li a
-{
-	color:#ffffff;
-	background-color:transparent;
-	font-size:12px;
-	font-weight:bold;
-	text-decoration:none;
-	padding:5px 8px;
-}
-
-#mainmenu ul li a:hover, #mainmenu ul li.active a
-{
-	color: #6399cd;
-	background-color:#EFF4FA;
-	text-decoration:none;
-}*/
+#touch-menu {display: none;}
 
 div.flash-error, div.flash-notice, div.flash-success
 {
@@ -458,12 +426,6 @@ div.search-form
 	body {
 		max-width: 100%;
 	}
-}
-
-@media screen and (max-width: 768px) {
-	/*img.logo {
-		visibility: hidden;
-	}*/
 
 	/* Скрытие логотипа */
 	div#header {
@@ -471,50 +433,18 @@ div.search-form
 	top:-9999px; /* при помощи отрицательного значения убираем блок высоко вверх */
 	}
 
-	.nav {
-		position: relative;
-		min-height: 36px;
-
-	}	
-	.nav ul {
-		width: 180px;
-		padding: 5px 0;
-		position: absolute;
-		top: 0;
-		left: 0;
-		border: solid 1px #aaa;
-		background: #FAFAFA url(images/icon-menu.png) no-repeat 10px 11px;
-		border-radius: 5px;
-		box-shadow: 0 1px 2px rgba(0,0,0,.3);
-	}
-	.nav li {
-		display: none; /* скрыть все <li> пункты */
-		margin: 0;
-	}
-	.nav .current {
-		display: block; /* показывать только текущие активные <li> пункты */
-	}
-	.nav a {
-		display: block;
-		padding: 5px 5px 5px 32px;
-		text-align: left;
-	}
-	.nav .current a {
-		background: none;
+	.nav {display: none;}
+	.nav li {float: none;}
+	.nav li a {
+		background: #FFF;
 		color: #666;
+		border-top: 1px solid #EEE;
+		border-left: 3px solid transparent;
 	}
-
-	/* при наведении на пункты меню */
-	.nav ul:hover {
-		background-image: none;
-	}
-	.nav ul:hover li {
-		display: block;
-		margin: 0 0 5px;
-	}
-	.nav ul:hover .current {
-		background: url(images/icon-check.png) no-repeat 10px 7px;
-	}
+	.nav li a:hover {border-left: 3px solid #515572;}
+	.nav li:first-child a {border-top: none;}
+	#touch-menu {display: block;}
+	.clearfix:after, .container:after {content: none;}
 
 	h1 {
         min-width: 320px;
@@ -553,8 +483,6 @@ div.search-form
 		margin:0 auto;
 	}
 
-	body {
-		max-width: 100%;
-	}
+	body {max-width: 100%;}
 	
 }
