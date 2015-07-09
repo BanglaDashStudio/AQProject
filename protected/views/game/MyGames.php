@@ -14,11 +14,11 @@
 
         echo '<button onclick="go(\'';
         echo Yii::app()->createUrl("game/Tasks", array("gameId" => $game->id));
-        echo '\')" class="btEdit" title="Редактировать">E</button>';
+        echo '\')" class="btEdit" title="Редактировать"></button>';
 
         echo '<button onclick="go(\'';
         echo Yii::app()->createUrl("game/deleteGame", array("gameId" => $game->id));
-        echo '\')" class="btDelete" title="Удалить">D</button>';
+        echo '\')" class="btDelete" title="Удалить"></button>';
 
         echo $game->name;
 

@@ -39,6 +39,7 @@ textarea#PRInfo_inform {
 	text-align: center;
 }
 
+/* Все зелёные кнопки */
 input[type="submit"] {
 	text-decoration:none; text-align:center; 
 	padding:8px 34px; 
@@ -85,14 +86,56 @@ input[type="submit:active"] {
  text-shadow: 1px 1px 2px #bababa; 
  
 }
+/*--------------------------------*/
 
-input.btEdit{
+/* Кнопки редактировать и удалить игру(пользователь) */
+.btEdit{
 	height: 30px;
 	width: 30px;
 	color: #fff;
-	background: url('images/edit26.png')  no-repeat 23px 3px;
+	background: url('images/edit26.png')  no-repeat 5px 3px;
 	margin: 0px 8px;
+	vertical-align: middle;
+	border-radius: 5px;
 }
+
+.btDelete {
+	height: 30px;
+	width: 30px;
+	color: #fff;
+	background: url('images/rubbish7.png')  no-repeat 3px 3px;
+	margin: 0px 8px;
+	vertical-align: middle;
+	border-radius: 5px;
+}
+
+/*----------------------*/
+
+
+/*Кнопка завершения игры(админ)*/
+.StopGameButton {
+	text-decoration:none; text-align:center; 
+	padding:8px 34px; 
+	border:solid 1px #004F72; 
+	-webkit-border-radius:8px;
+	-moz-border-radius:8px; 
+	border-radius: 8px; 
+	font:14px Arial, Helvetica, sans-serif; 
+	font-weight:bold; 
+	color:#ffffff; 
+	background-color:#F80012; 
+	background-image: -moz-linear-gradient(top, #F80012 0%, #FF6C00 100%); 
+	background-image: -webkit-linear-gradient(top, #F80012 0%, #FF6C00 100%); 
+	background-image: -o-linear-gradient(top, #F80012 0%, #FF6C00 100%); 
+	background-image: -ms-linear-gradient(top, #F80012 0% ,#FF6C00 100%); 
+	background-image: linear-gradient(top, #F80012 0% ,#FF6C00 100%);   
+	-webkit-box-shadow:2px 1px 2px #bababa, inset 0px 0px 1px #ffffff; 
+	-moz-box-shadow: 2px 1px 2px #bababa,  inset 0px 0px 1px #ffffff;  
+	box-shadow:2px 1px 2px #bababa, inset 0px 0px 1px #ffffff;  
+	 
+	text-shadow: 1px 1px 2px #bababa; 
+}
+/*-----------------------------*/
 
 button.button_team {
 	height: 30px;

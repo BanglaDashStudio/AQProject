@@ -37,8 +37,8 @@ return false;
 
 <div class="stopform" >
     <form id="formforstopform" >
-        <button class="button">
-            закончить игру
+        <button class="StopGameButton">
+            Закончить игру
         </button>
     </form>
 </div>
