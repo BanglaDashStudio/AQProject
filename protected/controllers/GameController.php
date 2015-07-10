@@ -140,6 +140,78 @@ class GameController extends Controller
         //время
         list($hintTime, $addressTime, $fullTime) = explode('-', $formatTime);//15, 15, 15
 
+        $gameteamlist = Gameteam::model()->findAllByAttributes(array('gameId'=>$gameId));
+
+        foreach($gameteamlist as $item){
+            $criteria_grid = new CDbCriteria();
+            $criteria_grid->alias = 'Grid';
+            $criteria_grid->condition = 'gameId=' . $gameId . ' AND teamId=' . $item->teamId;
+            $criteria_grid->order = 'orderTask ASC';
+
+            $gridOrder = Grid::model()->findAll($criteria_grid);//порядок
+
+            $a = array();
+            $index = 0;
+
+            //присваиваю номера заданиям
+            foreach ($gridOrder as $grid) {
+                $a[$index] = $grid;
+                $index++;
+            }
+
+            $i_task = $a[$item->counter]->orderTask;// порядковый номер задания
+
+            //получаем нужное задание
+            $taskCommonall = Grid::model()->findByAttributes(array('teamId'=>$item->teamId, 'orderTask'=>$i_task));// id задания
+
+            $game = Game::model()->findByPk($gameId);
+
+            if ($i_task!=1){
+                if($taskCommonall->timeTask == null){
+                    $taskCommonall->timeTask = (int) time();// время начала выполнения
+                    $taskCommonall->save();
+                }
+            }else{
+                $taskCommonall->timeTask=$game->date;
+                $taskCommonall->save();
+            }
+
+            $start = $taskCommonall->timeTask;
+
+            $count_hintall = count(Hint::model()->findAllByAttributes(array('taskId' => $taskCommonall->taskId))); //подсказки
+
+            //предусмариваем ситуацию, если подсказок много
+            //время на слив подсказки под индексом $i
+            $hintT = array();
+            for ($i = 1; $i<=$count_hintall; $i++){
+                $hintT[$i-1] = (($hintTime * 60) * $i) + $start;
+            }
+
+            $adrT = $hintT[($count_hintall-1)] + $addressTime * 60; //время слива адреса
+            $finT = $adrT + $fullTime * 60;// время для слива задания
+
+            if((int) time() >= $finT){
+                $item->counter++;
+                $item->save();
+            }
+
+            $tasks = Task::model()->findAllByAttributes(array('gameId'=>$gameId));
+            if( $tasks != null ) {
+                $count_tasks = count($tasks);
+            } else {
+                $count_tasks = 0;
+            }
+
+            //если счетчик совпал с количеством заданий
+            if ($item->counter == $count_tasks){
+                //ставим финиш конкретной команде
+                $item->finish = 1;
+                $item->save();
+
+                $this->checkFinishCondition($gameId);
+            }
+        }
+
         if (Yii::app()->user->isAdmin() || Yii::app()->user->isOrg()) {
             $tasksforcount = Task::model()->findAllByAttributes(array("gameId"=>$gameId));
             $count_task = count($tasksforcount);
@@ -197,7 +269,7 @@ class GameController extends Controller
                 $hint[$i] = Hint::model()->findByAttributes(array('taskId' => $taskCommon->taskId, 'orderHint'=>$i));
                 $media_hint[$i] = Media::model()->findByPk($hint[$i]->mediaId);
             }
-
+/*
             $game = Game::model()->findByPk($gameId);
 
             //получаем время начала выполнения
@@ -210,6 +282,7 @@ class GameController extends Controller
                 $taskCommon->timeTask=$game->date;
                 $taskCommon->save();
             }
+*/
             $start = $taskCommon->timeTask;
 
             //предусмариваем ситуацию, если подсказок много
@@ -323,7 +396,7 @@ class GameController extends Controller
                             }
 
 
-                            //если все коды нашлись или время вышло
+                            //если все коды нашлись
                             if($count_codeteam == $count_codes){
                                 //увеличиваем счетчик, все коды найдены
                                 $gameteam->counter += 1;
