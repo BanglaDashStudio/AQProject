@@ -190,11 +190,6 @@ class GameController extends Controller
             $adrT = $hintT[($count_hintall-1)] + $addressTime * 60; //время слива адреса
             $finT = $adrT + $fullTime * 60;// время для слива задания
 
-            if((int) time() >= $finT){
-                $item->counter++;
-                $item->save();
-            }
-
             $tasks = Task::model()->findAllByAttributes(array('gameId'=>$gameId));
             if( $tasks != null ) {
                 $count_tasks = count($tasks);
@@ -202,17 +197,26 @@ class GameController extends Controller
                 $count_tasks = 0;
             }
 
-            //если счетчик совпал с количеством заданий
-            if ($item->counter == $count_tasks){
-                //ставим финиш конкретной команде
-                $item->finish = 1;
+            if((int) time() >= $finT){
+                $item->counter += 1;
+                Codeteam::model()->deleteAllByAttributes(array('teamId'=>$item->teamId));
                 $item->save();
+                if ($item->counter == $count_tasks){
+                    //ставим финиш конкретной команде
+                    $item->finish = 1;
+                    $item->save();
 
-                $this->checkFinishCondition($gameId);
+                    $this->checkFinishCondition($gameId);
+                  /*  $this->redirect($this->createUrl('game/play'));
+
+                } else {
+                    $this->redirect($this->createUrl('game/play'));*/
+                }
             }
         }
 
         if (Yii::app()->user->isAdmin() || Yii::app()->user->isOrg()) {
+
             $tasksforcount = Task::model()->findAllByAttributes(array("gameId"=>$gameId));
             $count_task = count($tasksforcount);
 
@@ -488,6 +492,7 @@ class GameController extends Controller
         $game = Game::model()->findByPk($gameId);
         $game->finish = 1;
         $game->save();
+
 
     }
 
