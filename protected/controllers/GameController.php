@@ -97,7 +97,14 @@ class GameController extends Controller
         $formatTime = $game->type;
 
         $now = time();
-
+	
+	//Коммент от Антона:
+	//тут абсолютно повторяющийся код, этого следует избегать
+	//переделай пожалуйста
+	//можно разделить, где надо, функции игры для орга-админа и пользователя
+	//что-то типа nowPlayAdmin(), prePlayUser().
+	//так логика будет чуть более понятна, а функции не такими огромными и запутанными.
+	
         if (Yii::app()->user->isAdmin() || Yii::app()->user->isOrg()) {
 
             if ((int)$game->date < (int)$now) {
