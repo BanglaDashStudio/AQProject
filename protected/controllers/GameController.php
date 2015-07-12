@@ -82,6 +82,38 @@ class GameController extends Controller
         $this->render('Create', array('model' => $model));
     }
 
+    //переписанная Play от Антона
+    public function actionPlay1()
+    {
+        $game = Game::model()->findByAttributes(array('accepted' => '1'));
+
+        if ($game == null) {
+            $this->render('NoPlay');
+            return;
+        }
+
+        //получение времени
+        $formatTime = $game->type;
+        $now = time();
+
+        $gameteam = Gameteam::model()->findByAttributes(array('gameId' => $game->id, 'teamId' => Yii::app()->user->id));
+
+        if((int)$game->date < (int)$now) { //условие пересечения времени начала игры
+
+            if ( $game->finish == 1 ) { //общий конец игры
+                $this->finishPlay();
+            } elseif(isset($gameteam)) { //конец игры для одной команды
+                if($gameteam->finish == 1){
+                    $this->finishPlay();
+                }
+            }
+
+            $this->nowPlay($game->id, $formatTime); //если не конец, то играем
+        } else { //если не пересекли начало игры, то преплэй
+            $this->prePlay();
+        }
+    }
+
     // текущая игра
 	public function actionPlay()
     {
@@ -149,7 +181,7 @@ class GameController extends Controller
 
         $gameteamlist = Gameteam::model()->findAllByAttributes(array('gameId'=>$gameId));
 
-        foreach($gameteamlist as $item){
+        foreach($gameteamlist as $item) {
             $criteria_grid = new CDbCriteria();
             $criteria_grid->alias = 'Grid';
             $criteria_grid->condition = 'gameId=' . $gameId . ' AND teamId=' . $item->teamId;
@@ -190,6 +222,7 @@ class GameController extends Controller
             //предусмариваем ситуацию, если подсказок много
             //время на слив подсказки под индексом $i
             $hintT = array();
+
             for ($i = 1; $i<=$count_hintall; $i++){
                 $hintT[$i-1] = (($hintTime * 60) * $i) + $start;
             }
@@ -211,6 +244,8 @@ class GameController extends Controller
                 if ($item->counter == $count_tasks){
                     //ставим финиш конкретной команде
                     $item->finish = 1;
+                    //вот тут предлагаю такое решение проблемы:
+                    //$item->counter = 0;
                     $item->save();
 
                     $this->checkFinishCondition($gameId);
@@ -239,8 +274,7 @@ class GameController extends Controller
             }
 
             $this->render('NowPlayAdmin', array("count_task"=>$count_task, "teams"=>$teams, 'gameId'=>$gameId));
-
-        }else{
+        } else {
             $gameteam = Gameteam::model()->findByAttributes(array('teamId' => Yii::app()->user->id, 'gameId' => $gameId));
 
             // сетка
@@ -499,8 +533,6 @@ class GameController extends Controller
         $game = Game::model()->findByPk($gameId);
         $game->finish = 1;
         $game->save();
-
-
     }
 
     public function finishPlay()
