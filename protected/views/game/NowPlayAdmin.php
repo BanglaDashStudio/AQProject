@@ -36,9 +36,7 @@ return false;
 
 
 <div class="stopform" >
-    <form id="formforstopform" >
-        <button class="StopGameButton">
-            Закончить игру
-        </button>
+    <form id="formforstopform" action="<?php echo $this->createUrl('game/stopGame');?>">
+        <input type="submit" class="StopGameButton" value="Закончить игру"/>
     </form>
 </div>
