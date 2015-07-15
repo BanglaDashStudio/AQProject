@@ -51,24 +51,25 @@ foreach ($results as $team) {
     echo $tt->name;
     echo "</td>";
 
-
     //время выполнения заданий
     $grid = Grid::model()->findAllByAttributes(array('teamId'=>$team->teamId, 'gameId'=>$team->gameId));
+
     foreach ($grid as $gridteam) {
 
-    foreach ($taskList as $task) {
-        if($gridteam->taskId == $task->id) {
-            echo "<th>";
-            if ($gridteam->timeTask != NULL)
-                echo date('H:i', $gridteam->timeTask);
-            else echo '--';
-            echo "</th>";
+        foreach ($taskList as $task) {
+
+            if($gridteam->taskId == $task->id) {
+                echo "<th>";
+                if ($gridteam->timeForTask != NULL)
+                    echo date('H:i', $gridteam->timeForTask);
+                else echo '--';
+                echo "</th>";
+            }
         }
-         }
     }
 
     foreach ($results as $result) {
-        if ($result->teamId == $t->id) {
+        if ($result->teamId == $tt->id) {
             echo "<td>";
             echo '<input ';
             echo 'name="ResForm['.$result->teamId.']"';

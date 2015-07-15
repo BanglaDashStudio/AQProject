@@ -177,6 +177,8 @@ class GameController extends Controller
         //время
         list($hintTime, $addressTime, $fullTime) = explode('-', $formatTime);//15, 15, 15
 
+
+
         $gameteams = Gameteam::model()->findAllByAttributes(array('gameId'=>$gameId));
         $tasks = Task::model()->findAllByAttributes(array("gameId"=>$gameId));
         $count_task = count($tasks);
@@ -194,7 +196,7 @@ class GameController extends Controller
 
     public function nowPlayUser($gameId,$hintTime,$addressTime,/*$fullTime,*/ $count_task){
         $gameteam = Gameteam::model()->findByAttributes(array('teamId' => Yii::app()->user->id, 'gameId' => $gameId));
-
+        $res = Results::model()->findByAttributes(array('gameId'=>$gameId,'teamId'=>  Yii::app()->user->id));
         // сетка
         $criteria_grid = new CDbCriteria();
         $criteria_grid->alias = 'Grid';
@@ -225,8 +227,6 @@ class GameController extends Controller
         //подсказки множественные - получаем их массивом
         $hint = array();
         $media_hint = array();
-
-
 
         for ($i = 0; $i<$count_hint; $i++){
             $hint[$i] = Hint::model()->findByAttributes(array('taskId' => $taskCommon->taskId, 'orderHint'=>$i));
@@ -335,6 +335,12 @@ class GameController extends Controller
                             Codeteam::model()->deleteAllByAttributes(array('teamId'=>$codeteam->teamId));
                             $gameteam->save();
 
+                            $taskCommon->timeForTask = (int)time()-$start;
+                            $taskCommon->save();
+
+                            $res->time += $taskCommon->timeForTask;
+                            $res->save();
+
                             //если счетчик совпал с количеством заданий
                             if ($gameteam->counter == $count_task){
                                 //ставим финиш конкретной команде
@@ -404,7 +410,7 @@ class GameController extends Controller
 
 
     //функция, проверяющая, не вышло ли время на задание у каждой из команд
-    public function nowPlayTimeOver($gameId, $gameteams,$hintTime,$addressTime,$fullTime){
+    public function nowPlayTimeOver($gameId, $gameteams, $hintTime,$addressTime,$fullTime){
 
         foreach($gameteams as $gameteam) {
             if ($gameteam->finish != 1) {
@@ -414,6 +420,7 @@ class GameController extends Controller
                 $criteria_grid->order = 'orderTask ASC';
 
                 $gridOrder = Grid::model()->findAll($criteria_grid);//порядок
+                $res = Results::model()->findByAttributes(array('gameId'=>$gameId,'teamId'=>  Yii::app()->user->id));
 
                 $a = array();
                 $index = 0;
@@ -469,6 +476,13 @@ class GameController extends Controller
                 if ((int)time() >= $finT) {
                     $gameteam->counter += 1;
                     Codeteam::model()->deleteAllByAttributes(array('teamId' => $gameteam->teamId));
+
+                    $taskCommonall->timeForTask = (int)time()-$start;
+                    $taskCommonall->save();
+
+                    $res->time += $taskCommonall->timeForTask;
+                    $res->save();
+
                     //$gameteam->save();
                     if ($gameteam->counter == $count_tasks) {
                         //ставим финиш конкретной команде
@@ -482,7 +496,6 @@ class GameController extends Controller
             }
         }
     }
-
 
 
     //функция работающая с форматом - определяем состояние задания

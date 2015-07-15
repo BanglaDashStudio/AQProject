@@ -9,6 +9,7 @@
  * @property integer $taskId
  * @property integer $orderTask
  * @property integer $timeTask
+ *  * @property integer $timeForTask
  * @property integer $gameId
  */
 class Grid extends CActiveRecord
@@ -30,10 +31,10 @@ class Grid extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('gameId', 'required'),
-			array('teamId, taskId, orderTask, timeTask, gameId', 'numerical', 'integerOnly'=>true),
+			array('teamId, taskId, orderTask, timeTask, timeForTask, gameId', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, teamId, taskId, orderTask, timeTask, gameId', 'safe', 'on'=>'search'),
+			array('id, teamId, taskId, orderTask, timeTask,timeForTask, gameId', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,6 +60,7 @@ class Grid extends CActiveRecord
 			'taskId' => 'Task',
 			'orderTask' => 'Order Task',
 			'timeTask' => 'Time Task',
+            'timeForTask' => 'timeForTask',
 			'gameId' => 'Game',
 		);
 	}
@@ -86,6 +88,7 @@ class Grid extends CActiveRecord
 		$criteria->compare('taskId',$this->taskId);
 		$criteria->compare('orderTask',$this->orderTask);
 		$criteria->compare('timeTask',$this->timeTask);
+        $criteria->compare('timeForTask',$this->timeForTask);
 		$criteria->compare('gameId',$this->gameId);
 
 		return new CActiveDataProvider($this, array(
