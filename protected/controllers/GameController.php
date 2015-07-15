@@ -82,6 +82,37 @@ class GameController extends Controller
         $this->render('Create', array('model' => $model));
     }
 
+    //переписанная Play от Антона
+    public function actionPlay1()
+    {
+        $game = Game::model()->findByAttributes(array('accepted' => '1'));
+
+        if ($game == null) {
+            $this->render('NoPlay');
+            return;
+        }
+
+        //получение времени
+        $formatTime = $game->type;
+        $now = time();
+
+        $gameteam = Gameteam::model()->findByAttributes(array('gameId' => $game->id, 'teamId' => Yii::app()->user->id));
+
+        if((int)$game->date < (int)$now) { //условие пересечения времени начала игры
+
+            if ($game->finish == 1) { //общий конец игры
+                $this->finishPlay();
+            } elseif(isset($gameteam)) { //конец игры для одной команды
+                if($gameteam->finish == 1){
+                    $this->finishPlay();
+                }
+            }
+            $this->nowPlay($game->id, $formatTime); //если не конец, то играем
+        } else { //если не пересекли начало игры, то преплэй
+            $this->prePlay();
+        }
+    }
+
     // текущая игра
 	public function actionPlay()
     {
@@ -97,7 +128,14 @@ class GameController extends Controller
         $formatTime = $game->type;
 
         $now = time();
-
+	
+	//Коммент от Антона:
+	//тут абсолютно повторяющийся код, этого следует избегать
+	//переделай пожалуйста
+	//можно разделить, где надо, функции игры для орга-админа и пользователя
+	//что-то типа nowPlayAdmin(), prePlayUser().
+	//так логика будет чуть более понятна, а функции не такими огромными и запутанными.
+	
         if (Yii::app()->user->isAdmin() || Yii::app()->user->isOrg()) {
 
             if ((int)$game->date < (int)$now) {
@@ -135,295 +173,153 @@ class GameController extends Controller
         return isset($seconds) ? $hours * 3600 + $minutes * 60 + $seconds : $hours * 60 + $minutes;
     }
 
-    public function nowPlay($gameId, $formatTime)
-    {
+    public function nowPlay($gameId, $formatTime){
         //время
         list($hintTime, $addressTime, $fullTime) = explode('-', $formatTime);//15, 15, 15
 
-        $gameteamlist = Gameteam::model()->findAllByAttributes(array('gameId'=>$gameId));
+        $gameteams = Gameteam::model()->findAllByAttributes(array('gameId'=>$gameId));
+        $tasks = Task::model()->findAllByAttributes(array("gameId"=>$gameId));
+        $count_task = count($tasks);
 
-        foreach($gameteamlist as $item){
-            $criteria_grid = new CDbCriteria();
-            $criteria_grid->alias = 'Grid';
-            $criteria_grid->condition = 'gameId=' . $gameId . ' AND teamId=' . $item->teamId;
-            $criteria_grid->order = 'orderTask ASC';
+        //функция, проверяющая, не вышло ли время на задание у каждой из команд
+        $this->nowPlayTimeOver($gameId, $gameteams,$hintTime,$addressTime,$fullTime);
 
-            $gridOrder = Grid::model()->findAll($criteria_grid);//порядок
+        if (Yii::app()->user->isAdmin() || Yii::app()->user->isOrg()) {
+            $this->nowPlayAdmin($gameId, $gameteams, $count_task);
+        }else{
+            $this->nowPlayUser($gameId,$hintTime,$addressTime,/*$fullTime,*/ $count_task);
+        }
+    }
 
             // таблица результаты для команды в этой игре
             $result = Results::model()->findAllByAttributes(array('teamId'=>$item->teamId, 'gameId'=>$gameId));
             $a = array();
             $index = 0;
+    public function nowPlayUser($gameId,$hintTime,$addressTime,/*$fullTime,*/ $count_task){
+        $gameteam = Gameteam::model()->findByAttributes(array('teamId' => Yii::app()->user->id, 'gameId' => $gameId));
 
-            //присваиваю номера заданиям
-            foreach ($gridOrder as $grid) {
-                $a[$index] = $grid;
-                $index++;
-            }
+        // сетка
+        $criteria_grid = new CDbCriteria();
+        $criteria_grid->alias = 'Grid';
+        $criteria_grid->condition = 'gameId=' . $gameId . ' AND teamId=' . Yii::app()->user->id;
+        $criteria_grid->order = 'orderTask ASC';
 
-            $i_task = $a[$item->counter]->orderTask;// порядковый номер задания
+        $gridOrder = Grid::model()->findAll($criteria_grid);//порядок
 
-            //получаем нужное задание
-            $taskCommonall = Grid::model()->findByAttributes(array('teamId'=>$item->teamId, 'orderTask'=>$i_task));// id задания
+        $a = array();
+        $index = 0;
 
-            $game = Game::model()->findByPk($gameId);
-
-            if ($i_task!=1){
-                if($taskCommonall->timeTask == null){
-                    $taskCommonall->timeTask = (int) time();// время начала выполнения
-                    $taskCommonall->save();
-                }
-            }else{
-                $taskCommonall->timeTask=$game->date;
-                $taskCommonall->save();
-            }
-
-            $start = $taskCommonall->timeTask;
-
-            $count_hintall = count(Hint::model()->findAllByAttributes(array('taskId' => $taskCommonall->taskId))); //подсказки
-
-            //предусмариваем ситуацию, если подсказок много
-            //время на слив подсказки под индексом $i
-            $hintT = array();
-            for ($i = 1; $i<=$count_hintall; $i++){
-                $hintT[$i-1] = (($hintTime * 60) * $i) + $start;
-            }
-
-            $adrT = $hintT[($count_hintall-1)] + $addressTime * 60; //время слива адреса
-            $finT = $adrT + $fullTime * 60;// время для слива задания
-
-            if((int) time() >= $finT){
-                $item->counter++;
-                $result->time=$hintTime+$addressTime+ $fullTime;
-                $item->save();
-            }
-
-            $tasks = Task::model()->findAllByAttributes(array('gameId'=>$gameId));
-            if( $tasks != null ) {
-                $count_tasks = count($tasks);
-            } else {
-                $count_tasks = 0;
-            }
-
-            //если счетчик совпал с количеством заданий
-            if ($item->counter == $count_tasks){
-                //ставим финиш конкретной команде
-                $item->finish = 1;
-                $item->save();
-
-                $this->checkFinishCondition($gameId);
-            }
+        //присваиваю номера заданиям
+        foreach ($gridOrder as $grid) {
+            $a[$index] = $grid;
+            $index++;
         }
 
-        if (Yii::app()->user->isAdmin() || Yii::app()->user->isOrg()) {
-            $tasksforcount = Task::model()->findAllByAttributes(array("gameId"=>$gameId));
-            $count_task = count($tasksforcount);
+        $i_task = $a[$gameteam->counter]->orderTask;// порядковый номер задания
 
-            $gameteams = Gameteam::model()->findAllByAttributes(array("gameId"=>$gameId));
+        //получаем нужное задание
+        $taskCommon = Grid::model()->findByAttributes(array('teamId'=>Yii::app()->user->id, 'orderTask'=>$i_task));// id задания
 
-            //запихиваем все задания в массив, чтобы работать с ними во вьюшке в выводе сетки
-            $i=0;
-            $teams = array();
+        $task = Task::model()->findByPk($taskCommon->taskId); //задание
+        $media_task = Media::model()->findByPk($task->mediaId);
 
-            foreach($gameteams as $gameteam){
-                $teams[$i] = Team::model()->findByPk($gameteam->teamId);;
-                $i++;
-            }
+        $count_hint = count(Hint::model()->findAllByAttributes(array('taskId' => $taskCommon->taskId))); //подсказки
 
-            $this->render('NowPlayAdmin', array("count_task"=>$count_task, "teams"=>$teams, 'gameId'=>$gameId));
+        //подсказки множественные - получаем их массивом
+        $hint = array();
+        $media_hint = array();
 
-        }else{
-            $gameteam = Gameteam::model()->findByAttributes(array('teamId' => Yii::app()->user->id, 'gameId' => $gameId));
+        for ($i = 0; $i<$count_hint; $i++){
+            $hint[$i] = Hint::model()->findByAttributes(array('taskId' => $taskCommon->taskId, 'orderHint'=>$i));
+            $media_hint[$i] = Media::model()->findByPk($hint[$i]->mediaId);
+        }
 
-            // сетка
-            $criteria_grid = new CDbCriteria();
-            $criteria_grid->alias = 'Grid';
-            $criteria_grid->condition = 'gameId=' . $gameId . ' AND teamId=' . Yii::app()->user->id;
-            //$criteria_grid->params = array(':gameId'=>$gameId, ':teamId'=>Yii::app()->user->id);
-            $criteria_grid->order = 'orderTask ASC';
+        $start = $taskCommon->timeTask;
 
-            $gridOrder = Grid::model()->findAll($criteria_grid);//порядок
+        //предусмариваем ситуацию, если подсказок много
+        //время на слив подсказки под индексом $i
+        $hintT = array();
+        for ($i = 1; $i<=$count_hint; $i++){
+            $hintT[$i-1] = (($hintTime * 60) * $i) + $start;
+        }
 
-            $a = array();
-            $index = 0;
+        $adrT = $hintT[($count_hint-1)] + $addressTime * 60; //время слива адреса
+        //$finT = $adrT + $fullTime * 60;// время для слива задания
 
-            //присваиваю номера заданиям
-            foreach ($gridOrder as $grid) {
-                $a[$index] = $grid;
-                $index++;
-            }
+        //отображение в вью
+        $view_hint = array();
+        for ($i = 0; $i<$count_hint; $i++){
+            $view_hint[$i] = null;
+        }
+        $view_address = null;
 
-            $i_task = $a[$gameteam->counter]->orderTask;// порядковый номер задания
+        //устанавливаем состояние игры
+        $state = $this->getState($hintT, $adrT, /*$finT,*/ $count_hint);
 
-            //получаем нужное задание
-            $taskCommon = Grid::model()->findByAttributes(array('teamId'=>Yii::app()->user->id, 'orderTask'=>$i_task));// id задания
+        //-2 - время истекло, -1 - слив адреса, числа - номер сливаемой подсказки
+        /*if($state == -2){
+            $gameteam->counter += 1;
+            Codeteam::model()->deleteAllByAttributes(array('teamId'=>Yii::app()->user->id));
+            $gameteam->save();
 
-
-            $task = Task::model()->findByPk($taskCommon->taskId); //задание
-            $media_task = Media::model()->findByPk($task->mediaId);
-
-            $count_hint = count(Hint::model()->findAllByAttributes(array('taskId' => $taskCommon->taskId))); //подсказки
-
-            //подсказки множественные - получаем их массивом
-            $hint = array();
-            $media_hint = array();
-
-            for ($i = 0; $i<$count_hint; $i++){
-                $hint[$i] = Hint::model()->findByAttributes(array('taskId' => $taskCommon->taskId, 'orderHint'=>$i));
-                $media_hint[$i] = Media::model()->findByPk($hint[$i]->mediaId);
-            }
-/*
-            $game = Game::model()->findByPk($gameId);
-
-            //получаем время начала выполнения
-            if ($i_task!=1){
-                if($taskCommon->timeTask == null){
-                    $taskCommon->timeTask = (int) time();// время начала выполнения
-                    $taskCommon->save();
-                }
-            }else{
-                $taskCommon->timeTask=$game->date;
-                $taskCommon->save();
-            }
-*/
-            $start = $taskCommon->timeTask;
-
-            //предусмариваем ситуацию, если подсказок много
-            //время на слив подсказки под индексом $i
-            $hintT = array();
-            for ($i = 1; $i<=$count_hint; $i++){
-                $hintT[$i-1] = (($hintTime * 60) * $i) + $start;
-            }
-
-            $adrT = $hintT[($count_hint-1)] + $addressTime * 60; //время слива адреса
-            $finT = $adrT + $fullTime * 60;// время для слива задания
-
-/*
-            echo date('H:i:s', $start);
-            echo '<br/>';
-            for ($i = 1; $i<=$count_hint; $i++) {
-                echo date('H:i:s', $hintT[$i-1]);
-                echo '<br/>';
-            }
-            echo date('H:i:s', $adrT);
-            echo '<br/>';
-            echo date('H:i:s', $finT);
-            return;
-*/
-            $codes = null;
-            $codes = Code::model()->findAllByAttributes(array('taskId'=>$taskCommon->taskId));
-            if($codes != null) {
-                $count_codes = count($codes);
-            } else {
-                $count_codes = 0;
-            }
-
-            //отображение в вью
-            $view_hint = array();
-            for ($i = 0; $i<$count_hint; $i++){
-                $view_hint[$i] = null;
-            }
-            $view_address = null;
-
-            //считаем количество заданий
-            $tasks = Task::model()->findAllByAttributes(array('gameId'=>$gameId));
-            if( $tasks != null ) {
-                $count_tasks = count($tasks);
-            } else {
-                $count_tasks = 0;
-            }
-
-            //устанавливаем состояние игры
-            $state = $this->getState($hintT, $adrT, $finT, $count_hint);
-
-            //-2 - время истекло, -1 - слив адреса, числа - номер сливаемой подсказки
-            if($state == -2){
-                $gameteam->counter += 1;
-                $result->time=$hintTime+$addressTime+ $fullTime;
-                Codeteam::model()->deleteAllByAttributes(array('teamId'=>Yii::app()->user->id));
+            //если счетчик совпал с количеством заданий
+            if ($gameteam->counter == $count_task){
+                //ставим финиш конкретной команде
+                $gameteam->finish = 1;
+                $gameteam->counter = 0;
                 $gameteam->save();
 
-                //если счетчик совпал с количеством заданий
-                if ($gameteam->counter == $count_tasks){
-                    //ставим финиш конкретной команде
-                    $gameteam->finish = 1;
-                    $gameteam->save();
-
-                    $this->checkFinishCondition($gameId);
-                    $this->redirect($this->createUrl('game/play'));
-                } else {
-                    $this->redirect($this->createUrl('game/play'));
+                $this->checkFinishCondition($gameId);
+                $this->redirect($this->createUrl('game/play'));
+            } else {
+                $this->redirect($this->createUrl('game/play'));
+            }
+        } else{*/
+            if($state == -1){
+                for ($i = 0; $i < $count_hint; $i++) {
+                    $view_hint[$i] = $media_hint[$i];
                 }
-            } else{
-                if($state == -1){
-                    for ($i = 0; $i < $count_hint; $i++) {
-                        $view_hint[$i] = $media_hint[$i];
-                    }
-                    $view_address = $task->address;
-                }else{
-                    for ($i = 0; $i<$count_hint; $i++) {
-                        if($state == $i){
-                            for ($j = 0; $j<=$i; $j++) {
-                                $view_hint[$j] = $media_hint[$j];
-                            }
+                $view_address = $task->address;
+            }else{
+                for ($i = 0; $i<$count_hint; $i++) {
+                    if($state == $i){
+                        for ($j = 0; $j<=$i; $j++) {
+                            $view_hint[$j] = $media_hint[$j];
                         }
                     }
                 }
             }
+        /*}*/
 
-            //если что-то есть в окне для кода
-            if(isset($_POST['codeUser'])){
-                $code = Code::model()->findByAttributes(array('taskId' => $taskCommon->taskId, 'code'=>$_POST['codeUser'])); //код
-                unset($_POST['codeUser']);
+        //считаем количество кодов
+        $codes = null;
+        $codes = Code::model()->findAllByAttributes(array('taskId'=>$taskCommon->taskId));
+        if($codes != null) {
+            $count_codes = count($codes);
+        } else {
+            $count_codes = 0;
+        }
 
-                //если это есть в таблице code
-                if($code != null){
+        //если что-то есть в окне код
+        if(isset($_POST['codeUser'])){
+            $code = Code::model()->findByAttributes(array('taskId' => $taskCommon->taskId, 'code'=>$_POST['codeUser'])); //код
+            unset($_POST['codeUser']);
 
-                    //смотрим, есть ли такое в codeteam, чтобы дважды не засчитать один код
-                    $codeteam = Codeteam::model()->findByAttributes(array("codeId"=>$code->id));
+            //если это есть в таблице code
+            if($code != null){
 
-                    //если что-то есть в код тим
-                    if ($codeteam == null) {
+                //смотрим, есть ли такое в codeteam, чтобы дважды не засчитать один код
+                $codeteam = Codeteam::model()->findByAttributes(array("codeId"=>$code->id));
 
-                        $codeteam = new Codeteam();
-                        $codeteam->teamId = Yii::app()->user->id;
-                        $codeteam->codeId = $code->id;
+                //если нет в код тим, то
+                if ($codeteam == null) {
 
-                        if($codeteam->save()){
+                    $codeteam = new Codeteam();
+                    $codeteam->teamId = Yii::app()->user->id;
+                    $codeteam->codeId = $code->id;
 
-                            $codeteamforcount = Codeteam::model()->findAllByAttributes(array('teamId'=>$codeteam->teamId));
+                    if($codeteam->save()){
 
-                            if($codeteamforcount != null) {
-                                $count_codeteam = count($codeteamforcount);
-                            }else{
-                                $count_codeteam = 0;
-                            }
-
-
-                            //если все коды нашлись
-                            if($count_codeteam == $count_codes){
-                                //увеличиваем счетчик, все коды найдены
-                                $gameteam->counter += 1;
-                                //высчитываем время выполнения задания
-                                $result ->time=(int) time() - $start;
-                                Codeteam::model()->deleteAllByAttributes(array('teamId'=>$codeteam->teamId));
-                                $gameteam->save();
-
-                                //если счетчик совпал с количеством заданий
-                                if ($gameteam->counter == $count_tasks){
-                                    //ставим финиш конкретной команде
-                                    $gameteam->finish = 1;
-                                    $gameteam->save();
-
-                                    $this->checkFinishCondition($gameId);
-                                    $this->redirect($this->createUrl('game/play'));
-                                } else {
-                                    $this->redirect($this->createUrl('game/play'));
-                                }
-                            }
-                        }
-                    }else{
-                        //TODO: такой код есть
                         $codeteamforcount = Codeteam::model()->findAllByAttributes(array('teamId'=>$codeteam->teamId));
 
                         if($codeteamforcount != null) {
@@ -432,17 +328,40 @@ class GameController extends Controller
                             $count_codeteam = 0;
                         }
 
+
+                        //если все коды нашлись
+                        if($count_codeteam == $count_codes){
+                            //увеличиваем счетчик, все коды найдены
+                            $gameteam->counter += 1;
+                            Codeteam::model()->deleteAllByAttributes(array('teamId'=>$codeteam->teamId));
+                            $gameteam->save();
+
+                            //если счетчик совпал с количеством заданий
+                            if ($gameteam->counter == $count_task){
+                                //ставим финиш конкретной команде
+                                $gameteam->finish = 1;
+                                $gameteam->counter = 0;
+                                $gameteam->save();
+
+                                $this->checkFinishCondition($gameId);
+                                $this->redirect($this->createUrl('game/play'));
+                            } else {
+                                $this->redirect($this->createUrl('game/play'));
+                            }
+                        }
                     }
-                } else {
-                    $codeteamforcount = Codeteam::model()->findAllByAttributes(array('teamId'=>Yii::app()->user->id));
+                }else{
+                    //TODO: такой код есть
+                    $codeteamforcount = Codeteam::model()->findAllByAttributes(array('teamId'=>$codeteam->teamId));
 
                     if($codeteamforcount != null) {
                         $count_codeteam = count($codeteamforcount);
                     }else{
                         $count_codeteam = 0;
                     }
+
                 }
-            }else{
+            } else {
                 $codeteamforcount = Codeteam::model()->findAllByAttributes(array('teamId'=>Yii::app()->user->id));
 
                 if($codeteamforcount != null) {
@@ -451,23 +370,128 @@ class GameController extends Controller
                     $count_codeteam = 0;
                 }
             }
+        }else{
+            $codeteamforcount = Codeteam::model()->findAllByAttributes(array('teamId'=>Yii::app()->user->id));
 
-            $this->render('NowPlayUser', array('media_task'=>$media_task,
-                'view_address'=>$view_address,
-                'view_hint'=>$view_hint,
-                'count_hint'=>$count_hint,
-                'count_codeteam'=>$count_codeteam,
-                'count_codes'=>$count_codes,
-                'codeteamforcount'=>$codeteamforcount));
+            if($codeteamforcount != null) {
+                $count_codeteam = count($codeteamforcount);
+            }else{
+                $count_codeteam = 0;
+            }
+        }
+
+        $this->render('NowPlayUser', array('media_task'=>$media_task,
+            'view_address'=>$view_address,
+            'view_hint'=>$view_hint,
+            'count_hint'=>$count_hint,
+            'count_codeteam'=>$count_codeteam,
+            'count_codes'=>$count_codes,
+            'codeteamforcount'=>$codeteamforcount));
+    }
+
+
+    public function nowPlayAdmin($gameId, $gameteams, $count_task){
+        //запихиваем все задания в массив, чтобы работать с ними во вьюшке в выводе сетки
+        $i=0;
+        $teams = array();
+
+        foreach($gameteams as $gameteam){
+            $teams[$i] = Team::model()->findByPk($gameteam->teamId);;
+            $i++;
+        }
+
+        $this->render('NowPlayAdmin', array("count_task"=>$count_task, "teams"=>$teams, 'gameId'=>$gameId));
+    }
+
+
+    //функция, проверяющая, не вышло ли время на задание у каждой из команд
+    public function nowPlayTimeOver($gameId, $gameteams,$hintTime,$addressTime,$fullTime){
+
+        foreach($gameteams as $gameteam) {
+            if ($gameteam->finish != 1) {
+                $criteria_grid = new CDbCriteria();
+                $criteria_grid->alias = 'Grid';
+                $criteria_grid->condition = 'gameId=' . $gameId . ' AND teamId=' . $gameteam->teamId;
+                $criteria_grid->order = 'orderTask ASC';
+
+                $gridOrder = Grid::model()->findAll($criteria_grid);//порядок
+
+                $a = array();
+                $index = 0;
+
+                //присваиваю номера заданиям
+                foreach ($gridOrder as $grid) {
+                    $a[$index] = $grid;
+                    $index++;
+                }
+
+                $i_task = $a[$gameteam->counter]->orderTask;// порядковый номер задания
+
+                //получаем нужное задание
+                $taskCommonall = Grid::model()->findByAttributes(array('teamId' => $gameteam->teamId, 'orderTask' => $i_task));// id задания
+
+                $game = Game::model()->findByPk($gameId);
+
+                //устанавливаем время начала выполнения задания, если оно еще не выставлено
+                if ($i_task != 1) {
+                    if ($taskCommonall->timeTask == null) {
+                        $taskCommonall->timeTask = (int)time();// время начала выполнения
+                        $taskCommonall->save();
+                    }
+                } else {
+                    $taskCommonall->timeTask = $game->date;
+                    $taskCommonall->save();
+                }
+
+                $start = $taskCommonall->timeTask;
+
+                $count_hintall = count(Hint::model()->findAllByAttributes(array('taskId' => $taskCommonall->taskId))); //подсказки
+
+                //предусмариваем ситуацию, если подсказок много
+                //время на слив подсказки под индексом $i
+                $hintT = array();
+
+                for ($i = 1; $i <= $count_hintall; $i++) {
+                    $hintT[$i - 1] = (($hintTime * 60) * $i) + $start;
+                }
+
+                $adrT = $hintT[($count_hintall - 1)] + $addressTime * 60; //время слива адреса
+                $finT = $adrT + $fullTime * 60;// время для слива задания
+
+                //считаем количество заданий в игре
+                $tasks = Task::model()->findAllByAttributes(array('gameId' => $gameId));
+                if ($tasks != null) {
+                    $count_tasks = count($tasks);
+                } else {
+                    $count_tasks = 0;
+                }
+
+                //если время на задание вышло
+                if ((int)time() >= $finT) {
+                    $gameteam->counter += 1;
+                    Codeteam::model()->deleteAllByAttributes(array('teamId' => $gameteam->teamId));
+                    //$gameteam->save();
+                    if ($gameteam->counter == $count_tasks) {
+                        //ставим финиш конкретной команде
+                        $gameteam->finish = 1;
+                        //обнуляем - чтобы не было офсета
+                        $gameteam->counter = 0;
+                    }
+                    $gameteam->save();
+                    $this->checkFinishCondition($gameId);
+                }
+            }
         }
     }
 
-    //функция работающая с форматом - определяем состояние задания
-    public function getState($hintT, $adrT, $finT, $count_hint){
 
-        if ($finT <= (int)time()){
+
+    //функция работающая с форматом - определяем состояние задания
+    public function getState($hintT, $adrT/*, $finT*/, $count_hint){
+
+        /*if ($finT <= (int)time()){
             return -2;
-        }else {
+        }else {*/
             if ($adrT <= (int)time()) {
                 return -1;
             }else{
@@ -478,7 +502,7 @@ class GameController extends Controller
                     }
                 }
             }
-        }
+       /* }*/
         return -3;
     }
 
@@ -494,7 +518,6 @@ class GameController extends Controller
         $game = Game::model()->findByPk($gameId);
         $game->finish = 1;
         $game->save();
-
     }
 
     //после завершения игры
