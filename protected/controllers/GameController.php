@@ -102,7 +102,7 @@ class GameController extends Controller
 
             if ((int)$game->date < (int)$now) {
                 if ($game->finish == 1) {
-                    $this->finishPlay(); // после игры
+                    $this->finishPlay($game->id); // после игры
                 } else {
                     $this->nowPlay($game->id, $formatTime);// в игре
                 }
@@ -115,7 +115,7 @@ class GameController extends Controller
             if ((int)$game->date < (int)$now) {
                 //финиш либо общий, либо для конкретной команды
                 if ($game->finish == 1 || $gameteam->finish == 1) {
-                    $this->finishPlay(); // после игры
+                    $this->finishPlay($game->id); // после игры
                 } else {
                     $this->nowPlay($game->id, $formatTime);// в игре
                 }
@@ -150,6 +150,8 @@ class GameController extends Controller
 
             $gridOrder = Grid::model()->findAll($criteria_grid);//порядок
 
+            // таблица результаты для команды в этой игре
+            $result = Results::model()->findAllByAttributes(array('teamId'=>$item->teamId, 'gameId'=>$gameId));
             $a = array();
             $index = 0;
 
@@ -192,6 +194,7 @@ class GameController extends Controller
 
             if((int) time() >= $finT){
                 $item->counter++;
+                $result->time=$hintTime+$addressTime+ $fullTime;
                 $item->save();
             }
 
@@ -336,6 +339,7 @@ class GameController extends Controller
             //-2 - время истекло, -1 - слив адреса, числа - номер сливаемой подсказки
             if($state == -2){
                 $gameteam->counter += 1;
+                $result->time=$hintTime+$addressTime+ $fullTime;
                 Codeteam::model()->deleteAllByAttributes(array('teamId'=>Yii::app()->user->id));
                 $gameteam->save();
 
@@ -400,6 +404,8 @@ class GameController extends Controller
                             if($count_codeteam == $count_codes){
                                 //увеличиваем счетчик, все коды найдены
                                 $gameteam->counter += 1;
+                                //высчитываем время выполнения задания
+                                $result ->time=(int) time() - $start;
                                 Codeteam::model()->deleteAllByAttributes(array('teamId'=>$codeteam->teamId));
                                 $gameteam->save();
 
@@ -491,10 +497,66 @@ class GameController extends Controller
 
     }
 
-    public function finishPlay()
+    //после завершения игры
+    public function finishPlay($gameId)
     {
         if (Yii::app()->user->isAdmin() || Yii::app()->user->isOrg()) {
-            $this->render('FinishPlayAdmin');
+
+            // результаты
+            $criteria_res = new CDbCriteria();
+            $criteria_res->alias = 'Results';
+            $criteria_res->condition = 'gameId='.$gameId;
+            $criteria_res->order= 'time ASC';
+
+            $num=1; //место команды  в игре
+            $res = Results::model()->findAll($criteria_res);
+
+            foreach($res as $re) {
+                $re->score = $num;
+                $num++;
+                if(!$re->save()){
+                    //ошибка
+                    echo 'что-то не так1';
+                }
+            }
+
+            if(isset($_POST['ResForm'])) {
+
+                foreach($res as $re){
+                    if(isset($_POST['ResForm'][$re->teamId])){
+                        $re->time =strtotime($_POST['ResForm'][$re->teamId]);
+                         if(!$re->save()) {
+                            //ошибка
+                            echo 'что-то не так';
+                         }
+                    }
+                }
+            }
+
+            $res = Results::model()->findAll($criteria_res);
+            // пересчитать рейтинг
+            $num=1; //место в игре
+            foreach($res as $re) {
+                $re->score = $num;
+                $num++;
+
+                if(!$re->save()){
+                    //ошибка
+                    echo 'что-то не так2';
+                }
+            }
+            $res = Results::model()->findAll($criteria_res);
+
+            // поиск заданий для игры
+            $criteria_task = new CDbCriteria();
+            $criteria_task->alias = 'Task';
+            $criteria_task->condition = 'gameId='.$gameId;
+            $criteria_task->params = array(':gameId'=>$gameId);
+
+            $taskList = Task::model()->findAll($criteria_task);
+
+
+            $this->render('FinishPlayAdmin', array('gameId'=> $gameId, 'results'=>$res, 'taskList'=>$taskList));
         }else{
             $gameteam = Gameteam::model()->findByAttributes(array("teamId"=>Yii::app()->user->id));
             $this->render('FinishPlayUser', array('gameteam'=>$gameteam));
