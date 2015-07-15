@@ -3,8 +3,8 @@
 /* @var $model Code */
 /* @var $form CActiveForm */
 
-Yii::app()->clientScript->registerScript('button-on', '
-$(".button").click(
+Yii::app()->clientScript->registerScript('stopGameButton', '
+$(".StopGameButton").click(
 function(){
 if (confirm("Вы уверены?")) {
 window.location.href = "'.$this->createUrl("game/stopGame").'";
@@ -36,7 +36,5 @@ return false;
 
 
 <div class="stopform" >
-    <form id="formforstopform" action="<?php echo $this->createUrl('game/stopGame');?>">
-        <input type="submit" class="StopGameButton" value="Закончить игру"/>
-    </form>
+        <button class="StopGameButton">Закончить игру"</button>
 </div>
