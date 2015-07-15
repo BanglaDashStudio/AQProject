@@ -14,7 +14,6 @@ $('.grid_button').click(function(){
 ");
 
 ?>
-
 Игра закончена, правьте результаты по бонусам и простоям :
 <div class="resform" >
    <form id="formforresform" action="<?php echo $this->createUrl('game/play'); ?>" method="post">

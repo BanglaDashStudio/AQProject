@@ -101,10 +101,10 @@ class GameController extends Controller
         if((int)$game->date < (int)$now) { //условие пересечения времени начала игры
 
             if ($game->finish == 1) { //общий конец игры
-                $this->finishPlay();
+                $this->finishPlay($game->id);
             } elseif(isset($gameteam)) { //конец игры для одной команды
                 if($gameteam->finish == 1){
-                    $this->finishPlay();
+                    $this->finishPlay($game->id);
                 }
             }
             $this->nowPlay($game->id, $formatTime); //если не конец, то играем
@@ -191,10 +191,7 @@ class GameController extends Controller
         }
     }
 
-            // таблица результаты для команды в этой игре
-            $result = Results::model()->findAllByAttributes(array('teamId'=>$item->teamId, 'gameId'=>$gameId));
-            $a = array();
-            $index = 0;
+
     public function nowPlayUser($gameId,$hintTime,$addressTime,/*$fullTime,*/ $count_task){
         $gameteam = Gameteam::model()->findByAttributes(array('teamId' => Yii::app()->user->id, 'gameId' => $gameId));
 
