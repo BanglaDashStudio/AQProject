@@ -226,6 +226,8 @@ class GameController extends Controller
         $hint = array();
         $media_hint = array();
 
+
+
         for ($i = 0; $i<$count_hint; $i++){
             $hint[$i] = Hint::model()->findByAttributes(array('taskId' => $taskCommon->taskId, 'orderHint'=>$i));
             $media_hint[$i] = Media::model()->findByPk($hint[$i]->mediaId);

@@ -45,10 +45,10 @@ foreach ($results as $team) {
     echo $team->score;
     echo "</th>";
 
-    $t=Team::model()->findByAttributes(array('id'=>$team->teamId));
+    $tt=Team::model()->findByAttributes(array('id'=>$team->teamId));
 
     echo "<td>";
-    echo $t->name;
+    echo $tt->name;
     echo "</td>";
 
 
