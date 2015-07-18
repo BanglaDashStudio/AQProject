@@ -277,4 +277,8 @@ class TestController extends Controller
     public function actionVideo() {
         $this->render('video');
     }
+
+    public function actionEcho(){
+        echo 'Nya!';
+    }
 }
