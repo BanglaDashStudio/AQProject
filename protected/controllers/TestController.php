@@ -2,7 +2,7 @@
 
 class TestController extends Controller
 {
-
+ //проверка 
     public function actionUploadImage() {
 
         $uploaddir = 'data/images/';
