@@ -55,6 +55,10 @@ class TestController extends Controller
         $this->render('upload');
     }
 
+    public function actionUpload($mediaId){
+        $this->render('upload',array('mediaId'=>$mediaId));
+    }
+
     //1
     public function actionCreateTask($gameId){
         $this->render('createTask',array('gameId'=>$gameId,'taskCreateForm'=>new TaskCreateForm));

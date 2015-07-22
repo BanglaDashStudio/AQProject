@@ -47,7 +47,7 @@ $('.grid_button').click(function(){
                     echo "<td>";
                     echo  '<input ';
                     echo 'name="GridForm['. $team->id . ' : ' . $grid->taskId .']"';
-                    echo 'type="text" size="3" value = '. $i.'>';
+                    echo 'type="text" class="grid_cell" size="3" value = '. $i.'>';
                     echo "</td>";
                 }
             }
@@ -58,7 +58,7 @@ $('.grid_button').click(function(){
                 echo "<td>";
                 echo  '<input';
                 echo 'name="GridForm['. $team->id . ' : ' . $grid->taskId .']"';
-                echo 'type="text" size="4" value = '.' '.'>';
+                echo 'type="text" class="grid_cell" size="4" value = '.' '.'>';
                 echo "</td>";
 
             }
@@ -70,4 +70,21 @@ $('.grid_button').click(function(){
     }
     echo CHtml::submitButton('Сохранить изменения'); ?>
     </form>
+
+    <script>
+        $('.grid_cell').on("change", checkCell);
+
+        function checkCell(){
+            obj = $(this);
+
+            if(obj.val() < 0) {
+                obj.val(0);
+            }
+
+            if(obj.val() > <?php echo count($taskList);?>){
+                obj.val(0);
+            }
+        }
+
+    </script>
 </div>

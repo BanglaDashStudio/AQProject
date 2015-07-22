@@ -1852,3 +1852,250 @@ REQUEST_URI=/AQProject/index.php?r=game/Play
 in I:\wamp\www\AQProject\protected\controllers\GameController.php (141)
 in I:\wamp\www\AQProject\protected\controllers\GameController.php (107)
 in I:\wamp\www\AQProject\index.php (13)
+2015/07/19 02:23:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "рщьу".' in X:\domains\localhost\AQProject\framework\web\CWebApplication.php:286
+Stack trace:
+#0 X:\domains\localhost\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('????????')
+#1 X:\domains\localhost\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 X:\domains\localhost\AQProject\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/AQProject/index.php?r=%D1%80%D1%89%D1%8C%D1%83
+---
+2015/07/19 03:12:58 [error] [php] session_regenerate_id() [<a href='function.session-regenerate-id'>function.session-regenerate-id</a>]: Session object destruction failed (X:\domains\localhost\AQProject\framework\web\CHttpSession.php:182)
+Stack trace:
+#0 X:\domains\localhost\AQProject\framework\web\auth\CWebUser.php(233): WebUser->changeIdentity()
+#1 X:\domains\localhost\AQProject\protected\controllers\AuthController.php(43): WebUser->login()
+#2 X:\domains\localhost\AQProject\protected\controllers\AuthController.php(29): AuthController->SignInFunc()
+#3 X:\domains\localhost\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignIn()
+#4 X:\domains\localhost\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 X:\domains\localhost\AQProject\framework\web\filters\CFilterChain.php(133): AuthController->runAction()
+#6 X:\domains\localhost\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 X:\domains\localhost\AQProject\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 X:\domains\localhost\AQProject\framework\web\filters\CInlineFilter.php(58): AuthController->filterAccessControl()
+#9 X:\domains\localhost\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 X:\domains\localhost\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#11 X:\domains\localhost\AQProject\framework\web\CController.php(265): AuthController->runActionWithFilters()
+#12 X:\domains\localhost\AQProject\framework\web\CWebApplication.php(282): AuthController->run()
+#13 X:\domains\localhost\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 X:\domains\localhost\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 X:\domains\localhost\AQProject\index.php(13): CWebApplication->run()
+REQUEST_URI=/AQProject/index.php?r=auth/SignIn
+in X:\domains\localhost\AQProject\protected\controllers\AuthController.php (43)
+in X:\domains\localhost\AQProject\protected\controllers\AuthController.php (29)
+in X:\domains\localhost\AQProject\index.php (13)
+2015/07/19 03:13:23 [error] [php] session_regenerate_id() [<a href='function.session-regenerate-id'>function.session-regenerate-id</a>]: Session object destruction failed (X:\domains\localhost\AQProject\framework\web\CHttpSession.php:182)
+Stack trace:
+#0 X:\domains\localhost\AQProject\framework\web\auth\CWebUser.php(233): WebUser->changeIdentity()
+#1 X:\domains\localhost\AQProject\protected\controllers\AuthController.php(43): WebUser->login()
+#2 X:\domains\localhost\AQProject\protected\controllers\AuthController.php(29): AuthController->SignInFunc()
+#3 X:\domains\localhost\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignIn()
+#4 X:\domains\localhost\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 X:\domains\localhost\AQProject\framework\web\filters\CFilterChain.php(133): AuthController->runAction()
+#6 X:\domains\localhost\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 X:\domains\localhost\AQProject\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 X:\domains\localhost\AQProject\framework\web\filters\CInlineFilter.php(58): AuthController->filterAccessControl()
+#9 X:\domains\localhost\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 X:\domains\localhost\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#11 X:\domains\localhost\AQProject\framework\web\CController.php(265): AuthController->runActionWithFilters()
+#12 X:\domains\localhost\AQProject\framework\web\CWebApplication.php(282): AuthController->run()
+#13 X:\domains\localhost\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 X:\domains\localhost\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 X:\domains\localhost\AQProject\index.php(13): CWebApplication->run()
+REQUEST_URI=/AQProject/index.php?r=auth/SignIn
+in X:\domains\localhost\AQProject\protected\controllers\AuthController.php (43)
+in X:\domains\localhost\AQProject\protected\controllers\AuthController.php (29)
+in X:\domains\localhost\AQProject\index.php (13)
+2015/07/21 00:44:13 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Некорректный запрос.' in X:\domains\localhost\AQProject\framework\web\CController.php:336
+Stack trace:
+#0 X:\domains\localhost\AQProject\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 X:\domains\localhost\AQProject\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#2 X:\domains\localhost\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 X:\domains\localhost\AQProject\framework\web\CWebApplication.php(282): CController->run('createTaskTest')
+#4 X:\domains\localhost\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('test/createTask...')
+#5 X:\domains\localhost\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#6 X:\domains\localhost\AQProject\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/AQProject/index.php?r=test/createTaskTest
+---
+2015/07/21 00:45:23 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Некорректный запрос.' in X:\domains\localhost\AQProject\framework\web\CController.php:336
+Stack trace:
+#0 X:\domains\localhost\AQProject\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 X:\domains\localhost\AQProject\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#2 X:\domains\localhost\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 X:\domains\localhost\AQProject\framework\web\CWebApplication.php(282): CController->run('createTaskTest')
+#4 X:\domains\localhost\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('test/createTask...')
+#5 X:\domains\localhost\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#6 X:\domains\localhost\AQProject\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/AQProject/index.php?r=test/createTaskTest/88
+---
+2015/07/21 00:45:33 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Некорректный запрос.' in X:\domains\localhost\AQProject\framework\web\CController.php:336
+Stack trace:
+#0 X:\domains\localhost\AQProject\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 X:\domains\localhost\AQProject\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#2 X:\domains\localhost\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 X:\domains\localhost\AQProject\framework\web\CWebApplication.php(282): CController->run('createTaskTest')
+#4 X:\domains\localhost\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('test/createTask...')
+#5 X:\domains\localhost\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#6 X:\domains\localhost\AQProject\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/AQProject/index.php?r=test/createTaskTest&88
+---
+2015/07/21 00:45:57 [warning] [application] Не удалось присвоить небезопасный атрибут "type" класса "TaskCreate".
+in X:\domains\localhost\AQProject\protected\controllers\TestController.php (180)
+in X:\domains\localhost\AQProject\index.php (13)
+2015/07/21 00:46:04 [warning] [application] Не удалось присвоить небезопасный атрибут "type" класса "TaskCreate".
+in X:\domains\localhost\AQProject\protected\controllers\TestController.php (180)
+in X:\domains\localhost\AQProject\index.php (13)
+2015/07/21 00:46:16 [warning] [application] Не удалось присвоить небезопасный атрибут "type" класса "TaskCreate".
+in X:\domains\localhost\AQProject\protected\controllers\TestController.php (180)
+in X:\domains\localhost\AQProject\index.php (13)
+2015/07/21 00:46:23 [warning] [application] Не удалось присвоить небезопасный атрибут "type" класса "TaskCreate".
+in X:\domains\localhost\AQProject\protected\controllers\TestController.php (180)
+in X:\domains\localhost\AQProject\index.php (13)
+2015/07/21 00:46:29 [warning] [application] Не удалось присвоить небезопасный атрибут "type" класса "TaskCreate".
+in X:\domains\localhost\AQProject\protected\controllers\TestController.php (180)
+in X:\domains\localhost\AQProject\index.php (13)
+2015/07/21 00:46:37 [warning] [application] Не удалось присвоить небезопасный атрибут "type" класса "TaskCreate".
+in X:\domains\localhost\AQProject\protected\controllers\TestController.php (180)
+in X:\domains\localhost\AQProject\index.php (13)
+2015/07/21 00:46:39 [warning] [application] Не удалось присвоить небезопасный атрибут "type" класса "TaskCreate".
+in X:\domains\localhost\AQProject\protected\controllers\TestController.php (180)
+in X:\domains\localhost\AQProject\index.php (13)
+2015/07/21 00:46:39 [warning] [application] Не удалось присвоить небезопасный атрибут "codes" класса "TaskCreate".
+in X:\domains\localhost\AQProject\protected\controllers\TestController.php (180)
+in X:\domains\localhost\AQProject\index.php (13)
+2015/07/21 00:48:44 [warning] [application] Не удалось присвоить небезопасный атрибут "type" класса "TaskCreate".
+in X:\domains\localhost\AQProject\protected\controllers\TestController.php (180)
+in X:\domains\localhost\AQProject\index.php (13)
+2015/07/21 00:48:44 [warning] [application] Не удалось присвоить небезопасный атрибут "codes" класса "TaskCreate".
+in X:\domains\localhost\AQProject\protected\controllers\TestController.php (180)
+in X:\domains\localhost\AQProject\index.php (13)
+2015/07/21 00:48:45 [warning] [application] Не удалось присвоить небезопасный атрибут "type" класса "TaskCreate".
+in X:\domains\localhost\AQProject\protected\controllers\TestController.php (180)
+in X:\domains\localhost\AQProject\index.php (13)
+2015/07/21 00:48:45 [warning] [application] Не удалось присвоить небезопасный атрибут "codes" класса "TaskCreate".
+in X:\domains\localhost\AQProject\protected\controllers\TestController.php (180)
+in X:\domains\localhost\AQProject\index.php (13)
+2015/07/21 00:48:45 [warning] [application] Не удалось присвоить небезопасный атрибут "type" класса "TaskCreate".
+in X:\domains\localhost\AQProject\protected\controllers\TestController.php (180)
+in X:\domains\localhost\AQProject\index.php (13)
+2015/07/21 00:48:45 [warning] [application] Не удалось присвоить небезопасный атрибут "codes" класса "TaskCreate".
+in X:\domains\localhost\AQProject\protected\controllers\TestController.php (180)
+in X:\domains\localhost\AQProject\index.php (13)
+2015/07/21 00:48:46 [warning] [application] Не удалось присвоить небезопасный атрибут "type" класса "TaskCreate".
+in X:\domains\localhost\AQProject\protected\controllers\TestController.php (180)
+in X:\domains\localhost\AQProject\index.php (13)
+2015/07/21 00:48:46 [warning] [application] Не удалось присвоить небезопасный атрибут "codes" класса "TaskCreate".
+in X:\domains\localhost\AQProject\protected\controllers\TestController.php (180)
+in X:\domains\localhost\AQProject\index.php (13)
+2015/07/21 00:48:47 [warning] [application] Не удалось присвоить небезопасный атрибут "type" класса "TaskCreate".
+in X:\domains\localhost\AQProject\protected\controllers\TestController.php (180)
+in X:\domains\localhost\AQProject\index.php (13)
+2015/07/21 00:48:47 [warning] [application] Не удалось присвоить небезопасный атрибут "codes" класса "TaskCreate".
+in X:\domains\localhost\AQProject\protected\controllers\TestController.php (180)
+in X:\domains\localhost\AQProject\index.php (13)
+2015/07/23 01:39:35 [error] [php] session_regenerate_id(): Session object destruction failed (X:\domains\localhost\AQProject\framework\web\CHttpSession.php:182)
+Stack trace:
+#0 X:\domains\localhost\AQProject\framework\web\auth\CWebUser.php(233): WebUser->changeIdentity()
+#1 X:\domains\localhost\AQProject\protected\controllers\AuthController.php(43): WebUser->login()
+#2 X:\domains\localhost\AQProject\protected\controllers\AuthController.php(29): AuthController->SignInFunc()
+#3 X:\domains\localhost\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignIn()
+#4 X:\domains\localhost\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 X:\domains\localhost\AQProject\framework\web\filters\CFilterChain.php(133): AuthController->runAction()
+#6 X:\domains\localhost\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 X:\domains\localhost\AQProject\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 X:\domains\localhost\AQProject\framework\web\filters\CInlineFilter.php(58): AuthController->filterAccessControl()
+#9 X:\domains\localhost\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 X:\domains\localhost\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#11 X:\domains\localhost\AQProject\framework\web\CController.php(265): AuthController->runActionWithFilters()
+#12 X:\domains\localhost\AQProject\framework\web\CWebApplication.php(282): AuthController->run()
+#13 X:\domains\localhost\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 X:\domains\localhost\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 X:\domains\localhost\AQProject\index.php(13): CWebApplication->run()
+REQUEST_URI=/AQProject/index.php?r=auth/SignIn
+in X:\domains\localhost\AQProject\protected\controllers\AuthController.php (43)
+in X:\domains\localhost\AQProject\protected\controllers\AuthController.php (29)
+in X:\domains\localhost\AQProject\index.php (13)
+2015/07/23 01:39:53 [error] [php] session_regenerate_id(): Session object destruction failed (X:\domains\localhost\AQProject\framework\web\CHttpSession.php:182)
+Stack trace:
+#0 X:\domains\localhost\AQProject\framework\web\auth\CWebUser.php(233): WebUser->changeIdentity()
+#1 X:\domains\localhost\AQProject\protected\controllers\AuthController.php(43): WebUser->login()
+#2 X:\domains\localhost\AQProject\protected\controllers\AuthController.php(29): AuthController->SignInFunc()
+#3 X:\domains\localhost\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignIn()
+#4 X:\domains\localhost\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 X:\domains\localhost\AQProject\framework\web\filters\CFilterChain.php(133): AuthController->runAction()
+#6 X:\domains\localhost\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 X:\domains\localhost\AQProject\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 X:\domains\localhost\AQProject\framework\web\filters\CInlineFilter.php(58): AuthController->filterAccessControl()
+#9 X:\domains\localhost\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 X:\domains\localhost\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#11 X:\domains\localhost\AQProject\framework\web\CController.php(265): AuthController->runActionWithFilters()
+#12 X:\domains\localhost\AQProject\framework\web\CWebApplication.php(282): AuthController->run()
+#13 X:\domains\localhost\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 X:\domains\localhost\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 X:\domains\localhost\AQProject\index.php(13): CWebApplication->run()
+REQUEST_URI=/AQProject/index.php?r=auth/SignIn
+in X:\domains\localhost\AQProject\protected\controllers\AuthController.php (43)
+in X:\domains\localhost\AQProject\protected\controllers\AuthController.php (29)
+in X:\domains\localhost\AQProject\index.php (13)
+2015/07/23 01:41:56 [error] [php] session_regenerate_id(): Session object destruction failed (X:\domains\localhost\AQProject\framework\web\CHttpSession.php:182)
+Stack trace:
+#0 X:\domains\localhost\AQProject\framework\web\auth\CWebUser.php(233): WebUser->changeIdentity()
+#1 X:\domains\localhost\AQProject\protected\controllers\AuthController.php(43): WebUser->login()
+#2 X:\domains\localhost\AQProject\protected\controllers\AuthController.php(29): AuthController->SignInFunc()
+#3 X:\domains\localhost\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignIn()
+#4 X:\domains\localhost\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 X:\domains\localhost\AQProject\framework\web\filters\CFilterChain.php(133): AuthController->runAction()
+#6 X:\domains\localhost\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 X:\domains\localhost\AQProject\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 X:\domains\localhost\AQProject\framework\web\filters\CInlineFilter.php(58): AuthController->filterAccessControl()
+#9 X:\domains\localhost\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 X:\domains\localhost\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#11 X:\domains\localhost\AQProject\framework\web\CController.php(265): AuthController->runActionWithFilters()
+#12 X:\domains\localhost\AQProject\framework\web\CWebApplication.php(282): AuthController->run()
+#13 X:\domains\localhost\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 X:\domains\localhost\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 X:\domains\localhost\AQProject\index.php(13): CWebApplication->run()
+REQUEST_URI=/AQProject/index.php?r=auth/SignIn
+in X:\domains\localhost\AQProject\protected\controllers\AuthController.php (43)
+in X:\domains\localhost\AQProject\protected\controllers\AuthController.php (29)
+in X:\domains\localhost\AQProject\index.php (13)
+2015/07/23 01:42:50 [error] [php] session_regenerate_id(): Session object destruction failed (X:\domains\localhost\AQProject\framework\web\CHttpSession.php:182)
+Stack trace:
+#0 X:\domains\localhost\AQProject\framework\web\auth\CWebUser.php(233): WebUser->changeIdentity()
+#1 X:\domains\localhost\AQProject\protected\controllers\AuthController.php(43): WebUser->login()
+#2 X:\domains\localhost\AQProject\protected\controllers\AuthController.php(29): AuthController->SignInFunc()
+#3 X:\domains\localhost\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignIn()
+#4 X:\domains\localhost\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 X:\domains\localhost\AQProject\framework\web\filters\CFilterChain.php(133): AuthController->runAction()
+#6 X:\domains\localhost\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 X:\domains\localhost\AQProject\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 X:\domains\localhost\AQProject\framework\web\filters\CInlineFilter.php(58): AuthController->filterAccessControl()
+#9 X:\domains\localhost\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 X:\domains\localhost\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#11 X:\domains\localhost\AQProject\framework\web\CController.php(265): AuthController->runActionWithFilters()
+#12 X:\domains\localhost\AQProject\framework\web\CWebApplication.php(282): AuthController->run()
+#13 X:\domains\localhost\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 X:\domains\localhost\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 X:\domains\localhost\AQProject\index.php(13): CWebApplication->run()
+REQUEST_URI=/AQProject/index.php?r=auth/SignIn
+in X:\domains\localhost\AQProject\protected\controllers\AuthController.php (43)
+in X:\domains\localhost\AQProject\protected\controllers\AuthController.php (29)
+in X:\domains\localhost\AQProject\index.php (13)
+2015/07/23 01:42:59 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'У вас недостаточно прав для выполнения указанного действия.' in X:\domains\localhost\AQProject\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 X:\domains\localhost\AQProject\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xD0\xA3 \xD0\xB2\xD0\xB0\xD1\x81 \xD0\xBD\xD0\xB5\xD0...')
+#1 X:\domains\localhost\AQProject\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 X:\domains\localhost\AQProject\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 X:\domains\localhost\AQProject\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 X:\domains\localhost\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 X:\domains\localhost\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#6 X:\domains\localhost\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 X:\domains\localhost\AQProject\framework\web\CWebApplication.php(282): CController->run('SignIn')
+#8 X:\domains\localhost\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('auth/SignIn')
+#9 X:\domains\localhost\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 X:\domains\localhost\AQProject\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/AQProject/index.php?r=auth/SignIn
+HTTP_REFERER=http://localhost/AQProject/index.php?r=auth/SignIn
+---
