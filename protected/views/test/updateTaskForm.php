@@ -28,6 +28,10 @@
         <?php echo $form->error($createTaskForm,'description'); ?>
     </div>
 
+    <div class="row buttons">
+        <input id="addFileTask" onclick="go('<?php echo $this->createUrl('test/',array('mediaId'=>17))?>')" type="button" value="Добавить файлы к заданию" />
+    </div>
+
     <div class="row">
         <?php echo $form->labelEx($createTaskForm,'address'); ?>
         <?php echo $form->textField($createTaskForm,'address'); ?>

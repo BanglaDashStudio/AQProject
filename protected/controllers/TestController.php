@@ -2,7 +2,7 @@
 
 class TestController extends Controller
 {
-
+ //проверка 
     public function actionUploadImage() {
 
         $uploaddir = 'data/images/';
@@ -53,6 +53,10 @@ class TestController extends Controller
 
     public function actionIndex() {
         $this->render('upload');
+    }
+
+    public function actionUpload($mediaId){
+        $this->render('upload',array('mediaId'=>$mediaId));
     }
 
     //1
@@ -276,5 +280,9 @@ class TestController extends Controller
 
     public function actionVideo() {
         $this->render('video');
+    }
+
+    public function actionEcho(){
+        echo 'Nya!';
     }
 }
