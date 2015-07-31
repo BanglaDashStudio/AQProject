@@ -285,4 +285,13 @@ class TestController extends Controller
     public function actionEcho(){
         echo 'Nya!';
     }
+
+    public function actionTimer(){
+        $this->render('timer');
+    }
+
+    public function actionTimerRequest(){
+        echo 1438398987;
+        return;
+    }
 }
