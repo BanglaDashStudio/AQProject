@@ -18,7 +18,7 @@ class TaskCreate extends CFormModel
     {
         return array(
             array('name, description, code, address', 'required'),
-            array('code' ,'numerical'),//добавить валидацию типа по регэкспу
+            //array('code' ,'numerical'),//добавить валидацию типа по регэкспу
         );
     }
     public function attributeLabels()

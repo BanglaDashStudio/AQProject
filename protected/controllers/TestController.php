@@ -3,53 +3,7 @@
 class TestController extends Controller
 {
  //проверка 
-    public function actionUploadImage() {
 
-        $uploaddir = 'data/images/';
-        $uploadfile = $uploaddir . $_FILES['uploadImage']['name'];
-
-        if(is_uploaded_file($_FILES["uploadImage"]["tmp_name"])) {
-            if (move_uploaded_file(($_FILES['uploadImage']['tmp_name']), $uploadfile)) {
-                $link = $uploadfile;
-
-                $media = new Media();
-                $media->image = $link;
-
-                if(!$media->save()){
-                    echo 'Ошибка добавления ссылки в бд';
-                } else {
-                    echo 'все хорошо';
-                }
-
-            }else {
-                echo "Ошибка перемещения аудио!\n";
-            }
-        } else {
-            echo "Ошибка загрузки аудио!\n";
-        }
-
-    }
-
-    public function actionUploadAudio() {
-        $uploaddir = 'data/audio/';
-        $uploadfile = $uploaddir . $_FILES['uploadAudio']['name'];
-
-        if (move_uploaded_file(($_FILES['uploadAudio']['tmp_name']), $uploadfile)) {
-            $link = $uploadfile;
-
-            $media = new Media();
-            $media->audio = $link;
-
-            if(!$media->save()){
-                echo 'Ошибка добавления ссылки в бд';
-            } else {
-                echo 'все хорошо';
-            }
-
-        } else {
-            echo "Ошибка загрузки аудио!\n";
-        }
-    }
 
     public function actionIndex() {
         $this->render('upload');
@@ -260,14 +214,71 @@ class TestController extends Controller
                 }
 
                 if(isset($_POST['TaskCreate']['codes'])) {
-                    $this->render('updateTaskForm', array('gameId' => $gameId, 'createTaskForm' => $taskForm, 'codes' => $_POST['TaskCreate']['codes']));
+                    $this->render('updateTaskForm', array('mediaId'=>$task->mediaId,'gameId' => $gameId, 'createTaskForm' => $taskForm, 'codes' => $_POST['TaskCreate']['codes']));
                 } else {
-                    $this->render('updateTaskForm', array('gameId' => $gameId, 'createTaskForm' => $taskForm));
+                    $this->render('updateTaskForm', array('mediaId'=>$task->mediaId, 'gameId' => $gameId, 'createTaskForm' => $taskForm));
                 }
                 return;
             }
         }
         $this->render('createTaskForm',array('gameId'=>$gameId, 'createTaskForm'=>$taskForm));
+    }
+
+    public function actionUploadImage($mediaId) {
+
+        if(isset($_FILES['uploadImage'])){
+            $uploaddir = 'data/images/';
+            $uploadfile = $uploaddir . $_FILES['uploadImage']['name'];
+
+            if(is_uploaded_file($_FILES["uploadImage"]["tmp_name"])) {
+                if (move_uploaded_file(($_FILES['uploadImage']['tmp_name']), $uploadfile)) {
+                    $link = $uploadfile;
+
+                    $media = Media::model()->findByPk($mediaId);
+                    if($media == null) {
+                        echo 'Невозможно прикрепить изображение к заданию';
+                        return;
+                    }
+                    $media->image = $link;
+
+                    if(!$media->save()){
+                        echo 'Ошибка добавления ссылки в бд';
+                        return;
+                    } else {
+                        $this->render('uploadImage',array('mediaId'=>$mediaId));
+                    }
+                }else {
+                    echo "Ошибка перемещения аудио!\n";
+                    return;
+                }
+            } else {
+                echo "Ошибка загрузки аудио!\n";
+                return;
+            }
+        } else {
+            $this->render('uploadImage',array('mediaId'=>$mediaId));
+        }
+    }
+
+    public function actionUploadAudio() {
+        $uploaddir = 'data/audio/';
+        $uploadfile = $uploaddir . $_FILES['uploadAudio']['name'];
+
+        if (move_uploaded_file(($_FILES['uploadAudio']['tmp_name']), $uploadfile)) {
+            $link = $uploadfile;
+
+            $media = new Media();
+            $media->audio = $link;
+
+            if(!$media->save()){
+                echo 'Ошибка добавления ссылки в бд';
+            } else {
+                echo 'все хорошо';
+            }
+
+        } else {
+            echo "Ошибка загрузки аудио!\n";
+        }
     }
 
 
