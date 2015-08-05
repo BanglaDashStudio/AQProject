@@ -13,6 +13,9 @@ if(isset($mediaId)){
     $media = Media::model()->findByPk($mediaId);
 }
 
+
+echo $gameId.'<br />';
+echo $taskId;
 ?>
 
 <style>
@@ -29,13 +32,13 @@ if(isset($mediaId)){
 <?php endif; ?>
 
 
-<form class="uploadForms" enctype="multipart/form-data" action="<?php echo $this->createUrl('test/uploadImage',array('mediaId'=>$mediaId));?>" method="POST">
+<form class="uploadForms" enctype="multipart/form-data" action="<?php echo $this->createUrl('taskCreator/uploadImage',array('mediaId'=>$mediaId,'gameId'=>$gameId,'taskId'=>$taskId));?>" method="POST">
     <input type="hidden" name="MAX_FILE_SIZE" value="30000000000" />
     <input type="file" name="uploadImage" accept="image/jpeg,image/png,image/gif" />
     <input type="submit" value="upload image" />
 </form>
 
-<input type="button" value="Готово" onclick="go('<?php echo $this->createUrl('test/createTaskTest',array('gameId'=>$gameId))?>')">
+<input type="button" value="Готово" onclick="go('<?php echo $this->createUrl('taskCreator/updateTask',array('gameId'=>$gameId,'taskId'=>$taskId))?>')">
 <script>
     $(".media_img").on('click',downLoadImage);
 

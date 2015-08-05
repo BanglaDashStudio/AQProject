@@ -2,6 +2,7 @@
 
 class TaskCreatorController extends Controller
 {
+	//0
 	public function actionIndex($gameId)
 	{
 		$taskForm = new TaskCreate;
@@ -17,7 +18,7 @@ class TaskCreatorController extends Controller
 		$this->render('createTaskForm',array('gameId'=>$gameId, 'createTaskForm'=>$taskForm));
 	}
 
-
+	//1
 	public function actionCreateTask($gameId)
 	{
 		$taskForm = new TaskCreate;
@@ -114,6 +115,7 @@ class TaskCreatorController extends Controller
 		$this->render('createTaskForm',array('gameId'=>$gameId, 'createTaskForm'=>$taskForm));
 	}
 
+	//2
 	public function actionUpdateTask($gameId, $taskId){
 		$taskOrigin = Task::model()->findByPk($taskId);
 		$taskForm = new TaskCreate;
@@ -223,6 +225,78 @@ class TaskCreatorController extends Controller
 		}
 
 		$this->render('updateTaskForm',array('gameId'=>$gameId,'taskId'=>$taskId,'mediaId'=>$taskOrigin->mediaId, 'createTaskForm'=>$taskForm, 'codes'=>$codesText));
+	}
+
+	public function actionUploadImage($mediaId, $gameId, $taskId) {
+
+		if(isset($_FILES['uploadImage'])){
+			$uploaddir = 'data/images/';
+			$uploadfile = $uploaddir . $_FILES['uploadImage']['name'];
+
+			if(is_uploaded_file($_FILES["uploadImage"]["tmp_name"])) {
+				if (move_uploaded_file(($_FILES['uploadImage']['tmp_name']), $uploadfile)) {
+					$link = $uploadfile;
+
+					$media = Media::model()->findByPk($mediaId);
+					if($media == null) {
+						echo 'Невозможно прикрепить изображение к заданию';
+						return;
+					}
+					$media->image = $link;
+
+					if(!$media->save()){
+						echo 'Ошибка добавления ссылки в бд';
+						return;
+					} else {
+						$this->render('uploadImage',array('mediaId'=>$mediaId));
+					}
+				}else {
+					echo "Ошибка перемещения изображения!\n";
+					return;
+				}
+			} else {
+				echo "Ошибка загрузки изображения!\n";
+				return;
+			}
+		} else {
+			$this->render('uploadImage',array('mediaId'=>$mediaId,'gameId'=>$gameId, 'taskId'=>$taskId));
+		}
+	}
+
+	public function actionUploadAudio($mediaId, $gameId, $taskId) {
+
+		if(isset($_FILES['uploadAudio'])){
+			$uploaddir = 'data/audio/';
+			$uploadfile = $uploaddir . $_FILES['uploadAudio']['name'];
+
+			if(is_uploaded_file($_FILES["uploadAudio"]["tmp_name"])) {
+				if (move_uploaded_file(($_FILES['uploadAudio']['tmp_name']), $uploadfile)) {
+					$link = $uploadfile;
+
+					$media = Media::model()->findByPk($mediaId);
+					if($media == null) {
+						echo 'Невозможно прикрепить звук к заданию';
+						return;
+					}
+					$media->audio = $link;
+
+					if(!$media->save()){
+						echo 'Ошибка добавления ссылки в бд';
+						return;
+					} else {
+						$this->render('uploadAudio',array('mediaId'=>$mediaId));
+					}
+				}else {
+					echo "Ошибка перемещения аудио!\n";
+					return;
+				}
+			} else {
+				echo "Ошибка загрузки аудио!\n";
+				return;
+			}
+		} else {
+			$this->render('uploadAudio',array('mediaId'=>$mediaId,'gameId'=>$gameId, 'taskId'=>$taskId));
+		}
 	}
 
 }

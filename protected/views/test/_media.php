@@ -31,7 +31,7 @@
 </audio>
 
 <hr />
-<label>Видио:</label>
+<label>Видео:</label>
 <div>
     <?php if(isset($media->video))echo $media->video; ?>
 </div>

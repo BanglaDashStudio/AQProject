@@ -28,12 +28,41 @@
         <?php echo $form->error($createTaskForm,'description'); ?>
     </div>
 
-    <div class="row buttons">
-        <input id="addFileTask" onclick="go('<?php echo $this->createUrl('test/uploadAudio',array('mediaId'=>$mediaId))?>')" type="button" value="Добавить аудио" />
-        <input id="addFileTask" onclick="go('<?php echo $this->createUrl('test/uploadImage',array('mediaId'=>$mediaId))?>')" type="button" value="Добавить изображение" />
-        <input id="addFileTask" onclick="go('<?php echo $this->createUrl('test/uploadVideo',array('mediaId'=>$mediaId))?>'" type="button" value="Добавить видео" />
+    <hr />
+    <style>
+    .media_img{
+    max-height: 300px;
+    max-width: 100%;
+    }
+    </style>
+    <div>
+    <?php
+        $media = Media::model()->findByPk($mediaId);
+    ?>
+
+    <img class="media_img" src="<?php if(isset($media->image)) echo $media->image; ?>">
+    </img>
     </div>
 
+    <div>
+    <audio controls>
+        <source src="<?php if(isset($media->audio)) echo $media->audio; ?>" />
+    Тег audio не поддерживается вашим браузером.
+    <a href="<?php if(isset($media->audio)) echo $media->audio; ?>">Скачайте музыку</a>.
+    </audio>
+    </div>
+    <div>
+    <?php if(isset($media->video))echo $media->video; ?>
+    </div>
+
+    <div class="row buttons">
+        <input id="addAudioTask" onclick="go('<?php echo $this->createUrl('taskCreator/uploadAudio',array('mediaId'=>$mediaId,'gameId'=>$gameId,'taskId'=>$taskId))?>')" type="button" value="Добавить аудио" />
+        <input id="addImageTask" onclick="go('<?php echo $this->createUrl('taskCreator/uploadImage',array('mediaId'=>$mediaId,'gameId'=>$gameId,'taskId'=>$taskId))?>')" type="button" value="Добавить изображение" />
+        <input id="addVideoTask" onclick="go('<?php echo $this->createUrl('taskCreator/uploadVideo',array('mediaId'=>$mediaId,'gameId'=>$gameId,'taskId'=>$taskId))?>')" type="button" value="Добавить видео" />
+    </div>
+
+    <hr />
+    
     <div class="row">
         <?php echo $form->labelEx($createTaskForm,'address'); ?>
         <?php echo $form->textField($createTaskForm,'address'); ?>
@@ -84,6 +113,14 @@
 <script>
     $('#addCode').on('click', addCode);
     $('.deleteBut').on('click',deleteCode);
+
+    $(".media_img").on('click',downLoadImage);
+
+    function downLoadImage(){
+        var link = $(this).attr('src');
+        document.location.href = link;
+    }
+
 
     var counter = <?php echo $amount?>;
     var amount = <?php echo $amount?>;
