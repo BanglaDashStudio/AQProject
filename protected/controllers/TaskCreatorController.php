@@ -219,7 +219,7 @@ class TaskCreatorController extends Controller
 			$codesText[0] = '';
 			$i = -1;
 			foreach($codesArray as $code){
-				if($i>=0) $codesText[$i] = $code->code; //ропускаем первый код, он отдельно.
+				if($i>=0) $codesText[$i] = $code->code; //СЂРѕРїСѓСЃРєР°РµРј РїРµСЂРІС‹Р№ РєРѕРґ, РѕРЅ РѕС‚РґРµР»СЊРЅРѕ.
 				$i++;
 			}
 		}
@@ -239,23 +239,23 @@ class TaskCreatorController extends Controller
 
 					$media = Media::model()->findByPk($mediaId);
 					if($media == null) {
-						echo 'Невозможно прикрепить изображение к заданию';
+						echo 'РќРµРІРѕР·РјРѕР¶РЅРѕ РїСЂРёРєСЂРµРїРёС‚СЊ РёР·РѕР±СЂР°Р¶РµРЅРёРµ Рє Р·Р°РґР°РЅРёСЋ';
 						return;
 					}
 					$media->image = $link;
 
 					if(!$media->save()){
-						echo 'Ошибка добавления ссылки в бд';
+						echo 'РћС€РёР±РєР° РґРѕР±Р°РІР»РµРЅРёСЏ СЃСЃС‹Р»РєРё РІ Р±Рґ';
 						return;
 					} else {
 						$this->render('uploadImage',array('mediaId'=>$mediaId));
 					}
 				}else {
-					echo "Ошибка перемещения изображения!\n";
+					echo "РћС€РёР±РєР° РїРµСЂРµРјРµС‰РµРЅРёСЏ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ!\n";
 					return;
 				}
 			} else {
-				echo "Ошибка загрузки изображения!\n";
+				echo "РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё РёР·РѕР±СЂР°Р¶РµРЅРёСЏ!\n";
 				return;
 			}
 		} else {
@@ -275,23 +275,23 @@ class TaskCreatorController extends Controller
 
 					$media = Media::model()->findByPk($mediaId);
 					if($media == null) {
-						echo 'Невозможно прикрепить звук к заданию';
+						echo 'РќРµРІРѕР·РјРѕР¶РЅРѕ РїСЂРёРєСЂРµРїРёС‚СЊ Р·РІСѓРє Рє Р·Р°РґР°РЅРёСЋ';
 						return;
 					}
 					$media->audio = $link;
 
 					if(!$media->save()){
-						echo 'Ошибка добавления ссылки в бд';
+						echo 'РћС€РёР±РєР° РґРѕР±Р°РІР»РµРЅРёСЏ СЃСЃС‹Р»РєРё РІ Р±Рґ';
 						return;
 					} else {
 						$this->render('uploadAudio',array('mediaId'=>$mediaId));
 					}
 				}else {
-					echo "Ошибка перемещения аудио!\n";
+					echo "РћС€РёР±РєР° РїРµСЂРµРјРµС‰РµРЅРёСЏ Р°СѓРґРёРѕ!\n";
 					return;
 				}
 			} else {
-				echo "Ошибка загрузки аудио!\n";
+				echo "РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё Р°СѓРґРёРѕ!\n";
 				return;
 			}
 		} else {

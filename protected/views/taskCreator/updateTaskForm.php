@@ -62,7 +62,7 @@
     </div>
 
     <hr />
-    
+
     <div class="row">
         <?php echo $form->labelEx($createTaskForm,'address'); ?>
         <?php echo $form->textField($createTaskForm,'address'); ?>
