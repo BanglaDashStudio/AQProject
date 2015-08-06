@@ -13,9 +13,6 @@ if(isset($mediaId)){
     $media = Media::model()->findByPk($mediaId);
 }
 
-
-echo $gameId.'<br />';
-echo $taskId;
 ?>
 
 <style>

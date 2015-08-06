@@ -2820,3 +2820,94 @@ REQUEST_URI=/Projects/AQProject/index.php?r=taskCreator/updateTask&gameId=104&ta
 in D:\OpenServer\domains\localhost\Projects\AQProject\protected\views\taskCreator\updateTaskForm.php (51)
 in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\TaskCreatorController.php (225)
 in D:\OpenServer\domains\localhost\Projects\AQProject\index.php (13)
+2015/08/05 22:47:03 [error] [exception.CException] exception 'CException' with message 'Контроллер TaskCreatorController не может найти представление "uploadImage".' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php:878
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(782): CController->renderPartial('uploadImage', Array, true)
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\TaskCreatorController.php(262): CController->render('uploadImage', Array)
+#2 [internal function]: TaskCreatorController->actionUploadImage('19', '104', '58')
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(TaskCreatorController), Array)
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(TaskCreatorController), Object(ReflectionMethod), Array)
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('uploadImage')
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('taskCreator/upl...')
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/Projects/AQProject/index.php?r=taskCreator/uploadImage&mediaId=19&gameId=104&taskId=58
+HTTP_REFERER=http://localhost:8000/Projects/AQProject/index.php?r=taskCreator/updateTask&gameId=104&taskId=58
+---
+2015/08/05 22:47:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "uploadAudio".' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php:483
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(270): CController->missingAction('uploadAudio')
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('uploadAudio')
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('taskCreator/upl...')
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/Projects/AQProject/index.php?r=taskCreator/uploadAudio&mediaId=19&gameId=104&taskId=58
+HTTP_REFERER=http://localhost:8000/Projects/AQProject/index.php?r=taskCreator/updateTask&gameId=104&taskId=58
+---
+2015/08/05 22:47:15 [error] [exception.CException] exception 'CException' with message 'Контроллер TaskCreatorController не может найти представление "uploadImage".' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php:878
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(782): CController->renderPartial('uploadImage', Array, true)
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\TaskCreatorController.php(262): CController->render('uploadImage', Array)
+#2 [internal function]: TaskCreatorController->actionUploadImage('19', '104', '58')
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(TaskCreatorController), Array)
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(TaskCreatorController), Object(ReflectionMethod), Array)
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('uploadImage')
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('taskCreator/upl...')
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/Projects/AQProject/index.php?r=taskCreator/uploadImage&mediaId=19&gameId=104&taskId=58
+HTTP_REFERER=http://localhost:8000/Projects/AQProject/index.php?r=taskCreator/updateTask&gameId=104&taskId=58
+---
+2015/08/05 22:48:26 [error] [exception.CException] exception 'CException' with message 'Контроллер TestController не может найти представление "uploadImage".' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php:878
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(782): CController->renderPartial('uploadImage', Array, true)
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\TestController.php(248): CController->render('uploadImage', Array)
+#2 [internal function]: TestController->actionUploadImage('19')
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(TestController), Array)
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(TestController), Object(ReflectionMethod), Array)
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('uploadImage')
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('test/uploadImag...')
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/Projects/AQProject/index.php?r=test/uploadImage&mediaId=19
+HTTP_REFERER=http://localhost:8000/Projects/AQProject/index.php?r=taskCreator/uploadImage&mediaId=19&gameId=104&taskId=58
+---
+2015/08/05 22:50:22 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Некорректный запрос.' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php:336
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('uploadImage')
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('taskCreator/upl...')
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/Projects/AQProject/index.php?r=taskCreator/uploadImage&mediaId=19
+HTTP_REFERER=http://localhost:8000/Projects/AQProject/index.php?r=taskCreator/uploadImage&mediaId=19&gameId=104&taskId=58
+---
+2015/08/05 22:51:12 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Некорректный запрос.' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php:336
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('uploadImage')
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('taskCreator/upl...')
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/Projects/AQProject/index.php?r=taskCreator/uploadImage&mediaId=19
+HTTP_REFERER=http://localhost:8000/Projects/AQProject/index.php?r=taskCreator/uploadImage&mediaId=19&gameId=104&taskId=58
+---

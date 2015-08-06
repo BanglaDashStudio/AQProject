@@ -28,40 +28,56 @@
         <?php echo $form->error($createTaskForm,'description'); ?>
     </div>
 
-    <hr />
-    <style>
-    .media_img{
-    max-height: 300px;
-    max-width: 100%;
-    }
-    </style>
-    <div>
+
     <?php
         $media = Media::model()->findByPk($mediaId);
+
+        if(isset($media)):
     ?>
 
-    <img class="media_img" src="<?php if(isset($media->image)) echo $media->image; ?>">
-    </img>
+    <hr />
+
+    <div>
+        <?php if(isset($media->audio)):?>
+            <style>
+                .media_img{
+                    max-height: 300px;
+                    max-width: 100%;
+                }
+            </style>
+
+            <img class="media_img" src="<?php if(isset($media->image)) echo $media->image; ?>">
+            </img>
+        <?php endif; ?>
     </div>
 
     <div>
-    <audio controls>
-        <source src="<?php if(isset($media->audio)) echo $media->audio; ?>" />
-    Тег audio не поддерживается вашим браузером.
-    <a href="<?php if(isset($media->audio)) echo $media->audio; ?>">Скачайте музыку</a>.
-    </audio>
+        <?php if(isset($media->audio)):?>
+            <audio controls>
+                <source src="<?php echo $media->audio; ?>" />
+                Тег audio не поддерживается вашим браузером.
+                <a href="<?php echo $media->audio; ?>">Скачайте музыку</a>.
+            </audio>
+        <?php endif; ?>
     </div>
     <div>
-    <?php if(isset($media->video))echo $media->video; ?>
+        <?php if(isset($media->video)):?>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php
+            echo $media->video;
+            ?>" frameborder="0" allowfullscreen>
+            </iframe>
+        <?php endif; ?>
     </div>
-
+    <hr />
+    <?php endif; ?>
     <div class="row buttons">
         <input id="addAudioTask" onclick="go('<?php echo $this->createUrl('taskCreator/uploadAudio',array('mediaId'=>$mediaId,'gameId'=>$gameId,'taskId'=>$taskId))?>')" type="button" value="Добавить аудио" />
         <input id="addImageTask" onclick="go('<?php echo $this->createUrl('taskCreator/uploadImage',array('mediaId'=>$mediaId,'gameId'=>$gameId,'taskId'=>$taskId))?>')" type="button" value="Добавить изображение" />
         <input id="addVideoTask" onclick="go('<?php echo $this->createUrl('taskCreator/uploadVideo',array('mediaId'=>$mediaId,'gameId'=>$gameId,'taskId'=>$taskId))?>')" type="button" value="Добавить видео" />
+        <input id="addVideoTask" onclick="go('<?php echo $this->createUrl('taskCreator/Hints',array('gameId'=>$gameId,'taskId'=>$taskId))?>')" type="button" value="Подсказки" />
     </div>
 
-    <hr />
+
 
     <div class="row">
         <?php echo $form->labelEx($createTaskForm,'address'); ?>

@@ -248,7 +248,7 @@ class TaskCreatorController extends Controller
 						echo 'Ошибка добавления ссылки в бд';
 						return;
 					} else {
-						$this->render('uploadImage',array('mediaId'=>$mediaId));
+						$this->render('uploadImage',array('mediaId'=>$mediaId,'gameId'=>$gameId, 'taskId'=>$taskId));
 					}
 				}else {
 					echo "Ошибка перемещения изображения!\n";
@@ -284,7 +284,7 @@ class TaskCreatorController extends Controller
 						echo 'Ошибка добавления ссылки в бд';
 						return;
 					} else {
-						$this->render('uploadAudio',array('mediaId'=>$mediaId));
+						$this->render('uploadAudio',array('mediaId'=>$mediaId,'gameId'=>$gameId, 'taskId'=>$taskId));
 					}
 				}else {
 					echo "Ошибка перемещения аудио!\n";
@@ -297,6 +297,33 @@ class TaskCreatorController extends Controller
 		} else {
 			$this->render('uploadAudio',array('mediaId'=>$mediaId,'gameId'=>$gameId, 'taskId'=>$taskId));
 		}
+	}
+
+	public function actionUploadVideo($mediaId, $gameId, $taskId) {
+
+		if(isset($_POST[Video])) {
+			$code = substr($_POST[Video], strripos($_POST[Video], "/") + 1);
+			if(isset($code)){
+				$media = Media::model()->findByPk($mediaId);
+				$media->video = $code;
+				if(!$media->save()){
+					echo 'Ошибка добавления ссылки в бд';
+					return;
+				} else {
+					$this->render('uploadVideo',array('mediaId'=>$mediaId,'gameId'=>$gameId, 'taskId'=>$taskId));
+					return;
+				}
+			}
+		}
+
+		$this->render('uploadVideo',array('mediaId'=>$mediaId,'gameId'=>$gameId, 'taskId'=>$taskId));
+	}
+
+
+	public function actionHints($gameId, $taskId){
+
+		$hintList = Hint::model()->findAllByAttributes(array('taskId'=>$taskId));
+		$this->render('createHint',array('gameId'=>$gameId, 'taskId'=>$taskId, 'hintList'=>$hintList));
 	}
 
 }
