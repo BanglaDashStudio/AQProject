@@ -2911,3 +2911,25 @@ Stack trace:
 REQUEST_URI=/Projects/AQProject/index.php?r=taskCreator/uploadImage&mediaId=19
 HTTP_REFERER=http://localhost:8000/Projects/AQProject/index.php?r=taskCreator/uploadImage&mediaId=19&gameId=104&taskId=58
 ---
+2015/08/31 18:07:21 [error] [php] session_regenerate_id(): Session object destruction failed (D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CHttpSession.php:182)
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CWebUser.php(233): WebUser->changeIdentity()
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(43): WebUser->login()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(29): AuthController->SignInFunc()
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignIn()
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): AuthController->runAction()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): AuthController->filterAccessControl()
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): AuthController->runActionWithFilters()
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): AuthController->run()
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(13): CWebApplication->run()
+REQUEST_URI=/projects/AQProject/index.php?r=auth/SignIn
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (43)
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (29)
+in D:\OpenServer\domains\localhost\Projects\AQProject\index.php (13)
