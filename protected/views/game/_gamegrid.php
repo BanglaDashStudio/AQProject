@@ -74,7 +74,11 @@ $('.grid_button').click(function(){
     else {
         echo 'заданий нет';
     }
-    echo CHtml::submitButton('Сохранить изменения', array(id=>'gridSubmit')); ?>
+    echo '<br />';
+    //echo CHtml::submitButton('Сохранить изменения', array(id=>'gridSubmit')); ?>
+
+        <input type="submit" id="gridSubmit"/>
+
     </form>
 
     <script>
