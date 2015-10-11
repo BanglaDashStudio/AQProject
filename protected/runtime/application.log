@@ -2933,3 +2933,914 @@ REQUEST_URI=/projects/AQProject/index.php?r=auth/SignIn
 in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (43)
 in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (29)
 in D:\OpenServer\domains\localhost\Projects\AQProject\index.php (13)
+2015/09/29 22:56:04 [error] [php] session_regenerate_id(): Session object destruction failed (D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CHttpSession.php:182)
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CWebUser.php(233): WebUser->changeIdentity()
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(43): WebUser->login()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(29): AuthController->SignInFunc()
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignIn()
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): AuthController->runAction()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): AuthController->filterAccessControl()
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): AuthController->runActionWithFilters()
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): AuthController->run()
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(13): CWebApplication->run()
+REQUEST_URI=/projects/AQProject/index.php?r=auth/SignIn
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (43)
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (29)
+in D:\OpenServer\domains\localhost\Projects\AQProject\index.php (13)
+2015/09/29 22:56:13 [error] [php] session_regenerate_id(): Session object destruction failed (D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CHttpSession.php:182)
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CWebUser.php(233): WebUser->changeIdentity()
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(43): WebUser->login()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(29): AuthController->SignInFunc()
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignIn()
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): AuthController->runAction()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): AuthController->filterAccessControl()
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): AuthController->runActionWithFilters()
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): AuthController->run()
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(13): CWebApplication->run()
+REQUEST_URI=/projects/AQProject/index.php?r=auth/SignIn
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (43)
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (29)
+in D:\OpenServer\domains\localhost\Projects\AQProject\index.php (13)
+2015/09/29 22:56:31 [error] [exception.CException] exception 'CException' with message 'В классе ComandSignUp и его поведениях не найден метод или замыкание с именем "getTableSchema".' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): CComponent->__call('getTableSchema', Array)
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): ComandSignUp->getTableSchema()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CValidator.php(201): CUniqueValidator->validateAttribute(Object(ComandSignUp), 'username')
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CModel.php(159): CValidator->validate(Object(ComandSignUp), NULL)
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\widgets\CActiveForm.php(987): CModel->validate(NULL)
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(60): CActiveForm::validate(Object(ComandSignUp))
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignUp()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('SignUp')
+#16 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('auth/SignUp')
+#17 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/projects/AQProject/index.php?r=auth/SignUp
+HTTP_REFERER=http://localhost:8000/projects/AQProject/index.php?r=auth/SignUp
+---
+2015/09/29 22:56:33 [error] [exception.CException] exception 'CException' with message 'В классе ComandSignUp и его поведениях не найден метод или замыкание с именем "getTableSchema".' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): CComponent->__call('getTableSchema', Array)
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): ComandSignUp->getTableSchema()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CValidator.php(201): CUniqueValidator->validateAttribute(Object(ComandSignUp), 'username')
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CModel.php(159): CValidator->validate(Object(ComandSignUp), NULL)
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\widgets\CActiveForm.php(987): CModel->validate(NULL)
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(60): CActiveForm::validate(Object(ComandSignUp))
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignUp()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('SignUp')
+#16 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('auth/SignUp')
+#17 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/projects/AQProject/index.php?r=auth/SignUp
+HTTP_REFERER=http://localhost:8000/projects/AQProject/index.php?r=auth/SignUp
+---
+2015/09/29 22:56:39 [error] [exception.CException] exception 'CException' with message 'В классе ComandSignUp и его поведениях не найден метод или замыкание с именем "getTableSchema".' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): CComponent->__call('getTableSchema', Array)
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): ComandSignUp->getTableSchema()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CValidator.php(201): CUniqueValidator->validateAttribute(Object(ComandSignUp), 'username')
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CModel.php(159): CValidator->validate(Object(ComandSignUp), NULL)
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\widgets\CActiveForm.php(987): CModel->validate(NULL)
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(60): CActiveForm::validate(Object(ComandSignUp))
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignUp()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('SignUp')
+#16 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('auth/SignUp')
+#17 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/projects/AQProject/index.php?r=auth/SignUp
+HTTP_REFERER=http://localhost:8000/projects/AQProject/index.php?r=auth/SignUp
+---
+2015/09/29 22:56:45 [error] [exception.CException] exception 'CException' with message 'В классе ComandSignUp и его поведениях не найден метод или замыкание с именем "getTableSchema".' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): CComponent->__call('getTableSchema', Array)
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): ComandSignUp->getTableSchema()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CValidator.php(201): CUniqueValidator->validateAttribute(Object(ComandSignUp), 'username')
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CModel.php(159): CValidator->validate(Object(ComandSignUp), NULL)
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\widgets\CActiveForm.php(987): CModel->validate(NULL)
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(60): CActiveForm::validate(Object(ComandSignUp))
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignUp()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('SignUp')
+#16 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('auth/SignUp')
+#17 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/projects/AQProject/index.php?r=auth/SignUp
+HTTP_REFERER=http://localhost:8000/projects/AQProject/index.php?r=auth/SignUp
+---
+2015/09/29 22:56:57 [error] [exception.CException] exception 'CException' with message 'В классе ComandSignUp и его поведениях не найден метод или замыкание с именем "getTableSchema".' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): CComponent->__call('getTableSchema', Array)
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): ComandSignUp->getTableSchema()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CValidator.php(201): CUniqueValidator->validateAttribute(Object(ComandSignUp), 'username')
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CModel.php(159): CValidator->validate(Object(ComandSignUp), NULL)
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\widgets\CActiveForm.php(987): CModel->validate(NULL)
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(60): CActiveForm::validate(Object(ComandSignUp))
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignUp()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('SignUp')
+#16 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('auth/SignUp')
+#17 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/projects/AQProject/index.php?r=auth/SignUp
+HTTP_REFERER=http://localhost:8000/projects/AQProject/index.php?r=auth/SignUp
+---
+2015/09/29 22:56:59 [error] [exception.CException] exception 'CException' with message 'В классе ComandSignUp и его поведениях не найден метод или замыкание с именем "getTableSchema".' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): CComponent->__call('getTableSchema', Array)
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): ComandSignUp->getTableSchema()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CValidator.php(201): CUniqueValidator->validateAttribute(Object(ComandSignUp), 'username')
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CModel.php(159): CValidator->validate(Object(ComandSignUp), NULL)
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\widgets\CActiveForm.php(987): CModel->validate(NULL)
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(60): CActiveForm::validate(Object(ComandSignUp))
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignUp()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('SignUp')
+#16 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('auth/SignUp')
+#17 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/projects/AQProject/index.php?r=auth/SignUp
+HTTP_REFERER=http://localhost:8000/projects/AQProject/index.php?r=auth/SignUp
+---
+2015/09/29 22:57:05 [error] [php] session_regenerate_id(): Cannot regenerate session id - headers already sent (D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CHttpSession.php:182)
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CWebUser.php(233): WebUser->changeIdentity()
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(43): WebUser->login()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(81): AuthController->SignInFunc()
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignUp()
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): AuthController->runAction()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): AuthController->filterAccessControl()
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): AuthController->runActionWithFilters()
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): AuthController->run()
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(13): CWebApplication->run()
+REQUEST_URI=/projects/AQProject/index.php?r=auth/SignUp
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (43)
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (81)
+in D:\OpenServer\domains\localhost\Projects\AQProject\index.php (13)
+2015/09/29 22:57:05 [error] [exception.CException] exception 'CException' with message 'В классе ComandSignUp и его поведениях не найден метод или замыкание с именем "getTableSchema".' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): CComponent->__call('getTableSchema', Array)
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): ComandSignUp->getTableSchema()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CValidator.php(201): CUniqueValidator->validateAttribute(Object(ComandSignUp), 'username')
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CModel.php(159): CValidator->validate(Object(ComandSignUp), NULL)
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\widgets\CActiveForm.php(987): CModel->validate(NULL)
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(60): CActiveForm::validate(Object(ComandSignUp))
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignUp()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('SignUp')
+#16 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('auth/SignUp')
+#17 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/projects/AQProject/index.php?r=auth/SignUp
+HTTP_REFERER=http://localhost:8000/projects/AQProject/index.php?r=auth/SignUp
+---
+2015/09/29 23:04:45 [error] [exception.CException] exception 'CException' with message 'В классе ComandSignUp и его поведениях не найден метод или замыкание с именем "getTableSchema".' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): CComponent->__call('getTableSchema', Array)
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): ComandSignUp->getTableSchema()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CValidator.php(201): CUniqueValidator->validateAttribute(Object(ComandSignUp), 'username')
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CModel.php(159): CValidator->validate(Object(ComandSignUp), NULL)
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\widgets\CActiveForm.php(987): CModel->validate(NULL)
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(60): CActiveForm::validate(Object(ComandSignUp))
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignUp()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('SignUp')
+#16 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('auth/SignUp')
+#17 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CApplication->run()
+#19 {main}
+REQUEST_URI=/projects/AQProject/index.php?r=auth/SignUp
+HTTP_REFERER=http://localhost:8000/projects/AQProject/index.php?r=auth/SignUp
+---
+2015/09/29 23:04:47 [error] [exception.CException] exception 'CException' with message 'В классе ComandSignUp и его поведениях не найден метод или замыкание с именем "getTableSchema".' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): CComponent->__call('getTableSchema', Array)
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): ComandSignUp->getTableSchema()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CValidator.php(201): CUniqueValidator->validateAttribute(Object(ComandSignUp), 'username')
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CModel.php(159): CValidator->validate(Object(ComandSignUp), NULL)
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\widgets\CActiveForm.php(987): CModel->validate(NULL)
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(60): CActiveForm::validate(Object(ComandSignUp))
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignUp()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('SignUp')
+#16 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('auth/SignUp')
+#17 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CApplication->run()
+#19 {main}
+REQUEST_URI=/projects/AQProject/index.php?r=auth/SignUp
+HTTP_REFERER=http://localhost:8000/projects/AQProject/index.php?r=auth/SignUp
+---
+2015/09/29 23:04:49 [error] [exception.CException] exception 'CException' with message 'В классе ComandSignUp и его поведениях не найден метод или замыкание с именем "getTableSchema".' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): CComponent->__call('getTableSchema', Array)
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): ComandSignUp->getTableSchema()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CValidator.php(201): CUniqueValidator->validateAttribute(Object(ComandSignUp), 'username')
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CModel.php(159): CValidator->validate(Object(ComandSignUp), NULL)
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\widgets\CActiveForm.php(987): CModel->validate(NULL)
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(60): CActiveForm::validate(Object(ComandSignUp))
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignUp()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('SignUp')
+#16 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('auth/SignUp')
+#17 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CApplication->run()
+#19 {main}
+REQUEST_URI=/projects/AQProject/index.php?r=auth/SignUp
+HTTP_REFERER=http://localhost:8000/projects/AQProject/index.php?r=auth/SignUp
+---
+2015/09/29 23:04:51 [error] [exception.CException] exception 'CException' with message 'В классе ComandSignUp и его поведениях не найден метод или замыкание с именем "getTableSchema".' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): CComponent->__call('getTableSchema', Array)
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): ComandSignUp->getTableSchema()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CValidator.php(201): CUniqueValidator->validateAttribute(Object(ComandSignUp), 'username')
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CModel.php(159): CValidator->validate(Object(ComandSignUp), NULL)
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\widgets\CActiveForm.php(987): CModel->validate(NULL)
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(60): CActiveForm::validate(Object(ComandSignUp))
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignUp()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('SignUp')
+#16 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('auth/SignUp')
+#17 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CApplication->run()
+#19 {main}
+REQUEST_URI=/projects/AQProject/index.php?r=auth/SignUp
+HTTP_REFERER=http://localhost:8000/projects/AQProject/index.php?r=auth/SignUp
+---
+2015/09/29 23:05:02 [error] [exception.CException] exception 'CException' with message 'В классе ComandSignUp и его поведениях не найден метод или замыкание с именем "getTableSchema".' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): CComponent->__call('getTableSchema', Array)
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): ComandSignUp->getTableSchema()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CValidator.php(201): CUniqueValidator->validateAttribute(Object(ComandSignUp), 'username')
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CModel.php(159): CValidator->validate(Object(ComandSignUp), NULL)
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\widgets\CActiveForm.php(987): CModel->validate(NULL)
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(60): CActiveForm::validate(Object(ComandSignUp))
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignUp()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('SignUp')
+#16 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('auth/SignUp')
+#17 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CApplication->run()
+#19 {main}
+REQUEST_URI=/projects/AQProject/index.php?r=auth/SignUp
+HTTP_REFERER=http://localhost:8000/projects/AQProject/index.php?r=auth/SignUp
+---
+2015/09/29 23:05:04 [error] [exception.CException] exception 'CException' with message 'В классе ComandSignUp и его поведениях не найден метод или замыкание с именем "getTableSchema".' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): CComponent->__call('getTableSchema', Array)
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): ComandSignUp->getTableSchema()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CValidator.php(201): CUniqueValidator->validateAttribute(Object(ComandSignUp), 'username')
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CModel.php(159): CValidator->validate(Object(ComandSignUp), NULL)
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\widgets\CActiveForm.php(987): CModel->validate(NULL)
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(60): CActiveForm::validate(Object(ComandSignUp))
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignUp()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('SignUp')
+#16 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('auth/SignUp')
+#17 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CApplication->run()
+#19 {main}
+REQUEST_URI=/projects/AQProject/index.php?r=auth/SignUp
+HTTP_REFERER=http://localhost:8000/projects/AQProject/index.php?r=auth/SignUp
+---
+2015/09/29 23:05:06 [error] [php] session_regenerate_id(): Session object destruction failed (D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CHttpSession.php:182)
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CWebUser.php(233): WebUser->changeIdentity()
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(43): WebUser->login()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(81): AuthController->SignInFunc()
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignUp()
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): AuthController->runAction()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): AuthController->filterAccessControl()
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): AuthController->runActionWithFilters()
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): AuthController->run()
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CWebApplication->run()
+REQUEST_URI=/projects/AQProject/index.php?r=auth/SignUp
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (43)
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (81)
+in D:\OpenServer\domains\localhost\Projects\AQProject\index.php (14)
+2015/09/29 23:05:06 [error] [exception.CException] exception 'CException' with message 'В классе ComandSignUp и его поведениях не найден метод или замыкание с именем "getTableSchema".' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): CComponent->__call('getTableSchema', Array)
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CUniqueValidator.php(96): ComandSignUp->getTableSchema()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\validators\CValidator.php(201): CUniqueValidator->validateAttribute(Object(ComandSignUp), 'username')
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CModel.php(159): CValidator->validate(Object(ComandSignUp), NULL)
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\widgets\CActiveForm.php(987): CModel->validate(NULL)
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(60): CActiveForm::validate(Object(ComandSignUp))
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignUp()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('SignUp')
+#16 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('auth/SignUp')
+#17 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CApplication->run()
+#19 {main}
+REQUEST_URI=/projects/AQProject/index.php?r=auth/SignUp
+HTTP_REFERER=http://localhost:8000/projects/AQProject/index.php?r=auth/SignUp
+---
+2015/09/29 23:07:49 [error] [php] session_regenerate_id(): Session object destruction failed (D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CHttpSession.php:182)
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CWebUser.php(233): WebUser->changeIdentity()
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(43): WebUser->login()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(29): AuthController->SignInFunc()
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignIn()
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): AuthController->runAction()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): AuthController->filterAccessControl()
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): AuthController->runActionWithFilters()
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): AuthController->run()
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CWebApplication->run()
+REQUEST_URI=/projects/AQProject/index.php?r=auth/SignIn
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (43)
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (29)
+in D:\OpenServer\domains\localhost\Projects\AQProject\index.php (14)
+2015/09/29 23:09:08 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'У вас недостаточно прав для выполнения указанного действия.' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xD0\xA3 \xD0\xB2\xD0\xB0\xD1\x81 \xD0\xBD\xD0\xB5\xD0...')
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('SignIn')
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('auth/SignIn')
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/projects/AQProject/index.php?r=auth/SignIn
+---
+2015/09/29 23:09:50 [error] [php] session_regenerate_id(): Session object destruction failed (D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CHttpSession.php:182)
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CWebUser.php(233): WebUser->changeIdentity()
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(43): WebUser->login()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(29): AuthController->SignInFunc()
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignIn()
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): AuthController->runAction()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): AuthController->filterAccessControl()
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): AuthController->runActionWithFilters()
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): AuthController->run()
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CWebApplication->run()
+REQUEST_URI=/projects/AQProject/index.php?r=auth/SignIn
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (43)
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (29)
+in D:\OpenServer\domains\localhost\Projects\AQProject\index.php (14)
+2015/09/29 23:10:03 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'У вас недостаточно прав для выполнения указанного действия.' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xD0\xA3 \xD0\xB2\xD0\xB0\xD1\x81 \xD0\xBD\xD0\xB5\xD0...')
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('SignIn')
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('auth/SignIn')
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/projects/AQProject/index.php?r=auth/SignIn
+HTTP_REFERER=http://localhost:8000/projects/AQProject/index.php?r=auth/SignIn
+---
+2015/10/05 20:47:49 [error] [php] session_regenerate_id(): Session object destruction failed (D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CHttpSession.php:182)
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CWebUser.php(233): WebUser->changeIdentity()
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(43): WebUser->login()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(29): AuthController->SignInFunc()
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignIn()
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): AuthController->runAction()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): AuthController->filterAccessControl()
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): AuthController->runActionWithFilters()
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): AuthController->run()
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CWebApplication->run()
+REQUEST_URI=/Projects/AQProject/index.php?r=auth/SignIn
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (43)
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (29)
+in D:\OpenServer\domains\localhost\Projects\AQProject\index.php (14)
+2015/10/05 20:50:43 [error] [php] session_regenerate_id(): Session object destruction failed (D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CHttpSession.php:182)
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CWebUser.php(233): WebUser->changeIdentity()
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(43): WebUser->login()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(29): AuthController->SignInFunc()
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignIn()
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): AuthController->runAction()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): AuthController->filterAccessControl()
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): AuthController->runActionWithFilters()
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): AuthController->run()
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CWebApplication->run()
+REQUEST_URI=/Projects/AQProject/index.php?r=auth/SignIn
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (43)
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (29)
+in D:\OpenServer\domains\localhost\Projects\AQProject\index.php (14)
+2015/10/05 21:10:51 [error] [php] session_regenerate_id(): Session object destruction failed (D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CHttpSession.php:182)
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CWebUser.php(233): WebUser->changeIdentity()
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(43): WebUser->login()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(29): AuthController->SignInFunc()
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignIn()
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): AuthController->runAction()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): AuthController->filterAccessControl()
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): AuthController->runActionWithFilters()
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): AuthController->run()
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CWebApplication->run()
+REQUEST_URI=/Projects/AQProject/index.php?r=auth/SignIn
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (43)
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (29)
+in D:\OpenServer\domains\localhost\Projects\AQProject\index.php (14)
+2015/10/05 21:23:58 [error] [php] session_regenerate_id(): Session object destruction failed (D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CHttpSession.php:182)
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CWebUser.php(233): WebUser->changeIdentity()
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(43): WebUser->login()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(29): AuthController->SignInFunc()
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignIn()
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): AuthController->runAction()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): AuthController->filterAccessControl()
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): AuthController->runActionWithFilters()
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): AuthController->run()
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CWebApplication->run()
+REQUEST_URI=/Projects/AQProject/index.php?r=auth/SignIn
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (43)
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (29)
+in D:\OpenServer\domains\localhost\Projects\AQProject\index.php (14)
+2015/10/05 21:24:05 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'У вас недостаточно прав для выполнения указанного действия.' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xD0\xA3 \xD0\xB2\xD0\xB0\xD1\x81 \xD0\xBD\xD0\xB5\xD0...')
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('SignIn')
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('auth/SignIn')
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/Projects/AQProject/index.php?r=auth/SignIn
+HTTP_REFERER=http://localhost:8000/Projects/AQProject/index.php?r=auth/SignIn
+---
+2015/10/07 22:58:37 [error] [php] session_regenerate_id(): Session object destruction failed (D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CHttpSession.php:182)
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CWebUser.php(233): WebUser->changeIdentity()
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(43): WebUser->login()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(29): AuthController->SignInFunc()
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignIn()
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): AuthController->runAction()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): AuthController->filterAccessControl()
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): AuthController->runActionWithFilters()
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): AuthController->run()
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CWebApplication->run()
+REQUEST_URI=/Projects/AQProject/index.php?r=auth/SignIn
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (43)
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (29)
+in D:\OpenServer\domains\localhost\Projects\AQProject\index.php (14)
+2015/10/07 22:58:47 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'У вас недостаточно прав для выполнения указанного действия.' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xD0\xA3 \xD0\xB2\xD0\xB0\xD1\x81 \xD0\xBD\xD0\xB5\xD0...')
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('SignIn')
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('auth/SignIn')
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/Projects/AQProject/index.php?r=auth/SignIn
+HTTP_REFERER=http://localhost:8000/Projects/AQProject/index.php?r=auth/SignIn
+---
+2015/10/11 19:48:20 [error] [php] session_regenerate_id(): Session object destruction failed (D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CHttpSession.php:182)
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CWebUser.php(233): WebUser->changeIdentity()
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(43): WebUser->login()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(29): AuthController->SignInFunc()
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignIn()
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): AuthController->runAction()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): AuthController->filterAccessControl()
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): AuthController->runActionWithFilters()
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): AuthController->run()
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CWebApplication->run()
+REQUEST_URI=/Projects/AQProject/index.php?r=auth/SignIn
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (43)
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (29)
+in D:\OpenServer\domains\localhost\Projects\AQProject\index.php (14)
+2015/10/11 19:48:29 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'У вас недостаточно прав для выполнения указанного действия.' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xD0\xA3 \xD0\xB2\xD0\xB0\xD1\x81 \xD0\xBD\xD0\xB5\xD0...')
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('SignIn')
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('auth/SignIn')
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/Projects/AQProject/index.php?r=auth/SignIn
+HTTP_REFERER=http://localhost:8000/Projects/AQProject/index.php?r=auth/SignIn
+---
+2015/10/11 19:56:13 [error] [php] session_regenerate_id(): Session object destruction failed (D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CHttpSession.php:182)
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CWebUser.php(233): WebUser->changeIdentity()
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(47): WebUser->login()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(29): AuthController->SignInFunc()
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignIn()
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): AuthController->runAction()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): AuthController->filterAccessControl()
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): AuthController->runActionWithFilters()
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): AuthController->run()
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CWebApplication->run()
+REQUEST_URI=/Projects/AQProject/index.php?r=auth/SignIn
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (47)
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (29)
+in D:\OpenServer\domains\localhost\Projects\AQProject\index.php (14)
+2015/10/11 19:56:44 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'У вас недостаточно прав для выполнения указанного действия.' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xD0\xA3 \xD0\xB2\xD0\xB0\xD1\x81 \xD0\xBD\xD0\xB5\xD0...')
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('SignIn')
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('auth/SignIn')
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/Projects/AQProject/index.php?r=auth/SignIn
+HTTP_REFERER=http://localhost:8000/Projects/AQProject/index.php?r=auth/SignIn
+---
+2015/10/11 19:56:56 [error] [php] session_regenerate_id(): Session object destruction failed (D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CHttpSession.php:182)
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CWebUser.php(233): WebUser->changeIdentity()
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(47): WebUser->login()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(29): AuthController->SignInFunc()
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignIn()
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): AuthController->runAction()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): AuthController->filterAccessControl()
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): AuthController->runActionWithFilters()
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): AuthController->run()
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CWebApplication->run()
+REQUEST_URI=/Projects/AQProject/index.php?r=auth/SignIn
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (47)
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (29)
+in D:\OpenServer\domains\localhost\Projects\AQProject\index.php (14)
+2015/10/11 19:58:21 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'У вас недостаточно прав для выполнения указанного действия.' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xD0\xA3 \xD0\xB2\xD0\xB0\xD1\x81 \xD0\xBD\xD0\xB5\xD0...')
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('SignIn')
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('auth/SignIn')
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/Projects/AQProject/index.php?r=auth/SignIn
+HTTP_REFERER=http://localhost:8000/Projects/AQProject/index.php?r=auth/SignIn
+---
+2015/10/11 19:58:31 [error] [php] session_regenerate_id(): Session object destruction failed (D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CHttpSession.php:182)
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CWebUser.php(233): WebUser->changeIdentity()
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(47): WebUser->login()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php(29): AuthController->SignInFunc()
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): AuthController->actionSignIn()
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(133): AuthController->runAction()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): AuthController->filterAccessControl()
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): AuthController->runActionWithFilters()
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): AuthController->run()
+#13 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CWebApplication->run()
+REQUEST_URI=/Projects/AQProject/index.php?r=auth/SignIn
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (47)
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\AuthController.php (29)
+in D:\OpenServer\domains\localhost\Projects\AQProject\index.php (14)
+2015/10/11 19:58:50 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'У вас недостаточно прав для выполнения указанного действия.' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xD0\xA3 \xD0\xB2\xD0\xB0\xD1\x81 \xD0\xBD\xD0\xB5\xD0...')
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('SignIn')
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('auth/SignIn')
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/Projects/AQProject/index.php?r=auth/SignIn
+HTTP_REFERER=http://localhost:8000/Projects/AQProject/index.php?r=auth/SignIn
+---
+2015/10/11 19:59:00 [error] [php] Creating default object from empty value (D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\GameController.php:483)
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): GameController->actionPlay()
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(286): GameController->runAction()
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): GameController->runActionWithFilters()
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): GameController->run()
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CWebApplication->run()
+REQUEST_URI=/Projects/AQProject/index.php?r=game/Play
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\GameController.php (483)
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\GameController.php (187)
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\GameController.php (145)
+2015/10/11 19:59:02 [error] [php] Creating default object from empty value (D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\GameController.php:483)
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): GameController->actionPlay()
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(286): GameController->runAction()
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): GameController->runActionWithFilters()
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): GameController->run()
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CWebApplication->run()
+REQUEST_URI=/Projects/AQProject/index.php?r=game/Play
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\GameController.php (483)
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\GameController.php (187)
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\GameController.php (145)
+2015/10/11 20:13:12 [error] [php] strpos() expects parameter 1 to be string, array given (D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php:963)
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CBaseController.php(126): require()
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CBaseController.php(95): ManualTestingToolsController->renderInternal()
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(869): ManualTestingToolsController->renderFile()
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(782): ManualTestingToolsController->renderPartial()
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\ManualTestingToolsController.php(7): ManualTestingToolsController->render()
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\actions\CInlineAction.php(49): ManualTestingToolsController->actionIndex()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(286): ManualTestingToolsController->runAction()
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): ManualTestingToolsController->runActionWithFilters()
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): ManualTestingToolsController->run()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#12 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CWebApplication->run()
+REQUEST_URI=/Projects/AQProject/index.php?r=manualTestingTools
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\views\manualTestingTools\index.php (11)
+in D:\OpenServer\domains\localhost\Projects\AQProject\protected\controllers\ManualTestingToolsController.php (7)
+in D:\OpenServer\domains\localhost\Projects\AQProject\index.php (14)
+2015/10/11 21:15:12 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'У вас недостаточно прав для выполнения указанного действия.' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xD0\xA3 \xD0\xB2\xD0\xB0\xD1\x81 \xD0\xBD\xD0\xB5\xD0...')
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('')
+#8 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('manualTestingTo...')
+#9 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/Projects/AQProject/index.php?r=manualTestingTools
+---
+2015/10/11 21:17:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "ManualTestingTools".' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php:483
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(270): CController->missingAction('ManualTestingTo...')
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('ManualTestingTo...')
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('manualTestingTo...')
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/Projects/AQProject/index.php?r=manualTestingTools/ManualTestingTools
+HTTP_REFERER=http://localhost:8000/Projects/AQProject/index.php?r=manualTestingTools
+---
+2015/10/11 21:17:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "ManualTestingTools".' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php:483
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(270): CController->missingAction('ManualTestingTo...')
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('ManualTestingTo...')
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('home/ManualTest...')
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/Projects/AQProject/index.php?r=home/ManualTestingTools
+HTTP_REFERER=http://localhost:8000/Projects/AQProject/index.php?r=manualTestingTools/ManualTestingTools
+---
+2015/10/11 21:17:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "ManualTestingTools".' in D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php:483
+Stack trace:
+#0 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CController.php(270): CController->missingAction('ManualTestingTo...')
+#1 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(282): CController->run('ManualTestingTo...')
+#2 D:\OpenServer\domains\localhost\Projects\AQProject\framework\web\CWebApplication.php(141): CWebApplication->runController('home/ManualTest...')
+#3 D:\OpenServer\domains\localhost\Projects\AQProject\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 D:\OpenServer\domains\localhost\Projects\AQProject\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/Projects/AQProject/index.php?r=home/ManualTestingTools
+HTTP_REFERER=http://localhost:8000/Projects/AQProject/index.php?r=home/ManualTestingTools
+---
