@@ -36,5 +36,5 @@ return false;
 
 
 <div class="stopform" >
-        <button class="StopGameButton">Закончить игру</button>
+        <button class="StopGameButton pretty_red_button">Закончить игру</button>
 </div>

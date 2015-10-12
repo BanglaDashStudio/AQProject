@@ -63,7 +63,7 @@
 
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Сохранить'); ?>
+		<?php echo CHtml::submitButton('Сохранить', array('class'=>'pretty_submit')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

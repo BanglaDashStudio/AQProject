@@ -36,12 +36,12 @@ return false;
     }
 
     function printButton2(){
-        echo '<button class="button_2" name="off">';
+        echo '<button class="button_2 pretty_button" name="off">';
         echo 'Снять заявку';
         echo '</button>';
     }
     function printButton1() {
-        echo '<button class="button_1" name="on">';
+        echo '<button class="button_1 pretty_button" name="on">';
         echo 'Подать заявку';
         echo '</button>';
     }

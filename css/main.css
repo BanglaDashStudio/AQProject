@@ -41,6 +41,7 @@ body
 	padding-right: 5px;
 	padding-left: 5px;
 	padding-bottom: 1px;
+	margin: 2px;
 	/*border-radius: 1px;*/
 }
 
@@ -53,6 +54,7 @@ textarea#PRInfo_inform {
 }
 
 /* Все зелёные кнопки */
+/*
 input[type="submit"] {
 	text-decoration:none; text-align:center;
 	padding: 1px 15px;
@@ -78,7 +80,7 @@ input[type="submit"] {
 	 
 	text-shadow: 1px 1px 2px #bababa; 
  }
-
+*/
 /*input[type="submit:active"] {
  padding:8px 34px; 
  border:solid 1px #004F72; 

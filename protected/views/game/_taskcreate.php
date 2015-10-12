@@ -62,7 +62,7 @@ echo CHtml::link('Добавить задание','#',array('class'=>'task-butt
         </div>
 
         <div class="row buttons">
-            <?php echo CHtml::submitButton('Добавить'); ?>
+            <?php echo CHtml::submitButton('Добавить', array('class'=>'pretty_submit')); ?>
         </div>
     </div>
 

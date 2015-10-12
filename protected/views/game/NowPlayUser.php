@@ -41,7 +41,7 @@
 
     echo '<br>';
 
-    echo CHtml::submitButton('ок');
+    echo CHtml::submitButton('ок', array('class'=>'pretty_button'));
 
 ?>
 

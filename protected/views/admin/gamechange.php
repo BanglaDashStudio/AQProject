@@ -23,9 +23,7 @@ $this->breadcrumbs=array(
         echo CHtml::dropDownList('listname', $gameActual, $gameArray, $htmlOptions=array());
     ?>
         <div class="row buttons">
-            <input type="submit" value="Сделать игрой недели">
-
-            </input>
+            <input type="submit" value="Сделать игрой недели" class="pretty_submit" />
         </div>
 
     </form>

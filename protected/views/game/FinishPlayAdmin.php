@@ -81,7 +81,7 @@ foreach ($results as $team) {
 }
 echo "</table>";
 
-echo CHtml::submitButton('Сохранить изменения');?>
+echo CHtml::submitButton('Сохранить изменения', array('class'=>'pretty_submit'));?>
 
    </form>
 </div>

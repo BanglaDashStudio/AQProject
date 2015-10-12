@@ -61,7 +61,7 @@
 
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Зарегистрироваться'); ?>
+		<?php echo CHtml::submitButton('Зарегистрироваться', array('class'=>'pretty_submit')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

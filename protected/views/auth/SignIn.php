@@ -31,7 +31,7 @@
 
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Войти'); ?>
+		<?php echo CHtml::submitButton('Войти',array('class'=>'pretty_submit')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

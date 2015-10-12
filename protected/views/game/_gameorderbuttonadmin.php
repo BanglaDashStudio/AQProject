@@ -28,12 +28,12 @@ if(check($gameAccept)===false){
 }
 
 function printButton2(){
-    echo '<button class="button2">';
+    echo '<button class="button2 pretty_button">';
     echo 'Открыть подачу заявок';
     echo '</button>';
 }
 function printButton1() {
-    echo '<button class="button1">';
+    echo '<button class="button1 pretty_button">';
     echo 'Закрыть подачу заявок';
     echo '</button>';
 }

@@ -37,7 +37,7 @@
 
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Сменить пароль'); ?>
+		<?php echo CHtml::submitButton('Сменить пароль', array('class'=>'pretty_submit')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
