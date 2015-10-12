@@ -115,7 +115,9 @@
 	
 
 	<div id="footer">
+        <?php if(YII_DEBUG):?>
         <a href="<?php echo Yii::app()->createUrl("ManualTestingTools")?>">Инструменты ручного тестирования</a>
+        <?php endif;?>
         <br />
 		Copyright &copy; <?php echo date('Y'); ?> by BanglaDashStudio.<br/>
 		All Rights Reserved.<br/>
