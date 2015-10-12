@@ -7,7 +7,6 @@ class ManualTestingToolsController extends Controller
 		$this->render('index');
 	}
 
-
 	public function actionUserChange($user) {
 
 		Yii::app()->user->logout();
@@ -24,7 +23,7 @@ class ManualTestingToolsController extends Controller
 			echo $identity->errorMessage;
 		}
 
-		$this->render('index');
+		$this->redirect($this->createUrl('index'));
 	}
 
 	public function actionUserChangeWithPassword() {
@@ -41,7 +40,7 @@ class ManualTestingToolsController extends Controller
 				echo $identity->errorMessage;
 			}
 		}
-		$this->render('index');
+		$this->redirect($this->createUrl('index'));
 	}
 
 	public function actionGameStartChange() {
@@ -59,7 +58,7 @@ class ManualTestingToolsController extends Controller
 				echo 'не число';
 			}
 		}
-		$this->render('index');
+		$this->redirect($this->createUrl('index'));
 	}
 
 	public function actionGameChange() {
@@ -73,14 +72,12 @@ class ManualTestingToolsController extends Controller
 				$game->save();
 			}
 		}
-		$this->render('index');
+		$this->redirect($this->createUrl('index'));
 	}
 
-	// Uncomment the following methods and override them if needed
 
 	public function filters()
 	{
-		// return the filter configuration for this controller, e.g.:
 		return array(
 			'accessControl',
 		);
@@ -89,7 +86,7 @@ class ManualTestingToolsController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('deny',  // deny all users
+			array('deny',
 				'expression'=>'YII_DEBUG===false',
 			),
 		);
