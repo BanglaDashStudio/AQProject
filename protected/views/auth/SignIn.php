@@ -19,13 +19,13 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username', array('placeholder'=>'Крутое название')); ?>
+		<?php echo $form->textField($model,'username', array('placeholder'=>'Название','class'=>'pretty_input_text')); ?>
 		<?php echo $form->error($model,'username'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->passwordField($model,'password', array('placeholder'=>'Надёжный пароль')); ?>
+		<?php echo $form->passwordField($model,'password', array('placeholder'=>'Паролечка','class'=>'pretty_input_text')); ?>
 		<?php echo $form->error($model,'password'); ?>
 	</div>
 

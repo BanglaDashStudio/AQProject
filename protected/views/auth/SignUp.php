@@ -19,43 +19,43 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username'); ?>
+		<?php echo $form->textField($model,'username', array('class'=>'pretty_input_text')); ?>
 		<?php echo $form->error($model,'username'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->passwordField($model,'password'); ?>
+		<?php echo $form->passwordField($model,'password', array('class'=>'pretty_input_text')); ?>
 		<?php echo $form->error($model,'password'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'passwordconfirm'); ?>
-		<?php echo $form->passwordField($model,'passwordconfirm'); ?>
+		<?php echo $form->passwordField($model,'passwordconfirm', array('class'=>'pretty_input_text')); ?>
 		<?php echo $form->error($model,'passwordconfirm'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'phone'); ?>
-		<?php echo $form->textField($model,'phone'); ?>
+		<?php echo $form->textField($model,'phone', array('class'=>'pretty_input_text')); ?>
 		<?php echo $form->error($model,'phone'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'mail'); ?>
-		<?php echo $form->textField($model,'mail'); ?>
+		<?php echo $form->textField($model,'mail', array('class'=>'pretty_input_text')); ?>
 		<?php echo $form->error($model,'mail'); ?>
 	</div>
 
     <div class="row">
         <?php echo $form->labelEx($model,'page'); ?>
-        <?php echo $form->textField($model,'page'); ?>
+        <?php echo $form->textField($model,'page', array('class'=>'pretty_input_text')); ?>
         <?php echo $form->error($model,'page'); ?>
     </div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'description'); ?>
-		<?php echo $form->textField($model,'description'); ?>
+		<?php echo $form->textArea($model,'description'); ?>
 		<?php echo $form->error($model,'description'); ?>
 	</div>
 

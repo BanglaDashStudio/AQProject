@@ -35,15 +35,17 @@ body
 */
 
 /* Формы по центру и красивые */
-#ComandSignIn_username, #ComandSignIn_password, #ComandSignUp_username, #ComandSignUp_password, #ComandSignUp_passwordconfirm,
-#ComandSignUp_phone, #ComandSignUp_page ,#ComandSignUp_mail, #ComandSignUp_description, input#PRInfo_phone, input#PRInfo_mail {
-	height: 23.3px;
-	padding:5px 8px;
-	border-radius: 8px;
+.pretty_input_text {
+	height: 1.5rem;
+	padding-top: 1px;
+	padding-right: 5px;
+	padding-left: 5px;
+	padding-bottom: 1px;
+	/*border-radius: 1px;*/
 }
 
 textarea#PRInfo_inform {
-	border-radius: 8px;
+	/*border-radius: 8px;*/
 }
 
 #comand-SignUp-form, #comand-sign-in-SignIn-form {
@@ -52,15 +54,18 @@ textarea#PRInfo_inform {
 
 /* Все зелёные кнопки */
 input[type="submit"] {
-	text-decoration:none; text-align:center; 
-	padding:8px 34px; 
+	text-decoration:none; text-align:center;
+	padding: 1px 15px;
+	margin-bottom: 1px;
+	margin-top: 1px;
 	border:solid 1px #004F72; 
-	-webkit-border-radius:8px;
-	-moz-border-radius:8px; 
-	border-radius: 8px; 
-	font:14px Arial, Helvetica, sans-serif; 
-	font-weight:bold; 
-	color:#ffffff; 
+	-webkit-border-radius:2px;
+	-moz-border-radius:2px;
+	border-radius: 2px;
+	font-size: 14px;
+	font-family: Helvetica, sans-serif;
+
+	color:white;
 	background-color:#67b12f; 
 	background-image: -moz-linear-gradient(top, #67b12f 0%, #50911e 100%); 
 	background-image: -webkit-linear-gradient(top, #67b12f 0%, #50911e 100%); 
@@ -74,7 +79,7 @@ input[type="submit"] {
 	text-shadow: 1px 1px 2px #bababa; 
  }
 
-input[type="submit:active"] {
+/*input[type="submit:active"] {
  padding:8px 34px; 
  border:solid 1px #004F72; 
  -webkit-border-radius:8px;
@@ -96,7 +101,7 @@ input[type="submit:active"] {
   
  text-shadow: 1px 1px 2px #bababa; 
  
-}
+}*/
 /*--------------------------------*/
 
 /* Кнопки редактировать и удалить игру(пользователь) */

@@ -40,7 +40,7 @@ class ComandSignUp extends CFormModel
             'password' => 'Введите пароль',
             'passwordconfirm' => 'Повторите пароль',
             'phone' => 'Телефон',
-            'mail' => '@mail',
+            'mail' => 'e-mail',//Это пишется e-mail
             'page' => 'vk.com',
             'description' => 'Дополнительная информация',
         );
