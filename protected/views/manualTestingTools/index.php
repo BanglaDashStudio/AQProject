@@ -27,11 +27,9 @@ $gameList = Game::model()->findAll();
 	</div>
 	<input type="submit" value="Войти" class="pretty_submit" />
 </form>
+<br /><br />
 
-<hr />
-<br />
-
-<label>Работа с игрой:</label>
+<label>Установка времени начала актуальной игры:</label>
 <hr />
 <form action="<?php echo $this->createUrl('manualTestingTools/GameStartChange');?>" method="post">
 	<label>Начало игры через</label>
@@ -43,10 +41,14 @@ $gameList = Game::model()->findAll();
 		<option>10</option>
 		<option>30</option>
 	</select>
-	<label>минут</label>
+	<label>минут</label><br />
 	<input type="submit" value="Установить" class="pretty_submit" />
 </form>
-<br />
+<br /><br />
+
+
+<label>Выбор актуальной игры:</label>
+<hr />
 <form action="<?php echo $this->createUrl('manualTestingTools/GameChange');?>" method="post">
 
 	<label>Выбрать игру:</label>
@@ -64,9 +66,8 @@ $gameList = Game::model()->findAll();
 			echo "</option>\n";
 		}
 	?>
-	</select>
+	</select><br />
 
 	<input type="submit" value="Установить" class="pretty_submit"/>
 </form>
 
-<hr />

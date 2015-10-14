@@ -70,6 +70,16 @@ class ManualTestingToolsController extends Controller
 				$game = Game::model()->findByPk($_POST['ManualTestingTools']['game']);
 				$game->accepted = 1;
 				$game->save();
+
+				$orgs = Team::model()->findAllByAttributes(array('role'=>2));
+				foreach($orgs as $org){
+					$org->role -= 2;
+					$org->save();
+				}
+
+				$org = Team::model()->findByPk($game->teamId);
+				$org->role += 2;
+				$org->save();
 			}
 		}
 		$this->redirect($this->createUrl('index'));
